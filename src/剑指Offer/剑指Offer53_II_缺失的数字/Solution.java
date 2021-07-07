@@ -1,4 +1,4 @@
-package 剑指Offer.剑指Offer53_缺失的数字;
+package 剑指Offer.剑指Offer53_II_缺失的数字;
 
 public class Solution {
     // 法1:遍历数组

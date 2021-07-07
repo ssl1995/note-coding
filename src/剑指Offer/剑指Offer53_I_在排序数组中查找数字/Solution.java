@@ -1,4 +1,4 @@
-package 剑指Offer.剑指Offer53_在排序数组中查找数字;
+package 剑指Offer.剑指Offer53_I_在排序数组中查找数字;
 
 public class Solution {
 
