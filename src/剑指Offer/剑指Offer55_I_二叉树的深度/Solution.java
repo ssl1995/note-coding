@@ -2,7 +2,7 @@ package 剑指Offer.剑指Offer55_I_二叉树的深度;
 
 
 
-import utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 import java.util.LinkedList;
 

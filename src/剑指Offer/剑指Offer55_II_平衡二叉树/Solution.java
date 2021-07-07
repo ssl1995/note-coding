@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer55_II_平衡二叉树;
 
 
-import utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 public class Solution {
 

@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer52_两个链表的第一个相交结点;
 
 
-import utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 public class Solution {
 

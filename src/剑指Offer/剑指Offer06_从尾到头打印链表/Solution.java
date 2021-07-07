@@ -2,7 +2,7 @@ package 剑指Offer.剑指Offer06_从尾到头打印链表;
 
 
 
-import utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

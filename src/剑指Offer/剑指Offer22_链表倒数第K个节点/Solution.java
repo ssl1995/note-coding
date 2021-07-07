@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer22_链表倒数第K个节点;
 
 
-import utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 public class Solution {
 

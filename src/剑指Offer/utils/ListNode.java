@@ -1,4 +1,4 @@
-package utils;
+package 剑指Offer.utils;
 
 public class ListNode {
     public int val;

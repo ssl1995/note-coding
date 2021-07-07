@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer68_二叉搜索树的最近公共祖先;
 
 
-import utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 public class Solution {
 

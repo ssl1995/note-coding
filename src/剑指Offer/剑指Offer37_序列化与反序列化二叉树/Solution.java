@@ -2,7 +2,7 @@ package 剑指Offer.剑指Offer37_序列化与反序列化二叉树;
 
 
 
-import utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

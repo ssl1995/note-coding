@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer54_二叉搜索树的第K个节点;
 
 
-import utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 public class Solution1 {
     // 法2:二叉搜索树的中序倒序遍历

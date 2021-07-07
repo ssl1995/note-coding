@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer32_从上到下打印二叉树2;
 
 
-import utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

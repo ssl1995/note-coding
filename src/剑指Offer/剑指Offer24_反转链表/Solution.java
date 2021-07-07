@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer24_反转链表;
 
 
-import utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 public class Solution {
     // 法1:迭代法

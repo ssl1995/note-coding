@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer25_合并两个有序链表;
 
 
-import utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 public class Solution {
     // 和力扣21相同

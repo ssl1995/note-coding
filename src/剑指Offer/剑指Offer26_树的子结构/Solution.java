@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer26_树的子结构;
 
 
-import utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 public class Solution {
 

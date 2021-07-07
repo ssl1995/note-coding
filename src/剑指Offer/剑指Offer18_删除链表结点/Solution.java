@@ -1,7 +1,7 @@
 package 剑指Offer.剑指Offer18_删除链表结点;
 
 
-import utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 public class Solution {
 
