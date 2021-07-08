@@ -3,27 +3,24 @@ package 剑指Offer.剑指Offer56_I_数组中数字出现的次数I;
 public class Solution {
 
     public int[] singleNumbers(int[] nums) {
-        int res1 = 0, res2 = 0;
-        int m = 0, n = 1;
-        // 1.遍历数组,让每个元素都^,出现两次的元素会抵消掉
-        // 循环结束:m=res1^res2
+        int a = 0, b = 0;
+        // 第一次遍历,a = 数1^数2
         for (int num : nums) {
-            m ^= num;
+            a ^= num;
         }
-        // 2.找出res1,res2不相同的第一位二进制数,以此来分组
-        while ((m & n) == 0) {
-            n <<= 1;
-        }
-        // 3.根据res1,res2不相同的第一位二进制数,将数组分为2组,分别执行^操作
+        // 获取数1^数2最右边的二进制1
+        int lastOne = a & (~a + 1);
+        // a重置为0,防止数1与数2指向同一内存空间,异或重置为0的问题
+        a = 0;
+        // 第二次遍历,让lastOne来区分数1和数2,以次进行分组
         for (int num : nums) {
-            // 4.每一组分别进行异或
-            if ((num & n) == 0) {
-                res1 ^= num;
+            if ((num & lastOne) == 0) {
+                b ^= num;
             } else {
-                res2 ^= num;
+                a ^= num;
             }
         }
-        return new int[]{res1, res2};
+        return new int[]{a, b};
     }
 
     // 先学习:一个数组中除一个数字外，其余数字出现了两次，找出这个数字
