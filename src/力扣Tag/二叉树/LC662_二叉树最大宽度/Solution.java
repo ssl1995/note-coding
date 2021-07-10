@@ -32,21 +32,4 @@ public class Solution {
         dfs(root.right, depth + 1, 2 * pos + 2);
     }
 
-    public static void main(String[] args) {
-        牛客算法课.utils.TreeNode root = new 牛客算法课.utils.TreeNode(1);
-        牛客算法课.utils.TreeNode n1 = new 牛客算法课.utils.TreeNode(3);
-        牛客算法课.utils.TreeNode n2 = new 牛客算法课.utils.TreeNode(2);
-        牛客算法课.utils.TreeNode n3 = new 牛客算法课.utils.TreeNode(5);
-        牛客算法课.utils.TreeNode n4 = new 牛客算法课.utils.TreeNode(3);
-        牛客算法课.utils.TreeNode n5 = new TreeNode(9);
-        root.left = n1;
-        root.right = n2;
-        n1.left = n3;
-        n1.right = n4;
-        n2.right = n5;
-
-        TreeMaxWidth treeMaxWidth = new TreeMaxWidth();
-        int count = treeMaxWidth.widthOfBinaryTree(root);
-        System.out.println(count);
-    }
 }
