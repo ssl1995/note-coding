@@ -9,9 +9,9 @@ public class Solution {
         for (int i = 0; i < nums.length; i++) {
             strs[i] = String.valueOf(nums[i]);
         }
-        // 将strs按(x + y).compareTo(y + x)进行排序
+        // 贪心:将字符串数组排成最小值,按照两个字符串拼接整体大小排序=按(x + y).compareTo(y + x)进行排序
         Arrays.sort(strs, (x, y) -> (x + y).compareTo(y + x));
-        // 将排序后的strs转换为str返回
+        // 将排序后的字符串数组转换为一个字符串,返回它
         StringBuilder sb = new StringBuilder();
         for (String str : strs) {
             sb.append(str);

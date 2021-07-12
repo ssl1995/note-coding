@@ -4,31 +4,53 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class MedianFinder {
-    // A:存较小的N个数,使用大根堆
-    private Queue<Integer> A;
-    // B:存较大的N个数,使用小根堆
-    private Queue<Integer> B;
+
+    private Queue<Integer> minQueue;
+    private Queue<Integer> maxQueue;
 
     public MedianFinder() {
-        A = new PriorityQueue<>((a, b) -> (b - a));
-        B = new PriorityQueue<>();
+        this.minQueue = new PriorityQueue<>();
+        this.maxQueue = new PriorityQueue<>((a, b) -> b - a);
     }
 
-    // 将待排序数据流划分为:maxPq,minPq
     public void addNum(int num) {
-        // 两个桶元素个数相同,规定先入前面的A桶,A桶大根堆排序后,再入B桶
-        if (A.size() == B.size()) {
-            A.add(num);
-            B.add(A.poll());
-        } else { // 两个桶元素个数不同,规定先入B桶,B桶小根堆排序后,再入A桶
-            B.add(num);
-            A.add(B.poll());
+        // 初始化:规定先加入max队列
+        // 加入数据:num<=max.peek(),入max队列;否则入min队列
+        if (maxQueue.isEmpty() || num <= maxQueue.peek()) {
+            maxQueue.add(num);
+        } else {
+            minQueue.add(num);
         }
-        // 以上方式:数据总量为奇数时,B桶比A桶多一个元素;总量为偶数时,两个桶长度相同
+        // 两个队列个数差达到2,调整队列长度
+        if (maxQueue.size() == minQueue.size() + 2) {
+            minQueue.add(maxQueue.poll());
+        }
+        if (minQueue.size() == maxQueue.size() + 2) {
+            maxQueue.add(minQueue.poll());
+        }
     }
 
     public double findMedian() {
-        // A,B桶相同时,由于最终是往B桶加入数据,所以返回B的堆顶元素
-        return A.size() == B.size() ? (A.peek() + B.peek()) / 2.0 : B.peek();
+        int maxSize = maxQueue.size();
+        int minSize = minQueue.size();
+        // 判断长度为0的三种情况
+        if (maxSize + minSize == 0) {
+            return 0.0;
+        }
+        if (maxSize == 0) {
+            return minQueue.peek();
+        }
+        if (minSize == 0) {
+            return maxQueue.peek();
+        }
+        // 长度都不为0,才能出队列
+        int maxPeek = maxQueue.peek();
+        int minPeek = minQueue.peek();
+        // 数据流长度为偶数:两个队列长度相同
+        if (maxSize == minSize) {
+            return (maxPeek + minPeek) / 2.0;
+        }
+        // 数据流长度为奇数:谁长就出谁的队列
+        return maxSize > minSize ? maxPeek : minPeek;
     }
 }

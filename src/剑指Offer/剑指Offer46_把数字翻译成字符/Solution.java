@@ -1,6 +1,7 @@
 package 剑指Offer.剑指Offer46_把数字翻译成字符;
 
 public class Solution {
+    // 注意:0-a,1-b,...,25-z
     // 动态规划:最容易理解的写法
     public int translateNum1(int num) {
         // 将num转换为字符串
