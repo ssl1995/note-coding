@@ -22,15 +22,17 @@ public class Solution {
 
     // 法2:递归法
     public ListNode reverseList2(ListNode head) {
-        // 1.单个节点或者空节点反转,就是它本身
+        // base case：参数head为null，或者此时递归的head无下一个结点
         if (head == null || head.next == null) {
             return head;
         }
-        // 2.递归到链表末尾结束,此时ret为最后一个非空结点,head为倒数第二个非空结点
+        // 开始递归，head.next为下一轮的head1，当head1.next=null递归停止
+        // 此时head1位整个链表的末尾节点（反转链表后的头结点），这一轮的head为倒数第二个节点
         ListNode ret = reverseList2(head.next);
-        // 3.有倒数第一、倒数第二结点，思考反转过程
-        head.next.next = head;// 末尾节点反转指针
-        head.next = null;// 倒数第二个节点next判空,供上一层调用
+        // head为倒数第二个节点，开始反转最后的两个链表
+        head.next.next = head;
+        // 倒数第二个节点next判空,供上一层调用
+        head.next = null;
         return ret;
     }
 

@@ -4,29 +4,29 @@ import java.util.LinkedList;
 
 public class CQueue {
 
-    private LinkedList<Integer> pushStack;
-    private LinkedList<Integer> popStack;
+    private LinkedList<Integer> stack1;
+    private LinkedList<Integer> stack2;
 
     public CQueue() {
-        pushStack = new LinkedList<>();
-        popStack = new LinkedList<>();
+        stack1 = new LinkedList<>();
+        stack2 = new LinkedList<>();
     }
 
 
     public void appendTail(int value) {
         // 添加:先push再倒入popStack
-        pushStack.push(value);
-        pushToPop(pushStack, popStack);
+        stack1.push(value);
+        pushToPop(stack1, stack2);
     }
 
     public int deleteHead() {
         // 判断两个栈非空才出队
-        if (popStack.isEmpty() && pushStack.isEmpty()) {
+        if (stack2.isEmpty() && stack1.isEmpty()) {
             return -1;
         }
         // 删除:先倒入,再删除
-        pushToPop(pushStack, popStack);
-        return popStack.pop();
+        pushToPop(stack1, stack2);
+        return stack2.pop();
 
     }
 
