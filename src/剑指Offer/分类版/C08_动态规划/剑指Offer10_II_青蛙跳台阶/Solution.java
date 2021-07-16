@@ -2,7 +2,7 @@ package 剑指Offer.分类版.C08_动态规划.剑指Offer10_II_青蛙跳台阶;
 
 public class Solution {
 
-    // 法1:迭代法
+    // 法1:迭代法，0<=n<=100
     public int numWays1(int n) {
         if (n == 0 || n == 1) {
             return 1;
@@ -18,18 +18,19 @@ public class Solution {
         return sum;
     }
 
-    // 法2:动态规划法
+    // 法2:动态规划法,0<=n<=100,首推动态规划法
     public int numWays2(int n) {
+        // n从0开始，与牛客68题区别1
         if (n == 0 || n == 1) {
             return 1;
         }
-        // dp[i]表示第i个斐波那契数
-        int[] dp = new int[n + 1];
-        dp[0] = 1;
-        dp[1] = 1;
-        for (int i = 2; i <= n; i++) {
+        int[] dp = new int[n];
+        dp[0] = 1;// 坐标0-第一个台阶
+        dp[1] = 2;// 坐标1-第二个台阶
+        for (int i = 2; i < n; i++) {
+            // 需要取模1000000007，与牛客68题区别2
             dp[i] = (dp[i - 1] + dp[i - 2]) % 1000000007;
         }
-        return dp[n];
+        return dp[n - 1];
     }
 }
