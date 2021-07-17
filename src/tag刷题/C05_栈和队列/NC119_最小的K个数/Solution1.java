@@ -1,20 +1,22 @@
-package 剑指Offer.分类版.C05_栈和队列.剑指Offer40_最小的k个数;
+package tag刷题.C05_栈和队列.NC119_最小的K个数;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class Solution {
+public class Solution1 {
 
-    // 快速排序法:只用返回坐标k左边的数即可
-    // 注意：与NC119相比，力扣剑指Offer40使用我的那个堆排序解法会超时
-    public int[] getLeastNumbers(int[] arr, int k) {
+    // Q：最小的k个数
+    // 注意：牛客这道题禁止使用jdk自带的PriorityQueue，牛客剑指offer40使用本题解法会提示超时，无法理解
+    public ArrayList<Integer> GetLeastNumbers_Solution(int[] arr, int k) {
         if (arr == null || arr.length == 0 || arr.length < k || k == 0) {
-            return new int[]{};
+            return new ArrayList<>();
         }
-        int[] res = new int[k];
+        ArrayList<Integer> res = new ArrayList<>();
         quickSort(arr, res, k, 0, arr.length - 1);
         return res;
     }
 
-    private void quickSort(int[] arr, int[] res, int k, int l, int r) {
+    private void quickSort(int[] arr, ArrayList<Integer> res, int k, int l, int r) {
         int i = l;
         int j = r;
         while (l < r) {
@@ -32,9 +34,9 @@ public class Solution {
         } else if (l < k) {
             quickSort(arr, res, k, l + 1, j);
         } else {
-            // 取前面的k个即可
+            //取前面的k个即可
             for (int m = 0; m < k; ++m) {
-                res[m] = arr[m];
+                res.add(arr[m]);
             }
         }
 
@@ -50,4 +52,5 @@ public class Solution {
         arr[i] = arr[j];
         arr[j] = temp;
     }
+
 }
