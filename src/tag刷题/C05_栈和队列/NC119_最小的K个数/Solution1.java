@@ -1,18 +1,17 @@
 package tag刷题.C05_栈和队列.NC119_最小的K个数;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Solution1 {
 
     // Q：最小的k个数
     // 注意：牛客这道题禁止使用jdk自带的PriorityQueue，牛客剑指offer40使用本题解法会提示超时，无法理解
-    public ArrayList<Integer> GetLeastNumbers_Solution(int[] arr, int k) {
-        if (arr == null || arr.length == 0 || arr.length < k || k == 0) {
+    public ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
+        if (input == null || input.length == 0 || input.length < k || k == 0) {
             return new ArrayList<>();
         }
         ArrayList<Integer> res = new ArrayList<>();
-        quickSort(arr, res, k, 0, arr.length - 1);
+        quickSort(input, res, k, 0, input.length - 1);
         return res;
     }
 

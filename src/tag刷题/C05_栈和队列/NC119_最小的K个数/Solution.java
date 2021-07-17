@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Solution {
 
-    // Q：最小的k个数
+    // 堆排序法：求最小l个数，需要手写一个大根堆
     // 注意：牛客这道题禁止使用jdk自带的PriorityQueue，并且牛客剑指offer40使用本题解法会提示超时，无法理解
     public ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
         if (input == null || input.length == 0 || input.length < k || k == 0) {
-            return new ArrayList<Integer>();
+            return new ArrayList<>();
         }
         int[] temp = new int[k];
         for (int i = 0; i < k; i++) {

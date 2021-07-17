@@ -1,48 +1,48 @@
 package 剑指Offer.分类版.C05_栈和队列.剑指Offer40_最小的k个数;
 
 
+import java.util.Arrays;
+
 public class Solution {
 
     // 快速排序法:只用返回坐标k左边的数即可
     // 注意：与NC119相比，力扣剑指Offer40使用我的那个堆排序解法会超时
     public int[] getLeastNumbers(int[] arr, int k) {
-        if (arr == null || arr.length == 0 || arr.length < k || k == 0) {
-            return new int[]{};
+        if (k >= arr.length) {
+            return arr;
         }
-        int[] res = new int[k];
-        quickSort(arr, res, k, 0, arr.length - 1);
-        return res;
+        return quickSortK(arr, 0, arr.length - 1, k);
     }
 
-    private void quickSort(int[] arr, int[] res, int k, int l, int r) {
+    private int[] quickSortK(int[] arr, int l, int r, int k) {
         int i = l;
         int j = r;
-        while (l < r) {
-            while (l < r && arr[r] >= arr[i]) {
-                r--;
+        // while循环,将arr划分为[l,i]<arr[l],arr[l],arr[i+1,r]>arr[l]
+        while (i < j) {
+            // 找到第一个arr[j]<arr[l]
+            while (i < j && arr[j] >= arr[l]) {
+                j--;
             }
-            while (l < r && arr[l] <= arr[i]) {
-                l++;
+            // 找到第一个arr[i]>arr[l]
+            while (i < j && arr[i] <= arr[l]) {
+                i++;
             }
-            swap(arr, l, r);
+            swap(arr, i, j);
         }
+        // 交换基准arr[l]和arr[i],保证划分区间
         swap(arr, i, l);
-        if (l > k) {
-            quickSort(arr, res, k, i, l - 1);
-        } else if (l < k) {
-            quickSort(arr, res, k, l + 1, j);
-        } else {
-            // 取前面的k个即可
-            for (int m = 0; m < k; ++m) {
-                res[m] = arr[m];
-            }
+        // 若i>k ，说明小于k个数的边界在左边
+        if (i > k) {
+            return quickSortK(arr, l, i - 1, k);
         }
-
+        if (i < k) {
+            return quickSortK(arr, i + 1, r, k);
+        }
+        // 若i==k,前k个数就是k下标前面的所有数
+        return Arrays.copyOf(arr, k);
     }
 
-    //交换数组中两个元素的值
     private void swap(int[] arr, int i, int j) {
-        // 防止下标越界
         if (i == j) {
             return;
         }
