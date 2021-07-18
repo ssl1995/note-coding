@@ -1,7 +1,7 @@
 package tag刷题.C04_字符串.NC17_最长回文子串;
 
-public class Solution {
-    // Q:对于一个字符串，请设计一个高效算法，计算其中最长回文子串的长度。
+public class Solution4 {
+    // manachar法：求最长回文子串的长度
     public int getLongestPalindrome(String A, int n) {
         if (A == null || n == 0) {
             return 0;
@@ -9,7 +9,7 @@ public class Solution {
         // 将s转换为加了特殊字符#的字符数组:1212->#1#2#1#2#
         char[] str = manacherString(A, n);
         int[] pArr = new int[str.length];// 回文半径数组
-        int R = -1;// 回文右边界的下一个位置=最大的有效去是R-1位置
+        int R = -1;// 回文右边界的下一个位置=最大的有效区是R-1位置
         int C = -1;// 回文右边界中心点
         int max = Integer.MIN_VALUE;// 扩出来的最大值=最长回文子串的最大值
         for (int i = 0; i != str.length; i++) {
