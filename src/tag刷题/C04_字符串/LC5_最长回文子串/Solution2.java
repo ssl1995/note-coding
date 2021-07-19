@@ -2,7 +2,7 @@ package tag刷题.C04_字符串.LC5_最长回文子串;
 
 
 public class Solution2 {
-    // 动态规划法
+    // 中心扩散法
     public String longestPalindrome(String s) {
         int len = s.length();
         if (len < 2) {
@@ -25,7 +25,6 @@ public class Solution2 {
             }
         }
         return s.substring(begin, begin + maxLen);
-
     }
 
     private int getPalindromeCenterLen(char[] cs, int len, int left, int right) {
@@ -39,16 +38,8 @@ public class Solution2 {
                 break;
             }
         }
-        // 循环跳出：cs[i]!=cs[j]
+        // 循环跳出：cs[i]!=cs[j],如abc,cs[i]=a,cs[j]=c,回文中心长度为1
         // 此时的回文中心长度：j-i+1-2=j-i-1
         return j - i - 1;
     }
-
-    public static void main(String[] args) {
-        Solution2 solution = new Solution2();
-        String s = "abc1234321ab";
-        System.out.println(solution.longestPalindrome(s));// 1234321
-    }
-
-
 }

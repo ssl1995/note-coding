@@ -35,6 +35,7 @@ public class Solution {
         while (q >= 0) {
             A[i--] = B[q--];
         }
+        // 以上语句等价：System.arraycopy(B, 0, A, 0, q + 1);
         // q<0，说明A中元素较小一直无法移动p，此时q遍历完毕，q中元素是A提前排好序的，无需修改
         // 如：A=[1,0,0,0] B=[2,3,4]
     }

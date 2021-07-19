@@ -34,12 +34,12 @@ public class Solution {
         // 若i>k ，说明小于k个数的边界在左边
         if (i > k) {
             return quickSortK(arr, l, i - 1, k);
-        }
-        if (i < k) {
+        } else if (i < k) {
             return quickSortK(arr, i + 1, r, k);
+        } else {
+            // 若i==k,前k个数就是k下标前面的所有数
+            return Arrays.copyOf(arr, k);
         }
-        // 若i==k,前k个数就是k下标前面的所有数
-        return Arrays.copyOf(arr, k);
     }
 
     private void swap(int[] arr, int i, int j) {

@@ -17,6 +17,8 @@ public class Solution {
         int i = l;
         int j = r;
         while (i < j) {
+            // 这里以arr[l]为基准，必须先走j，因为j先走一步的话，会先来到<arr[l]的最后一个数，此时交换i，j位置就不会出错
+            // 如果以arr[r]为基准，必须先走i，因为i先走一步的话，会先来到>arr[l]的最后一个数，此时交换i，j位置就不会出错
             while (i < j && arr[j] >= arr[l]) {
                 j--;
             }

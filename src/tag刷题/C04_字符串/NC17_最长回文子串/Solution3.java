@@ -15,7 +15,7 @@ public class Solution3 {
             dp[i][i] = true;
         }
         // 经验：dp区域是正方形的话，通常左下角区域无效不需要再填，因为走过的区域不用再走
-        for (int j = 1; j < n; j++) { // 上三角区域，按列从上到下填
+        for (int j = 1; j <= n - 1; j++) { // 上三角区域，按列从上到下填
             for (int i = 0; i < j; i++) {
                 // 首尾不相等时，必不是回文串
                 if (cs[i] != cs[j]) {
@@ -32,14 +32,10 @@ public class Solution3 {
                 }
             }
         }
+//        for (int i = n - 2; i >= 0; i--) {// 从右下往上填也行
+//            for (int j = n - 1; j > i; j--) {
+//            }
+//        }
         return maxLen;
     }
-
-    public static void main(String[] args) {
-        Solution3 solution = new Solution3();
-        String s = "abc1234321ab";
-        System.out.println(solution.getLongestPalindrome(s, s.length()));// 7
-    }
-
-
 }

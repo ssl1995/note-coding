@@ -35,16 +35,4 @@ public class Solution1 {
         }
         return true;
     }
-
-    public static void main(String[] args) {
-        Solution1 s1 = new Solution1();
-        Solution2 s2 = new Solution2();
-        Solution3 s3 = new Solution3();
-        String s = "abc1234321ab";
-        System.out.println(s1.longestPalindrome(s));// 1234321
-        System.out.println(s2.longestPalindrome(s));// 1234321
-        System.out.println(s3.longestPalindrome(s));// 1234321
-    }
-
-
 }

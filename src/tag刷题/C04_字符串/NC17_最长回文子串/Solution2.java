@@ -36,12 +36,4 @@ public class Solution2 {
         // 此时的回文中心长度：j-i+1-2=j-i-1
         return j - i - 1;
     }
-
-    public static void main(String[] args) {
-        Solution2 solution = new Solution2();
-        String s = "abc1234321ab";
-        System.out.println(solution.getLongestPalindrome(s, s.length()));// 7
-    }
-
-
 }

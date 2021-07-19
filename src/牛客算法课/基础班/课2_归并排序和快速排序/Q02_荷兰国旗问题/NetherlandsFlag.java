@@ -1,5 +1,7 @@
 package 牛客算法课.基础班.课2_归并排序和快速排序.Q02_荷兰国旗问题;
 
+import java.util.Arrays;
+
 public class NetherlandsFlag {
     // Q:<=t放左边，>t放右边
     public static void question(int[] arr, int l, int r, int t) {
@@ -46,5 +48,15 @@ public class NetherlandsFlag {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {3, 1, 1, 3};
+        int[] arr2 = {3, 1, 1, 3};
+        int t = 2;
+        question(arr1, 0, arr1.length - 1, t);
+        System.out.println(Arrays.toString(arr1));
+        netherlandsFlag(arr2, 0, arr2.length - 1, t);
+        System.out.println(Arrays.toString(arr2));
     }
 }

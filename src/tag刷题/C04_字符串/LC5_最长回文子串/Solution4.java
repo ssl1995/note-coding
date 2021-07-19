@@ -1,14 +1,16 @@
-package tag刷题.C04_字符串.NC17_最长回文子串;
+package tag刷题.C04_字符串.LC5_最长回文子串;
 
 public class Solution4 {
-    // manachar法：求最长回文子串的长度
-    public static int getLongestPalindrome(String A, int n) {
-        if (A == null || n == 0) {
-            return 0;
+
+    // manachar方法：面试加分项
+    public String longestPalindrome(String s) {
+        int len = s.length();
+        if (len < 2) {
+            return s;
         }
         // 将s转换为加了特殊字符#的字符数组，目的是统一奇偶数的回文中心差异性问题
         // 比如：s=”cabac“转化为cs=[#c#a#b#a#c#]
-        char[] cs = manacherString(A, n);
+        char[] cs = manacherString(s, len);
         // pArr[i]是cs[i]每个位置的最大回文半径
         // 比如：cs=[#c#a#b#a#c#]，pArr=[1,2,1,2,1,6,1,2,1,2,1]
         int[] pArr = new int[cs.length];
@@ -18,8 +20,10 @@ public class Solution4 {
         // index是最近更新pR时的回文中心位置
         // 比如：cs=[#c#a#b#a#c#]，index=0,1,1,3,3,5(之后pR不再更新，index也不再更新),5,5,5,5,5
         int index = -1;
-        // max记录pArr[i]中最大值：pArr[i]最大值就能算出最长回文子串长度
+        // max记录pArr[i]中最大值：pArr[i]最大值就能算出原字符串的最长回文子串长度
         int maxLen = Integer.MIN_VALUE;
+        int centerIndex = Integer.MIN_VALUE;
+        int begin = 0;
         for (int i = 0; i != cs.length; i++) {
             // 第一句代码:每轮循环时,i至少不需要验证的区域,先给到pArr[i],解释如下:
             // pR<=i:i超过了pR，无法优化，不用验证的区域就是pArr[i]本事=回文半径为1
@@ -39,11 +43,25 @@ public class Solution4 {
                 pR = i + pArr[i];
                 index = i;
             }
-            // 取pArr[i]中最大值
-            maxLen = Math.max(maxLen, pArr[i]);
         }
-        // 最长回文串长度是回文半径-1,比如#1#2#1#,2的最长回文半径是4,所以原始串121的长度是4-1=3
-        return maxLen - 1;
+        // 找出cs中回文半径最大值maxLen和其对应的数组索引centerInter
+        for (int i = 0; i < cs.length; i++) {
+            if (pArr[i] > maxLen) {
+                maxLen = pArr[i];
+                centerIndex = i;
+            }
+        }
+        // 根据cs中回文半径和对应坐标算原字符串中的最大回文长度和最大回文中心
+        // 原字符串最大回文长度：maxLen-1，比如#a#b#a#，b的回文半径=4，那么原aba的最长回文子串长度为3
+        maxLen = maxLen - 1;
+        // 原字符串最大回文串中心：(centerIndex - 1)/2，比如#a#b#a#，b的centerIndex=4；那么原aba的b的坐标为(4-1)/2
+        centerIndex = (centerIndex - 1) / 2;
+        // 根据centerIndex和maxLen算最大回文串begin下标
+        // 奇数：centerIndex-maxLen/2
+        // 偶数：centerIndex-maxLen/2+1
+        // 统一：centerIndex-(maxLen-1)/2
+        begin = centerIndex - (maxLen - 1) / 2;
+        return s.substring(begin, begin + maxLen);
     }
 
     // 将str转换成带#号的字符数组:解决奇数、偶数中心往外扩的差异性
@@ -61,4 +79,17 @@ public class Solution4 {
         }
         return res;
     }
+
+    public static void main(String[] args) {
+        Solution1 s1 = new Solution1();
+        Solution2 s2 = new Solution2();
+        Solution3 s3 = new Solution3();
+        Solution4 s4 = new Solution4();
+        String s = "cabac";
+        System.out.println(s1.longestPalindrome(s));
+        System.out.println(s2.longestPalindrome(s));
+        System.out.println(s3.longestPalindrome(s));
+        System.out.println(s4.longestPalindrome(s));
+    }
+
 }
