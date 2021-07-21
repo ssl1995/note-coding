@@ -17,13 +17,14 @@ public class Solution {
         char[] res = new char[dp[m][n]];
         int index = res.length - 1;// 从后往前遍历
         while (index >= 0) {
-            if (n > 0 && dp[m][n] == dp[m][n - 1]) {
+            if (n > 0 && dp[m][n] == dp[m][n - 1]) {// 左边移动
                 n--;
-            } else if (m > 0 && dp[m][n] == dp[m - 1][n]) {
+            } else if (m > 0 && dp[m][n] == dp[m - 1][n]) {// 上方移动
                 m--;
-            } else {
-//                res[index--] = c1[m];
-                res[index--] = c2[n];
+            } else {// 左上角移动
+                // dp[m][n]!=dp[m][n-1]或者!=dp[m-1][n],肯定是选择dp[m-1][n-1]+1 且s1[i]==s2[j]
+                // res[index--] = c2[n];// 所以这种写法也行
+                res[index--] = c1[m];
                 m--;
                 n--;
             }
