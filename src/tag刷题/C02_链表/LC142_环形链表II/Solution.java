@@ -12,12 +12,13 @@ public class Solution {
             推出: s需要再走a步就到达入环结点,所以fast重新指向head走到入环结点就是a步
      */
 
-    public ListNode detectCycle(ListNode head) {
+    // 法1：ListNode fast = head.next.next;
+    public ListNode detectCycle1(ListNode head) {
         if (head == null || head.next == null || head.next.next == null) {
             return null;
         }
-        ListNode slow = head.next;
         ListNode fast = head.next.next;
+        ListNode slow = head.next;
         // 快指针走2步,慢指针走1步
         while (fast != slow) {
             if (fast.next == null || fast.next.next == null) {
@@ -25,6 +26,37 @@ public class Solution {
             }
             fast = fast.next.next;
             slow = slow.next;
+        }
+        // fast重新指向头结点
+        fast = head;
+        // 快指针走1步,慢指针走1步
+        while (fast != slow) {
+            if (fast.next == null) {
+                return null;
+            }
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return fast;
+    }
+
+    // 法2： ListNode fast = head;
+    public ListNode detectCycle2(ListNode head) {
+        if (head == null || head.next == null || head.next.next == null) {
+            return null;
+        }
+        ListNode fast = head;
+        ListNode slow = head;
+        // 快指针走2步,慢指针走1步
+        while (true) {
+            if (fast.next == null || fast.next.next == null) {
+                return null;
+            }
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                break;
+            }
         }
         // fast重新指向头结点
         fast = head;
