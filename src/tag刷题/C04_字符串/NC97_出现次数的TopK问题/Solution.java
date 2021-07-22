@@ -53,7 +53,7 @@ public class Solution {
                 minHeap[index] = node;
                 heapInsert(minHeap, index++);
             } else {
-                if (minHeap[0].compareTo(node) > 0) {// 堆满了，如果小根堆顶应该排在待插入元素的后面（>0）,就更新堆顶
+                if (minHeap[0].compareTo(node) > 0) {// 堆满了，如果小根堆顶应该排在待插入元素的后面,就更新堆顶
                     minHeap[0] = node;
                     heapify(minHeap, 0, k);
                 }
