@@ -1,5 +1,8 @@
 package tag刷题.C01_数组.剑指Offer29_顺时针打印矩阵;
 
+
+import java.util.Arrays;
+
 public class Solution {
 
     public int[] spiralOrder(int[][] matrix) {
@@ -20,12 +23,6 @@ public class Solution {
         return res;
     }
 
-    /**
-     * 顺时针赋值二维数组到res中
-     *
-     * @param index 当前res赋值下标
-     * @return 下一个res赋值下标
-     */
     private int spiralMatrix(int[][] matrix, int index, int[] res, int tR, int tC, int dR, int dC) {
         if (tR == dR) {// 子矩阵只有一行,就复制列
             for (int i = tC; i <= dC; i++) {
@@ -36,22 +33,27 @@ public class Solution {
                 res[index++] = matrix[i][tC];
             }
         } else {// 一般情况
-            // 实现螺旋式顺时针打印
-            int curR = tR;
-            int curC = tC;
-            while (curC != dC) {
-                res[index++] = matrix[tR][curC++];
+            for (int i = tC; i < dC; i++) {
+                res[index++] = (matrix[tR][i]);
             }
-            while (curR != dR) {
-                res[index++] = matrix[curR++][dC];
+            for (int i = tR; i < dR; i++) {
+                res[index++] = (matrix[i][dC]);
             }
-            while (curC != tC) {
-                res[index++] = matrix[dR][curC--];
+            for (int i = dC; i > tC; i--) {
+                res[index++] = (matrix[dR][i]);
             }
-            while (curR != tR) {
-                res[index++] = matrix[curR--][tC];
+            for (int i = dR; i > tR; i--) {
+                res[index++] = (matrix[i][tC]);
             }
         }
         return index;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[][] m = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        int[] res = solution.spiralOrder(m);
+        // 正确：[1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10]
+        System.out.println(Arrays.toString(res));
     }
 }

@@ -1,11 +1,10 @@
 package tag刷题.C01_数组.剑指Offer51_数组中的逆序对;
 
-public class Solution {
-    // 将res作为参数传递,会出现各种问题,直接定义成员变量省事
+public class JZ35 {
+    // 牛客：要求结果% 1000000007
     private int res;
 
-    // 归并排序法，原理是利用nums[i]>nums[j],那么[i,mid]中都是逆序对个数
-    public int reversePairs(int[] nums) {
+    public int InversePairs(int[] nums) {
         int[] temp = new int[nums.length];
         res = 0;
         mergeSort(nums, 0, nums.length - 1, temp);
@@ -37,11 +36,10 @@ public class Solution {
                 nums[i] = temp[p++];
             } else {
                 // >说明必构成逆序对:[p,mid]与[mid+1,...]构成逆序对mid-p+1
-                // 注意：力扣题不要求% 1000000007
-                res += mid - p + 1;
+                // 注意：牛客要求% 1000000007
+                res = (res + mid - p + 1) % 1000000007;
                 nums[i] = temp[q++];
             }
         }
     }
-
 }
