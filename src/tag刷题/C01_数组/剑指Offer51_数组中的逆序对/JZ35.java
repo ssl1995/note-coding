@@ -42,4 +42,10 @@ public class JZ35 {
             }
         }
     }
+
+    public static void main(String[] args) {
+        JZ35 jz35 = new JZ35();
+        int[] arr={4,3,2,1};
+        System.out.println(jz35.InversePairs(arr));
+    }
 }
