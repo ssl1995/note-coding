@@ -25,7 +25,7 @@ public class Solution {
         int[] dp = new int[target];
         dp[0] = 1;// 坐标0-第一个台阶
         dp[1] = 2;// 坐标1-第二个台阶
-        for (int i = 2; i < target; i++) {
+        for (int i = 2; i < target; i++) {// 坐标2-从第三个台阶开始
             dp[i] = dp[i - 1] + dp[i - 2];
         }
         return dp[target - 1];

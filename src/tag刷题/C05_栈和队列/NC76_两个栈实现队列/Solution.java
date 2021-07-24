@@ -3,8 +3,9 @@ package tag刷题.C05_栈和队列.NC76_两个栈实现队列;
 import java.util.Stack;
 
 public class Solution {
-    Stack<Integer> stack1 = new Stack<Integer>();
-    Stack<Integer> stack2 = new Stack<Integer>();
+    // 牛客：规定了只能使用Stack的API，不能使用LinkedList
+    Stack<Integer> stack1 = new Stack<>();
+    Stack<Integer> stack2 = new Stack<>();
 
     public void push(int node) {
         stack1.push(node);

@@ -89,11 +89,11 @@ public class Solution {
 
     // set/get的结点,最后都要插入到头结点后面
     private void remove2Head(Node node) {
-        // 双链表插入一个结点
+        // 双向链表头插法
         node.next = head.next;
+        node.pre = head;
         head.next.pre = node;
         head.next = node;
-        node.pre = head;
     }
 
 

@@ -64,9 +64,9 @@ public class LRUCache {
 
     private void remove2Head(Node node) {
         node.next = head.next;
+        node.pre = head;
         head.next.pre = node;
         head.next = node;
-        node.pre = head;
     }
 
     public static void main(String[] args) {
