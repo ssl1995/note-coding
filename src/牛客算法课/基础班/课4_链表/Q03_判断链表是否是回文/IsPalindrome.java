@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class IsPalindrome {
 
     // 法1:栈记录全部数据
-    public boolean isPalindrome1(ListNode head) {
+    public static boolean isPalindrome1(ListNode head) {
         // 链表为null或只有头结点,是返回true
         if (head == null || head.next == null) {
             return true;
@@ -32,13 +32,12 @@ public class IsPalindrome {
     }
 
     // 法2:栈记录一半数据
-    public boolean isPalindrome2(ListNode head) {
+    public static boolean isPalindrome2(ListNode head) {
         // 链表为null或只有头结点,是返回true
         if (head == null || head.next == null) {
             return true;
         }
         LinkedList<Integer> stack = new LinkedList<>();
-        // 快慢指针,让slow指向中间位置(奇数)/中间第一个位置(偶数)
         ListNode slow = head;
         ListNode fast = head;
         while (fast.next != null && fast.next.next != null) {

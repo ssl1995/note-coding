@@ -1,4 +1,4 @@
-package tag刷题.C01_数组.剑指Offer57_II_和为s的连续正数序列;
+package tag刷题.C10_数学.剑指Offer57_II_和为s的连续正数序列;
 
 import java.util.ArrayList;
 import java.util.List;
