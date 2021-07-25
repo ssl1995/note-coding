@@ -1,4 +1,4 @@
-package tag刷题.C07_递归.C1_常规递归.NC68_跳台阶;
+package tag刷题.C08_动态规划.NC68_跳台阶;
 
 public class Solution {
     // 迭代法：与力扣剑指Offer10-II有很大区别的,这里的n从1开始且不需要取模
