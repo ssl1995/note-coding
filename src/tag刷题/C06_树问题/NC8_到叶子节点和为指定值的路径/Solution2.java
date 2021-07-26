@@ -35,6 +35,7 @@ public class Solution2 {
         temp.remove(temp.size() - 1);
     }
 
+
     // 回溯写法1
     private void recall1(TreeNode root, int sum,
                          ArrayList<ArrayList<Integer>> res, ArrayList<Integer> temp) {
@@ -47,7 +48,7 @@ public class Solution2 {
         // 如果来到叶子节点并且sum已经减到0了，就加入到res中
         if (root.left == null && root.right == null && sum == 0) {
             res.add(new ArrayList<>(temp));
-            // 因为下一句就return，不会再走最后一行额的remove
+            // 因为下一句就return，不会再走最后一行的remove
             // 所以这里要把这一轮递归加进去的移除掉
             temp.remove(temp.size() - 1);
             return;// 当前递归结束

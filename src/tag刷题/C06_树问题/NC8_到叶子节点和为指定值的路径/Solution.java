@@ -7,13 +7,14 @@ import java.util.ArrayList;
 public class Solution {
     // 求根节点到叶子节点路径和为指定值的
 
-    // 使用dfs递归
+    // 使用dfs递归:学习什么是分支感染？
     public ArrayList<ArrayList<Integer>> pathSum(TreeNode root, int sum) {
         ArrayList<Integer> temp = new ArrayList<>();
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         dfs(root, sum, res, temp);
         return res;
     }
+
     private void dfs(TreeNode root, int sum,
                      ArrayList<ArrayList<Integer>> res, ArrayList<Integer> temp) {
         if (root == null) {

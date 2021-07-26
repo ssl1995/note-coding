@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Solution1 {
 
     // Q：最小的k个数
-    // 快排法：牛客这道题禁止使用jdk自带的PriorityQueue，牛客剑指offer40使用本题解法会提示超时，无法理解
+    // 快排法：牛客和力扣使用快排法都没问题
     public ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
         if (input == null || input.length == 0 || input.length < k || k == 0) {
             return new ArrayList<>();
@@ -20,7 +20,7 @@ public class Solution1 {
         int j = r;
         while (i < j) {
             // 以arr[l]为基准，必须先走j，因为j先走一步的话，会先来到<arr[l]的最后一个数，此时交换i，j位置就不会出错
-            // 如果以arr[r]为基准，必须先走i，因为i先走一步的话，会先来到>arr[l]的最后一个数，此时交换i，j位置就不会出错
+            // 以arr[r]为基准，必须先走i，因为i先走一步的话，会先来到>arr[l]的最后一个数，此时交换i，j位置就不会出错
             while (i < j && arr[j] >= arr[l]) {// 查找首个小于基准的数
                 j--;
             }
@@ -34,7 +34,7 @@ public class Solution1 {
             quickSortK(arr, res, k, l, i - 1);
         } else if (i < k) {
             quickSortK(arr, res, k, i + 1, r);
-        } else {
+        } else {// i==k，说明前面刚好有k个数，复制进res即可
             // NC119不能使用Arrays.copy()进行复制数组，那就参数传一个list接受前面的k个数
             for (int m = 0; m < k; ++m) {
                 res.add(arr[m]);

@@ -4,68 +4,47 @@ import java.util.ArrayList;
 
 public class Solution2 {
 
-    // 堆排序法：求最小k个数，需要手写一个大根堆
-    // 注意：牛客这道题禁止使用jdk自带的PriorityQueue，并且力扣的剑指offer40使用本题解法会提示超时，无法理解
+    // Q：最小的k个数
+    // 快排法：牛客和力扣使用快排法都没问题
     public ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
         if (input == null || input.length == 0 || input.length < k || k == 0) {
             return new ArrayList<>();
         }
-        int[] temp = new int[k];
-        // 将前k个数放入手写的大根堆中
-        for (int i = 0; i < k; i++) {
-            temp[i] = input[i];
-        }
-        heapSort(temp);
-        // 从第k个数开始取，判断是否大于最大堆堆顶
-        for (int i = k; i < input.length; i++) {
-            if (temp[0] > input[i]) {
-                temp[0] = input[i];
-                heapSort(temp);
+        return quickSortK(input, k, 0, input.length - 1);
+    }
+
+    private ArrayList<Integer> quickSortK(int[] arr, int k, int l, int r) {
+        int i = l;
+        int j = r;
+        while (i < j) {
+            // 以arr[l]为基准，必须先走j，因为j先走一步的话，会先来到<arr[l]的最后一个数，此时交换i，j位置就不会出错
+            // 如果以arr[r]为基准，必须先走i，因为i先走一步的话，会先来到>arr[l]的最后一个数，此时交换i，j位置就不会出错
+            while (i < j && arr[j] >= arr[l]) {// 查找首个小于基准的数
+                j--;
             }
+            while (i < j && arr[i] <= arr[l]) {// 查找首个大于基准的数
+                i++;
+            }
+            swap(arr, i, j);
         }
+        swap(arr, i, l);
+        if (i > k) {
+            quickSortK(arr, k, l, i - 1);
+        } else if (i < k) {
+            quickSortK(arr, k, i + 1, r);
+        }
+        // i==k，说明前面刚好有k个数，复制进res即可
+        // NC119不能使用Arrays.copy()进行复制数组，那就参数传一个list接受前面的k个数
         ArrayList<Integer> res = new ArrayList<>();
-        for (int i = 0; i < k; i++) {
-            res.add(temp[i]);
+        for (int m = 0; m < k; ++m) {
+            res.add(arr[m]);
         }
         return res;
     }
 
-    public static void heapSort(int[] arr) {
-        if (arr.length < 2) {
-            return;
-        }
-        // 建立大根堆，先将最小值
-        minUp(arr);
-        for (int i = arr.length - 1; i >= 0; i--) {
-            swap(arr, 0, i);
-            minDown(arr, 0, i);
-        }
-    }
-
-
-    private static void minUp(int[] arr) {
-        for (int parent = (arr.length - 2) / 2; parent >= 0; parent--) {
-            minDown(arr, parent, arr.length);
-        }
-    }
-
-    private static void minDown(int[] arr, int parent, int n) {
-        while (2 * parent + 1 < n) {
-            int left = 2 * parent + 1;
-            // left指向左右孩子最小值
-            if (left + 1 < n && arr[left + 1] < arr[left]) {
-                left++;
-            }
-            // 孩子中最小值>=父亲，
-            if (arr[parent] <= arr[left]) {
-                break;
-            }
-            swap(arr, parent, left);
-            parent = left;
-        }
-    }
-
-    private static void swap(int[] arr, int i, int j) {
+    // 交换数组中两个元素的值
+    private void swap(int[] arr, int i, int j) {
+        // 防止下标越界
         if (i == j) {
             return;
         }

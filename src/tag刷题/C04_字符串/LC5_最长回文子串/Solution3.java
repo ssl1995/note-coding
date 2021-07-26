@@ -39,4 +39,10 @@ public class Solution3 {
         return s.substring(begin, begin + maxLen);
     }
 
+    public static void main(String[] args) {
+        Solution3 solution3 = new Solution3();
+        String s = "abcdcba";
+        System.out.println(solution3.longestPalindrome(s));
+    }
+
 }

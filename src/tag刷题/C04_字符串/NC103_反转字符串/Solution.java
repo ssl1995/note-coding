@@ -11,7 +11,7 @@ public class Solution {
         char[] cs = str.toCharArray();
         int i = 0;
         int j = cs.length - 1;
-        while (i < j) {
+        while (i < j) {// 奇数abc，b不用交换；偶数abcd，bc交换
             swap(cs, i++, j--);
         }
         // 将cs数组转换为字符传，直接构造器即可，不需要StringBuffer

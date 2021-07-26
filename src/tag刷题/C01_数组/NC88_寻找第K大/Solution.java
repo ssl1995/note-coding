@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class Solution {
 
-
     // Q：使用快速排序的思想，找到数组中第k大的数(包括重复的元素，不用去重)
     public int findKth(int[] a, int n, int K) {
         if (a == null || a.length == 0 || a.length < K) {
