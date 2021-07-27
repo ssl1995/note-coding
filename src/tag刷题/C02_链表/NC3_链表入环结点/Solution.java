@@ -34,9 +34,6 @@ public class Solution {
         fast = pHead;
         // 快指针走1步,慢指针走1步
         while (fast != slow) {
-            if (fast.next == null) {
-                return null;
-            }
             fast = fast.next;
             slow = slow.next;
         }
@@ -45,7 +42,7 @@ public class Solution {
 
     // 法2：ListNode fast = pHead
     public ListNode EntryNodeOfLoop2(ListNode pHead) {
-        if (pHead == null || pHead.next == null || pHead.next.next == null) {
+        if (pHead == null || pHead.next == null) {
             return null;
         }
         ListNode fast = pHead;
@@ -65,12 +62,27 @@ public class Solution {
         fast = pHead;
         // 快指针走1步,慢指针走1步
         while (fast != slow) {
-            if (fast.next == null) {
-                return null;
-            }
             fast = fast.next;
             slow = slow.next;
         }
         return fast;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        ListNode root = new ListNode(1);
+        ListNode n2 = new ListNode(2);
+        ListNode n3 = new ListNode(3);
+        ListNode n4 = new ListNode(4);
+        ListNode n5 = new ListNode(5);
+        root.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        n5.next = n3;
+        ListNode res1 = solution.EntryNodeOfLoop1(root);
+        ListNode res2 = solution.EntryNodeOfLoop2(root);
+        System.out.println(res1.val);
+        System.out.println(res2.val);
     }
 }

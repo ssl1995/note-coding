@@ -22,7 +22,7 @@ public class Solution {
             }
             // 截取(0,index)即为公共前缀
             res = res.substring(0, index);
-            // 但凡遇到公共前缀为""无需再判断，整个函数直接返回""
+            // 如果遇到公共前缀res是""时，整个函数直接返回""
             if ("".equals(res)) {
                 return "";
             }

@@ -15,14 +15,16 @@ public class Solution {
             this.times = times;
         }
 
-        // 排序逻辑:排序在前面的，返回负数，排序在后面的，返回正数
-        // 1.词频相同，词频高的在前，返回负数
-        // 2.词频不相同，字典序低的在前，返回负数
+        // compareTo：
+        // 1.>0,是从小到大升序
+        // 2.<0,是从大到小降序
         @Override
         public int compareTo(Node node) {
-            if (this.times == node.times) {// 词频一样，比较字符串
+            if (this.times == node.times) {
+                // 词频相同，按字典序升序，本类字段-入参字段
                 return this.str.compareTo(node.str);
-            } else {// 词频不一样，就比较词频
+            } else {
+                // 词频不相同，频率降序，入参字段-本类字段
                 return node.times - this.times;
             }
         }
@@ -42,59 +44,41 @@ public class Solution {
             }
         }
         // 遍历哈希表，每个node放入小根堆中
-        // minHeap中的"小"指的是：排序放在后面的放在堆顶（compareTo返回正数）
-        Node[] minHeap = new Node[k];
+        // heap:本题排序在前的放在heap前面
+        Node[] heap = new Node[k];
         int index = 0;
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             String str = entry.getKey();
             Integer times = entry.getValue();
             Node node = new Node(str, times);
-            if (index < k) {// 堆未满，就加入
-                minHeap[index] = node;
-                heapInsert(minHeap, index++);
-            } else {
-                if (minHeap[0].compareTo(node) > 0) {// 堆满了，如果小根堆顶应该排在待插入元素的后面,就更新堆顶
-                    minHeap[0] = node;
-                    heapify(minHeap, 0, k);
+            if (index < k) {// 堆未满，就加入node，调整堆让排序靠后的在堆顶
+                heap[index] = node;
+                heapInsert(heap, index++);
+            } else {// 堆满了，如果加进来的node排序比
+                if (heap[0].compareTo(node) > 0) {
+                    heap[0] = node;
+                    heapify(heap, 0, k);
                 }
             }
         }
-        // 重新调整小根堆，使排序在前的放在堆顶
+        // 上面执行完，类似小根堆=[[p12, 1], [pwb2, 2], [abcd, 4]]
         for (int i = index - 1; i >= 0; i--) {
-            swap(minHeap, 0, i);
-            heapify(minHeap, 0, i);
+            swap(heap, 0, i);
+            heapify(heap, 0, i);
         }
+        // 再调整成，大根堆=[["abcd","4"],["pwb2","2"],["p12","1"]]
         // 结果集接受堆中数据，返回结果集
         String[][] res = new String[k][2];
         for (int i = 0; i < k; i++) {
-            // 小根堆，就倒序放入res中
-            res[i][0] = minHeap[i].str;
-            res[i][1] = String.valueOf(minHeap[i].times);
+            res[i][0] = heap[i].str;
+            res[i][1] = String.valueOf(heap[i].times);
         }
         return res;
     }
 
-    private void heapify(Node[] minHeap, int index, int size) {
-        while (2 * index + 1 < size) {
-            int left = 2 * index + 1;
-            // 越排在后面的，compareTo返回的越大，找出左右孩子节点中的排序后在更后面的
-            if (left + 1 < size && minHeap[left].compareTo(minHeap[left + 1]) < 0) {
-                left++;
-            }
-            // 如果父亲已经比孩子中最靠后的还要排序在后面，就停止本轮循环
-            if (minHeap[index].compareTo(minHeap[left]) > 0) {
-                break;
-            }
-            swap(minHeap, index, left);
-            index = left;
-        }
-    }
-
-    // 小根堆未满，加入堆时，排序小的往上放
     private void heapInsert(Node[] heap, int index) {
         while (index != 0) {
             int parent = (index - 1) / 2;
-            // 返回正数，应该放后面，所以交换
             if (heap[index].compareTo(heap[parent]) > 0) {
                 swap(heap, parent, index);
                 index = parent;
@@ -103,6 +87,21 @@ public class Solution {
             }
         }
     }
+
+    private void heapify(Node[] heap, int index, int size) {
+        while (2 * index + 1 < size) {
+            int left = 2 * index + 1;
+            if (left + 1 < size && heap[left].compareTo(heap[left + 1]) < 0) {
+                left++;
+            }
+            if (heap[index].compareTo(heap[left]) > 0) {
+                break;
+            }
+            swap(heap, index, left);
+            index = left;
+        }
+    }
+
 
     private void swap(Node[] minHeap, int i, int j) {
         Node temp = minHeap[i];
@@ -119,16 +118,18 @@ public class Solution {
         // 正确：[["abcd","4"],["pwb2","2"],["p12","1"]]
         System.out.println(Arrays.deepToString(res));
         System.out.println("---------");
-        String s1 = "231";
-        String s2 = "32";
-        Node n1 = new Node(s1, 1);// 词频相同，231字典序<32，返回负数
-        Node n2 = new Node(s2, 1);
 
-        Node n3 = new Node(s1, 1);// 词频不相同，231词频<32词频，返回正数
-        Node n4 = new Node(s2, 2);
+        String s11 = "231";// 字典序小于32
+        String s22 = "32";
+        System.out.println(s11.compareTo(s22));// -1<0.从大到小排序，p12排在pwb2后面
+        System.out.println(s22.compareTo(s11));// 1>0
+        System.out.println("---------");
 
-        System.out.println(n1.compareTo(n2));// -1
-        System.out.println(n3.compareTo(n4));// 1
+        String s1 = "p12";
+        String s2 = "pwb2";
+        Node n1 = new Node(s1, 1);
+        Node n2 = new Node(s2, 2);
+        System.out.println(n1.compareTo(n2));// 返回1>0，从小到大升序，(p12,1)排在(pwb2,2)前面
 
     }
 }
