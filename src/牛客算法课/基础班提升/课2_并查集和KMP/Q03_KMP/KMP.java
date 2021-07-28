@@ -1,5 +1,6 @@
 package 牛客算法课.基础班提升.课2_并查集和KMP.Q03_KMP;
 
+
 public class KMP {
     // KMP:字符串s和m，s是否包含m，如果包含返回m在s中开始的位置?再结合NC149_kmp算法做比较
     // 要求整体时间复杂度O(N),N是s1的长度，M是s2的长度
@@ -14,11 +15,10 @@ public class KMP {
         // 获得待匹配str2的next数组
         int[] next = getNextArray(str2);
         while (i1 < str1.length && i2 < str2.length) {
-            if (str1[i1] == str2[i2]) {
+            if (str1[i1] == str2[i2]) {// i1与i2都匹配成功，与暴力法一样都后移指针
                 i1++;
                 i2++;
-            } else if (next[i2] == -1) {// i2对应的最长后缀长度为-1,i1只能一个个往后移比较,无法加速
-                // next[i2] == -1 等于 i2==0已经无法加速了
+            } else if (next[i2] == -1) {// m串的遍历指针来到next[i2]=-1的位置，表示无法加速匹配，只能暴力移动i1
                 i1++;
             } else {// 只要不是-1,i2就加速移动到最长后缀下一个位置,由于数组下标是0开始,所以i2移动到next[i2]下标
                 i2 = next[i2];
@@ -30,25 +30,29 @@ public class KMP {
         return i2 == str2.length ? i1 - i2 : -1;
     }
 
-    public static int[] getNextArray(char[] ms) {
-        // 长度为1的数组,前面没有元素,人为规定next值为-1
-        if (ms.length == 1) {
+    // 获得match串的next数组
+    public static int[] getNextArray(char[] match) {
+        // 长度为1的数组,前面没有元素,规定next值为-1
+        if (match.length == 1) {
             return new int[]{-1};
         }
-        int[] next = new int[ms.length];
-        next[0] = -1;// 第一个位置前面没有元素=没有最大前后缀长度,规定为-1
-        next[1] = 0;// 第二个位置前面只有0位置的元素,由于前后缀无法用一个元素代表,规定为0
+        int[] next = new int[match.length];
+        // 第一个位置前面没有元素，规定为-1
+        next[0] = -1;
+        // 第二个位置前面只有0位置的元素,由于任何子串的后缀不能包括第一个字符，规定为0
+        next[1] = 0;
         int i = 2;// 遍历指针从第3个元素开始
         // cn两个含义:
         // 1.拿哪个位置的字符跟i-1比,由于i初始化2,i-1是1,所以cn=0
         // 2.i位置的前缀和后缀最大匹配长度=最大匹配下标+1的值
         int cn = 0;
-        while (i < next.length) {
-            if (ms[i - 1] == ms[cn]) {
+        while (i < match.length) {
+            if (match[i - 1] == match[cn]) {// i-1位置和cn相同，next[i]=cn+1,cn和i后移再匹配
                 next[i++] = ++cn;
-            } else if (cn > 0) {// i-1位置和cn位置不匹配,cn一直往前跳到能匹配的位置,但cn不能低于数组0位置
+            } else if (cn > 0) {// i-1位置和cn位置不相同：有两种情况
+                // 情况1：cn一直往前跳,但cn必须大于数组0位置
                 cn = next[cn];
-            } else {// i-1位置无法找到匹配的且cn无法再往前跳了=i位置无最大前后缀匹长度,next[i++]=0
+            } else {//  情况2：cn一直往前跳来到0位置，说明match[i]无前后缀匹配，next[i++]=0
                 next[i++] = 0;
             }
         }
@@ -58,7 +62,8 @@ public class KMP {
     public static void main(String[] args) {
         String str = "abcabcababaccc";
         String match = "ababa";
-        // 返回match子串在str中匹配的起始位置
-        System.out.println(getIndexOf(str, match));
+        // next = [-1, 0, 0, 1, 2]
+        // System.out.println(Arrays.toString(getNextArray(match.toCharArray())));
+        System.out.println(getIndexOf(str, match));// 返回完全开始匹配的索引
     }
 }

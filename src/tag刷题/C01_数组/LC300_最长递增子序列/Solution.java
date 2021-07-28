@@ -25,17 +25,19 @@ public class Solution {
         return manLen;
     }
 
-    // 法2：记录第一个>=nums的值，二分加快速度
+    // 法2：二分变种，查找tails>=num的数
     public int lengthOfLIS2(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        // tails[i]记录长度为i+1的最长子序列最后一个数
+        //   arr = {10, 9, 2, 5, 3, 7, 101, 18};
+        // tails = {2, 3, 7, 18, 0, 0, 0, 0};
+        // tails[i]记录长度为i+1子序列的第一个元素
         int[] tails = new int[nums.length];
         // maxLen是tails遍历下标，也是二分查找右边界的开区间范围
         int maxLen = 0;
         for (int num : nums) {
-            // 二分查找变种1，在nums[i]中找第一个>=num的数
+            // 二分查找变种1，在tails[i]中找第一个>=num的数
             // 注意:right≠arr.len-1，本题right=maxLen。所以改变的有left<right；right=mid
             int left = 0, right = maxLen;
             while (left < right) {
@@ -46,10 +48,10 @@ public class Solution {
                     right = mid;// 因为right初始化是开区间，所以这里是mid，不是mid+1
                 }
             }
-            // 遍历结束，left找到在nums[i]中第一个>=num的数
-            // tails的[0,maxLen]区间内存在tails[i]>num的数，说明i+1长度下子序列最后一个数更新为num
+            // 遍历结束，left指向tails中第一个>=num的数
+            // 情况1：tails的[0,maxLen]区间内存在tails[i]>=num的数，说明i+1长度下子序列第一个数可以取到更小，为num
             tails[left] = num;
-            // tails的[0,maxLen]区间内不存在tails[i]>num的数，说明i+1长度下子序列最大值小于num，更新maxLen区间长度
+            // 情况2：tails的[0,maxLen]区间内不存在tails[i]>=num的数，说明i+1长度下子序列第一个数<num，需要扩长度才能放下num
             if (maxLen == right) {
                 maxLen++;
             }

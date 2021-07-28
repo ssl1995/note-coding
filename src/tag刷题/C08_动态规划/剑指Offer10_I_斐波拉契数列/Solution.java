@@ -9,10 +9,8 @@ public class Solution {
         int a = 0;
         int b = 1;
         int sum = 0;
-        // n=0和n=1,直接返回0和1
-        // n=2,走1步;n=3,走2步...n=n时,走n-1步
-        for (int i = 0; i < n - 1; i++) {
-            sum = (a + b) % 1000000007;
+        for (int i = 2; i <= n; i++) {
+            sum = (a + b) % 1000000007;// 剑指Offer的斐波拉契要取模
             a = b;
             b = sum;
         }
@@ -24,7 +22,7 @@ public class Solution {
         if (n < 2) {
             return n;
         }
-        // dp[i]表示第i个斐波那契数
+        // dp[0]表示第0个斐波那契数，需要返回第n个斐波拉契数，所以需要长度n+1
         int[] dp = new int[n + 1];
         dp[0] = 0;
         dp[1] = 1;

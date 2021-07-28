@@ -51,6 +51,36 @@ public class Solution {
         return slow;
     }
 
+    // 找到链表中心：奇数是中点，偶数是中心靠右的位置
+    private ListNode getMidNode1(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        // slow要多走一步，所以fast在head即可
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        // 画图，slow此时就指向奇数中点/偶数靠左的位置
+        return slow;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        ListNode head = new ListNode(1);
+        ListNode n2 = new ListNode(2);
+        ListNode n3 = new ListNode(3);
+        ListNode n4 = new ListNode(4);
+        ListNode n5 = new ListNode(4);
+        head.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        System.out.println(solution.getMidNode(head).val);
+        System.out.println(solution.getMidNode1(head).val);
+    }
 
 
 }

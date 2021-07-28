@@ -36,24 +36,25 @@ public class Solution {
         return res;
     }
 
-    private int[] getNext(char[] ms) {
-        if (ms.length == 1) {
+    // 获得match串的改造next数组，比常规next多一位数
+    private int[] getNext(char[] match) {
+        if (match.length == 1) {
             return new int[]{-1};
         }
-        // 改造2-1:next多算一个,多出的末尾数组记录整个ms的最长前后缀长度
-        int[] next = new int[ms.length + 1];
+        // next改造1：next多算一个,多出的末尾数组记录整个ms的最长前后缀长度
+        int[] next = new int[match.length + 1];
         next[0] = -1;
         next[1] = 0;
-        int cur = 2;
+        int i = 2;
         int cn = 0;
-        // 改造2-2:由于next多算一个,遍历指针cur来到len+1才越界
-        while (cur <= ms.length) {
-            if (ms[cur - 1] == ms[cn]) {
-                next[cur++] = ++cn;
+        // next改造2：i<m.len改成i<=m.len
+        while (i <= match.length) {
+            if (match[i - 1] == match[cn]) {
+                next[i++] = ++cn;
             } else if (cn > 0) {
                 cn = next[cn];
             } else {
-                next[cur++] = -1;
+                next[i++] = 0;
             }
         }
         return next;
@@ -64,8 +65,6 @@ public class Solution {
         String T = "abacabab";
         // 返回match子串在str中匹配的起始位置
         Solution solution = new Solution();
-        int[] next = solution.getNext(S.toCharArray());
-        System.out.println(Arrays.toString(next));
         System.out.println(solution.kmp(S, T));
     }
 }

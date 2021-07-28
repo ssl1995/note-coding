@@ -19,9 +19,9 @@ public class Solution {
         stack.push('#');
         char[] cs = s.toCharArray();
         for (char c : cs) {
-            if (map.containsKey(c)) {
+            if (map.containsKey(c)) {// 匹配左括号就入栈
                 stack.push(c);
-            } else if (c != map.get(stack.pop())) {
+            } else if (c != map.get(stack.pop())) {// 非左括号就出栈比对
                 return false;
             }
         }
