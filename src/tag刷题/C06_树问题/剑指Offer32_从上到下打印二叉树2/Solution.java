@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Solution {
 
+    // 题目：从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。（=二叉树层序遍历）
     // 难点: i = queue.size(); i > 0
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) {
