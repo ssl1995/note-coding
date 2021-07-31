@@ -1,7 +1,7 @@
 package tag刷题.C02_链表.剑指Offer22_链表倒数第K个节点;
 
 
-import 剑指Offer.utils.ListNode;
+import tag刷题.utils.ListNode;
 
 public class Solution {
 

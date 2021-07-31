@@ -1,7 +1,7 @@
 package tag刷题.C02_链表.剑指Offer24_反转链表;
 
 
-import 剑指Offer.utils.ListNode;
+import tag刷题.utils.ListNode;
 
 public class Solution {
     // 法1:迭代法

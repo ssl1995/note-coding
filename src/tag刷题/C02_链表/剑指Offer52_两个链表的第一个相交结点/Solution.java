@@ -1,7 +1,7 @@
 package tag刷题.C02_链表.剑指Offer52_两个链表的第一个相交结点;
 
 
-import 剑指Offer.utils.ListNode;
+import tag刷题.utils.ListNode;
 
 public class Solution {
 
@@ -11,7 +11,7 @@ public class Solution {
         }
         ListNode cur1 = headA;
         ListNode cur2 = headB;
-        // 记录两个链表差值
+        // len记录两个链表长度差值
         int len = 0;
         while (cur1.next != null) {
             len++;
@@ -29,12 +29,14 @@ public class Solution {
         cur1 = (len > 0 ? headA : headB);
         // cur2指向较短的链表
         cur2 = (cur1 == headA ? headB : headA);
-        // len长度差可能为负
+        // 长度差可能为负,len取绝对值
         len = Math.abs(len);
+        // 由于cur1指向长的，先走len步
         while (len > 0) {
             cur1 = cur1.next;
             len--;
         }
+        // cur1和cur2再一起走
         while (cur1 != cur2) {
             cur1 = cur1.next;
             cur2 = cur2.next;

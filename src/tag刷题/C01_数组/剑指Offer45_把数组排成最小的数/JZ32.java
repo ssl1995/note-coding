@@ -15,10 +15,33 @@ public class JZ32 {
                 long num2 = Long.parseLong(y + "" + x);
                 // 如果字符串：x+y>y+x，则y在前
                 if (num1 > num2) {
-                    numbers[i] = y;
+                    numbers[i] = y;// y在前
                     numbers[j] = x;
                 }
-                // 如果字符串：x+y<y+x，则x在前
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int num : numbers) {
+            sb.append(num);
+        }
+        return sb.toString();
+    }
+
+    public String PrintMinNumber1(int[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            return "";
+        }
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                int x = numbers[i];
+                int y = numbers[j];
+                long a = Long.parseLong(x + "" + y);
+                long b = Long.parseLong(y + "" + x);
+                if (a > b) {
+                    numbers[i] = x;
+                    numbers[j] = y;
+                }
+
             }
         }
         StringBuilder sb = new StringBuilder();

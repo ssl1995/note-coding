@@ -1,28 +1,24 @@
 package tag刷题.C03_字符串.剑指Offer67_字符串转换为整数;
 
-public class Solution {
-
-    public int strToInt(String str) {
-        // 去掉首尾空格:原数组去首位空格后转换为字符数组
-        char[] c = str.trim().toCharArray();
+public class JZ49 {
+    public int StrToInt(String str) {
+        char[] c = str.trim().toCharArray();// 去掉
         if (c.length == 0) {
             return 0;
         }
         int num = 0;
-        // num越界的两种情况:int型最大值21474836472147483647,末尾数为7,/10后为boundary
+        // int型最大值21474836472147483647,末尾数为7,/10后为boundary
         int maxBoundary = Integer.MAX_VALUE / 10;
-        // sign:负号标记,1正号,-1负号
-        int initIndex = 1, sign = 1;
-        // 第一个部分有三种情况:+/-/数字
-        if (c[0] == '-') {// -:遇到负号就sign成-1
+        int index = 1, sign = 1;
+        if (c[0] == '-') {
             sign = -1;
-        } else if (c[0] != '+') {// 剩下非数字,初始化指针=0
-            initIndex = 0;
+        } else if (c[0] != '+') {
+            index = 0;
         }
-        for (int i = initIndex; i < c.length; i++) {
-            // 力扣：遇到非数字部分，可以忽略，直接当前得到的整数
+        for (int i = index; i < c.length; i++) {
+            // 牛客：遇到非数字部分，就返回0
             if (c[i] < '0' || c[i] > '9') {
-                break;
+                return 0;
             }
             // num越界的两种情况:int型最大值21474836472147483647,末尾数为7,/10后为boundary
             // 1.num=最大值/10 且 c[i]>'7',乘积后必越界

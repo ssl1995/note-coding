@@ -1,6 +1,7 @@
 package tag刷题.C02_链表.LC21_合并两个有序链表;
 
-import 剑指Offer.utils.ListNode;
+
+import tag刷题.utils.ListNode;
 
 public class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

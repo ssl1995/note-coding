@@ -1,6 +1,5 @@
 package tag刷题.C01_数组.剑指Offer21_调整数组奇数位于偶数前面;
 
-import java.util.Arrays;
 
 public class Solution {
 

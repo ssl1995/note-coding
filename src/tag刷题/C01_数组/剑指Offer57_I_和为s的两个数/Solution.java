@@ -1,6 +1,7 @@
 package tag刷题.C01_数组.剑指Offer57_I_和为s的两个数;
 
 public class Solution {
+
     public int[] twoSum(int[] nums, int target) {
         int left = 0, right = nums.length - 1;
         while (left < right) {

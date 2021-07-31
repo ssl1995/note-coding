@@ -1,48 +1,28 @@
 package tag刷题.C01_数组.剑指Offer03_数组中重复的数字;
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class Solution {
-    // 法1:哈希表
-    public int findRepeatNumber1(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for (int num : nums) {
-            if (set.contains(num)) {
-                return num;
-            } else {
-                set.add(num);
-            }
-        }
-        throw new RuntimeException("Nums have not repeat num");
-    }
-
-    // 法2:数组下标与元素对应法
-    public int findRepeatNumber2(int[] nums) {
+    // 题目：nums长度为n，数字为0到n-1，有些数字重复了，找出任意重复的一个数字
+    // 方法:数组下标与元素对应
+    public int findRepeatNumber(int[] nums) {
         int index = 0;
         while (index < nums.length) {
-            // 1.遍历指针移动条件:第一次索引与当前元素对应,后移指针,因为是第一次所以放在最前面
+            // 元素值和坐标对应，遍历指针后移+进行下次循环
             if (nums[index] == index) {
                 index++;
                 continue;
             }
-            // 2.比较当前元素与其对应下标的元素值
+            // 当元素值和坐标不对应
+            // 情况1：第二次来到该位置，就是重复元素
             if (nums[index] == nums[nums[index]]) {
                 return nums[index];
-            } else {
-                swap(nums, index, nums[index]);
+            } else {// 情况2：归位，让其归位到第一次出现的位置
+                int temp = nums[index];
+                nums[index] = nums[temp];
+                nums[temp] = temp;
             }
         }
-        throw new RuntimeException("Nums have not repeat num");
+        return -1;
     }
 
-    private void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(1);
-    }
 }

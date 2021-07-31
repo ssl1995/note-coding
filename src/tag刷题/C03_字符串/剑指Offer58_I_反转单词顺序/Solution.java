@@ -7,25 +7,25 @@ public class Solution {
     public String reverseWords(String s) {
         // 去掉首尾空格
         String trim = s.trim();
-        int last = trim.length() - 1;
-        // 倒序遍历,遍历指针初始化指向数组末尾
-        int index = last;
+        int last = trim.length() - 1;// 每个非空单词的末尾指针
+        int index = last;// 从后往前遍历字符串
         StringBuilder sb = new StringBuilder();
         while (index >= 0) {
-            // 找到第一个空格字符,它的下一位就是末尾单词
+            // 获得每个非空单词的起始位置前一个位置
             while (index >= 0 && trim.charAt(index) != ' ') {
                 index--;
             }
-            // 将这个单词添加进结果字符串中
+            // 添加：将这个单词添加进结果字符串中
+            // 注意：还要加” “
             sb.append(trim, index + 1, last + 1).append(" ");
-            // 跳过相邻字符间的空格,来到下一个单词末尾
+            // 去掉每个单词后的空格
             while (index >= 0 && trim.charAt(index) == ' ') {
                 index--;
             }
-            // 末尾指针指向这个单词末尾
+            // 更新每个单词的末尾指针
             last = index;
         }
-        // 返回结果去掉首尾的空格
+        // 返回结果去掉末尾的空格
         return sb.toString().trim();
     }
 }

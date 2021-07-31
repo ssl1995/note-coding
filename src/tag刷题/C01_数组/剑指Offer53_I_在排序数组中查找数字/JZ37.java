@@ -22,10 +22,8 @@ public class JZ37 {
     }
 
     public static void main(String[] args) {
-        int[] arr1 = {1, 2, 3, 3, 3, 3};
-        int[] arr2 = {1, 3, 3, 3, 3, 4, 5};
+        int[] arr1 = {3, 3, 3, 3};
         JZ37 solution = new JZ37();
         System.out.println(solution.GetNumberOfK(arr1, 3));
-        System.out.println(solution.GetNumberOfK(arr2, 2));
     }
 }
