@@ -1,18 +1,17 @@
-package tag刷题.C04_栈和队列.NC82_滑动窗口的最大值;
+package tag刷题.C04_栈和队列.剑指Offer59_I_滑动窗口最大值;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 
-public class Solution {
-    // Q:给定一个数组和滑动窗口的大小，找出所有滑动窗口里数值的最大值。
+public class JZ64 {
+
     public ArrayList<Integer> maxInWindows(int[] num, int size) {
         if (num == null || size > num.length || size < 1) {
             return new ArrayList<>();
         }
         // num=[2, 3, 4, 2, 6, 2, 5, 1]
         // res=[4, 4, 6, 6, 6, 5]
-        // 双端队列队头存区间最大值下标
+        // 双端队列队头存区间最大值
         LinkedList<Integer> qmax = new LinkedList<>();
         ArrayList<Integer> res = new ArrayList<>();
         for (int i = 0; i < num.length; i++) {
@@ -32,23 +31,5 @@ public class Solution {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-/*        LinkedList<Integer> queue = new LinkedList<>();
-        queue.addLast(4);
-        queue.addLast(3);
-        queue.addLast(2);
-        queue.addLast(1);
-        System.out.println(queue);// [4, 3, 2, 1]
-        System.out.println(queue.peekLast());// 1
-        System.out.println(queue.peekFirst());// 4*/
-        Solution solution = new Solution();
-        int[] num = {2, 3, 4, 2, 6, 2, 5, 1};
-        System.out.println(Arrays.toString(num));
-        int size = 3;
-        ArrayList<Integer> res = solution.maxInWindows(num, size);
-        System.out.println(res);// [4, 4, 6, 6, 6, 5]
-
     }
 }

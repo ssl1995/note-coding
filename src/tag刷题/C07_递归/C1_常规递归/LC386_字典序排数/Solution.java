@@ -7,13 +7,13 @@ public class Solution {
     public List<Integer> lexicalOrder(int n) {
         List<Integer> res = new ArrayList<>();
         // 第一位数不能从0开始
-        for (int i = 1; i <= 9; i++) {
-            dfs(res, n, i);
+        for (int num = 1; num <= 9; num++) {
+            dfs(res, num, n);
         }
         return res;
     }
 
-    private void dfs(List<Integer> res, int n, int cur) {
+    private void dfs(List<Integer> res, int cur, int n) {
         // cur只是0-9中的一位数，超过n就停止递归
         if (cur > n) {
             return;
@@ -22,7 +22,7 @@ public class Solution {
         // 非第一位数的其他位数，从0到9开始
         for (int i = 0; i <= 9; i++) {
             // 每次当前位的cur*10作为下一位数的高位
-            dfs(res, n, 10 * cur + i);
+            dfs(res, 10 * cur + i, n);
         }
     }
 

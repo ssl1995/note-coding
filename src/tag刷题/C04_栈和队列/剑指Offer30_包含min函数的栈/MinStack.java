@@ -4,42 +4,43 @@ import java.util.LinkedList;
 
 public class MinStack {
     // 方案:data栈入数据,min栈每次只存入<=min栈顶的元素
-    private LinkedList<Integer> dataStack;
-    private LinkedList<Integer> minStack;
+    private LinkedList<Integer> stack1;
+    private LinkedList<Integer> stack2;
 
     public MinStack() {
-        dataStack = new LinkedList<>();
-        minStack = new LinkedList<>();
+        stack1 = new LinkedList<>();
+        stack2 = new LinkedList<>();
     }
 
+    // s1和s2非同步压入
     public void push(int x) {
-        if (minStack.isEmpty() || x <= minStack.peek()) {
-            minStack.push(x);
+        if (stack2.isEmpty() || x <= stack2.peek()) {
+            stack2.push(x);
         }
-        dataStack.push(x);
+        stack1.push(x);
     }
 
     public void pop() {
-        if (dataStack.isEmpty()) {
+        if (stack1.isEmpty()) {
             throw new RuntimeException("MinStack is null,not pop()");
         }
-        int pop = dataStack.pop();
+        int pop = stack1.pop();
         if (pop == min()) {
-            minStack.pop();
+            stack2.pop();
         }
     }
 
     public int top() {
-        if (dataStack.isEmpty()) {
+        if (stack1.isEmpty()) {
             throw new RuntimeException("MinStack is null,not top()");
         }
-        return dataStack.peek();
+        return stack1.peek();
     }
 
     public int min() {
-        if (minStack.isEmpty()) {
+        if (stack2.isEmpty()) {
             throw new RuntimeException("MinStack is null,not min()");
         }
-        return minStack.peek();
+        return stack2.peek();
     }
 }

@@ -6,44 +6,42 @@ import java.util.Arrays;
 public class Solution {
 
     // 快速排序法:只用返回坐标k左边的数即可
-    // 注意：与NC119相比，力扣剑指Offer40使用我的那个堆排序解法会超时
     public int[] getLeastNumbers(int[] arr, int k) {
-        if (k >= arr.length) {
-            return arr;
+        if (k < 0 || k > arr.length) {
+            return new int[]{};
         }
         return quickSortK(arr, 0, arr.length - 1, k);
     }
 
-    private int[] quickSortK(int[] arr, int l, int r, int k) {
-        int i = l;
-        int j = r;
-        // while循环,将arr划分为[l,i]<arr[l],arr[l],arr[i+1,r]>arr[l]
+    private int[] quickSortK(int[] arr, int L, int R, int k) {
+        int i = L;
+        int j = R;
+        // while循环,将arr划分为[l,i]<arr[l],arr[l],arr[i+1,r]>arr[l]三个区域
         while (i < j) {
-            // 找到第一个arr[j]<arr[l]
-            while (i < j && arr[j] >= arr[l]) {
+            // 注意：arr[L]作为基准，先移动j后移动i
+            // 原因：arr[L]作为基准，必须先找到<区域的最后一个数位置，才能交换基准与该位置
+            while (i < j && arr[j] >= arr[L]) {// 从后往前找到第一个arr[j]<arr[l]=从前往后找最后一个<区域的数
                 j--;
             }
-            // 找到第一个arr[i]>arr[l]
-            while (i < j && arr[i] <= arr[l]) {
+            while (i < j && arr[i] <= arr[L]) {
                 i++;
             }
             swap(arr, i, j);
         }
         // 交换基准arr[l]和arr[i],保证划分区间
-        swap(arr, i, l);
-        // 若i>k ，说明小于k个数的边界在左边
+        swap(arr, i, L);
+        // 若i>k ，说明小于k个数的边界在左边，移动右边界
         if (i > k) {
-            return quickSortK(arr, l, i - 1, k);
-        } else if (i < k) {
-            return quickSortK(arr, i + 1, r, k);
-        } else {
-            // 若i==k,前k个数就是k下标前面的所有数
-            return Arrays.copyOf(arr, k);
+            quickSortK(arr, L, i - 1, k);
+        } else if (i < k) {// i<k，移动左边界
+            quickSortK(arr, i + 1, R, k);
         }
+        // 若i==k,前k个数就是k下标前面的所有数
+        return Arrays.copyOf(arr, k);
     }
 
     private void swap(int[] arr, int i, int j) {
-        if (i == j) {
+        if (i == j) {// 防止i = j = len，越过了len-1长度无法交换
             return;
         }
         int temp = arr[i];

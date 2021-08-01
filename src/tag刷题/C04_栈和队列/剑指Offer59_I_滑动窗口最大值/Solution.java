@@ -9,26 +9,25 @@ public class Solution {
         if (nums == null || nums.length < k || k < 1) {
             return new int[]{};
         }
-        // 双端队列:[队头,...,队尾],存区间下标
-        LinkedList<Integer> dequeue = new LinkedList<>();
-        // 滑动窗口个数:nums.length - k + 1
+        // num=[2, 3, 4, 2, 6, 2, 5, 1]
+        // res=[4, 4, 6, 6, 6, 5]
+        // 双端队列队头存区间最大值下标
+        LinkedList<Integer> qmax = new LinkedList<>();
         int[] res = new int[nums.length - k + 1];
         int index = 0;
-        // 遍历原数组
         for (int i = 0; i < nums.length; i++) {
-            // 队头:存最大值
-            // 当前加入的元素>=对尾元素,队尾元素出队
-            while (!dequeue.isEmpty() && nums[i] >= nums[dequeue.peekLast()]) {
-                dequeue.pollLast();
+            // qmax弹出规则：qmax[尾]<=num[i]就弹出
+            while (!qmax.isEmpty() && nums[qmax.peekLast()] <= nums[i]) {
+                qmax.pollLast();
             }
-            dequeue.addLast(i);
-            // 队头弹出:如果队头坐标到达i-k,队头元素就过期了,弹出队头
-            if (dequeue.peekFirst() == i - k) {
-                dequeue.pollFirst();
+            qmax.addLast(i);
+            // 过期出队：qmax队头下标是i-size，表示队头元素已过期，队头出队
+            if (qmax.peekFirst() == i - k) {
+                qmax.pollFirst();
             }
-            // 记录窗口最大值:从k-1下标开始,每次遍历都要记录一次最大值进结果数组中
+            // 开始记录：遍历指针超过窗口长度就记录返回值
             if (i >= k - 1) {
-                res[index++] = nums[dequeue.peekFirst()];
+                res[index++] = nums[qmax.peekFirst()];
             }
         }
         return res;

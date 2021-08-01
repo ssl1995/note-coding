@@ -15,7 +15,7 @@ public class MaxQueue {
         deque = new LinkedList<>();
     }
 
-
+    // 两个队列非同步入队列，deque中一直维持最大值在队头
     public void push_back(int value) {
         // 待加元素>双端队列队尾元素,双端队列队尾就一直出队
         while (!deque.isEmpty() && value > deque.peekLast()) {

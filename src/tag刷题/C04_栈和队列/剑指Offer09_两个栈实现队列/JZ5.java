@@ -1,13 +1,13 @@
-package tag刷题.C04_栈和队列.NC76_两个栈实现队列;
+package tag刷题.C04_栈和队列.剑指Offer09_两个栈实现队列;
 
 import java.util.Stack;
 
-public class Solution {
-    // 牛客：规定了只能使用Stack的API，不能使用LinkedList
-    Stack<Integer> stack1 = new Stack<>();
-    Stack<Integer> stack2 = new Stack<>();
+public class JZ5 {
+    Stack<Integer> stack1 = new Stack<Integer>();
+    Stack<Integer> stack2 = new Stack<Integer>();
 
     public void push(int node) {
+        push2Pop();
         stack1.push(node);
         push2Pop();
     }
@@ -16,9 +16,10 @@ public class Solution {
         if (stack1.isEmpty() && stack2.isEmpty()) {
             return -1;
         }
-        int res = stack2.pop();
         push2Pop();
-        return res;
+        int pop = stack2.pop();
+        push2Pop();
+        return pop;
     }
 
     private void push2Pop() {
@@ -28,4 +29,6 @@ public class Solution {
             }
         }
     }
+
+
 }

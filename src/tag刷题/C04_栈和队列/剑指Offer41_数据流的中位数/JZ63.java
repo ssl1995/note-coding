@@ -1,19 +1,13 @@
 package tag刷题.C04_栈和队列.剑指Offer41_数据流的中位数;
 
 import java.util.PriorityQueue;
-import java.util.Queue;
 
-public class MedianFinder {
+public class JZ63 {
 
-    private Queue<Integer> maxHeap;// 大根堆存较小的N/2个数
-    private Queue<Integer> minHeap;// 小根堆存较大的N/2个数
+    private PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);// 大根堆存较小的N/2个数
+    private PriorityQueue<Integer> minHeap = new PriorityQueue<>();// 小根堆存较大的N/2个数
 
-    public MedianFinder() {
-        this.maxHeap = new PriorityQueue<>((a, b) -> b - a);
-        this.minHeap = new PriorityQueue<>();
-    }
-
-    public void addNum(int num) {
+    public void Insert(Integer num) {
         if (maxHeap.isEmpty() || num <= maxHeap.peek()) {
             maxHeap.add(num);
         } else {
@@ -22,7 +16,7 @@ public class MedianFinder {
         modifyHeap();
     }
 
-    public double findMedian() {
+    public double GetMedian() {
         if (maxHeap.isEmpty()) {
             return -1.0;
         }
@@ -41,14 +35,5 @@ public class MedianFinder {
         if (minHeap.size() == maxHeap.size() + 2) {
             maxHeap.add(minHeap.poll());
         }
-    }
-
-    public static void main(String[] args) {
-        MedianFinder solution = new MedianFinder();
-        solution.addNum(2);
-        solution.addNum(3);
-        System.out.println(solution.findMedian());
-        solution.addNum(4);
-        System.out.println(solution.findMedian());
     }
 }
