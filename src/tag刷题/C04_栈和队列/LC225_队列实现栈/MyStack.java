@@ -1,4 +1,4 @@
-package tag刷题.C04_栈和队列.NC225_队列实现栈;
+package tag刷题.C04_栈和队列.LC225_队列实现栈;
 
 import java.util.LinkedList;
 import java.util.Queue;
