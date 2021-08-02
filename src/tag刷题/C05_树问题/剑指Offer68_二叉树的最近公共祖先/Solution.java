@@ -5,6 +5,7 @@ import tag刷题.utils.TreeNode;
 
 public class Solution {
 
+    // 普通二叉树最近公共祖先
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // 递归结束条件
         // root越过叶子节点,返回null

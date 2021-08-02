@@ -1,15 +1,13 @@
 package tag刷题.C05_树问题.剑指Offer37_序列化与反序列化二叉树;
 
-
 import tag刷题.utils.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Solution {
+public class JZ61 {
 
-    // 序列化二叉树,按照力扣指定格式返回
-    public String serialize(TreeNode root) {
+    String Serialize(TreeNode root) {
         if (root == null) {
             return "[]";
         }
@@ -34,13 +32,12 @@ public class Solution {
         return sb.toString();
     }
 
-    // 反序列化二叉树
-    public TreeNode deserialize(String data) {
-        if (data.equals("[]")) {
+    TreeNode Deserialize(String str) {
+        if (str.equals("[]")) {
             return null;
         }
         // 去掉头尾的"[]"，并根据逗号分离成字符串数组
-        String[] split = data.substring(1, data.length() - 1).split(",");
+        String[] split = str.substring(1, str.length() - 1).split(",");
         // 生产根节点
         TreeNode root = new TreeNode(Integer.parseInt(split[0]));
         // 队列维持左右孩子
@@ -64,17 +61,4 @@ public class Solution {
         }
         return root;
     }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        TreeNode n1 = new TreeNode(1);
-        TreeNode n2 = new TreeNode(2);
-        TreeNode n3 = new TreeNode(3);
-        n1.left = n2;
-        n1.right = n3;
-        String res = solution.serialize(n1);
-        System.out.println(res);
-
-    }
-
 }

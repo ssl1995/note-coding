@@ -1,5 +1,4 @@
-package tag刷题.C05_树问题.剑指Offer32_从上到下打印二叉树2;
-
+package tag刷题.C05_树问题.剑指Offer32_二叉树层次遍历;
 
 import tag刷题.utils.TreeNode;
 
@@ -21,7 +20,7 @@ public class Solution {
         while (!queue.isEmpty()) {
             // temp存每一行的数据
             List<Integer> temp = new ArrayList<>();
-            // 如下是错误的:for (int i = 0; i < queue.size(); i++)
+            // 层次遍历，需要从确定每层的长度
             for (int i = queue.size(); i > 0; i--) {
                 // 因为queue的长度每次循环内部都在改变,所以不能以size为遍历结束条件
                 TreeNode node = queue.poll();

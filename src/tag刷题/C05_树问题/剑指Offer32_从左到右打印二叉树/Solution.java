@@ -1,5 +1,4 @@
-package tag刷题.C05_树问题.剑指Offer32_从上到下打印二叉树1;
-
+package tag刷题.C05_树问题.剑指Offer32_从左到右打印二叉树;
 
 
 import tag刷题.utils.TreeNode;
@@ -8,7 +7,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Solution {
-    // 题目：从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印
+    // 题目:从左到右打印二叉树，输出int[]
+
+    // 使用LinkedList
     public int[] levelOrder(TreeNode root) {
         if (root == null) {
             return new int[]{};

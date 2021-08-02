@@ -3,32 +3,36 @@ package tag刷题.C05_树问题.剑指Offer33_二叉搜索树的后序遍历;
 public class Solution {
 
     public boolean verifyPostorder(int[] postorder) {
+        if (postorder == null || postorder.length == 0) {
+            return true;
+        }
         return recur(postorder, 0, postorder.length - 1);
     }
 
-    private boolean recur(int[] postorder, int left, int right) {
+    // 二叉搜索树后续遍历把数组= [左子树|右子树|根节点],并且左子树<根节点，右子树>根节点
+    private boolean recur(int[] post, int left, int right) {
+        // base case:左指针越过右指针，说明子树数量<=1无法判断是否是二叉搜索树
         if (left >= right) {
             return true;
         }
-        // 根节点永远为postorder[right]
-        // 从左往后找出第一个>根节点的下标 = 右子树的第一个结点
+        // i指向右子树的第一个结点
+        // 数组分为[0...i-1|i...right-1|right]，其中根节点=post[right]
         int i = left;
-        while (postorder[i] < postorder[right]) {
+        while (post[i] < post[right]) {
             i++;
         }
-        // 记录右子树结点
+        // j遍历[右子树部分]，其中每个值都应该>根节点，如果没有遍历到right不是BST
         int j = i;
-        // 判断右子树[j,right-1]中是否存在<根节点的值
-        while (postorder[i] > postorder[right]) {
-            i++;
+        while (post[j] > post[right]) {
+            j++;
         }
         // 后续匹配成功如下:
-        // 1.遍历指针i是否到达根节点right
-        // 2.左孩子区间满足
-        // 3.右孩子区间满足
-        return i == right
-                && recur(postorder, left, j - 1)
-                && recur(postorder, j, right - 1);
+        // 1.遍历指针j是否到达根节点right，判断是否是二叉搜索树
+        // 2.左孩子区间满足分治
+        // 3.右孩子区间满足分治
+        return j == right
+                && recur(post, left, i - 1)
+                && recur(post, i, right - 1);
     }
 
 }

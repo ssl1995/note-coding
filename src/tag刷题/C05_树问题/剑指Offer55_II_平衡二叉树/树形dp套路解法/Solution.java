@@ -1,9 +1,20 @@
-package tag刷题.C05_树问题.剑指Offer55_II_平衡二叉树;
+package tag刷题.C05_树问题.剑指Offer55_II_平衡二叉树.树形dp套路解法;
 
 
 import tag刷题.utils.TreeNode;
 
-public class Solution1 {
+public class Solution {
+    // 树形dp套路:考虑左右子树情况,定义一个情况类接收
+    class ReturnType {
+        boolean isBalanced;
+        int height;
+
+        ReturnType(boolean isBalanced, int height) {
+            this.isBalanced = isBalanced;
+            this.height = height;
+        }
+    }
+
     public boolean isBalanced(TreeNode root) {
         return process(root).isBalanced;
     }
@@ -26,13 +37,3 @@ public class Solution1 {
 
 }
 
-// 树形dp套路:考虑左右子树情况,定义一个情况类接收
-class ReturnType {
-    boolean isBalanced;
-    int height;
-
-    ReturnType(boolean isBalanced, int height) {
-        this.isBalanced = isBalanced;
-        this.height = height;
-    }
-}

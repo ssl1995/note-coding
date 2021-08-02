@@ -1,8 +1,6 @@
 package tag刷题.C05_树问题.剑指Offer34_二叉树中和为某一值的路径;
 
 
-
-
 import tag刷题.utils.TreeNode;
 
 import java.util.ArrayList;
@@ -11,10 +9,12 @@ import java.util.List;
 
 public class Solution {
 
-    private List<List<Integer>> res = new LinkedList<>();
-    private LinkedList<Integer> path = new LinkedList<>();
+    private List<List<Integer>> res;
+    private ArrayList<Integer> path;
 
     public List<List<Integer>> pathSum(TreeNode root, int target) {
+        res = new ArrayList<>();
+        path = new ArrayList<>();
         recur(root, target);
         return res;
     }
@@ -38,6 +38,6 @@ public class Solution {
             recur(root.right, target);
         }
         // 回溯需要移除path末尾元素
-        path.removeLast();
+        path.remove(path.size() - 1);
     }
 }

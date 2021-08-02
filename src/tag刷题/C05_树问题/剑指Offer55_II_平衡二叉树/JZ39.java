@@ -1,11 +1,9 @@
 package tag刷题.C05_树问题.剑指Offer55_II_平衡二叉树;
 
-
 import tag刷题.utils.TreeNode;
 
-public class Solution {
-
-    public boolean isBalanced(TreeNode root) {
+public class JZ39 {
+    public boolean IsBalanced_Solution(TreeNode root) {
         return process(root) != -1;
     }
 
@@ -24,7 +22,7 @@ public class Solution {
         if (rightHeight == -1) {
             return -1;
         }
-        // 左右子树高度差<=1,返回真实高度;左右子树高度差>1,返回-1
+        // 左右子树高度差<=1,返回子树最大高度+1;左右子树高度差>1,返回-1
         return Math.abs(leftHeight - rightHeight) <= 1 ? Math.max(leftHeight, rightHeight) + 1 : -1;
     }
 }

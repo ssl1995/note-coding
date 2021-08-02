@@ -17,22 +17,22 @@ public class Solution {
         return head;
     }
 
-    private void dfs(Node cur) {
-        if (cur == null) {
+    private void dfs(Node root) {
+        if (root == null) {
             return;
         }
+        dfs(root.left);
+
         // 二叉搜索树中序遍历:保证从小到大
-        dfs(cur.left);
-        // 更新pre
-        if (pre == null) {// 当前cur就是head
-            head = cur;
-        } else {// pre存在,更新pre的右指针
-            pre.right = cur;
+        if (pre == null) {// pre=null,说明是第一次来到最左结点，head记录未来双向链表的头结点
+            head = root;
+        } else {// pre!=null，更新pre的后继
+            pre.right = root;
         }
-        // 更新cur
-        cur.left = pre;
-        pre = cur;
-        dfs(cur.right);
+        root.left = pre;// 更新cur的前驱
+        pre = root;// pre后移
+
+        dfs(root.right);
 
     }
 }

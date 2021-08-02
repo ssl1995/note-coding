@@ -1,7 +1,6 @@
 package tag刷题.C05_树问题.剑指Offer54_二叉搜索树的第K个节点;
 
 
-
 import tag刷题.utils.TreeNode;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.List;
 
 public class Solution {
 
-    // 法1:二叉搜索树的中序遍历,用链表存数值,返回第size-k个元素就是第k大的元素
+    // 法:二叉搜索树的中序遍历,用链表存数值,返回第size-k个元素就是第k大的元素
     public int kthLargest(TreeNode root, int k) {
         ArrayList<Integer> list = new ArrayList<>();
         inOrderByLR(root, list);
