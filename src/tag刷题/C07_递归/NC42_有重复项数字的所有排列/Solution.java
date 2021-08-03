@@ -1,4 +1,4 @@
-package tag刷题.C07_递归.C2_回溯.NC42_有重复项数字的所有排列;
+package tag刷题.C07_递归.NC42_有重复项数字的所有排列;
 
 import java.util.ArrayList;
 import java.util.Arrays;

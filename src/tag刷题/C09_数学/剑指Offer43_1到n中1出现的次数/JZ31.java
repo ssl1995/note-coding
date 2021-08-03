@@ -1,15 +1,18 @@
 package tag刷题.C09_数学.剑指Offer43_1到n中1出现的次数;
 
-public class Solution {
-    public int countDigitOne(int n) {
-        // 初始化:low,cur,high,digit
+public class JZ31 {
+    // 从1到n中，含有数字1的出现的次数
+    // 比如：1~13中包含1的数字有1、10、11、12、13因此共出现6次
+
+    // 最笨的方法，从1到n统计，每个数中1出现的次数，但是会超时
+    // 所以找规律，用low、cur、high、digit、res5个变量找规律
+    public int NumberOf1Between1AndN_Solution(int n) {
         int low = 0;
         int cur = n % 10;
         int high = n / 10;
-        int digit = 1;// 10^0=1
+        int digit = 1;
         int res = 0;
-        while (high != 0 || cur != 0) {// high和cur同时为0，越过了最后一个高位，循环结束
-            // cur有三种情况:0,1,>1,自己用纸推出这三种表达式
+        while (high != 0 || cur != 0) {
             if (cur == 0) {
                 res += high * digit;
             } else if (cur == 1) {
@@ -17,12 +20,12 @@ public class Solution {
             } else if (cur > 1) {
                 res += (high + 1) * digit;
             }
-            // 更新low,cur,high,digit
-            low += cur * digit;
+            low = cur * digit + low;
             cur = high % 10;
             high = high / 10;
             digit *= 10;
         }
         return res;
     }
+
 }

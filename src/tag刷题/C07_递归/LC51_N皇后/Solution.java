@@ -1,4 +1,4 @@
-package tag刷题.C07_递归.C2_回溯.LC51_N皇后;
+package tag刷题.C07_递归.LC51_N皇后;
 
 import java.util.*;
 

@@ -2,7 +2,7 @@ package tag刷题.C06_动态规划.剑指Offer63_股票的最大利润;
 
 public class Solution {
 
-    // 动态规划:最容易理解的写法
+    // 动态规划
     public int maxProfit1(int[] prices) {
         if (prices.length == 0) {
             return 0;
@@ -14,21 +14,21 @@ public class Solution {
         dp[0] = 0;
         int minPrice = prices[0];
         for (int i = 1; i < n; i++) {
-            // 计算[0,i]的最小价格
+            // 先计算[0,i]的最小价格作为买入价格
             minPrice = Math.min(minPrice, prices[i]);
-            // dp[i]=max(前一日以来的最大利润,第i日的最大利润)
+            // dp[i]=max(前一日以来的最大利润,第i日的最大利润=当前价格-最小买入价格)
             dp[i] = Math.max(dp[i - 1], prices[i] - minPrice);
         }
         return dp[n - 1];
     }
 
-    // 动态规划:简化书写的写法,不推荐这么写
+    // 高度概括：当日最大利润 = max(当天价格-截止目前的最小价格)
     public int maxProfit2(int[] prices) {
         if (prices.length == 0) {
             return 0;
         }
-        int maxProfit = 0;
         int minPrice = prices[0];
+        int maxProfit = 0;// 没有利润，规定为0
         for (int i = 1; i < prices.length; i++) {
             minPrice = Math.min(minPrice, prices[i]);
             maxProfit = Math.max(maxProfit, prices[i] - minPrice);

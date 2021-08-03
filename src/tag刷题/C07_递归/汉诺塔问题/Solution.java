@@ -1,4 +1,4 @@
-package tag刷题.C07_递归.C3_贪心.汉诺塔问题;
+package tag刷题.C07_递归.汉诺塔问题;
 
 import java.util.List;
 

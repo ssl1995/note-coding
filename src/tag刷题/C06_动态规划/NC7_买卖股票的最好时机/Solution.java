@@ -1,7 +1,7 @@
 package tag刷题.C06_动态规划.NC7_买卖股票的最好时机;
 
 public class Solution {
-    // 暴力递归
+    // 暴力递归，缺点是会超时
     public int maxProfit1(int[] prices) {
         if (prices.length == 0) {
             return 0;
@@ -53,54 +53,4 @@ public class Solution {
         return dp[n - 1];
     }
 
-    // 另一种动态规划：设两种状态，未持有股票和持有股票
-    public int maxProfit4(int[] prices) {
-        if (prices.length == 0) {
-            return 0;
-        }
-        // dp[i][0]表示第i+1天没持有股票的利润最大值
-        // dp[i][1]表示第i+1天持有股票的利润最大值
-        int n = prices.length;
-        int[][] dp = new int[n][2];
-        dp[0][0] = 0;// 第一天没持有股票最大值0
-        dp[0][1] = -prices[0];// 第一天持有股票最大值-prices[0].因为第一天只能买股票=花出去
-        for (int i = 1; i < n; i++) {
-            for (int j = 0; j < 2; j++) {
-                // 第i+1天未持有股票的最大利润：max(第i天未持有的最大利润，第i天持有的利润+今天卖出的价格)
-                dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
-                // 第i+1天持有股票的最大利润：(第i天持有的最大利润，今天买入股票的支出)
-                dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);
-            }
-        }
-        // 最大利润=最后一天未持有股票的最大利润(因为都卖出去了)
-        return dp[n - 1][0];
-    }
-
-    // 将上面动态规划改成不需要dp数组
-    public int maxProfit5(int[] prices) {
-        if (prices.length == 0) {
-            return 0;
-        }
-        int noHold = 0;// 第1天未持有股票的利润最大值
-        int hold = -prices[0];// 第1天持有股票的利润最大值
-        for (int i = 1; i < prices.length; i++) {
-            // 第i+1天未持有股票的最大利润：max(第i天未持有的最大利润，第i天持有的利润+今天卖出的价格)
-            noHold = Math.max(noHold, hold + prices[i]);
-            // 第i+1天持有股票的最大利润：(第i天持有的最大利润，今天买入股票的支出)
-            hold = Math.max(hold, -prices[i]);
-        }
-        // 最大利润=最后一天未持有股票的最大利润(因为都卖出去了)
-        return noHold;
-    }
-
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        int[] prices = {7, 1, 5, 3, 6, 4};
-        System.out.println(solution.maxProfit1(prices));
-        System.out.println(solution.maxProfit2(prices));
-        System.out.println(solution.maxProfit3(prices));
-        System.out.println(solution.maxProfit4(prices));
-        System.out.println(solution.maxProfit5(prices));
-    }
 }

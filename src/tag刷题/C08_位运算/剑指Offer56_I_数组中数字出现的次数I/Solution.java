@@ -5,19 +5,19 @@ public class Solution {
     public int[] singleNumbers(int[] nums) {
         int a = 0, b = 0;
         // 第一次遍历,a = 数1^数2
-        for (int num : nums) {
-            a ^= num;
+        for (int cur : nums) {
+            a ^= cur;
         }
-        // 获取数1^数2最右边的二进制1
-        int lastOne = a & (~a + 1);
-        // a重置为0,防止数1与数2指向同一内存空间,异或重置为0的问题
-        a = 0;
-        // 第二次遍历,让lastOne来区分数1和数2,以次进行分组
-        for (int num : nums) {
-            if ((num & lastOne) == 0) {
-                b ^= num;
+        // 找到a中第一个不相同的二进制位=数1和数2不相同的一个二进制位
+        // 由于是十进制表示，所以rightOne 是2^n的表示形式
+        int rightOne = a & (~a + 1);
+        a = 0;// 重置a为0，便于下面^操作
+        // 第二次遍历,利用不相同的二进制位,将原数组分为独立含数1和数2的两个部分
+        for (int cur : nums) {
+            if ((rightOne & cur) == 0) {// 这里只能用！=0或者==0来判断属于哪一个阵营
+                b ^= cur;
             } else {
-                a ^= num;
+                a ^= cur;
             }
         }
         return new int[]{a, b};

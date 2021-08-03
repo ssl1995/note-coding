@@ -1,4 +1,4 @@
-package tag刷题.C07_递归.C1_常规递归.NC109_岛屿数量;
+package tag刷题.C07_递归.NC109_岛屿数量;
 
 public class Solution {
     public int solve(char[][] grid) {

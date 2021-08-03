@@ -1,4 +1,4 @@
-package tag刷题.C07_递归.C1_常规递归.LC386_字典序排数;
+package tag刷题.C07_递归.LC386_字典序排数;
 
 import java.util.ArrayList;
 import java.util.List;
