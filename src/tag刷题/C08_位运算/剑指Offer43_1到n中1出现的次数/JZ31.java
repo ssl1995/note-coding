@@ -1,4 +1,4 @@
-package tag刷题.C09_数学.剑指Offer43_1到n中1出现的次数;
+package tag刷题.C08_位运算.剑指Offer43_1到n中1出现的次数;
 
 public class JZ31 {
     // 从1到n中，含有数字1的出现的次数
