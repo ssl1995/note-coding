@@ -1,8 +1,6 @@
 package tag刷题.C02_链表.剑指Offer06_从尾到头打印链表;
 
 
-
-
 import tag刷题.utils.ListNode;
 
 import java.util.ArrayList;

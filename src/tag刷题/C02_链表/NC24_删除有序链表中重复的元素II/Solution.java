@@ -3,7 +3,7 @@ package tag刷题.C02_链表.NC24_删除有序链表中重复的元素II;
 import tag刷题.utils.ListNode;
 
 public class Solution {
-    // 题目：给出一个升序排序的链表，删除链表中的所有重复出现的元素，只保留原链表中只出现一次的元素。
+    // 删除重复结点，不保留重复结点：1->2->2,返回1
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) {
             return head;
@@ -21,8 +21,7 @@ public class Solution {
             while (cur.next != null && cur.val == cur.next.val) {
                 cur = cur.next;
             }
-            // 本题不保留重复结点，这里不用pre.next = cur
-            // 相同节点的最后一个结点不保留，后移cur
+            // 删除所有重复结点：1->2->2,重复结点不保留，返回1
             cur = cur.next;
         }
         pre.next = null;

@@ -8,13 +8,13 @@ public class Solution {
             return false;
         }
         // 最左下角坐标:[matrix.length-1][0]
-        int row = matrix.length - 1;
-        int col = 0;
-        while (row >= 0 && col <= matrix[0].length - 1) {
-            if (matrix[row][col] < target) {
-                row--;
-            } else if (matrix[row][col] > target) {
-                col++;
+        int i = matrix.length - 1;
+        int j = 0;
+        while (i >= 0 && j <= matrix[0].length - 1) {
+            if (matrix[i][j] < target) {
+                j++;
+            } else if (matrix[i][j] > target) {
+                i--;
             } else {
                 return true;
             }

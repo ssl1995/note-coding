@@ -28,13 +28,4 @@ public class Solution {
         // 栈存了特殊字符，最后长度判断是否长度为1
         return stack.size() == 1;
     }
-
-    public static void main(String[] args) {
-        String s = "([)]";
-        String s1 = "()[]{}";
-        Solution solution = new Solution();
-        System.out.println(solution.isValid(s));
-        System.out.println(solution.isValid(s1));
-    }
-
 }

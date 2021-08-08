@@ -36,4 +36,30 @@ public class Solution {
         // 返回符号*数字
         return sign * num;
     }
+
+    public int myAtoi(String s) {
+        char[] cs = s.trim().toCharArray();
+        if (cs.length == 0) {
+            return 0;
+        }
+        int num = 0;
+        int maxBound = Integer.MAX_VALUE / 10;
+        int sign = 1;
+        int index = 1;
+        if (cs[0] == '-') {
+            sign = -1;
+        } else if (cs[0] != '+') {
+            index = 0;
+        }
+        for (int i = index; i < cs.length; i++) {
+            if (cs[i] < '0' || cs[i] > '9') {
+                break;
+            }
+            if (num > maxBound || (num == maxBound && cs[i] > '7')) {
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            num = num * 10 + (cs[i] - '0');
+        }
+        return sign * num;
+    }
 }

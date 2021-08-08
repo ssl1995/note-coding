@@ -3,7 +3,8 @@ package tag刷题.C02_链表.剑指Offer18_删除链表结点;
 import tag刷题.utils.ListNode;
 
 public class JZ56 {
-    // 升序链表删除重复结点
+    // 升序链表删除重复结点，重复结点不保留
+    // 1-2-2，返回1
     public ListNode deleteDuplication(ListNode pHead) {
         if (pHead == null || pHead.next == null) {
             return pHead;
@@ -21,8 +22,6 @@ public class JZ56 {
             while (cur.next != null && cur.val == cur.next.val) {
                 cur = cur.next;
             }
-            // 本题不保留重复结点，这里不用pre.next = cur
-            // 相同节点的最后一个结点不保留，后移cur
             cur = cur.next;
         }
         pre.next = null;
