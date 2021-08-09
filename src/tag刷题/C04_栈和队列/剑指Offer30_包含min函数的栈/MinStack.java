@@ -21,9 +21,6 @@ public class MinStack {
     }
 
     public void pop() {
-        if (stack1.isEmpty()) {
-            throw new RuntimeException("MinStack is null,not pop()");
-        }
         int pop = stack1.pop();
         if (pop == min()) {
             stack2.pop();
@@ -31,16 +28,10 @@ public class MinStack {
     }
 
     public int top() {
-        if (stack1.isEmpty()) {
-            throw new RuntimeException("MinStack is null,not top()");
-        }
         return stack1.peek();
     }
 
     public int min() {
-        if (stack2.isEmpty()) {
-            throw new RuntimeException("MinStack is null,not min()");
-        }
         return stack2.peek();
     }
 }

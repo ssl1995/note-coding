@@ -20,6 +20,8 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] arr = {3, 1, 2, 5, 2, 4};
-        System.out.println(solution.maxWater(arr));
+        int[] arr1 = {4, 5, 1, 3, 2};
+        System.out.println(solution.maxWater(arr));// 5
+        System.out.println(solution.maxWater(arr1));// 2
     }
 }

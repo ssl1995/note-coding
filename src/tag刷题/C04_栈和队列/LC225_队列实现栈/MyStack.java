@@ -4,33 +4,34 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class MyStack {
-
-    private Queue<Integer> queue;
+    // 用两个队列，模拟一个栈
+    private Queue<Integer> queue1;
+    private Queue<Integer> queue2;
 
     public MyStack() {
-        queue = new LinkedList<>();
+        queue1 = new LinkedList<>();
+        queue2 = new LinkedList<>();
     }
 
     public void push(int x) {
-        // 原先队列是右进左出的
-        int size = queue.size();
-        // 先加一个元素后，让前面的元素重新右进一次，保持队列最前面是最后入的元素
-        queue.add(x);
-        for (int i = 0; i < size; i++) {
-            queue.add(queue.poll());
+        queue2.offer(x);
+        while (!queue1.isEmpty()) {
+            queue2.offer(queue1.poll());
         }
-
+        Queue<Integer> temp = queue1;
+        queue1 = queue2;
+        queue2 = temp;
     }
 
     public int pop() {
-        return queue.poll();
+        return queue1.poll();
     }
 
     public int top() {
-        return queue.peek();
+        return queue1.peek();
     }
 
     public boolean empty() {
-        return queue.isEmpty();
+        return queue1.isEmpty();
     }
 }

@@ -16,16 +16,16 @@ public class Solution {
         int[] res = new int[nums.length - k + 1];
         int index = 0;
         for (int i = 0; i < nums.length; i++) {
-            // qmax弹出规则：qmax[尾]<=num[i]就弹出
+            // qmax末尾元素弹出：新加的数比末尾对应的数还大
             while (!qmax.isEmpty() && nums[qmax.peekLast()] <= nums[i]) {
                 qmax.pollLast();
             }
             qmax.addLast(i);
-            // 过期出队：qmax队头下标是i-size，表示队头元素已过期，队头出队
+            // qmax队头过期，出队头
             if (qmax.peekFirst() == i - k) {
                 qmax.pollFirst();
             }
-            // 开始记录：遍历指针超过窗口长度就记录返回值
+            // >=窗口长度，就开始记录返回值
             if (i >= k - 1) {
                 res[index++] = nums[qmax.peekFirst()];
             }

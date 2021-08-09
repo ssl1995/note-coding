@@ -15,6 +15,14 @@ public class MaxQueue {
         deque = new LinkedList<>();
     }
 
+    public int max_value() {
+        if (deque.isEmpty()) {
+            // 条件规定:max栈为空,返回-1
+            return -1;
+        }
+        return deque.peekFirst();
+    }
+
     // 两个队列非同步入队列，deque中一直维持最大值在队头
     public void push_back(int value) {
         // 待加元素>双端队列队尾元素,双端队列队尾就一直出队
@@ -37,13 +45,6 @@ public class MaxQueue {
         return value;
     }
 
-    public int max_value() {
-        if (deque.isEmpty()) {
-            // 条件规定:max栈为空,返回-1
-            return -1;
-        }
-        return deque.peekFirst();
-    }
 
     public static void main(String[] args) {
         LinkedList<Integer> queue = new LinkedList<>();

@@ -14,8 +14,9 @@ public class Solution {
 
     private void rotate(int[][] matrix, int tR, int tC, int dR, int dC) {
         int times = dR - tR;
+        int temp;
         for (int i = 0; i < times; i++) {
-            int temp = matrix[tR][tC + i];
+            temp = matrix[tR][tC + i];
             matrix[tR][tC + i] = matrix[dR - i][tC];
             matrix[dR - i][tC] = matrix[dR][dC - i];
             matrix[dR][dC - i] = matrix[tR + i][dC];
