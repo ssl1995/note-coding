@@ -5,13 +5,11 @@ import java.util.ArrayList;
 public class JZ41 {
     // 生成目标数的连续正数序列
     public ArrayList<ArrayList<Integer>> FindContinuousSequence(int sum) {
-        int left = 1;// 左边界的值
-        int right = 2;// 右边界的值
-        int windowsSum = 3;// 整个左右窗口的值
+        int left = 1, right = 2, windowsSum = 3;
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         ArrayList<Integer> temp;
         while (left < right) {// 左边界遇到右边界就停止
-            // 如果本轮区间和为sum，就生成结果集
+            // 统一移动写法的时候:必须先判断是否相同，再移动指针
             if (windowsSum == sum) {
                 temp = new ArrayList<>();
                 for (int i = left; i <= right; i++) {
@@ -27,11 +25,5 @@ public class JZ41 {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        JZ41 jz41 = new JZ41();
-        int sum = 9;
-        System.out.println(jz41.FindContinuousSequence(sum));
     }
 }

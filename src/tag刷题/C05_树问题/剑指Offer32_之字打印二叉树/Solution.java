@@ -25,8 +25,9 @@ public class Solution {
             for (int i = queue.size(); i > 0; i--) {
                 // 辅助链表存每一层的结点
                 TreeNode node = queue.poll();
-                // List<List>的长度=层数，≠全部元素个数
-                // res.size从0开始=第一层，尾插法
+                // res.size()==0,第一层，从左到右打印
+                // res.size()==1,第二层，从右到左打印
+                // res.size()==2,第三层，从左到右打印
                 if (res.size() % 2 == 0) {
                     temp.addLast(node.val);
                 } else {

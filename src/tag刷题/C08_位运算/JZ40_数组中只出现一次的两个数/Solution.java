@@ -1,8 +1,9 @@
-package tag刷题.C01_数组.JZ40_数组中只出现一次的两个数;
+package tag刷题.C08_位运算.JZ40_数组中只出现一次的两个数;
 
 import java.util.Arrays;
 
 public class Solution {
+    // 题目：数组中有两个数出现一次,其他数出现偶数次，找出出现一次的两个数
     public int[] FindNumsAppearOnce(int[] array) {
         int a = 0, b = 0;
         // 第一次遍历,a = 数1^数2
@@ -21,6 +22,7 @@ public class Solution {
                 a ^= cur;
             }
         }
+        // 牛客需要按照小大排好序
         int num1 = Math.min(a, b);
         int num2 = Math.max(a, b);
         return new int[]{num1, num2};

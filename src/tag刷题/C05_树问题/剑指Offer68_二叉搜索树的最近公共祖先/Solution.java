@@ -8,7 +8,7 @@ public class Solution {
 
     // 二叉搜索树最近公共祖先：BST特性左小右大+无重复结点，自己画图明确三种情况
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        // 保证左小右大
+        // 保证p,q左小右大
         if (p.val > q.val) {
             TreeNode temp = p;
             p = q;

@@ -3,6 +3,7 @@ package tag刷题.C02_链表.LC148_排序链表;
 import tag刷题.utils.ListNode;
 
 public class Solution {
+
     public ListNode sortList(ListNode head) {
         return mergeSortList(head);
     }

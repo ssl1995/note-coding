@@ -1,8 +1,8 @@
-package tag刷题.C01_数组.NC19_子数组的最大累加和问题;
+package interview.longhuan;
 
 public class Solution {
 
-    public int maxsumofSubarray(int[] arr) {
+    public int max(int[] arr) {
         if (arr == null || arr.length == 0) {
             return 0;
         }
@@ -10,9 +10,9 @@ public class Solution {
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
-            if (sum < 0) {// 累加和<0,说明不可能是最大累加和，重置为0
+            if (sum < 0) {
                 sum = 0;
-            } else {// 累加和>=0，max记录每次累加中的最大值
+            } else {
                 max = Math.max(max, sum);
             }
         }
@@ -21,7 +21,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] arr = {1,-10,3,10,-7,7,2,-5};
-        System.out.println(solution.maxsumofSubarray(arr));
+        int[] arr = {1, -10, 3, 10, -7, 7, 2, -5};
+        System.out.println(solution.max(arr));
     }
 }

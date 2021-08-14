@@ -26,36 +26,4 @@ public class JZ32 {
         }
         return sb.toString();
     }
-
-    public String PrintMinNumber1(int[] numbers) {
-        if (numbers == null || numbers.length == 0) {
-            return "";
-        }
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = i + 1; j < numbers.length; j++) {
-                int x = numbers[i];
-                int y = numbers[j];
-                long a = Long.parseLong(x + "" + y);
-                long b = Long.parseLong(y + "" + x);
-                if (a > b) {
-                    numbers[i] = x;
-                    numbers[j] = y;
-                }
-
-            }
-        }
-        StringBuilder sb = new StringBuilder();
-        for (int num : numbers) {
-            sb.append(num);
-        }
-        return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        JZ32 jz32 = new JZ32();
-        int[] arr = {3, 32, 321};
-        String res = jz32.PrintMinNumber(arr);
-        // 正确：321323
-        System.out.println(res);
-    }
 }

@@ -22,7 +22,7 @@ public class Solution {
                     return false;
                 } else {
                     // 若没有重复数字,找到当前的max,min
-                    // 每一轮为必须满足判断顺子的条件:max-min<5
+                    // 每一轮必须满足判断顺子的条件:max-min<5
                     min = Math.min(min, num);
                     max = Math.max(max, num);
                     // 当前元素放进set中,给之后的遍历重复元素做铺垫

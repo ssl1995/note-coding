@@ -13,6 +13,20 @@ public class NQueens {
         return process1(0, record, n);
     }
 
+
+    // 判断第i行第j列能放皇后
+    public static boolean isValid(int[] record, int i, int j) {
+        for (int k = 0; k < i; k++) {
+            // 共行: 不用检查i后的共行问题，因为是按行逐渐放皇后，不会出现i行后的共行问题
+            // 共列: 从0到i遍历record，如果j==record[k]说明i之前有皇后放在了该列上
+            // 共斜线: 等腰三角形直角边相同：Math.abs(record[k] - j) == Math.abs(i - k))
+            if (j == record[k] || Math.abs(j - record[k]) == Math.abs(i - k)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * i 目前来到了第几行
      * record[0-i-1]表示之前的行，已经放了皇后的位置
@@ -36,18 +50,6 @@ public class NQueens {
         return res;
     }
 
-    // 判断第i行第j列能放皇后
-    public static boolean isValid(int[] record, int i, int j) {
-        for (int k = 0; k < i; k++) {
-            // 共行: 不用检查i后的共行问题，因为是按行逐渐放皇后，不会出现i行后的共行问题
-            // 共列: 从0到i遍历record，如果j==record[k]说明i之前有皇后放在了该列上
-            // 共斜线: 等腰三角形直角边相同：Math.abs(record[k] - j) == Math.abs(i - k))
-            if (j == record[k] || Math.abs(j - record[k]) == Math.abs(i - k)) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     // 位运算优化法：但是限制是不要超过32位（n是int类型）
     public static int num2(int n) {
@@ -92,4 +94,6 @@ public class NQueens {
         System.out.println("cost time: " + (end - start) + "ms");
 
     }
+
+
 }

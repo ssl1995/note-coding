@@ -24,26 +24,7 @@ public class Solution {
                 right = mid - 1;
             }
         }
+        // left <= right打破的时候，left来到>target的第一个数的下标
         return left;
-    }
-
-    // 二分查找
-    private int binarySearch(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return -1;
-        }
-        int left = 0;
-        int right = nums.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (nums[mid] < target) {
-                left = mid + 1;
-            } else if (nums[mid] > target) {
-                right = left - 1;
-            } else {
-                return mid;
-            }
-        }
-        return -1;
     }
 }

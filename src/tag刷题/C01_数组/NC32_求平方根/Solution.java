@@ -31,11 +31,10 @@ public class Solution {
         float standard = (float) 0.000001;
         while (Math.abs(right - left) >= standard) {
             float mid = left + (right - left) / 2;
-            float sqr = mid * mid;
-            // sqr---x---sqr
-            if (sqr - x > standard) {// 右边误差大，就移动右指针
+            float midSquare = mid * mid;
+            if (midSquare - x > standard) {// 右边误差大，就移动右指针
                 right = mid;
-            } else if (x - sqr > standard) {// 左边误差大，就移动左指针
+            } else if (x - midSquare > standard) {// 左边误差大，就移动左指针
                 left = mid;
             } else {// 达到误差标准，就返回
                 return mid;

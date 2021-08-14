@@ -1,4 +1,4 @@
-package tag刷题.C01_数组.LC69_x的平方根;
+package tag刷题.C01_数组.NC32_求平方根.LC69_x的平方根;
 
 public class Solution {
     public int mySqrt(int x) {

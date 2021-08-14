@@ -26,7 +26,7 @@ public class Solution {
         if (carryNum == 1) {// 如果还存在进位，就添加到链表末尾
             cur.next = new ListNode(carryNum);
         }
-        // 反转哑结点.next，返回
+        // 返回哑结点.next
         return dummyNode.next;
     }
 
