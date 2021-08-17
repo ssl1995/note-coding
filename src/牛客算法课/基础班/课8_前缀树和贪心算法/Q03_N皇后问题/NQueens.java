@@ -2,15 +2,30 @@ package 牛客算法课.基础班.课8_前缀树和贪心算法.Q03_N皇后问�
 
 
 public class NQueens {
-    // N皇后问题：N个数，在N*N的数组中，每个数都不共行、列和斜线
-    // 学完num1方法，LC51_NQueens怎么改写成num1
+    // N皇后问题：N个数，在N*N的数组中，每个数都不共行、列和斜线的摆法
+    // 法1：暴力递归
     public static int num1(int n) {
         if (n < 1) {
             return 0;
         }
-        // 用record[i]=value表示第i行的皇后，放在value列,这样就避免使用二维数组创建棋盘
+        // 下标：行数;值：该行有哪列被使用过
         int[] record = new int[n];
-        return process1(0, record, n);
+        return dfs(record, 0, n);
+    }
+
+    public static int dfs(int[] record, int i, int n) {
+        // base case:如果i来到终止行n,说明前面的摆法都行，返回1
+        if (i == n) {
+            return 1;
+        }
+        int res = 0;
+        for (int j = 0; j < n; j++) {// i=行数，j=列数
+            if (isValid(record, i, j)) {// 从i行开始的所有列判断皇后是否能放入
+                record[i] = j;
+                res += dfs(record, i + 1, n);
+            }
+        }
+        return res;
     }
 
 
@@ -27,31 +42,8 @@ public class NQueens {
         return true;
     }
 
-    /**
-     * i 目前来到了第几行
-     * record[0-i-1]表示之前的行，已经放了皇后的位置
-     * n 代表整体一共有多少行
-     * 返回值：摆完目前所有的皇后，合理的摆法数量
-     */
-    public static int process1(int i, int[] record, int n) {
-        // base case:如果i来到终止行n,潜台词就是前面i-1行保证了N皇后的条件,这就是一种摆法
-        if (i == n) {
-            return 1;
-        }
-        int res = 0;
-        // i=行数，j=列数
-        for (int j = 0; j < n; j++) {
-            // 当前i行的皇后放在j列，会不会出现问题
-            if (isValid(record, i, j)) {
-                record[i] = j;
-                res += process1(i + 1, record, n);
-            }
-        }
-        return res;
-    }
 
-
-    // 位运算优化法：但是限制是不要超过32位（n是int类型）
+    // 法2：位运算优化法，但是限制是不要超过32位（n是int类型）
     public static int num2(int n) {
         if (n < 1 || n > 32) {
             return 0;

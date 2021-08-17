@@ -9,23 +9,20 @@ public class ReverseStackUsingRecursive {
         if (stack.isEmpty()) {
             return;
         }
-        // 通过某递归方法:获取当前栈底元素,其余元素不变
-        int i = getAndRemoveLastElement(stack);
-        // 递归本方法:重复本方法
-        reverse(stack);
-        // 回溯,最后一轮获取的栈底元素=原先的栈顶,放回栈中
-        stack.push(i);
+        int last = getLast(stack);// 递归获取栈底元素
+        reverse(stack);// 递归本方法
+        stack.push(last);// 回溯，将获得的栈底元素放回栈中
     }
 
-    public static int getAndRemoveLastElement(Stack<Integer> stack) {
-        int result = stack.pop();
+
+    public static int getLast(Stack<Integer> stack) {
+        int pop = stack.pop();
         if (stack.isEmpty()) {
-            return result;
+            return pop;
         } else {
-            int last = getAndRemoveLastElement(stack);
-            // 回溯,将当前出栈元素放回栈
-            stack.push(result);
-            return last;
+            int last = getLast(stack);
+            stack.push(pop); // 回溯,将当前出栈元素放回栈
+            return last;// 返回栈底元素
         }
     }
 

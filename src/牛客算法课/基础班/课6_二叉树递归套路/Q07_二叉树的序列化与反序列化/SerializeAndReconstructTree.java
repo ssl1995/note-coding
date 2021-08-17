@@ -1,13 +1,13 @@
 package 牛客算法课.基础班.课6_二叉树递归套路.Q07_二叉树的序列化与反序列化;
 
-import 牛客算法课.基础班.课5_链表的环形问题和二叉树.Q02_二叉树的遍历.Node;
+import 牛客算法课.基础班.课5_链表的环形问题和二叉树.Q02_二叉树的遍历.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class SerializeAndReconstructTree {
 
-    public static String serialByPre(Node head) {
+    public static String serialByPre(TreeNode head) {
         if (head == null) {
             return "#!";
         }
@@ -17,7 +17,7 @@ public class SerializeAndReconstructTree {
         return res;
     }
 
-    public static Node reconByPreString(String preStr) {
+    public static TreeNode reconByPreString(String preStr) {
         String[] values = preStr.split("!");
         Queue<String> queue = new LinkedList<String>();
         for (int i = 0; i != values.length; i++) {
@@ -26,23 +26,23 @@ public class SerializeAndReconstructTree {
         return reconPreOrder(queue);
     }
 
-    public static Node reconPreOrder(Queue<String> queue) {
+    public static TreeNode reconPreOrder(Queue<String> queue) {
         String value = queue.poll();
         if (value.equals("#")) {
             return null;
         }
-        Node head = new Node(Integer.valueOf(value));
+        TreeNode head = new TreeNode(Integer.valueOf(value));
         head.left = reconPreOrder(queue);
         head.right = reconPreOrder(queue);
         return head;
     }
 
-    public static String serialByLevel(Node head) {
+    public static String serialByLevel(TreeNode head) {
         if (head == null) {
             return "#!";
         }
         String res = head.value + "!";
-        Queue<Node> queue = new LinkedList<Node>();
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(head);
         while (!queue.isEmpty()) {
             head = queue.poll();
@@ -62,15 +62,15 @@ public class SerializeAndReconstructTree {
         return res;
     }
 
-    public static Node reconByLevelString(String levelStr) {
+    public static TreeNode reconByLevelString(String levelStr) {
         String[] values = levelStr.split("!");
         int index = 0;
-        Node head = generateNodeByString(values[index++]);
-        Queue<Node> queue = new LinkedList<Node>();
+        TreeNode head = generateNodeByString(values[index++]);
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
         if (head != null) {
             queue.offer(head);
         }
-        Node node = null;
+        TreeNode node = null;
         while (!queue.isEmpty()) {
             node = queue.poll();
             node.left = generateNodeByString(values[index++]);
@@ -85,21 +85,21 @@ public class SerializeAndReconstructTree {
         return head;
     }
 
-    public static Node generateNodeByString(String val) {
+    public static TreeNode generateNodeByString(String val) {
         if (val.equals("#")) {
             return null;
         }
-        return new Node(Integer.valueOf(val));
+        return new TreeNode(Integer.valueOf(val));
     }
 
     // for test -- print tree
-    public static void printTree(Node head) {
+    public static void printTree(TreeNode head) {
         System.out.println("Binary Tree:");
         printInOrder(head, 0, "H", 17);
         System.out.println();
     }
 
-    public static void printInOrder(Node head, int height, String to, int len) {
+    public static void printInOrder(TreeNode head, int height, String to, int len) {
         if (head == null) {
             return;
         }
@@ -123,7 +123,7 @@ public class SerializeAndReconstructTree {
     }
 
     public static void main(String[] args) {
-        Node head = null;
+        TreeNode head = null;
         printTree(head);
 
         String pre = serialByPre(head);
@@ -140,7 +140,7 @@ public class SerializeAndReconstructTree {
 
         System.out.println("====================================");
 
-        head = new Node(1);
+        head = new TreeNode(1);
         printTree(head);
 
         pre = serialByPre(head);
@@ -157,11 +157,11 @@ public class SerializeAndReconstructTree {
 
         System.out.println("====================================");
 
-        head = new Node(1);
-        head.left = new Node(2);
-        head.right = new Node(3);
-        head.left.left = new Node(4);
-        head.right.right = new Node(5);
+        head = new TreeNode(1);
+        head.left = new TreeNode(2);
+        head.right = new TreeNode(3);
+        head.left.left = new TreeNode(4);
+        head.right.right = new TreeNode(5);
         printTree(head);
 
         pre = serialByPre(head);
@@ -178,12 +178,12 @@ public class SerializeAndReconstructTree {
 
         System.out.println("====================================");
 
-        head = new Node(100);
-        head.left = new Node(21);
-        head.left.left = new Node(37);
-        head.right = new Node(-42);
-        head.right.left = new Node(0);
-        head.right.right = new Node(666);
+        head = new TreeNode(100);
+        head.left = new TreeNode(21);
+        head.left.left = new TreeNode(37);
+        head.right = new TreeNode(-42);
+        head.right.left = new TreeNode(0);
+        head.right.right = new TreeNode(666);
         printTree(head);
 
         pre = serialByPre(head);

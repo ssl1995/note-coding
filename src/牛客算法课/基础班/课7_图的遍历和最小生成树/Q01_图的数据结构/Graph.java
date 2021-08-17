@@ -4,10 +4,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Graph {
-    // 点集：<编号，点的实际数据结构(这里以Node为例)>
-    public HashMap<Integer, Node> nodes;
-    // 边集：<边的数据结构>
-    public HashSet<Edge> edges;
+    // 图有点和边组成
+    public HashMap<Integer, Node> nodes;// 点<编号，点的实际数据结构(这里以Node为例)>
+    public HashSet<Edge> edges;// 边
 
     public Graph() {
         nodes = new HashMap<>();

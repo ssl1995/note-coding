@@ -15,18 +15,15 @@ public class BFS {
         }
         // 宽度优先遍历使用队列
         Queue<Node> queue = new LinkedList<>();
-        // 记录节点不能重复加入queue,不会形成环导致死循环
-        HashSet<Node> map = new HashSet<>();
+        HashSet<Node> set = new HashSet<>();// 去重
         queue.add(node);
-        map.add(node);
+        set.add(node);
         while (!queue.isEmpty()) {
             Node cur = queue.poll();
-            // 业务代码自己替换
-            System.out.println(cur.value);
+            System.out.println(cur.value);// 替换成自己的业务代码
             for (Node next : cur.nexts) {
-                // map中没有重复才加入
-                if (!map.contains(next)) {
-                    map.add(next);
+                if (!set.contains(next)) {
+                    set.add(next);
                     queue.add(next);
                 }
             }

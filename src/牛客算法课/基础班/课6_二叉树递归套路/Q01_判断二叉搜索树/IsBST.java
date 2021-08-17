@@ -13,55 +13,26 @@ public class IsBST {
             return true;
         }
         Stack<TreeNode> stack = new Stack<>();
-        // 保证测试用例的结果正确，类型用Double
-        double preVal = -Double.MAX_VALUE;
+        double preVal = -Double.MAX_VALUE;// 记录前一个结点的值
         while (!stack.isEmpty() || root != null) {
-            if (root != null) {
+            if (root != null) {// 中序遍历，先存左子树
                 stack.push(root);
                 root = root.left;
-            } else {
+            } else {// 右子树取出，必须>左子树，否则不是BST
                 root = stack.pop();
-                // 当前节点值肯定比它孩子节点小，否则就不是BST
-                if (root.val <= preVal) {
+                if (root.val <= preVal) { // 右子树<=pre，必不是BST
                     return false;
                 }
-                // 如果满足BST，更新preVal
-                preVal = root.val;
+                preVal = root.val;// 否则，更新pre
                 root = root.right;
             }
         }
         return true;
     }
 
-    // 方法2：递归法，使用list存中序遍历结果
-    public static boolean isValidBST2(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-        LinkedList<TreeNode> list = new LinkedList<>();
-        // 递归完成中序遍历，list存中序遍历结果
-        inOrder(root, list);
-        Double preVal = -Double.MAX_VALUE;
-        for (TreeNode node : list) {
-            if (node.val <= preVal) {
-                return false;
-            }
-            preVal = Double.valueOf(node.val);
-        }
-        return true;
-    }
-
-    private static void inOrder(TreeNode root, LinkedList<TreeNode> list) {
-        if (root == null) {
-            return;
-        }
-        inOrder(root.left, list);
-        list.offer(root);
-        inOrder(root.right, list);
-    }
-
-    // 方法三：套用判断平衡二叉树的递归模版
+    // 方法二：套用判断平衡二叉树的递归模版
     class ReturnInfo {
+        // 需要三个信息
         public boolean isBST;
         public int min;
         public int max;
@@ -74,6 +45,7 @@ public class IsBST {
     }
 
     public boolean isValidBST(TreeNode root) {
+
         return process(root).isBST;
     }
 
@@ -85,10 +57,9 @@ public class IsBST {
         }
         ReturnInfo leftInfo = process(node.left);
         ReturnInfo rightInfo = process(node.right);
-        // min和max初始化都为node.val
+        // 后续遍历获取左右子树的三个信息进行判断
         int min = node.val;
         int max = node.val;
-        // 获得整颗数的最大值,最小值
         if (leftInfo != null) {
             min = Math.min(min, leftInfo.min);
             max = Math.max(max, leftInfo.max);

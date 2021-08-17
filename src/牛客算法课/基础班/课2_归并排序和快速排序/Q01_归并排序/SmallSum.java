@@ -2,7 +2,8 @@ package 牛客算法课.基础班.课2_归并排序和快速排序.Q01_归并排
 
 public class SmallSum {
 
-    // 小和:某个数左边有多少个比它小的 转为 某个数右边有多少个比它大的
+    // 小和:某个数左边有多少个比它小的数累加起来
+    // 比如[1,3,4,2,5]返回16
     public static int smallSum(int[] arr) {
         if (arr == null || arr.length < 2) {
             return 0;
@@ -20,7 +21,6 @@ public class SmallSum {
         int left = smallSum(arr, l, mid);
         int right = smallSum(arr, mid + 1, r);
         int lastMerge = merge(arr, l, mid, r);
-//        return smallSum(arr, l, mid) + smallSum(arr, mid + 1, r) + merge(arr, l, mid, r);
         return left + right + lastMerge;
     }
 

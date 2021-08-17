@@ -4,34 +4,29 @@ import java.util.Arrays;
 
 public class MaxHeapSort {
 
-    // 波波老师版本的大根堆
+    // 大根堆
     public static void heapSort(int[] arr) {
         if (arr.length < 2) {
             return;
         }
-        // 建立大根堆，先将最小值
-        minUp(arr);
+        // 从最右子树开始建立大根堆，堆顶保持最小值
+        for (int parent = (arr.length - 2) / 2; parent >= 0; parent--) {
+            heapify(arr, parent, arr.length);
+        }
+        // 大根堆依次将堆顶元素放回数组末尾
         for (int i = arr.length - 1; i >= 0; i--) {
             swap(arr, 0, i);
-            minDown(arr, 0, i);
+            heapify(arr, 0, i);
         }
     }
 
-
-    private static void minUp(int[] arr) {
-        for (int parent = (arr.length - 2) / 2; parent >= 0; parent--) {
-            minDown(arr, parent, arr.length);
-        }
-    }
-
-    private static void minDown(int[] arr, int parent, int n) {
+    // 大根堆，堆化操作
+    private static void heapify(int[] arr, int parent, int n) {
         while (2 * parent + 1 < n) {
             int left = 2 * parent + 1;
-            // left指向左右孩子最小值
             if (left + 1 < n && arr[left + 1] < arr[left]) {
                 left++;
             }
-            // 孩子中最小值>=父亲，
             if (arr[parent] <= arr[left]) {
                 break;
             }

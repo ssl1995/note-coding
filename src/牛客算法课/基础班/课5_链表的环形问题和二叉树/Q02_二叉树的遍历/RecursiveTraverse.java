@@ -2,7 +2,7 @@ package 牛客算法课.基础班.课5_链表的环形问题和二叉树.Q02_二
 
 public class RecursiveTraverse {
     // 通用递归序：学习来到当前节点的次数
-    public static void commonRecursiveTraverse(Node head) {
+    public static void commonRecursiveTraverse(TreeNode head) {
         // 递归结束条件
         if (head == null) {
             return;
@@ -15,7 +15,7 @@ public class RecursiveTraverse {
     }
 
     // 先序递归遍历
-    public static void preRecursiveTraverse(Node head) {
+    public static void preRecursiveTraverse(TreeNode head) {
         if (head == null) {
             return;
         }
@@ -25,7 +25,7 @@ public class RecursiveTraverse {
     }
 
     // 中序递归遍历
-    public static void inRecursiveTraverse(Node head) {
+    public static void inRecursiveTraverse(TreeNode head) {
         if (head == null) {
             return;
         }
@@ -35,7 +35,7 @@ public class RecursiveTraverse {
     }
 
     // 后序递归遍历
-    public static void posRecursiveTraverse(Node head) {
+    public static void posRecursiveTraverse(TreeNode head) {
         if (head == null) {
             return;
         }

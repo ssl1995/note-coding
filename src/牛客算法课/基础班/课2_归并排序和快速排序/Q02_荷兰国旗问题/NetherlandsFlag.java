@@ -33,9 +33,9 @@ public class NetherlandsFlag {
         int more = r + 1;
         // 遍历指针遇到大于区域左边界,就停止遍历
         while (l < more) {
-            if (arr[l] < t) {  // 小于,移动less,交换,l后移
+            if (arr[l] < t) {  // 小于,l后移
                 swap(arr, ++less, l++);
-            } else if (arr[l] > t) { // 大于,more移动,l不动,因为l的位置数改变了还要重新比较
+            } else if (arr[l] > t) { // 大于,l不动
                 swap(arr, --more, l);
             } else {
                 // =t,遍历指针后移
@@ -52,7 +52,7 @@ public class NetherlandsFlag {
 
     public static void main(String[] args) {
         int[] arr1 = {3, 1, 1, 3};
-        int[] arr2 = {3, 1, 1, 3};
+        int[] arr2 = {3, 1, 1, 2, 2, 3};
         int t = 2;
         question(arr1, 0, arr1.length - 1, t);
         System.out.println(Arrays.toString(arr1));

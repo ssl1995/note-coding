@@ -4,11 +4,11 @@ import java.util.Stack;
 
 public class NotRecursiveTraverse {
     // 先序非递归遍历(力扣144)
-    public static void preTraverse(Node head) {
+    public static void preTraverse(TreeNode head) {
         if (head == null) {
             return;
         }
-        Stack<Node> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(head);
         while (!stack.isEmpty()) {
             head = stack.pop();
@@ -25,11 +25,11 @@ public class NotRecursiveTraverse {
     }
 
     // 中序非递归遍历(力扣94)
-    public static void inTraverse(Node head) {
+    public static void inTraverse(TreeNode head) {
         if (head == null) {
             return;
         }
-        Stack<Node> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
         while (!stack.isEmpty() || head != null) {
             // 中序非递归遍历先把所有左子树入栈
             if (head != null) {
@@ -46,12 +46,12 @@ public class NotRecursiveTraverse {
     }
 
     // 后序非递归遍历（力扣145）
-    public static void posTraverse(Node head) {
+    public static void posTraverse(TreeNode head) {
         if (head == null) {
             return;
         }
-        Stack<Node> stack = new Stack<>();// 收集栈:存头右左
-        Stack<Node> temp = new Stack<>();// 辅助栈:存收集栈每次的出栈
+        Stack<TreeNode> stack = new Stack<>();// 收集栈:存头右左
+        Stack<TreeNode> temp = new Stack<>();// 辅助栈:存收集栈每次的出栈
         stack.push(head);
         while (!stack.isEmpty()) {
             // 辅助栈每次收集收集栈的出栈元素

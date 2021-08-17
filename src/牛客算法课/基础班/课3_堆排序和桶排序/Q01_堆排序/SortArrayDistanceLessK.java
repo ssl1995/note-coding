@@ -9,13 +9,12 @@ public class SortArrayDistanceLessK {
         请选择一个合适的 排序算法针对这个数据进行排序
      */
     public static void sortedArrDistanceLessK(int[] arr, int k) {
-        // 默认小根堆
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        // 大根堆
-        // PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();// 无参默认小根堆
+        // 前k个元素放入小根堆
         for (int i = 0; i < Math.min(arr.length, k); i++) {
             minHeap.add(arr[i]);
         }
+        // 从第k+1个元素开始放入小根堆同时，出堆顶重新排序入原数组
         int index = 0;
         for (int i = k; i < arr.length; i++) {
             minHeap.add(arr[i]);
