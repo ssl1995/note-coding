@@ -1,25 +1,9 @@
-package 牛客算法课.基础班提升.课6_动态规划1.Q02_最小货币数;
+package 牛客算法课.基础班提升.课6_暴力递归到动态规划.Q02_换钱的最少次数;
 
 public class CoinsMin {
 
-    // Q：给定数组arr，arr中所有的值都为正数且不重复。每个值代表一种面值的货币，每种面值的货币可以使用任意张，
-    // 再给定一个整数aim，代表要找的钱数，求组成 aim 的最少货币数?
-    public static int minCoins0(int[] arr, int aim) {
-        return fun(arr, 0, 0, aim);
-    }
-
-    // arr和aim是固定参数
-    // index:arr在index..之后自由选择硬币,在这之前获得了pre这么多的钱
-    // 返回达到aim的方法数
-    private static int fun(int[] arr, int index, int pre, int aim) {
-        // base case:index越过数组末尾,如果pre=aim,就获得一种方法数
-        if (index == arr.length) {
-            return pre == aim ? 1 : 0;
-        }
-        return fun(arr, index + 1, pre, aim) + fun(arr, index + 1, pre + arr[index], aim);
-    }
-
-
+    // Q：给定一个整数aim(正数不重复)，代表要找的钱数，求组成 aim 的最少货币数?
+    // 法1：暴力递归
     public static int minCoins1(int[] arr, int aim) {
         if (arr == null || arr.length == 0 || aim < 0) {
             return -1;
@@ -31,10 +15,7 @@ public class CoinsMin {
     // 如果返回-1说明自由使用arr[i..N-1]面值的情况下，无论如何也无法找零rest
     // 如果返回不是-1，代表自由使用arr[i..N-1]面值的情况下，找零rest需要的最少张数
     public static int process(int[] arr, int i, int rest) {
-        // base case：
-        // 已经没有面值能够考虑了
-        // 如果此时剩余的钱为0，返回0张
-        // 如果此时剩余的钱不是0，返回-1
+        // base case：i来到len，rest剩余钱为0返回0代表成功，返回-1代表失败
         if (i == arr.length) {
             return rest == 0 ? 0 : -1;
         }
@@ -42,16 +23,15 @@ public class CoinsMin {
         int res = -1;
         // 依次尝试使用当前面值(arr[i])0张、1张、k张，但不能超过rest
         for (int k = 0; k * arr[i] <= rest; k++) {
-            // 使用了k张arr[i]，剩下的钱为rest - k * arr[i]
-            // 交给剩下的面值去搞定(arr[i+1..N-1])
-            int next = process(arr, i + 1, rest - k * arr[i]);
-            if (next != -1) { // 说明这个后续过程有效
+            int next = process(arr, i + 1, rest - k * arr[i]);// 使用了k张arr[i]，剩下的钱为rest - k * arr[i]
+            if (next != -1) { // next有效：返回非-1
                 res = res == -1 ? next + k : Math.min(res, next + k);
             }
         }
         return res;
     }
 
+    // 法2：动态规划
     public static int minCoins2(int[] arr, int aim) {
         if (arr == null || arr.length == 0 || aim < 0) {
             return -1;
@@ -82,26 +62,11 @@ public class CoinsMin {
         return dp[0][aim];
     }
 
-    // for test
-    public static int[] generateRandomArray(int len, int max) {
-        int[] arr = new int[(int) (Math.random() * len) + 1];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) (Math.random() * max) + 1;
-        }
-        return arr;
-    }
 
     public static void main(String[] args) {
-        int len = 10;
-        int max = 10;
-        int testTime = 10000;
-        for (int i = 0; i < testTime; i++) {
-            int[] arr = generateRandomArray(len, max);
-            int aim = (int) (Math.random() * 3 * max) + max;
-            if (minCoins1(arr, aim) != minCoins2(arr, aim)) {
-                System.out.println("ooops!");
-                break;
-            }
-        }
+        int[] arr = {5, 2, 3};
+        int aim = 20;
+        System.out.println(minCoins1(arr, aim));
+        System.out.println(minCoins2(arr, aim));
     }
 }

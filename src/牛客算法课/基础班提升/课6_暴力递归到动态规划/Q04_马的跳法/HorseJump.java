@@ -1,4 +1,4 @@
-package 牛客算法课.基础班提升.课7_动态规划2.Q02_马的跳法;
+package 牛客算法课.基础班提升.课6_暴力递归到动态规划.Q04_马的跳法;
 
 public class HorseJump {
 
@@ -35,7 +35,7 @@ public class HorseJump {
         if (x < 0 || x > 8 || y < 0 || y > 9 || step < 0) {
             return 0;
         }
-        // 条件是横坐标9条线,纵坐标10条线
+        // 可变参数有3个：行9，竖10，步数step+1
         int[][][] dp = new int[9][10][step + 1];
         // baseCase:从（0，0）到0层只有一种方法
         dp[0][0][0] = 1;

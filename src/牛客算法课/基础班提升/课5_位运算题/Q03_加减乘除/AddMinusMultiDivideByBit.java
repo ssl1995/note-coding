@@ -1,4 +1,4 @@
-package 牛客算法课.基础班提升.课5_大数据和位运算.Q03_加减乘除;
+package 牛客算法课.基础班提升.课5_位运算题.Q03_加减乘除;
 
 public class AddMinusMultiDivideByBit {
     // Q:不能使用算术运算符，分别实现a和b的加、减、乘、除,不用考虑溢出
@@ -6,24 +6,22 @@ public class AddMinusMultiDivideByBit {
     // 加法:无进位相加(^)+进位的结果(&<<1)
     public static int add(int a, int b) {
         int sum = a;
-        while (b != 0) {// 当进位为0时,返回此时的sum
+        while (b != 0) {
             sum = a ^ b;// sum:记录^的结果
-            b = (a & b) << 1;// b:进位的结果
-            // 下一轮 a=sum
+            b = (a & b) << 1;// b:进位的结果，进位信息需要左移才能相加
             a = sum;
         }
         return sum;
     }
 
 
-    // 减法:a+(b的相反数)
+    // 减法:a-b=a+(-b)
     public static int minus(int a, int b) {
         return add(a, negNum(b));
     }
 
-    // 获得一个数相反数
+    // 获得一个数相反数:取反+1
     public static int negNum(int n) {
-        // 取反+1=该数的相反数
         return add(~n, 1);
     }
 

@@ -19,6 +19,5 @@ public class BitMap {
         arr[numIndex] = arr[numIndex] | (1 << bitIndex);
         // 把i位状态改成0: 将改成1取反~
         arr[numIndex] = arr[numIndex] | ~(1 << bitIndex);
-
     }
 }

@@ -8,14 +8,13 @@ public class KMP {
         if (s == null || m == null || m.length() < 1 || s.length() < m.length()) {
             return -1;
         }
-        char[] str1 = s.toCharArray();
-        char[] str2 = m.toCharArray();
+        char[] cs1 = s.toCharArray();
+        char[] cs2 = m.toCharArray();
         int i1 = 0;
         int i2 = 0;
-        // 获得待匹配str2的next数组
-        int[] next = getNextArray(str2);
-        while (i1 < str1.length && i2 < str2.length) {
-            if (str1[i1] == str2[i2]) {// i1与i2都匹配成功，与暴力法一样都后移指针
+        int[] next = getNextArray(cs2);// 获得待匹配串的next数组
+        while (i1 < cs1.length && i2 < cs2.length) {
+            if (cs1[i1] == cs2[i2]) {// i1与i2都匹配成功，与暴力法一样都后移指针
                 i1++;
                 i2++;
             } else if (next[i2] == -1) {// m串的遍历指针来到next[i2]=-1的位置，表示无法加速匹配，只能暴力移动i1
@@ -24,23 +23,19 @@ public class KMP {
                 i2 = next[i2];
             }
         }
-        // while结束,i1或者i2越界
-        // s1:abab,i1越界,匹配失败
-        // s2: bab,i2越界,代表匹配完成(i1,i2是同时移动的),匹配的起始位置=i1-i2
-        return i2 == str2.length ? i1 - i2 : -1;
+        // 匹配串指针i2来到len2，代表匹配成功，匹配串在原串中的起始位置为i1-i2；否则失败返回-1
+        return i2 == cs2.length ? i1 - i2 : -1;
     }
 
-    // 获得match串的next数组
+    // next数组：每个位置前字符串的前后缀最大匹配长度
     public static int[] getNextArray(char[] match) {
         // 长度为1的数组,前面没有元素,规定next值为-1
         if (match.length == 1) {
             return new int[]{-1};
         }
         int[] next = new int[match.length];
-        // 第一个位置前面没有元素，规定为-1
-        next[0] = -1;
-        // 第二个位置前面只有0位置的元素,由于任何子串的后缀不能包括第一个字符，规定为0
-        next[1] = 0;
+        next[0] = -1; // 第一个位置前面没有元素，规定为-1
+        next[1] = 0;// 第二个位置前面1个元素，匹配个数为1
         int i = 2;// 遍历指针从第3个元素开始
         // cn两个含义:
         // 1.拿哪个位置的字符跟i-1比,由于i初始化2,i-1是1,所以cn=0
@@ -64,6 +59,6 @@ public class KMP {
         String match = "ababa";
         // next = [-1, 0, 0, 1, 2]
         // System.out.println(Arrays.toString(getNextArray(match.toCharArray())));
-        System.out.println(getIndexOf(str, match));// 返回完全开始匹配的索引
+        System.out.println(getIndexOf(str, match));// 返回匹配串在str中开始的位置
     }
 }

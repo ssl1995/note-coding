@@ -4,20 +4,24 @@ import java.util.Arrays;
 
 public class BubbleSort {
 
-    public static void bubbleSort(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-        for (int i = arr.length - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
+    private static void bubbleSort(int[] arr) {
+        // i是冒泡次数:n个数最多需要比较冒泡n-1次
+        for (int i = 0; i < arr.length - 1; i++) {
+            boolean isSwap = false;
+            // 从前往后冒泡比较
+            for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
                     swap(arr, j, j + 1);
+                    isSwap = true;
                 }
+            }
+            if (!isSwap) {
+                break;
             }
         }
     }
 
-    public static void swap1(int[] arr, int i, int j) {
+    private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
@@ -25,7 +29,7 @@ public class BubbleSort {
 
     // 异或完成交换,缺点:待交换的两个数,必须为独立的两个内存空间
     // 否则,如果交换数组中同一个位置的数,由于n^n=0,就会把这第一个数抹成0
-    public static void swap(int[] arr, int i, int j) {
+    public static void swap1(int[] arr, int i, int j) {
         arr[i] = arr[i] ^ arr[j];
         arr[j] = arr[i] ^ arr[j];
         arr[i] = arr[i] ^ arr[j];

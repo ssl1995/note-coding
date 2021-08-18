@@ -1,4 +1,4 @@
-package 牛客算法课.基础班提升.课7_动态规划2.Q01_纸牌先后手;
+package 牛客算法课.基础班提升.课6_暴力递归到动态规划.Q03_纸牌先后手;
 
 public class CardsInLine {
 

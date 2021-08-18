@@ -5,8 +5,8 @@ import java.util.HashMap;
 public class RandomPool {
 
     public static class Pool<K> {
-        private HashMap<K, Integer> map1;// keyIndexMap
-        private HashMap<Integer, K> map2;// indexKeyMap
+        private HashMap<K, Integer> map1;
+        private HashMap<Integer, K> map2;
         private int size;
 
         public Pool() {
@@ -22,19 +22,18 @@ public class RandomPool {
             }
         }
 
+
         public void delete(K key) {
             if (this.map1.containsKey(key)) {
-                // 待删除元素在map1中的key和value
-                int deleteIndex = this.map1.get(key);
-                // map2中获取最后一个元素的key和value
-                int lastIndex = --this.size;
-                K lastKey = this.map2.get(lastIndex);
-                // 末尾元素代替待删除元素的map1和map2
-                this.map1.put(lastKey, deleteIndex);
-                this.map2.put(deleteIndex, lastKey);
-                // 删除元素
+                int value = this.map1.get(key);
+                int lastSize = --this.size;// 池子最后一个元素
+                K lastKey = this.map2.get(lastSize);
+                // map1更新末尾行、map2更新value行
+                this.map1.put(lastKey, value);
+                this.map2.put(value, lastKey);
+                // map1删除key行、map2删除末尾行
                 this.map1.remove(key);
-                this.map2.remove(lastIndex);
+                this.map2.remove(lastSize);
             }
         }
 
@@ -46,20 +45,6 @@ public class RandomPool {
             int randomIndex = (int) (Math.random() * this.size);
             return this.map2.get(randomIndex);
         }
-
-    }
-
-    public static void main(String[] args) {
-        Pool<String> pool = new Pool<String>();
-        pool.insert("zuo");
-        pool.insert("cheng");
-        pool.insert("yun");
-        System.out.println(pool.getRandom());
-        System.out.println(pool.getRandom());
-        System.out.println(pool.getRandom());
-        System.out.println(pool.getRandom());
-        System.out.println(pool.getRandom());
-        System.out.println(pool.getRandom());
 
     }
 

@@ -30,6 +30,4 @@ public class Q1_LowestLexicography {
         System.out.println(lowestString(strs2));
 
     }
-
-
 }

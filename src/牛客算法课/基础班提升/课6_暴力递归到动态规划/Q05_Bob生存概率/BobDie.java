@@ -1,16 +1,12 @@
-package 牛客算法课.基础班提升.课7_动态规划2.Q03_Bob生存概率;
+package 牛客算法课.基础班提升.课6_暴力递归到动态规划.Q05_Bob生存概率;
 
 public class BobDie {
 
     // Q:区域n*m,Bob在(i,j)走k步,还在n*m区域内的概率
     public static String bob1(int N, int M, int i, int j, int K) {
-        // 走k步,四个方向的总区域:4^k
-        long all = (long) Math.pow(4, K);
-        // Bob存活的概率
-        long live = process(N, M, i, j, K);
-        // 两者的最大公约数
+        long all = (long) Math.pow(4, K);// 走的总面积
+        long live = process(N, M, i, j, K);// 递归求存活的方法数
         long gcd = gcd(all, live);
-        // 返回生存概率
         return (live / gcd) + "/" + (all / gcd);
     }
 
@@ -31,12 +27,12 @@ public class BobDie {
         return live;
     }
 
-    // 获得某两个数的最大公约数
+    // 辗转相除法，求最大公约数
     public static long gcd(long m, long n) {
         return n == 0 ? m : gcd(n, m % n);
     }
 
-    // 递归改成动态规划
+    // 递归改成动态规划，这道题的动态规划比递归复杂多啦，不学了
     public static String bob2(int N, int M, int i, int j, int K) {
         int[][][] dp = new int[N + 2][M + 2][K + 1];
         for (int row = 1; row <= N; row++) {
@@ -66,8 +62,9 @@ public class BobDie {
         int i = 3;
         int j = 2;
         int K = 5;
-        System.out.println(bob1(N, M, i, j, K));
-        System.out.println(bob2(N, M, i, j, K));
+        System.out.println(gcd(12, 16));
+//        System.out.println(bob1(N, M, i, j, K));
+//        System.out.println(bob2(N, M, i, j, K));
     }
 
 }

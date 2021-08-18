@@ -51,40 +51,6 @@ public class MorrisTraversal {
         }
     }
 
-    // Q:利用Morris方法判断是否是搜索二叉树
-    public boolean isValidBST(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-        TreeNode cur = root;
-        TreeNode mostRight = null;
-        // 力扣边界:这里使用int会越界,所以使用Long的最小值
-        long preValue = Long.MIN_VALUE;
-        while (cur != null) {
-            mostRight = cur.left;
-            if (mostRight != null) {
-                while (mostRight.right != null && mostRight.right != cur) {
-                    mostRight = mostRight.right;
-                }
-                if (mostRight.right == null) {
-                    mostRight.right = cur;
-                    cur = cur.left;
-                    continue;
-                } else {
-                    mostRight.right = null;
-                }
-            }
-            // 如果第二次来到的结点值不产生升序,就不是二叉搜索树
-            if (cur.val <= preValue) {
-                return false;
-            }
-            // 否则,更新pre
-            preValue = cur.val;
-
-            cur = cur.right;
-        }
-        return true;
-    }
 
     /*
         先序Morris:自己手动写一个普通m遍历到结果、常规先序遍历的结果,一比对就发现规律
@@ -221,49 +187,54 @@ public class MorrisTraversal {
         return pre;
     }
 
-    // for test -- print tree
-    public static void printTree(Node head) {
-        System.out.println("Binary Tree:");
-        printInOrder(head, 0, "H", 17);
-        System.out.println();
+    // Q:利用Morris方法判断是否是搜索二叉树
+    public boolean isValidBST(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        TreeNode cur = root;
+        TreeNode mostRight = null;
+        // 力扣边界:这里使用int会越界,所以使用Long的最小值
+        long preValue = Long.MIN_VALUE;
+        while (cur != null) {
+            mostRight = cur.left;
+            if (mostRight != null) {
+                while (mostRight.right != null && mostRight.right != cur) {
+                    mostRight = mostRight.right;
+                }
+                if (mostRight.right == null) {
+                    mostRight.right = cur;
+                    cur = cur.left;
+                    continue;
+                } else {
+                    mostRight.right = null;
+                }
+            }
+            // 如果第二次来到的结点值不产生升序,就不是二叉搜索树
+            if (cur.val <= preValue) {
+                return false;
+            }
+            // 否则,更新pre
+            preValue = cur.val;
+
+            cur = cur.right;
+        }
+        return true;
     }
 
-    public static void printInOrder(Node head, int height, String to, int len) {
-        if (head == null) {
-            return;
-        }
-        printInOrder(head.right, height + 1, "v", len);
-        String val = to + head.value + to;
-        int lenM = val.length();
-        int lenL = (len - lenM) / 2;
-        int lenR = len - lenM - lenL;
-        val = getSpace(lenL) + val + getSpace(lenR);
-        System.out.println(getSpace(height * len) + val);
-        printInOrder(head.left, height + 1, "^", len);
-    }
-
-    public static String getSpace(int num) {
-        String space = " ";
-        StringBuffer buf = new StringBuffer("");
-        for (int i = 0; i < num; i++) {
-            buf.append(space);
-        }
-        return buf.toString();
-    }
 
     public static void main(String[] args) {
-        Node head = new Node(4);
+        Node head = new Node(1);
         head.left = new Node(2);
-        head.right = new Node(6);
-        head.left.left = new Node(1);
-        head.left.right = new Node(3);
-        head.right.left = new Node(5);
+        head.right = new Node(3);
+        head.left.left = new Node(4);
+        head.left.right = new Node(5);
+        head.right.left = new Node(6);
         head.right.right = new Node(7);
-        printTree(head);
+        morris(head);
         morrisIn(head);
         morrisPre(head);
         morrisPos(head);
-        printTree(head);
 
     }
 
