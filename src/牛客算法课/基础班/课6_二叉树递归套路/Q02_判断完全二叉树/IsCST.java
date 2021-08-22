@@ -22,7 +22,7 @@ public class IsCST {
             leftChild = head.left;
             rightChild = head.right;
             // 1.当前节点有右孩子无左孩子，返回false
-            // 2.叶子节点的左孩子非空，必不是完全二叉树
+            // 2.如果是叶子节点，其左右两个孩子如果存在，返回false
             if (leftChild == null && rightChild != null || isLeafNode && leftChild != null) {
                 return false;
             }

@@ -18,7 +18,7 @@ public class isFullBT {
     // 判断是否是完全二叉树
     public boolean isFullBT(TreeNode root) {
         ReturnInfo info = process(root);
-        // 满二叉树：总节点数=2^高度+1
+        // 满二叉树：总节点数=2^高度-1
         return info.nodes == ((int) Math.pow(2, info.height) - 1);
     }
 

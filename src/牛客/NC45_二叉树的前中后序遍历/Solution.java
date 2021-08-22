@@ -19,6 +19,7 @@ public class Solution {
         return res;
     }
 
+    // 二叉树前序遍历
     private int[] preOrder(TreeNode root) {
         if (root == null) {
             return new int[]{};
@@ -40,6 +41,7 @@ public class Solution {
         return list2IntArray(list);
     }
 
+    // 二叉树中序遍历
     private int[] inOrder(TreeNode root) {
         if (root == null) {
             return new int[]{};
@@ -47,10 +49,11 @@ public class Solution {
         LinkedList<TreeNode> stack = new LinkedList<>();
         ArrayList<Integer> list = new ArrayList<>();
         while (!stack.isEmpty() || root != null) {
-            if (root != null) {
+            if (root != null) {// 遍历指针不为null，就让一直push+左移
                 stack.push(root);
                 root = root.left;
             } else {
+                // 遍历指针来到最左结点的孩子节点为null，出栈，往右孩子节点移动，记录在中序遍历结果值
                 root = stack.pop();
                 list.add(root.val);
                 root = root.right;
@@ -59,6 +62,7 @@ public class Solution {
         return list2IntArray(list);
     }
 
+    // 二叉树的后序遍历
     private int[] afterOrder(TreeNode root) {
         if (root == null) {
             return new int[]{};
@@ -69,7 +73,7 @@ public class Solution {
         stack.push(root);
         while (!stack.isEmpty()) {
             root = stack.pop();
-            temp.push(root);
+            temp.push(root);// 辅助栈入出栈元素
             if (root.left != null) {
                 stack.push(root.left);
             }
@@ -77,7 +81,7 @@ public class Solution {
                 stack.push(root.right);
             }
         }
-        while (!temp.isEmpty()) {
+        while (!temp.isEmpty()) {// 清空辅助栈，得到结果集
             list.add(temp.pop().val);
         }
         return list2IntArray(list);

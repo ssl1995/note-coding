@@ -8,12 +8,10 @@ public class InsertionSort {
         for (int i = 1; i < arr.length; i++) {
             int temp = arr[i];
             int j;
-            for (j = i; j - 1 >= 0 && temp < arr[j - 1]; j--) {
-                // 前面的数比temp都大,每个数都依次往后移
-                arr[j] = arr[j - 1];
+            for (j = i; j - 1 >= 0 && arr[j - 1] > temp; j--) {// 用临时数temp饥饿arr[j-1]比较
+                arr[j] = arr[j - 1];// 后移
             }
-            // 空出的位置放temp
-            arr[j] = temp;
+            arr[j] = temp;// 空出的位置放temp
         }
     }
 

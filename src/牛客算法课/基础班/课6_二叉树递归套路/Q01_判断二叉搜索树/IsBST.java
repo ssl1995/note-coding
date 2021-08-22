@@ -18,12 +18,12 @@ public class IsBST {
             if (root != null) {// 中序遍历，先存左子树
                 stack.push(root);
                 root = root.left;
-            } else {// 右子树取出，必须>左子树，否则不是BST
+            } else {// 最左边不能再走了，就出栈
                 root = stack.pop();
-                if (root.val <= preVal) { // 右子树<=pre，必不是BST
+                if (root.val <= preVal) {// 遍历到的结点值必须>pre才是BST，否则不是
                     return false;
                 }
-                preVal = root.val;// 否则，更新pre
+                preVal = root.val;
                 root = root.right;
             }
         }
