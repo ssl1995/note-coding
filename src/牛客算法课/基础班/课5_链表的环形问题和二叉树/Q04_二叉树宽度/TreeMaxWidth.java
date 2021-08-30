@@ -9,7 +9,7 @@ public class TreeMaxWidth {
     private int maxWidth;
     private Map<Integer, Integer> map;// <深度，该层最左结点>
 
-
+    // LC662 二叉树最大宽度：同一层中最大宽度
     public int widthOfBinaryTree(TreeNode root) {
         maxWidth = 0;
         map = new HashMap<>();

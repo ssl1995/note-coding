@@ -12,8 +12,8 @@ public class PintAllFolds {
         if (level > n) {
             return;
         }
-        printProcess(level + 1, n, true);// 所有的左子树是凹(ture)
-        System.out.print(down ? "凹 " : "凸 ");
+        printProcess(level + 1, n, true);
+        System.out.print(down ? "凹 " : "凸 ");// 中序遍历，第二次来到=所有的左子树是凹(ture)
         printProcess(level + 1, n, false);// 所有的右子树第一个结点都是凸(false)
     }
 

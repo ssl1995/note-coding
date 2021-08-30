@@ -56,7 +56,7 @@ public class Solution {
         if (get(key) != -1) {// key存在过，更新value即可
             map.get(key).value = value;
         } else {
-            if (map.size() == k) {
+            if (map.size() == k) {// key不存在，先判断是否达到最大容量
                 // 末尾元素的key 是待删除的节点key
                 int delete = tail.pre.key;
                 // 倒数第二个节点指向tail
@@ -74,7 +74,7 @@ public class Solution {
 
     // get:获得一个结点的value，每次获取的结点放到头指针后面;没有找到，返回-1
     private int get(int key) {
-        if (map.containsKey(key)) {
+        if (map.containsKey(key)) {// 存在这个结点，就获取它，然后执行删除
             Node node = map.get(key);
             // 双向链表中删除一个结点
             node.pre.next = node.next;
