@@ -11,7 +11,8 @@ public class Solution {
             return Integer.MAX_VALUE;
         }
         int negative = 2;
-        // 整数边界小于负数，a和b转换为负数相除
+        // int类型：-2^31,2^31-1
+        // 由于int类型负数范围大于整数范围，如果a,b>0转化为负数
         if (a > 0) {
             negative--;
             a = -a;
@@ -27,16 +28,16 @@ public class Solution {
     // 减法实现两个负数的除法
     private int divideCore(int a, int b) {
         int res = 0;
-        while (a <= b) {
-            int value = b;// value为b的1倍、2倍、3倍
+        while (a <= b) {// a=-15,b=-2.a<=b开始循环
+            int value = b;// value为b的2倍、4倍、8倍
             int quotient = 1;// 商=1,2,3,4,5...
-            // -2^30=0xc0000000,value不能越界
+            // -2^30=0xc0000000,value不能超过它，否则负数减法会越界
             while (value >= 0xc0000000 && a <= value + value) {
                 quotient += quotient;
                 value += value;
             }
             res += quotient;
-            a -= value;
+            a -= value;// 两个负数也是相减
         }
         return res;
     }

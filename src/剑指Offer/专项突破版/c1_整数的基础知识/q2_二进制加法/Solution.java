@@ -7,6 +7,7 @@ package 剑指Offer.专项突破版.c1_整数的基础知识.q2_二进制加法;
 public class Solution {
     public String addBinary(String a, String b) {
         StringBuilder sb = new StringBuilder();
+        // 从最低位开始append，所以返回值最后需要反转才能返回
         int i = a.length() - 1;
         int j = b.length() - 1;
         int carry = 0;
