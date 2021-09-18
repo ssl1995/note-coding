@@ -90,6 +90,16 @@ public class WorkerGroupUtils {
     }
 
 
+    public static List<List<Worker>> getAllManGroupHouse() {
+        int total = manWorkers.size();
+        List<List<Worker>> allManGroupHouse = new ArrayList<>();
+        for (int i = 0; i < total / 2; i++) {
+            allManGroupHouse.add(getOneManGroup());
+        }
+        return allManGroupHouse;
+    }
+
+
     /**
      * 获取一组男生分房的集合
      *
