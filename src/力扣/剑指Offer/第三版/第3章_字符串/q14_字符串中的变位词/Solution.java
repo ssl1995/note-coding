@@ -29,6 +29,11 @@ public class Solution {
         return false;
     }
 
+    /**
+     * 判断数组元素是否全为0
+     * @param counts
+     * @return 布尔值
+     */
     private boolean areAllZero(int[] counts) {
         for (int count : counts) {
             if (count != 0) {
