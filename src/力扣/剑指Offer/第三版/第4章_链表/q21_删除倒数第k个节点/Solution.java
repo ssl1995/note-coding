@@ -1,17 +1,23 @@
-package 力扣.刷题.LC19_删除链表的倒数第N个结点;
+package 力扣.剑指Offer.第三版.第4章_链表.q21_删除倒数第k个节点;
 
 import 力扣.剑指Offer.utils.ListNode;
 
+/**
+ * @author songshenglin
+ * @date 2021/9/21 10:40
+ * @description
+ */
 public class Solution {
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(-1);
+        ListNode dummy = new ListNode(0);
         dummy.next = head;
 
         ListNode fast = head;
         ListNode slow = dummy;
-        // fast先走k步
+        // fast先走n步
         while (n > 0) {
-            // fast穿过末尾节点,返回null
+            // fast==null，说明n过大，返回null
             if (fast == null) {
                 return null;
             }
@@ -20,13 +26,13 @@ public class Solution {
         }
         // 由于slow指向dummy,所以fast要多走一步到达null，才能让slow到达待删除结点前一个位置
         while (fast != null) {
-            slow = slow.next;
             fast = fast.next;
+            slow = slow.next;
         }
-        // 删除倒数第k个节点
+
         slow.next = slow.next.next;
+
+        // 返回头结点
         return dummy.next;
     }
-
-
 }
