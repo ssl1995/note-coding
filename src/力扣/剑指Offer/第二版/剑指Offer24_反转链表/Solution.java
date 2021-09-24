@@ -7,7 +7,7 @@ public class Solution {
     // 法1:迭代法
     public ListNode reverseList1(ListNode head) {
         ListNode cur = head;
-        // pre只是记录cur的前一个结点,不会使用到任何next结点
+        // pre = 待反转结点的前一个结点，最后返回它
         ListNode pre = null;
         while (cur != null) {
             // 一定是先记录cur后一个节点

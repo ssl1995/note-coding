@@ -6,6 +6,7 @@ public class Solution {
 
     public ListNode ReverseList(ListNode head) {
         ListNode cur = head;
+        // pre = 待反转结点的前一个结点，最后返回它
         ListNode pre = null;
         while (cur != null) {
             ListNode next = cur.next;
