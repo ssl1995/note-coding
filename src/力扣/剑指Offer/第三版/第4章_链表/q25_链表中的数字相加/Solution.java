@@ -5,26 +5,38 @@ import 力扣.剑指Offer.utils.ListNode;
 /**
  * @author SongShengLin
  * @date 2021/9/23 9:33 上午
- * @description
+ * @description 链表中的两数相加
  */
 public class Solution {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         l1 = reverseList(l1);
         l2 = reverseList(l2);
-        return null;
+        ListNode reversedHead = addReversed(l1, l2);
+        return reverseList(reversedHead);
     }
 
     private ListNode addReversed(ListNode head1, ListNode head2) {
         ListNode dummy = new ListNode(0);
         ListNode sumNode = dummy;
         int carry = 0;
+
         while (head1 != null || head2 != null) {
             int sum = (head1 == null ? 0 : head1.val) + (head2 == null ? 0 : head2.val) + carry;
             carry = sum >= 10 ? 1 : 0;
             sum = sum >= 10 ? sum - 10 : sum;
+
+            sumNode.next = new ListNode(sum);
+            sumNode = sumNode.next;
+
+            head1 = head1 == null ? null : head1.next;
+            head2 = head2 == null ? null : head2.next;
         }
-        return null;
+        // 最后结点判断是否还有进位值
+        if (carry > 0) {
+            sumNode.next = new ListNode(carry);
+        }
+        return dummy.next;
     }
 
     private ListNode reverseList(ListNode head) {
