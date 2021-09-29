@@ -23,7 +23,7 @@ public class NumMatrix {
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
         // 原：[r2][c2]-[r1-1][c2]-[r2][c1-1]+[r1-1][c1-1]，多减了一个左上角的区域，最后要加上来
-        // 转换成加了一行一列的sums，需要全部坐+1
+        // 转换成加了一行一列的sums，需要全部+1
         return sums[row2 + 1][col2 + 1] - sums[row1][col2 + 1] - sums[row2 + 1][col1] + sums[row1][col1];
     }
 
