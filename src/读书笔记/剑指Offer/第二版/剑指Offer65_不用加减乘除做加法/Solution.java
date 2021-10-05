@@ -15,4 +15,11 @@ public class Solution {
         return sum;
     }
 
+    public static void main(String[] args) {
+        int a=1;
+        int b=3;
+        Solution solution = new Solution();
+        System.out.println(solution.add(a, b));
+    }
+
 }

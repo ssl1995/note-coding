@@ -5,9 +5,11 @@ package 读书笔记.剑指Offer.第三版.第1章_整数的基础知识.q2_二�
  * @date 2021/9/8
  */
 public class Solution {
+    // 二进制加法：a=11,b=10,res=101
     public String addBinary(String a, String b) {
+        // sb从最低位开始append，所以返回值最后需要反转才能返回
         StringBuilder sb = new StringBuilder();
-        // 从最低位开始append，所以返回值最后需要反转才能返回
+        // 模仿十进制加法，从末尾开始计算
         int i = a.length() - 1;
         int j = b.length() - 1;
         int carry = 0;
@@ -22,7 +24,7 @@ public class Solution {
         if (carry == 1) {// 最高位是否产生进位
             sb.append(1);
         }
-        // 最后要反转回去
+        // sb从最低位开始append，所以返回值最后需要反转才能返回
         return sb.reverse().toString();
     }
 }

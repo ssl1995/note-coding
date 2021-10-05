@@ -81,26 +81,28 @@ public class AddMinusMultiDivideByBit {
     }
 
     public static void main(String[] args) {
-        int a = (int) (Math.random() * 100000) - 50000;
-        int b = (int) (Math.random() * 100000) - 50000;
-        System.out.println("a = " + a + ", b = " + b);
-        System.out.println(add(a, b));
-        System.out.println(a + b);
-        System.out.println("=========");
-        System.out.println(minus(a, b));
-        System.out.println(a - b);
-        System.out.println("=========");
-        System.out.println(multi(a, b));
-        System.out.println(a * b);
-        System.out.println("=========");
-        System.out.println(divide(a, b));
-        System.out.println(a / b);
-        System.out.println("=========");
-
-        a = Integer.MIN_VALUE;
-        b = 32;
-        System.out.println(divide(a, b));
-        System.out.println(a / b);
+//        int a = (int) (Math.random() * 100000) - 50000;
+//        int b = (int) (Math.random() * 100000) - 50000;
+//        System.out.println("a = " + a + ", b = " + b);
+//        System.out.println(add(a, b));
+//        System.out.println(a + b);
+//        System.out.println("=========");
+//        System.out.println(minus(a, b));
+//        System.out.println(a - b);
+//        System.out.println("=========");
+//        System.out.println(multi(a, b));
+//        System.out.println(a * b);
+//        System.out.println("=========");
+//        System.out.println(divide(a, b));
+//        System.out.println(a / b);
+//        System.out.println("=========");
+//
+//        a = Integer.MIN_VALUE;
+//        b = 32;
+//        System.out.println(divide(a, b));
+//        System.out.println(a / b);
+        int a = 1;
+        System.out.println(negNum(a));
     }
 
 }
