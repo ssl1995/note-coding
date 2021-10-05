@@ -1,6 +1,6 @@
 package 力扣.刷题.LC142_环形链表II;
 
-import 力扣.剑指Offer.utils.ListNode;
+import 读书笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
 

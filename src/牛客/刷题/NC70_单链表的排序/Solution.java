@@ -1,6 +1,6 @@
 package 牛客.刷题.NC70_单链表的排序;
 
-import 力扣.剑指Offer.utils.ListNode;
+import 读书笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
 

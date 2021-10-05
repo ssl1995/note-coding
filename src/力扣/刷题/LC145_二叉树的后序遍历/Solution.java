@@ -1,6 +1,6 @@
 package 力扣.刷题.LC145_二叉树的后序遍历;
 
-import 力扣.剑指Offer.utils.TreeNode;
+import 读书笔记.剑指Offer.utils.TreeNode;
 
 import java.util.LinkedList;
 import java.util.List;

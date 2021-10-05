@@ -1,7 +1,7 @@
 package 力扣.刷题.LC21_合并两个有序链表;
 
 
-import 力扣.剑指Offer.utils.ListNode;
+import 读书笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

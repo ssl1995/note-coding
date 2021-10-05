@@ -1,6 +1,6 @@
 package 牛客.刷题.NC8_到叶子节点和为指定值的路径;
 
-import 力扣.剑指Offer.utils.TreeNode;
+import 读书笔记.剑指Offer.utils.TreeNode;
 
 import java.util.ArrayList;
 

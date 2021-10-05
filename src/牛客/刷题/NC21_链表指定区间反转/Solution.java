@@ -1,6 +1,6 @@
 package 牛客.刷题.NC21_链表指定区间反转;
 
-import 力扣.剑指Offer.utils.ListNode;
+import 读书笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
     // 输入：{1,2,3,4,5},2,4

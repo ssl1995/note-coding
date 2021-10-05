@@ -1,6 +1,6 @@
 package 牛客.刷题.NC15_二叉树的层次遍历;
 
-import 力扣.剑指Offer.utils.TreeNode;
+import 读书笔记.剑指Offer.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

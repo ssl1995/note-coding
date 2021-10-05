@@ -1,6 +1,6 @@
 package 牛客.刷题.NC4_判断链表中是否有环;
 
-import 力扣.剑指Offer.utils.ListNode;
+import 读书笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
 
