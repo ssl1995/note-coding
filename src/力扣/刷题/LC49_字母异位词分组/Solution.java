@@ -7,7 +7,8 @@ public class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
         for (String s : strs) {
-            int[] num = new int[26];// num存次数相当于排序
+            // 由于都是英文小写字母，可用数组保存次数 = 相当于不用库函数，自己自定义排序
+            int[] num = new int[26];
             for (int i = 0; i < s.length(); i++) {
                 num[s.charAt(i) - 'a']++;
             }
@@ -18,12 +19,12 @@ public class Solution {
                     sb.append(num[i]);
                 }
             }
-            String key = sb.toString();// 异位词相同的，肯定sb中存的相同
-            List<String> list = map.getOrDefault(key, new ArrayList<>());
-            list.add(s);
-            map.put(key, list);
+
+            String sorted = sb.toString();
+            map.putIfAbsent(sorted, new LinkedList<>());
+            map.get(sorted).add(s);
         }
-        return new ArrayList<>(map.values());
+        return new LinkedList<>(map.values());
     }
 
     public static void main(String[] args) {
