@@ -27,6 +27,9 @@ public class Solution {
         return helper(minuteFlags);
     }
 
+    /**
+     * 获取minuteFlags中最小的时间差值
+     */
     private int helper(boolean[] minuteFlags) {
         int minDiff = minuteFlags.length - 1;
         int first = minuteFlags.length - 1;
