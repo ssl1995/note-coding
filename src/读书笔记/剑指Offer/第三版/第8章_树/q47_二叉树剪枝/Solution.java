@@ -1,4 +1,4 @@
-package 读书笔记.剑指Offer.第三版.第7章_队列.q47_二叉树剪枝;
+package 读书笔记.剑指Offer.第三版.第8章_树.q47_二叉树剪枝;
 
 /**
  * @author SongShengLin
