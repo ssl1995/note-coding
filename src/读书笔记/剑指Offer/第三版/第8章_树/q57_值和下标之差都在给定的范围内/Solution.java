@@ -26,4 +26,21 @@ public class Solution {
         return false;
     }
 
+<<<<<<< HEAD
+=======
+    private int getBucketId(int num, int bucketSize) {
+        return num >= 0 ? num / bucketSize : (num + 1) / bucketSize - 1;
+    }
+
+    public static void main(String[] args) {
+        Solution solution1 = new Solution();
+//        int[] nums = {1, 2, 3, 1};
+        int[] nums = {2147483647, -1, 2147483647};
+//        int k = 3;
+        int k = 1;
+//        int t = 0;
+        int t = 2147483647;
+        System.out.println(solution1.containsNearbyAlmostDuplicate(nums, k, t));
+    }
+>>>>>>> origin/main
 }
