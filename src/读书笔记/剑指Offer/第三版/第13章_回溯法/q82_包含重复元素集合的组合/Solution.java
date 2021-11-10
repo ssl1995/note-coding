@@ -1,4 +1,4 @@
-package 读书笔记.剑指Offer.第三版.第12章_排序.q82_包含重复元素集合的组合;
+package 读书笔记.剑指Offer.第三版.第13章_回溯法.q82_包含重复元素集合的组合;
 
 import java.util.Arrays;
 import java.util.LinkedList;

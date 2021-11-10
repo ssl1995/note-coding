@@ -1,4 +1,4 @@
-package 读书笔记.剑指Offer.第三版.第12章_排序.q81_允许重复选择元素的组合;
+package 读书笔记.剑指Offer.第三版.第13章_回溯法.q81_允许重复选择元素的组合;
 
 import java.util.LinkedList;
 import java.util.List;
