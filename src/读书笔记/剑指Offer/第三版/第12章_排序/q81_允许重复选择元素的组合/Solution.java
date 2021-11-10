@@ -9,7 +9,7 @@ import java.util.List;
  * @description
  */
 public class Solution {
-
+    // 输入没有重复的数字，同一个数字可以在组合中重复出现
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new LinkedList<>();
         LinkedList<Integer> com = new LinkedList<>();
@@ -24,8 +24,9 @@ public class Solution {
             // 选择1：没有选择当前数字，下标+1递归
             helper(nums, target, index + 1, com, res);
 
-            // 选择2：选择当前数字，由于结果集可以有重复数字，所以下标不变递归
+            // 选择2：选择当前数字
             com.add(nums[index]);
+            // 输出可以使用重复数字，所以index不用+1
             helper(nums, target - nums[index], index, com, res);
             // 回到父节点时，清除子集状态
             com.removeLast();
