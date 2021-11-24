@@ -1,6 +1,7 @@
 package 牛客.刷题.NC109_岛屿数量;
 
 public class Solution {
+    // 求所有岛屿的数量
     public int solve(char[][] grid) {
         if (grid == null || grid[0] == null) {
             return 0;

@@ -15,6 +15,7 @@ public class Solution {
         for (int i = 1; i <= target; i++) {
             for (int num : nums) {
                 if (i >= num) {
+                    // 只要和i>=num，就累加所有的次数
                     dp[i] += dp[i - num];
                 }
             }
