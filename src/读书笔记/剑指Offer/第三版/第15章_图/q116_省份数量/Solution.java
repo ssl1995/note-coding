@@ -27,17 +27,6 @@ public class Solution {
     }
 
     /**
-     * 查找一个结点i的根节点
-     */
-    private int findFather(int[] fathers, int i) {
-        if (fathers[i] != i) {
-            // 压缩路径，记录每个结点的根节点
-            fathers[i] = findFather(fathers, fathers[i]);
-        }
-        return fathers[i];
-    }
-
-    /**
      * 合并i和j所在子图
      */
     private boolean union(int[] fathers, int i, int j) {
@@ -51,8 +40,20 @@ public class Solution {
         return false;
     }
 
+    /**
+     * 查找一个结点i的根节点
+     */
+    private int findFather(int[] fathers, int i) {
+        if (fathers[i] != i) {
+            // 压缩路径，记录每个结点的根节点
+            fathers[i] = findFather(fathers, fathers[i]);
+        }
+        return fathers[i];
+    }
+
+
     public static void main(String[] args) {
-        Solution1 solution = new Solution1();
+        Solution solution = new Solution();
         int[][] isConnected = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
         System.out.println(solution.findCircleNum(isConnected));
     }
