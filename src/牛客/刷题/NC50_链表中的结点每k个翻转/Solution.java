@@ -1,6 +1,6 @@
 package 牛客.刷题.NC50_链表中的结点每k个翻转;
 
-import 读书笔记.剑指Offer.utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 public class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {

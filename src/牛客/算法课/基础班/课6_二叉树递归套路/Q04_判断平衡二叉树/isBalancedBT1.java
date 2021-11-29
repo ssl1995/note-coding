@@ -1,6 +1,6 @@
 package 牛客.算法课.基础班.课6_二叉树递归套路.Q04_判断平衡二叉树;
 
-import 读书笔记.剑指Offer.utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 public class isBalancedBT1 {
     public boolean isBalanced(TreeNode root) {

@@ -1,6 +1,6 @@
 package 牛客.刷题.NC33_合并有序链表;
 
-import 读书笔记.剑指Offer.utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 public class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

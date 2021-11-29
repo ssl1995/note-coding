@@ -1,6 +1,6 @@
 package 力扣.刷题.LC876_链表中间节点;
 
-import 读书笔记.剑指Offer.utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 public class Solution {
     // 原题:奇数在中间,偶数在中间靠右

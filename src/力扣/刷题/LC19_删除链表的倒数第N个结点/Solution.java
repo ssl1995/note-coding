@@ -1,6 +1,6 @@
 package 力扣.刷题.LC19_删除链表的倒数第N个结点;
 
-import 读书笔记.剑指Offer.utils.ListNode;
+import 剑指Offer.utils.ListNode;
 
 public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {

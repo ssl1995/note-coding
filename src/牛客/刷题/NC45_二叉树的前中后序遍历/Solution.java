@@ -1,6 +1,6 @@
 package 牛客.刷题.NC45_二叉树的前中后序遍历;
 
-import 读书笔记.剑指Offer.utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

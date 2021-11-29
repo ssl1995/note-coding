@@ -1,6 +1,6 @@
 package 牛客.刷题.NC14_之字型打印二叉树;
 
-import 读书笔记.剑指Offer.utils.TreeNode;
+import 剑指Offer.utils.TreeNode;
 
 import java.util.ArrayList;
 
