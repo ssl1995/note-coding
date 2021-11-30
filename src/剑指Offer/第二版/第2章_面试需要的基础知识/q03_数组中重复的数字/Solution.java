@@ -7,7 +7,8 @@ public class Solution {
     public int findRepeatNumber(int[] nums) {
         int index = 0;
         while (index < nums.length) {
-            // 元素值和坐标对应，遍历指针后移+进行下次循环
+            // 数字范围为0到n-1,重排后，数字i应该放在下标为i的位置上
+            // 如果数字i已经放在下标为i的位置上，说明这个下标是第一个遇到该数字，跳过本次循坏
             if (nums[index] == index) {
                 index++;
                 continue;
@@ -16,7 +17,7 @@ public class Solution {
             // 情况1：第二次来到该位置，就是重复元素
             if (nums[index] == nums[nums[index]]) {
                 return nums[index];
-            } else {// 情况2：归位，让其归位到第一次出现的位置
+            } else {// 情况2：两者还不对应，说明要将数字归位到第一次出现的下标位置上
                 int temp = nums[index];
                 nums[index] = nums[temp];
                 nums[temp] = temp;
@@ -26,7 +27,9 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(1);
+        Solution solution = new Solution();
+        int[] nums = {2, 3, 1, 0, 2, 5, 3};
+        System.out.println(solution.findRepeatNumber(nums));
     }
 
 }
