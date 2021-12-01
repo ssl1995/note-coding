@@ -21,30 +21,32 @@ public class Solution {
         for (int i = 0; i < res.length; i++) {
             res[i] = stack.pop();
         }
-
         return res;
+//        return stack.stream().mapToInt(i -> i).toArray();
     }
 
     // 法2:递归法,先理解辅助栈法,体会递归本质这种先进后出的思想
     public int[] reversePrint1(ListNode head) {
-        // 存放递归逆序后的值
+        // temp存放倒数第一个链表值、倒数第二个链表值...
         List<Integer> temp = new ArrayList<>();
-        // 递归:本质上是一个先进后出的栈,temp中存放了逆序后的val
+        // 递归：每访问到一个结点时，先递归保存它后面的值
         reverse(head, temp);
-        // 将List中的val遍历进一个返回值数组中即可
         int[] res = new int[temp.size()];
         for (int i = 0; i < temp.size(); i++) {
             res[i] = temp.get(i);
         }
         return res;
+//        return temp.stream().mapToInt(i -> i).toArray();
     }
 
+    /**
+     * 每访问到node，用temp保存它后面的值
+     */
     private void reverse(ListNode node, List<Integer> temp) {
         if (node == null) {
             return;
         }
         reverse(node.next, temp);
-        // 下一层递归结束,接受这一层的node.val
         temp.add(node.val);
     }
 }
