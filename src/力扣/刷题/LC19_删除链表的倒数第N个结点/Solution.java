@@ -6,10 +6,10 @@ public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-
+        // 初始化；fast指针在head，slow在head前一个位置dummy
         ListNode fast = head;
         ListNode slow = dummy;
-        // fast先走k步
+        // fast一次走1步，先走k步
         while (n > 0) {
             // fast穿过末尾节点,返回null
             if (fast == null) {

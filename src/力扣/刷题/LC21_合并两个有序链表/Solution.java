@@ -4,6 +4,7 @@ package 力扣.刷题.LC21_合并两个有序链表;
 import 剑指Offer.utils.ListNode;
 
 public class Solution {
+    // 合并两个有序链表
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;

@@ -4,7 +4,7 @@ import 剑指Offer.utils.ListNode;
 
 public class Solution {
 
-    // 法：判断链表是否有环，有环就返回该入环结点
+    // 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回null
     public ListNode detectCycle(ListNode head) {
         if (head == null || head.next == null || head.next.next == null) {
             return null;
@@ -19,13 +19,14 @@ public class Solution {
             fast = fast.next.next;
             slow = slow.next;
         }
-        // fast重新指向头结点
+        // 以上代码=判断链表是否有环，快指针一旦遇到慢指针，说明肯定有环，让快指针重新指向头结点
         fast = head;
         // 快指针走1步,慢指针走1步
         while (fast != slow) {
             fast = fast.next;
             slow = slow.next;
         }
+        // 快慢指针一定会在第一个入环结点相遇,证明找wolai笔记
         return fast;
     }
 }
