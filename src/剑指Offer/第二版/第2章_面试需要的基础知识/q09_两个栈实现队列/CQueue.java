@@ -4,39 +4,29 @@ import java.util.LinkedList;
 
 public class CQueue {
 
-    private LinkedList<Integer> stack1;
-    private LinkedList<Integer> stack2;
+    private final LinkedList<Integer> stack1;
+    private final LinkedList<Integer> stack2;
 
     public CQueue() {
         stack1 = new LinkedList<>();
         stack2 = new LinkedList<>();
     }
 
-
     public void appendTail(int value) {
-        // 添加:先push再倒入popStack
+        // 往队列中添加元素，只用往栈1中添加即可
         stack1.push(value);
-        pushToPop(stack1, stack2);
     }
 
     public int deleteHead() {
-        // 判断两个栈非空才出队
-        if (stack2.isEmpty() && stack1.isEmpty()) {
+        if (stack1.isEmpty() && stack2.isEmpty()) {
             return -1;
         }
-        // 删除:先倒入,再删除
-        pushToPop(stack1, stack2);
-        return stack2.pop();
-
-    }
-
-    // push栈只压入,pop栈只压出
-    private void pushToPop(LinkedList<Integer> pushStack, LinkedList<Integer> popStack) {
-        // 只有pop栈空,才从push栈导入数据进pop栈
-        if (popStack.isEmpty()) {
-            while (!pushStack.isEmpty()) {
-                popStack.push(pushStack.pop());
+        // 队列出队，栈2为空就要往里面倒入元素保证先进先出
+        if (stack2.isEmpty()) {
+            while (!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
             }
         }
+        return stack2.pop();
     }
 }
