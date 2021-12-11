@@ -2,8 +2,16 @@ package 剑指Offer.第二版.第2章_面试需要的基础知识.q12_矩阵中�
 
 public class Solution {
 
+    /**
+     * 判断矩阵中，是否存在一条路径与word相同，该起点可以是矩阵中任意一个结点，但是访问过的结点不能再访问
+     *
+     * @param board 矩阵
+     * @param word  待匹配的单词
+     * @return 是否
+     */
     public boolean exist(char[][] board, String word) {
         char[] words = word.toCharArray();
+        // 从任意一个坐标出发，只有有一个匹配，就返回成功
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (dfs(board, words, i, j, 0)) {
@@ -14,9 +22,12 @@ public class Solution {
         return false;
     }
 
-    // 递归+剪枝+回溯，当前(i,j)如果匹配，index+1
+
+    /**
+     * 从(i,j)结点出发经过index步，是否能匹配word；当前(i,j)如果匹配，index+1
+     */
     private boolean dfs(char[][] board, char[] word, int i, int j, int index) {
-        // 递归失败:越界+匹配失败/剪枝
+        // 递归失败:(i,j)越界或者该字符不匹配
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word[index]) {
             return false;
         }
@@ -24,12 +35,12 @@ public class Solution {
         if (index == word.length - 1) {
             return true;
         }
-        // 剪枝:递归未结束,将当前元素设为空字符,防止后面递归重复访问
+        // 设置一个特殊值，防止重复访问（剪枝）
         board[i][j] = '\0';
         // 四个方向开始递归，记录结果给res
         boolean res = (dfs(board, word, i + 1, j, index + 1) || dfs(board, word, i - 1, j, index + 1)
                 || dfs(board, word, i, j + 1, index + 1) || dfs(board, word, i, j - 1, index + 1));
-        // 回溯:将剪枝原值返回给当前元素
+        // 回溯:将设置的特殊值还原
         board[i][j] = word[index];
         return res;
     }

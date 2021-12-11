@@ -1,27 +1,50 @@
 package 剑指Offer.第二版.第2章_面试需要的基础知识.q14_剪绳子I;
 
+/**
+ * @author SongShengLin
+ * @date 2021/12/11 11:44 PM
+ * @description
+ */
 public class Solution {
-
-    // 将长度为n的绳子等分为m段，使其乘积最大，m、n都是整数，n>1并且m>1，m<=n
-    // 2 <= n <= 58，pow结果不会越界
+    /**
+     * 就n划分为m段(m,n均>1),求划分成m段后，各段乘积最大值
+     * n的取值范围：2 <= n <= 58
+     */
     public int cuttingRope(int n) {
-        // n=2，m最小为2，乘积1*1=1，返回1
-        // n=3，m最小为2，乘积1*2=2，返回2
-        if (n <= 3) {
-            return n - 1;
+        // n=1，2，3，划为至少2段，乘积最大值为1，1，2
+        if (n <= 1) {
+            return n;
         }
-        // 尽可能将绳子n以3等分时，乘积最大
-        // 2 <= n <= 58，乘积结果不会越界
-        int a = n / 3;
-        // 求n三等分后最后一段3的余数
-        int b = n % 3;
-        // 余数有以下三种情况
-        if (b == 0) {// 余0,直接返回3^a为最大乘积
-            return (int) Math.pow(3, a);
-        } else if (b == 1) {// 余1,将三等分后倒数第二段中的3+最后一段的1转换为2乘2,因为3*1<2*2
-            return (int) Math.pow(3, a - 1) * (2 * 2);
+        if (n == 2) {
+            return 1;
         }
-        // 余2,直接返回3^a*(2),最后一段不需要拆分
-        return (int) Math.pow(3, a) * (2);
+        if (n == 3) {
+            return 2;
+        }
+        // 动态规划法：i从4开始，dp[i]:把i划分为m段后的，乘积的最大值
+        int[] dp = new int[n + 1];
+        // i从4开始，初始化前3段存n的长度≠存前3段乘积最大值
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 2;
+        dp[3] = 3;
+        for (int i = 4; i <= n; i++) {
+            int max = 0;
+            // dp[i]=max(dp[j],dp[i-j])
+            for (int j = 1; j <= (i / 2); j++) {
+                int temp = dp[j] * dp[i - j];
+                max = Math.max(max, temp);
+            }
+            dp[i] = max;
+        }
+        return dp[n];
     }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.cuttingRope(4));
+        System.out.println(solution.cuttingRope(5));
+        System.out.println(solution.cuttingRope(6));
+    }
+
 }

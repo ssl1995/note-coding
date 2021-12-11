@@ -8,7 +8,9 @@ public class Solution {
     }
 
 
-    // 明确概念:机器人从(0,0)出发,行列数位和<k的坐标,只会在(0,0)的右边或者下边,每次只用递归i+1/j+1
+    /**
+     * 明确概念:机器人从(0,0)出发,行列数位和小于k的格子数量有多少个
+     */
     private int dfs(boolean[][] visited, int i, int j, int k) {
         // 递归结束，返回0: 坐标越界 or 行列坐标数位和超过k or 已经访问过
         if (i >= visited.length || j >= visited[0].length || digitSum(i) + digitSum(j) > k || visited[i][j]) {
@@ -21,7 +23,9 @@ public class Solution {
         return 1 + dfs(visited, i + 1, j, k) + dfs(visited, i, j + 1, k);
     }
 
-    // 求一个数的数位和
+    /**
+     * 求一个数的所有数字之和，比如35，返回3+5=8
+     */
     private int digitSum(int num) {
         int sum = 0;
         while (num != 0) {
