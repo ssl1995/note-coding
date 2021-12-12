@@ -4,12 +4,16 @@ package 剑指Offer.第二版.第3章_高质量代码.q18_删除链表结点;
 import 剑指Offer.utils.ListNode;
 
 public class Solution {
-    // 删除链表中指定结点值
+    /**
+     * 删除链表中指定结点值
+     */
     public ListNode deleteNode(ListNode head, int val) {
+        // 空链表
         if (head == null) {
             return null;
         }
-        if (head.val == val) {// 如果待删除结点是头结点
+        // 如果待删除结点是头结点且链表不止一个结点
+        if (head.val == val) {
             return head.next;
         }
         ListNode cur = head;
