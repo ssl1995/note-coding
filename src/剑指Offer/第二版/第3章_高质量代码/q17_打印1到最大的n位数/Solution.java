@@ -44,6 +44,7 @@ public class Solution {
                 // 进位后已经超过9,就将原位置替换为0
                 // replace：[start,end)取不到end位
                 sb.replace(i, i + 1, "0");
+                // 如果i到达0坐标，说明字符串表示的大数最高位发生了进位，返回true
                 if (i == 0) {
                     isPassMax = true;
                 }
