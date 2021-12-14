@@ -1,7 +1,9 @@
 package 剑指Offer.第二版.第2章_面试需要的基础知识.q11_旋转数组的最小数字;
 
 public class Solution {
-    // 旋转数组的最小值
+    /**
+     * 获取旋转递增数组后的最小值
+     */
     public int minArray(int[] numbers) {
         int left = 0;
         int right = numbers.length - 1;
