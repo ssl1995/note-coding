@@ -2,7 +2,10 @@ package 剑指Offer.第二版.第2章_面试需要的基础知识.q04_二维数�
 
 public class Solution {
 
-    // 二分搜索法:从矩阵左下角开始
+
+    /**
+     * 二维数组中的查找，元素值从上到小、从左到右递增
+     */
     public boolean findNumberIn2DArray(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0) {
             return false;

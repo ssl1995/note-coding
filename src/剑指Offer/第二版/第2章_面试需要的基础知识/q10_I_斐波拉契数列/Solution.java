@@ -1,7 +1,11 @@
 package 剑指Offer.第二版.第2章_面试需要的基础知识.q10_I_斐波拉契数列;
 
 public class Solution {
-    // 法1:迭代法
+
+    /**
+     * 斐波那契数列
+     * 迭代法
+     */
     public int fib1(int n) {
         if (n < 2) {
             return n;
@@ -10,14 +14,18 @@ public class Solution {
         int b = 1;
         int sum = 0;
         for (int i = 2; i <= n; i++) {
-            sum = (a + b) % 1000000007;// 剑指Offer的斐波拉契要取模
+            // 剑指Offer的斐波拉契要取模
+            sum = (a + b) % 1000000007;
             a = b;
             b = sum;
         }
         return sum;
     }
 
-    // 法2:动态规划法
+    /**
+     * 斐波那契数列
+     * 动态规划法
+     */
     public int fib2(int n) {
         if (n < 2) {
             return n;

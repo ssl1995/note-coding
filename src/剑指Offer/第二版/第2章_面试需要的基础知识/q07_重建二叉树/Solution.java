@@ -8,7 +8,8 @@ import java.util.Map;
 public class Solution {
 
     private int[] preorder;
-    private Map<Integer, Integer> inMap;// 查找root在中序遍历中的下标
+    // 查找root在中序遍历中的下标
+    private Map<Integer, Integer> inMap;
 
     /**
      * 根据前序和中序遍历结果，重建二叉树
