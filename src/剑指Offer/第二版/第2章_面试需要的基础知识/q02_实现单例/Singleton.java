@@ -6,7 +6,9 @@ package 剑指Offer.第二版.第2章_面试需要的基础知识.q02_实现单�
  * @description 实现单例设计模式
  */
 public class Singleton {
-    // volatile保证可见性、防止指令重排，不保证原子性
+    /**
+     * volatile保证可见性、防止指令重排，不保证原子性
+     */
     private volatile static Singleton singleton;
 
     private Singleton() {
