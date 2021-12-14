@@ -5,6 +5,7 @@ public class Solution {
     public boolean isNumber(String s) {
         int n = s.length();
         int index = 0;
+        //
         boolean hasNum = false;
         boolean hasE = false;
         boolean hasSign = false;
@@ -23,8 +24,9 @@ public class Solution {
             if (index == n) {
                 break;
             }
-            // 2.判断非数字部分
+            // 2.判断非数字部分:依次判断E、正负号、小数点、其他情况
             if (s.charAt(index) == 'E' || s.charAt(index) == 'e') {
+                // 出现E，如果E已存在or前面没有整数，就返回false
                 if (hasE || !hasNum) {
                     return false;
                 }
@@ -34,18 +36,22 @@ public class Solution {
                 hasDot = false;
                 hasSign = false;
             } else if (s.charAt(index) == '+' || s.charAt(index) == '-') {
+                // 如果之前已经出现正负号、整数、小数点，就返回false
                 if (hasSign || hasNum || hasDot) {
                     return false;
                 }
                 hasSign = true;
             } else if (s.charAt(index) == '.') {
+                // 如果之前已经出现过小数点、E，就返回false
                 if (hasDot || hasE) {
                     return false;
                 }
                 hasDot = true;
-            } else if (s.charAt(index) == ' ') {// 遇到中间的空格,循环结束,判断index长度
+            } else if (s.charAt(index) == ' ') {
+                // 中间出现空格,必错，跳出循环结束
                 break;
             } else {
+                // 其他情况直接返回false
                 return false;
             }
             // 指针后移
