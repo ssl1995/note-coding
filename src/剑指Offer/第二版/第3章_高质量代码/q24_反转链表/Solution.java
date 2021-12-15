@@ -4,7 +4,11 @@ package 剑指Offer.第二版.第3章_高质量代码.q24_反转链表;
 import 剑指Offer.utils.ListNode;
 
 public class Solution {
-    // 法1:迭代法
+
+    /**
+     * 反转单链表
+     * 迭代法
+     */
     public ListNode reverseList1(ListNode head) {
         ListNode cur = head;
         // pre = 待反转结点的前一个结点，最后返回它
@@ -20,7 +24,10 @@ public class Solution {
         return pre;
     }
 
-    // 法2:递归法
+    /**
+     * 反转单链表
+     * 递归法
+     */
     public ListNode reverseList2(ListNode head) {
         // base case：参数head为null，或者此时递归的head无下一个结点
         if (head == null || head.next == null) {

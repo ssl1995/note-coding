@@ -8,7 +8,7 @@ public class Solution {
     public ListNode getKthFromEnd(ListNode head, int k) {
         ListNode fast = head;
         ListNode slow = head;
-        // 快指针先走k步(K>=1)
+        // 快指针先走k-1步(K>=1)
         while (k > 0) {
             // 快指针每次都要判断是否为null,注意边界问题
             if (fast == null) {
