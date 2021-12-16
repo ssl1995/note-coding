@@ -8,11 +8,15 @@ import java.util.LinkedList;
 public class Solution {
 
 
-    // 递归法:前序遍历依次进行交换左右子树
+    /**
+     * 输出二叉树的镜像
+     * 递归法:前序遍历依次进行交换左右子树
+     */
     public TreeNode mirrorTree(TreeNode root) {
         if (root == null) {
             return null;
         }
+        // 先遍历到的结点的左右子树发生交换
         TreeNode temp = root.left;
         root.left = root.right;
         root.right = temp;
@@ -21,7 +25,10 @@ public class Solution {
         return root;
     }
 
-    // 将递归改成辅助栈法
+    /**
+     * 输出二叉树的镜像
+     * 将递归改成栈
+     */
     public TreeNode mirrorTree1(TreeNode root) {
         if (root == null) {
             return null;
@@ -29,9 +36,8 @@ public class Solution {
         LinkedList<TreeNode> stack = new LinkedList<>();
         stack.push(root);
         while (!stack.isEmpty()) {
-            // 栈顶元素出队
             TreeNode top = stack.pop();
-            // 使用栈就要先入栈,再交换
+            // 出栈结点的左右孩子依次进栈
             if (top.left != null) {
                 stack.push(top.left);
             }
