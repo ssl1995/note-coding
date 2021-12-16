@@ -24,26 +24,28 @@ public class Solution {
     }
 
     private int spiralMatrix(int[][] matrix, int index, int[] res, int tR, int tC, int dR, int dC) {
-        if (tR == dR) {// 子矩阵只有一行,就复制列
+        // 子矩阵只有一行,就复制列
+        if (tR == dR) {
             for (int i = tC; i <= dC; i++) {
                 res[index++] = matrix[tR][i];
             }
-        } else if (tC == dC) {// 子矩阵只有一列,就复制行
+            // 子矩阵只有一列,就复制行
+        } else if (tC == dC) {
             for (int i = tR; i <= dR; i++) {
                 res[index++] = matrix[i][tC];
             }
-        } else {// 一般情况
+        } else {// 一般情况,取不到=号
             for (int i = tC; i < dC; i++) {
-                res[index++] = (matrix[tR][i]);
+                res[index++] = matrix[tR][i];
             }
             for (int i = tR; i < dR; i++) {
-                res[index++] = (matrix[i][dC]);
+                res[index++] = matrix[i][dC];
             }
             for (int i = dC; i > tC; i--) {
-                res[index++] = (matrix[dR][i]);
+                res[index++] = matrix[dR][i];
             }
             for (int i = dR; i > tR; i--) {
-                res[index++] = (matrix[i][tC]);
+                res[index++] = matrix[i][tC];
             }
         }
         return index;
