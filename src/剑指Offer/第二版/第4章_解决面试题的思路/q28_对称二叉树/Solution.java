@@ -5,6 +5,9 @@ import 剑指Offer.utils.TreeNode;
 
 public class Solution {
 
+    /**
+     * 判断二叉树是否对称
+     */
     public boolean isSymmetric(TreeNode root) {
         if (root == null) {
             return true;
@@ -21,7 +24,7 @@ public class Solution {
         if (left == null || right == null || left.val != right.val) {
             return false;
         }
-        // 对称递归：左右&&右左
+        // 前序遍历和对称前序遍历序列是否相同：左右遍历 && 右左遍历
         return recur(left.left, right.right) && recur(left.right, right.left);
     }
 }
