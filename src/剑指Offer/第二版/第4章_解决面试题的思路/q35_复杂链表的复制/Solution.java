@@ -3,18 +3,22 @@ package 剑指Offer.第二版.第4章_解决面试题的思路.q35_复杂链表�
 
 public class Solution {
 
-    // 复制含有random结点的链表，常用方法是map,但是牛客禁用了Map包
-    // 不用Map，用有限几个变量完成复制
+
+    /**
+     * 请实现 copyRandomList 函数，复制一个复杂链表。
+     * 在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random 指针指向链表中的任意节点或者 null。
+     */
     public Node copyRandomList(Node head) {
         if (head == null) {
             return null;
         }
         Node cur = head;
         Node next;
+        // 不使用辅助空间，直接在原结点后面连接一个复制结点
         // 第一次遍历，使原链表结点后接上一个复制val的结点
         while (cur != null) {
             next = cur.next;
-            cur.next = new Node(cur.val);// 复制的是cur.val的值
+            cur.next = new Node(cur.val);
             cur.next.next = next;
             cur = next;
         }
@@ -27,15 +31,17 @@ public class Solution {
             copy = cur.next;
             // 复制random指针时先判null
             copy.random = (cur.random != null) ? cur.random.next : null;
-            cur = next;// cur移动到next
+            cur = next;
         }
         // 第三次遍历，使原链表和复制链表分离
         cur = head;
-        Node copyHead = cur.next;// 记录复制链表的返回值
+        // 记录复制链表的返回值
+        Node copyHead = cur.next;
         while (cur != null) {
             next = cur.next.next;
             copy = cur.next;
-            cur.next = next;// cur连接回原来的next
+            // cur连接回原来的next
+            cur.next = next;
             // copy结点连接时先判next是否null
             copy.next = (next != null) ? next.next : null;
             cur = next;
