@@ -9,8 +9,14 @@ import java.util.List;
 public class Solution {
 
     private List<List<Integer>> res;
-    private ArrayList<Integer> path;
+    /**
+     * 保存节点经过的路径
+     */
+    private List<Integer> path;
 
+    /**
+     * 给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。
+     */
     public List<List<Integer>> pathSum(TreeNode root, int target) {
         res = new ArrayList<>();
         path = new ArrayList<>();
@@ -22,10 +28,12 @@ public class Solution {
         if (root == null) {
             return;
         }
-        // 先序遍历:先记录当前节点值进path
+        // 要算路径和，先访问那个节点就加入该节点值，所以想到先序遍历
+        // 并且路径和，需要知道之前访问哪些节点，所以保存路径进path
         path.add(root.val);
         target -= root.val;
-        // 加入结果集条件:target == 0 && root.left == null && root.right == null
+        // 从根节点到叶子节点：root.left == null && root.right == null
+        // 目标和：target减为0
         if (target == 0 && root.left == null && root.right == null) {
             // new ArrayList<>(path)形成新链表放入结果集
             res.add(new ArrayList<>(path));
