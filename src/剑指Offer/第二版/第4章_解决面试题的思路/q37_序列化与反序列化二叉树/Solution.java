@@ -8,7 +8,9 @@ import java.util.Queue;
 
 public class Solution {
 
-    // 序列化二叉树,按照力扣指定格式返回
+    /**
+     * 序列化二叉树,可以按照力扣的格式：[1,2,null,4,5]
+     */
     public String serialize(TreeNode root) {
         if (root == null) {
             return "[]";
@@ -21,10 +23,11 @@ public class Solution {
             // node值不为null
             if (node != null) {
                 sb.append(node.val).append(",");
-                // 队列每次放出队结点的左右结点即可,因为root已经是二叉树
+                // 队列中每次放入node的左右孩子即可，不用考虑左右孩子是否为null
                 queue.add(node.left);
                 queue.add(node.right);
-            } else { // node值为null,结果字符串加null+,
+            } else {
+                // node值为null,结果字符串加null,记得删除最后一个逗号即可
                 sb.append("null,");
             }
         }
@@ -34,9 +37,11 @@ public class Solution {
         return sb.toString();
     }
 
-    // 反序列化二叉树
+    /**
+     * 反序列化二叉树
+     */
     public TreeNode deserialize(String data) {
-        if (data.equals("[]")) {
+        if ("[]".equals(data)) {
             return null;
         }
         // 去掉头尾的"[]"，并根据逗号分离成字符串数组
@@ -44,19 +49,18 @@ public class Solution {
         // 生产根节点
         TreeNode root = new TreeNode(Integer.parseInt(split[0]));
         // 队列维持左右孩子
-        Queue<TreeNode> queue = new LinkedList<TreeNode>() {{
-            add(root);
-        }};
-        // 根节点已生成,遍历指针从1下标开始
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        // 根节点已生成,遍历指针从split的下标1开始
         int index = 1;
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            if (!split[index].equals("null")) {
+            if (!"null".equals(split[index])) {
                 node.left = new TreeNode(Integer.parseInt(split[index]));
                 queue.add(node.left);
             }
             index++;
-            if (!split[index].equals("null")) {
+            if (!"null".equals(split[index])) {
                 node.right = new TreeNode(Integer.parseInt(split[index]));
                 queue.add(node.right);
             }
