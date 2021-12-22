@@ -4,10 +4,20 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class MedianFinder {
+    /**
+     * 大根堆存较小的N/2个数
+     */
+    private Queue<Integer> maxHeap;
+    /**
+     * 小根堆存较大的N/2个数
+     */
+    private Queue<Integer> minHeap;
 
-    private Queue<Integer> maxHeap;// 大根堆存较小的N/2个数
-    private Queue<Integer> minHeap;// 小根堆存较大的N/2个数
-
+    /**
+     * 得到一个数据流中的中位数
+     * [2,3,4]中位数是3
+     * [2,3]中位数是2.5,返回double类型
+     */
     public MedianFinder() {
         this.maxHeap = new PriorityQueue<>((a, b) -> b - a);
         this.minHeap = new PriorityQueue<>();
