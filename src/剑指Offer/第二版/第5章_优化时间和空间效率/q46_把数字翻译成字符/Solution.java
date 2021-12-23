@@ -1,34 +1,13 @@
 package 剑指Offer.第二版.第5章_优化时间和空间效率.q46_把数字翻译成字符;
 
 public class Solution {
-    // 注意:0-a,1-b,...,25-z，给一个数字，能转换为多少种字符串？
 
-    // 递归法
+    /**
+     * 给定一个数字，我们按照如下规则把它翻译为字符串：0 翻译成 “a” ，1 翻译成 “b”，……，11 翻译成 “l”，……，25 翻译成 “z”。
+     * 一个数字可能有多个翻译。请编程实现一个函数，用来计算一个数字有多少种不同的翻译方法。
+     * 动态规划
+     */
     public int translateNum(int num) {
-        if (num == 0) {
-            return 1;
-        }
-        String str = String.valueOf(num);
-        char[] cs = str.toCharArray();
-        return process(cs, 0);
-    }
-
-    private int process(char[] cs, int index) {
-        if (index == cs.length) {// index越过len-1，说明就是一种有效的转换
-            return 1;
-        }
-        int count = process(cs, index + 1);
-        if (index == cs.length - 1) {
-            return count;
-        }
-        if ((cs[index] - '0') * 10 + (cs[index + 1] - '0') <= 25 && (cs[index] - '0') * 10 + (cs[index + 1] - '0') >= 10) {
-            count += process(cs, index + 2);
-        }
-        return count;
-    }
-
-    // 将递归改成动态规划:dp[i]=dp[i-2]+dp[i-1] or dp[i-1]
-    public int translateNum1(int num) {
         if (num == 0) {
             return 1;
         }
@@ -44,7 +23,7 @@ public class Solution {
         for (int i = 2; i <= n; i++) {
             // 原串str中拆分xi-1+xi组成的字符串subStr，注意下标变换
             String subStr = str.substring(i - 2, i);
-            // 如果subStr可以整体翻译,说明subStr值需要[10,25]
+            // 如果subStr可以整体翻译,说明subStr必须满足两位数10-25的要求，才能整体翻译
             if (subStr.compareTo("10") >= 0 && subStr.compareTo("25") <= 0) {
                 dp[i] = dp[i - 2] + dp[i - 1];
             } else {// 否则sub不能被翻译
@@ -58,6 +37,5 @@ public class Solution {
         Solution solution = new Solution();
         int n = 12258;
         System.out.println(solution.translateNum(n));
-        System.out.println(solution.translateNum1(n));
     }
 }
