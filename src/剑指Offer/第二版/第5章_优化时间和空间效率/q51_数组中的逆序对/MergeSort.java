@@ -5,6 +5,9 @@ public class MergeSort {
 
     }
 
+    /**
+     * 学习完逆序对问题,学习归并排序
+     */
     public static void mergeSort(int[] arr) {
         // 临时数组一开始就创建,传递到merge将arr复制给temp数组
         int[] temp = new int[arr.length];
@@ -34,7 +37,7 @@ public class MergeSort {
                 arr[i] = temp[q++];
             } else if (q > r) {
                 arr[i] = temp[p++];
-            } else if (temp[p] <= temp[q]) {// 一般情况,比较辅助中的值,放回arr中
+            } else if (temp[p] <= temp[q]) {
                 arr[i] = temp[p++];
             } else {
                 arr[i] = temp[q++];

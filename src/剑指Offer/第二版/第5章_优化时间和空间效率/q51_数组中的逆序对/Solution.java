@@ -1,10 +1,13 @@
 package 剑指Offer.第二版.第5章_优化时间和空间效率.q51_数组中的逆序对;
 
 public class Solution {
-    // 将res作为参数传递,会出现各种问题,直接定义成员变量省事
+
     private int res;
 
-    // 归并排序法，原理是利用nums[i]>nums[j],那么[i,mid]中都是逆序对个数
+    /**
+     * 在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。
+     * 归并排序法，原理是利用nums[i]>nums[j],那么[i,mid]中都是逆序对个数
+     */
     public int reversePairs(int[] nums) {
         int[] temp = new int[nums.length];
         res = 0;
@@ -36,12 +39,18 @@ public class Solution {
                 // <=区域不会形成逆序对,所以和归并排序过程一样
                 nums[i] = temp[p++];
             } else {
-                // >说明必构成逆序对:[p,mid]与[mid+1,...]构成逆序对mid-p+1
+                // p到mid中间元素的个数，与q构成逆序对
                 // 注意：力扣题不要求% 1000000007
                 res += mid - p + 1;
                 nums[i] = temp[q++];
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] arr = {1, 3, 2};
+        System.out.println(solution.reversePairs(arr));
     }
 
 }
