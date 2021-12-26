@@ -5,6 +5,10 @@ import 剑指Offer.utils.ListNode;
 
 public class Solution {
 
+    /**
+     * 输入两个链表，找出它们的第一个公共节点。
+     * 备注：力扣本题是无环链表的相交问题
+     */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) {
             return null;

@@ -3,6 +3,10 @@ package 剑指Offer.第二版.第5章_优化时间和空间效率.q52_两个链�
 import 剑指Offer.utils.ListNode;
 
 public class Solution {
+    /**
+     * 与q52相同，无环链表相交是问两个单向链表的相交第一个结点
+     * NC3是问单个链表的入环结点，问题参数不是一个东西
+     */
     public ListNode getIntersectionNode(ListNode head1, ListNode head2) {
         if (head1 == null || head2 == null) {
             return null;
