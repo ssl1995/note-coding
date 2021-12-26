@@ -2,7 +2,9 @@ package 剑指Offer.第二版.第5章_优化时间和空间效率.q49_丑数;
 
 public class Solution {
 
-    // 返回第n个丑数,丑数是只含2,3,5的因数
+    /**
+     * 我们把只包含质因子 2、3 和 5 的数称作丑数（Ugly Number）。求按从小到大的顺序的第 n 个丑数。
+     */
     public int nthUglyNumber(int n) {
         if (n == 0) {
             return 0;
