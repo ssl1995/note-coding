@@ -1,44 +1,46 @@
 package 剑指Offer.第二版.第6章_面试中的各项能力.q56_II_数组中数字出现的次数II;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * @author SongShengLin
+ * @date 2021/12/27 11:12 PM
+ * @description
+ */
 public class Solution {
-    // 法1:遇事不决,找哈希爸爸
-    public int singleNumber1(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+    /**
+     * 在一个数组 nums 中除一个数字只出现一次之外，其他数字都出现了三次。请找出那个只出现一次的数字。
+     */
+    public int singleNumber(int[] nums) {
+        if (nums.length <= 0) {
+            return -1;
+        }
+        // 统计每一位数的二进制位==1的和
+        int[] bitSum = new int[32];
         for (int num : nums) {
-            if (!map.containsKey(num)) {
-                map.put(num, 1);
-            } else {
-                // 已经包含过的，记为-1,减少get操作
-                map.put(num, -1);
+            int bit = 1;
+            // 从低位开始遍历
+            for (int j = 31; j >= 0; j--) {
+                // !=0的，该位数+1
+                if ((num & bit) != 0) {
+                    bitSum[j] += 1;
+                }
+                // =0就不用加，更新bit
+                bit = bit << 1;
             }
         }
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() == 1) {
-                return entry.getKey();
-            }
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            // bit从高位开始判断，res从低位0开始左移
+            res = res << 1;
+            res += bitSum[i] % 3;
         }
-        return -1;
-    }
-
-    // 法2:有限状态自动机
-    public int singleNumber2(int[] nums) {
-        int ones = 0;
-        int twos = 0;
-        for (int num : nums) {
-            ones = ones ^ num & ~twos;
-            twos = twos ^ num & ~ones;
-        }
-        return ones;
+        return res;
     }
 
     public static void main(String[] args) {
-        int[] arr = {3, 3, 3, 5};
         Solution solution = new Solution();
-        int res = solution.singleNumber2(arr);
-        System.out.println(res);
+        int[] arr = {9, 1, 7, 9, 7, 9, 7};
+        System.out.println(solution.singleNumber(arr));
+
     }
 
 }
