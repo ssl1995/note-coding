@@ -8,22 +8,31 @@ import java.util.List;
 
 public class Solution {
 
-    // 法:二叉搜索树的中序遍历,用链表存数值,返回第size-k个元素就是第k大的元素
+
+    /**
+     * 给定一棵二叉搜索树，请找出其中第 k 大的节点的值。
+     */
     public int kthLargest(TreeNode root, int k) {
-        ArrayList<Integer> list = new ArrayList<>();
-        inOrderByLR(root, list);
+        if (k < 0) {
+            return -1;
+        }
+        // 二叉搜索树的中序遍历,用链表存数值,返回第size-k个元素就是第k大的元素
+        List<Integer> list = new ArrayList<>();
+        inOrder(root, list);
         // 第1大的数->排序后第size-1个数
         // 第k大的数->排序后第size-k个数
         return list.get(list.size() - k);
     }
 
-
-    private void inOrderByLR(TreeNode root, List<Integer> list) {
+    /**
+     * 二叉搜索树，用中序遍历，保存二叉树元素进list
+     */
+    private void inOrder(TreeNode root, List<Integer> list) {
         if (root == null) {
             return;
         }
-        inOrderByLR(root.left, list);
+        inOrder(root.left, list);
         list.add(root.val);
-        inOrderByLR(root.right, list);
+        inOrder(root.right, list);
     }
 }
