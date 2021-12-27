@@ -9,17 +9,18 @@ public class Solution {
         return process(root) != -1;
     }
 
-    // 左右子树高度差<=1,返回真实高度;左右子树高度差>1,返回-1
+    /**
+     * 平衡二叉树：左右子树高度差必<=1
+     */
     private int process(TreeNode head) {
         if (head == null) {
             return 0;
         }
-        // 获取左子树高度信息
+        // 后序遍历获取左右子树高度信息
         int leftHeight = process(head.left);
         if (leftHeight == -1) {
             return -1;
         }
-        // 获取右子树高度信息
         int rightHeight = process(head.right);
         if (rightHeight == -1) {
             return -1;
