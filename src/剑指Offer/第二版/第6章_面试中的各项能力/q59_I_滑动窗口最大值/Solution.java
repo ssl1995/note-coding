@@ -26,11 +26,11 @@ public class Solution {
             }
             // 存下标
             queue.addLast(i);
-            // 队头元素值达到i-k，出队列
-            if (queue.peekFirst() == i - k) {
+            // 数字下标与队列头差值>=窗口长度，队头移出队列
+            if (i - queue.peekFirst() >= k) {
                 queue.pollFirst();
             }
-            // >=窗口长度，就开始记录返回值
+            // 数字下标>=窗口长度下标，就要记录队头元素
             if (i >= k - 1) {
                 res[index++] = nums[queue.peekFirst()];
             }
