@@ -2,34 +2,18 @@ package 剑指Offer.第二版.第6章_面试中的各项能力.q63_股票的最�
 
 public class Solution {
 
-    // 动态规划
-    public int maxProfit1(int[] prices) {
-        if (prices.length == 0) {
+    /**
+     * 假设把某股票的价格按照时间先后顺序存储在数组中，请问买卖该股票一次可能获得的最大利润是多少？
+     */
+    public int maxProfit(int[] prices) {
+        if (prices.length <= 1) {
             return 0;
         }
-        int n = prices.length;
-        // dp[i]:表示prices[i]为结尾的数组最大利润
-        int[] dp = new int[n];
-        // 第一日利润为0,因为一天只能买不能卖
-        dp[0] = 0;
+        // 记录买入价
         int minPrice = prices[0];
-        for (int i = 1; i < n; i++) {
-            // 先计算[0,i]的最小价格作为买入价格
-            minPrice = Math.min(minPrice, prices[i]);
-            // dp[i]=max(前一日以来的最大利润,第i日的最大利润=当前价格-最小买入价格)
-            dp[i] = Math.max(dp[i - 1], prices[i] - minPrice);
-        }
-        return dp[n - 1];
-    }
-
-    // 高度概括：当日最大利润 = max(当天价格-截止目前的最小价格)
-    public int maxProfit2(int[] prices) {
-        if (prices.length == 0) {
-            return 0;
-        }
-        int minPrice = prices[0];
-        int maxProfit = 0;// 没有利润，规定为0
+        int maxProfit = 0;
         for (int i = 1; i < prices.length; i++) {
+            // 固定卖出价=prices[i],买入价minPrice越低，利润越大
             minPrice = Math.min(minPrice, prices[i]);
             maxProfit = Math.max(maxProfit, prices[i] - minPrice);
         }
