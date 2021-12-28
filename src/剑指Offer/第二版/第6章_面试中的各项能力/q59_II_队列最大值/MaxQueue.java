@@ -5,9 +5,13 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class MaxQueue {
-    // 普通队列:正常的push、pop
+    /**
+     * 普通队列:正常的push、pop
+     */
     private Queue<Integer> queue;
-    // 双端队列:队头保证是最大值
+    /**
+     * 双端队列:队头保证是最大值
+     */
     private Deque<Integer> deque;
 
     public MaxQueue() {
@@ -23,7 +27,6 @@ public class MaxQueue {
         return deque.peekFirst();
     }
 
-    // 两个队列非同步入队列，deque中一直维持最大值在队头
     public void push_back(int value) {
         // 待加元素>双端队列队尾元素,双端队列队尾就一直出队
         while (!deque.isEmpty() && value > deque.peekLast()) {
@@ -52,7 +55,7 @@ public class MaxQueue {
         queue.addLast(2);
         queue.addLast(3);
         queue.addLast(4);
-        System.out.println(queue.peekFirst());// 1
-        System.out.println(queue.peekLast());// 4
+        System.out.println(queue.peekFirst());
+        System.out.println(queue.peekLast());
     }
 }
