@@ -1,22 +1,22 @@
-package 剑指Offer.第二版.第7章_两个面试案例.q68_二叉树的最近公共祖先;
+package 剑指Offer.第二版.第7章_两个面试案例.q68_II_二叉树的最近公共祖先;
 
 
 import 剑指Offer.utils.TreeNode;
 
 public class Solution {
 
-    // 普通二叉树最近公共祖先
+    /**
+     * 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        // 递归结束条件
-        // root越过叶子节点,返回null
-        // root = p/q,最近公共祖先就是root本身，返回root
+        // base case:root越过叶子节点,返回null 或者root = p/q,返回root
         if (root == null || root == p || root == q) {
             return root;
         }
-        // 设当前节点为cur,使用后序遍历记录当前节点的左右子树情况,用left和right接收
+        // 普通二叉树找最近公共祖先，使用后序遍历，用left和right接收
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
-        // 当left和right同时不为空:说明p,q在root异侧,root就是最近公共祖先
+        // 根据base case:当left和right同时不为空,说明p,q在root异侧,root就是最近公共祖先
         if (left != null && right != null) {
             return root;
         }

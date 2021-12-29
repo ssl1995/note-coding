@@ -1,12 +1,14 @@
-package 剑指Offer.第二版.第7章_两个面试案例.q68_二叉搜索树的最近公共祖先;
+package 剑指Offer.第二版.第7章_两个面试案例.q68_I_二叉搜索树的最近公共祖先;
 
 
 import 剑指Offer.utils.TreeNode;
 
 public class Solution {
 
-
-    // 二叉搜索树最近公共祖先：BST特性左小右大+无重复结点，自己画图明确三种情况
+    /**
+     * 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
+     * BST:左小右大
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // 保证p,q左小右大
         if (p.val > q.val) {
@@ -22,7 +24,7 @@ public class Solution {
                 // root比最大的还大,说明root出现在了p,q的右边,那么公共祖先在root的左边
                 root = root.left;
             } else {
-                // root.val=p.val||root.val=q.val,root此时指向的就是最近公共祖先
+                // root.val>=p.val||root.val<=q.val,root此时指向的就是最近公共祖先
                 break;
             }
         }
