@@ -39,8 +39,8 @@ public class Solution {
                 // <=区域不会形成逆序对,所以和归并排序过程一样
                 nums[i] = temp[p++];
             } else {
+                // 3,4,1,2
                 // p到mid中间元素的个数，与q构成逆序对
-                // 注意：力扣题不要求% 1000000007
                 res += mid - p + 1;
                 nums[i] = temp[q++];
             }
@@ -49,7 +49,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] arr = {1, 3, 2};
+        int[] arr = {3, 4, 1, 2};
         System.out.println(solution.reversePairs(arr));
     }
 
