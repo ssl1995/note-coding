@@ -9,16 +9,16 @@ public class Solution {
         int index = 0;
         while (index < nums.length) {
             // 数字范围为0到n-1,重排后，数字i应该放在下标为i的位置上
-            // 如果数字i已经放在下标为i的位置上，说明这个下标是第一个遇到该数字，跳过本次循坏
+            // 0下标放元素0，不是重复元素，跳过本次循环，移动指针
             if (nums[index] == index) {
                 index++;
                 continue;
             }
-            // 当元素值和坐标不对应
-            // 情况1：第二次来到该位置，就是重复元素
+            // x下标没有元素x
+            // 如果元素x等于对应的x下标上元素，就是重复元素，返回
             if (nums[index] == nums[nums[index]]) {
                 return nums[index];
-            } else {// 情况2：两者还不对应，说明要将数字归位到第一次出现的下标位置上
+            } else {// 否则，交换元素x来到它对应的x下标位置
                 int temp = nums[index];
                 nums[index] = nums[temp];
                 nums[temp] = temp;
