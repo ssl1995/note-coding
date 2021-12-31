@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.LC98_验证二叉搜索树;
 
-import 读书笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.剑指Offer.utils.TreeNode;
 
 
 public class Solution1 {

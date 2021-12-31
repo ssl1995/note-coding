@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.LC141_环形链表I;
 
-import 读书笔记.剑指Offer.utils.ListNode;
+import 学习笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
     // 判断链表是否有环，返回值是布尔值

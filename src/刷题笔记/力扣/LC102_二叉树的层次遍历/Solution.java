@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.LC102_二叉树的层次遍历;
 
-import 读书笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.剑指Offer.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

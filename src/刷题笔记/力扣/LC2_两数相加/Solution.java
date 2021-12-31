@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.LC2_两数相加;
 
-import 读书笔记.剑指Offer.utils.ListNode;
+import 学习笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
     // 题目：l1 = [2,4,3], l2 = [5,6,4]，返回[7,0,8]

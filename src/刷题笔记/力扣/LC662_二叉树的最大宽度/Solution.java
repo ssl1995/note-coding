@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.LC662_二叉树的最大宽度;
 
-import 读书笔记.牛客算法课.utils.TreeNode;
+import 学习笔记.牛客算法课.utils.TreeNode;
 
 import java.util.HashMap;
 import java.util.Map;

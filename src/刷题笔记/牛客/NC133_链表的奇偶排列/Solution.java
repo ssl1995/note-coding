@@ -1,6 +1,6 @@
 package 刷题笔记.牛客.NC133_链表的奇偶排列;
 
-import 读书笔记.剑指Offer.utils.ListNode;
+import 学习笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
     // NC133和LC328同题

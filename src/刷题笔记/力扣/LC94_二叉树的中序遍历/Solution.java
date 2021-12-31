@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.LC94_二叉树的中序遍历;
 
-import 读书笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.剑指Offer.utils.TreeNode;
 
 import java.util.LinkedList;
 import java.util.List;
