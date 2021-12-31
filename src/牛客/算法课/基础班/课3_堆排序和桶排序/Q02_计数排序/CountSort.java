@@ -3,6 +3,7 @@ package 牛客.算法课.基础班.课3_堆排序和桶排序.Q02_计数排序;
 import java.util.Arrays;
 
 public class CountSort {
+
     // 计数排序：假设原数组中最大值不超过200
     public static void countSort(int[] arr) {
         if (arr == null || arr.length < 2) {
