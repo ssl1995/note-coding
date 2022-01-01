@@ -1,6 +1,8 @@
 package 刷题笔记.力扣.LC69_x的平方根;
 
 public class Solution {
+
+
     public int mySqrt(int x) {
         // base case：x是 0 or 1 时特殊判断
         if (x <= 1) {
@@ -21,5 +23,12 @@ public class Solution {
             }
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        Solution so = new Solution();
+        int x = 2;
+        System.out.println(so.mySqrt(x));
+        System.out.println((int) Math.sqrt(x));
     }
 }
