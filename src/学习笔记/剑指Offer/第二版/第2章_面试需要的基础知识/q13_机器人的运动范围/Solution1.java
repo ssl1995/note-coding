@@ -1,13 +1,15 @@
 package 学习笔记.剑指Offer.第二版.第2章_面试需要的基础知识.q13_机器人的运动范围;
 
-public class JZ66 {
-    // 用全局变量res来写，dfs就不用返回int
+public class Solution1 {
+    /**
+     * 用全局变量res来写，dfs就不用返回int
+     */
     private int res;
 
-    public int movingCount(int threshold, int rows, int cols) {
+    public int movingCount(int m, int n, int k) {
         res = 0;
-        boolean[][] visited = new boolean[rows][cols];
-        dfs(visited, 0, 0, threshold);
+        boolean[][] visited = new boolean[m][n];
+        dfs(visited, 0, 0, k);
         return res;
     }
 
