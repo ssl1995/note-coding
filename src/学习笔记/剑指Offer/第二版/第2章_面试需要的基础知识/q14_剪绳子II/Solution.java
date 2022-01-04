@@ -36,6 +36,7 @@ public class Solution {
     private long reminder(int x, int a, int p) {
         long rem = 1;
         for (int i = 1; i <= a; i++) {
+            // 余数是等于，不能加
             rem = (rem * x) % p;
         }
         return rem;
