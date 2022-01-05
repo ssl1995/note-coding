@@ -1,4 +1,4 @@
-package 学习笔记.剑指Offer.专项突击版.第5章_哈希表.q31_LRU缓存;
+package 学习笔记.数据结构与算法之美.第4章_哈希表_位图和哈希算法;
 
 import java.util.HashMap;
 import java.util.Map;
