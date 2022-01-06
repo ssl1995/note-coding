@@ -44,6 +44,23 @@ public class Solution {
                 }
             }
         }
+        printDp(dp);
         return dp[m][n];
+    }
+
+    private void printDp(boolean[][] dp) {
+        for (int i = 0; i < dp.length; i++) {
+            for (int j = 0; j < dp[0].length; j++) {
+                System.out.print(dp[i][j]);
+                System.out.print("\t");
+            }
+            System.out.println();
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        solution.isMatch("aaa", "ab*.*");
     }
 }
