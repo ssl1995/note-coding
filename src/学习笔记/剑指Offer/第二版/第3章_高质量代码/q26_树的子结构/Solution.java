@@ -13,15 +13,15 @@ public class Solution {
         if (A == null || B == null) {
             return false;
         }
-        // B是A的子结构||以A为根结点包含B
-        return isSubStructure(A.left, B) || isSubStructure(A.right, B) || isContainB(A, B);
+        // A的子树包含B 或 A的左子树包含B 或 A的右子树包含B
+        return isContainB(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B);
     }
 
     /**
-     * 判断A中以root为根节点的树，是否能匹配上match
+     * 以root为根节点的子树，是否包含树match
      */
     private boolean isContainB(TreeNode root, TreeNode match) {
-        // base1：match越过叶子，说明匹配完成，返回true
+        // base1：match到达叶子，说明匹配完成，返回true
         if (match == null) {
             return true;
         }
@@ -29,7 +29,7 @@ public class Solution {
         if (root == null || root.val != match.val) {
             return false;
         }
-        // 子结构:必须是左左对应，右右对应。不能是左右分开对应
+        // 判断A的左子树是否和B的左子树相等 且 A的右子树和B的右子树相等
         return isContainB(root.left, match.left) && isContainB(root.right, match.right);
     }
 }

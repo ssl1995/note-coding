@@ -13,9 +13,10 @@ public class Solution {
         ListNode cur = head;
         // pre = 待反转结点的前一个结点，最后返回它
         ListNode pre = null;
+        ListNode next;
         while (cur != null) {
             // 一定是先记录cur后一个节点
-            ListNode next = cur.next;
+            next = cur.next;
             // 从cur开始改变指向
             cur.next = pre;
             pre = cur;
