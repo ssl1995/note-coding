@@ -7,7 +7,6 @@ import java.util.LinkedList;
 
 public class Solution {
 
-
     /**
      * 输出二叉树的镜像
      * 递归法:前序遍历依次进行交换左右子树
@@ -37,17 +36,16 @@ public class Solution {
         stack.push(root);
         while (!stack.isEmpty()) {
             TreeNode top = stack.pop();
-            // 出栈结点的左右孩子依次进栈
+            // 交换
+            TreeNode temp = top.left;
+            top.left = top.right;
+            top.right = temp;
             if (top.left != null) {
                 stack.push(top.left);
             }
             if (top.right != null) {
                 stack.push(top.right);
             }
-            // 出队结点的左右孩子节点交换
-            TreeNode temp = top.left;
-            top.left = top.right;
-            top.right = temp;
         }
         return root;
     }

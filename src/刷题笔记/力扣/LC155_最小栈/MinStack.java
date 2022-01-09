@@ -1,7 +1,12 @@
-package 学习笔记.剑指Offer.第二版.第4章_解决面试题的思路.q30_包含min函数的栈;
+package 刷题笔记.力扣.LC155_最小栈;
 
 import java.util.LinkedList;
 
+/**
+ * @author SongShengLin
+ * @date 2022/1/9 12:08 PM
+ * @description
+ */
 public class MinStack {
     /**
      * 栈1：数据栈，正常压入弹出
@@ -20,12 +25,12 @@ public class MinStack {
 
     public void push(int x) {
         // 如果栈2空，或者x比栈2顶还小，就压入栈2
-        if (stack2.isEmpty() || x <= min()) {
+        if (stack2.isEmpty() || x <= getMin()) {
             stack2.push(x);
         }
         // 栈2始终保持与栈1同步压入数据，但是栈2顶保持最小值
-        if (x > min()) {
-            stack2.push(min());
+        if (x > getMin()) {
+            stack2.push(getMin());
         }
         // 栈1是每次都要压入的
         stack1.push(x);
@@ -47,7 +52,7 @@ public class MinStack {
         return stack1.peek();
     }
 
-    public int min() {
+    public int getMin() {
         if (stack2.isEmpty()) {
             throw new RuntimeException("MinStack is empty");
         }

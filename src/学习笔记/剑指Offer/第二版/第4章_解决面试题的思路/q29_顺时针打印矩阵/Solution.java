@@ -4,19 +4,20 @@ package 学习笔记.剑指Offer.第二版.第4章_解决面试题的思路.q29_
 import java.util.Arrays;
 
 public class Solution {
-
+    /**
+     * 顺时针打印矩阵
+     */
     public int[] spiralOrder(int[][] matrix) {
         // 输入空列，返回空数组
         if (matrix.length == 0) {
             return new int[0];
         }
-        // 初始化左上角、右下角坐标
+        // 初始化左上角坐标(tR,tC)=(0,0)、右下角坐标(dR,dC)=()
         int tR = 0, tC = 0;
         int dR = matrix.length - 1, dC = matrix[0].length - 1;
-        // 结果二维数组大小=原始数组大小
         int[] res = new int[matrix.length * matrix[0].length];
-        // 数组遍历坐标
         int index = 0;
+        // 遍历结束：(tR,tC)(dR,dC)在矩阵中心相遇
         while (tR <= dR && tC <= dC) {
             index = spiralMatrix(matrix, index, res, tR++, tC++, dR--, dC--);
         }
@@ -24,12 +25,12 @@ public class Solution {
     }
 
     private int spiralMatrix(int[][] matrix, int index, int[] res, int tR, int tC, int dR, int dC) {
-        // 子矩阵只有一行,就复制列
+        // 子矩阵只有一行,从左到右复制
         if (tR == dR) {
             for (int i = tC; i <= dC; i++) {
                 res[index++] = matrix[tR][i];
             }
-            // 子矩阵只有一列,就复制行
+            // 子矩阵只有一列,从上到下复制
         } else if (tC == dC) {
             for (int i = tR; i <= dR; i++) {
                 res[index++] = matrix[i][tC];
@@ -41,6 +42,7 @@ public class Solution {
             for (int i = tR; i < dR; i++) {
                 res[index++] = matrix[i][dC];
             }
+            // 注意：变成>
             for (int i = dC; i > tC; i--) {
                 res[index++] = matrix[dR][i];
             }
