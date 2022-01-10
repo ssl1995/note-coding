@@ -38,12 +38,8 @@ public class Solution {
             // new ArrayList<>(path)形成新链表放入结果集
             res.add(new ArrayList<>(path));
         }
-        if (root.left != null) {
-            recur(root.left, target);
-        }
-        if (root.right != null) {
-            recur(root.right, target);
-        }
+        recur(root.left, target);
+        recur(root.right, target);
         // 回溯需要移除path末尾元素
         path.remove(path.size() - 1);
     }
