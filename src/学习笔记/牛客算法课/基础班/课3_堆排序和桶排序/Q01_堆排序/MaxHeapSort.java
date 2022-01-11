@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 public class MaxHeapSort {
 
-    // 大根堆
+    /**
+     * 大根堆
+     */
     public static void heapSort(int[] arr) {
         if (arr.length < 2) {
             return;
@@ -20,7 +22,10 @@ public class MaxHeapSort {
         }
     }
 
-    // 大根堆，堆化操作
+    /**
+     * 堆化:范围[parent,n)，右边n是开区间取不到
+     * 大根堆:将小数往上堆化
+     */
     private static void heapify(int[] arr, int parent, int n) {
         while (2 * parent + 1 < n) {
             int left = 2 * parent + 1;
