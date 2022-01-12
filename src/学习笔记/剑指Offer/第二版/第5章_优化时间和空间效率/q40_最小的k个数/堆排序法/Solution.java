@@ -1,4 +1,4 @@
-package 学习笔记.剑指Offer.第二版.第5章_优化时间和空间效率.q40_最小的k个数;
+package 学习笔记.剑指Offer.第二版.第5章_优化时间和空间效率.q40_最小的k个数.堆排序法;
 
 import java.util.Arrays;
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @date 2022/1/12 11:19 AM
  * @description
  */
-public class Solution3 {
+public class Solution {
 
     /**
      * 找出最小的k个数
@@ -27,7 +27,12 @@ public class Solution3 {
             heapify(arr, 0, i);
             i--;
         }
-        System.arraycopy(arr, arr.length - k, res, 0, k);
+        int index = 0;
+        while (k > 0) {
+            res[index] = arr[arr.length - 1 - index];
+            index++;
+            k--;
+        }
         return res;
     }
 
@@ -53,7 +58,7 @@ public class Solution3 {
     }
 
     public static void main(String[] args) {
-        Solution3 solution = new Solution3();
+        Solution solution = new Solution();
         int[] arr = {4, 5, 1, 6, 2, 7, 3, 8};
         int k = 4;
         int[] res = solution.getLeastNumbers(arr, k);

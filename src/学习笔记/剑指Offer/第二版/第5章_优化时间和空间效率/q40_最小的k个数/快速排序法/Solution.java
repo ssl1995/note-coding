@@ -1,4 +1,4 @@
-package 学习笔记.剑指Offer.第二版.第5章_优化时间和空间效率.q40_最小的k个数;
+package 学习笔记.剑指Offer.第二版.第5章_优化时间和空间效率.q40_最小的k个数.快速排序法;
 
 
 import java.util.Arrays;
