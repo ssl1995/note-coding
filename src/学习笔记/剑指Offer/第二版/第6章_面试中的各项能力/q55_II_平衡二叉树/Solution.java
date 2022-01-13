@@ -18,14 +18,13 @@ public class Solution {
         }
         // 后序遍历获取左右子树高度信息
         int leftHeight = process(head.left);
-        if (leftHeight == -1) {
-            return -1;
-        }
         int rightHeight = process(head.right);
-        if (rightHeight == -1) {
+        // 失败case
+        if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight - rightHeight) > 1) {
             return -1;
         }
-        // 左右子树高度差<=1,返回真实高度;左右子树高度差>1,返回-1
-        return Math.abs(leftHeight - rightHeight) <= 1 ? Math.max(leftHeight, rightHeight) + 1 : -1;
+        // 成功case
+        return Math.max(leftHeight, rightHeight) + 1;
+
     }
 }

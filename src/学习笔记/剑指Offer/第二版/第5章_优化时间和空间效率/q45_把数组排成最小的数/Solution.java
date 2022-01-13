@@ -14,7 +14,7 @@ public class Solution {
             for (int j = i + 1; j < nums.length; j++) {
                 int x = nums[i];
                 int y = nums[j];
-                // 由于xy、yx相加可能存在int移除问题
+                // 由于xy、yx相加可能存在int溢出问题
                 // 我们将其转换为字符串，再用Long接受就没有int溢出问题
                 long num1 = Long.parseLong(x + "" + y);
                 long num2 = Long.parseLong(y + "" + x);
