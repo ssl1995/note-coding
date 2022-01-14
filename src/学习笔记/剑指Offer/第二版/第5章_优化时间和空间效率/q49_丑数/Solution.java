@@ -4,6 +4,9 @@ public class Solution {
 
     /**
      * 我们把只包含质因子 2、3 和 5 的数称作丑数（Ugly Number）。求按从小到大的顺序的第 n 个丑数。
+     * 输入：n = 10
+     * 输出：12
+     * 解释：[1, 2, 3, 4, 5, 6, 8, 9, 10, 12] 是由前 10 个丑数组成的序列。
      */
     public int nthUglyNumber(int n) {
         if (n == 0) {
@@ -22,6 +25,7 @@ public class Solution {
             int n3 = dp[c] * 5;
             dp[i] = Math.min(Math.min(n1, n2), n3);
             // 接下来移动指针,哪个指针被选中作为该论的丑数，谁就后移一位
+            // 不是互斥，不能用if-else
             if (dp[i] == n1) {
                 a++;
             }

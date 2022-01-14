@@ -6,6 +6,8 @@ import java.util.Map;
 public class Solution {
     /**
      * 请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子字符串的长度。
+     * 输入: s = "abcabcbb"
+     * 输出: 3
      */
     public int lengthOfLongestSubstring(String s) {
         if (s == null || "".equals(s)) {
