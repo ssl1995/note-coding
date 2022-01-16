@@ -6,7 +6,7 @@ import java.util.List;
 public class Solution {
 
     /**
-     * 输入一个正整数 `target` ，输出所有和为 `target` 的连续正整数序列（至少含有两个数）。
+     * 输入一个正整数target，输出所有和为target的连续正整数序列（至少含有两个数）。
      * 序列内的数字由小到大排列，不同序列按照首个数字从小到大排列.1 <= target <= 10^5
      * 输入：target = 15
      * 输出：[[1,2,3,4,5],[4,5,6],[7,8]]
@@ -17,6 +17,7 @@ public class Solution {
         int mid = (target + 1) / 2;
         int curSum = small + big;
         List<int[]> res = new ArrayList<>();
+        // 序列至少两个数字，small到mid结束
         while (small < mid) {
             if (curSum == target) {
                 listAddData(small, big, res);

@@ -29,7 +29,7 @@ public class MaxQueue {
 
     public void push_back(int value) {
         // 待加元素>双端队列队尾元素,双端队列队尾就一直出队
-        while (!deque.isEmpty() && value > deque.peekLast()) {
+        while (!deque.isEmpty() && value >= deque.peekLast()) {
             deque.pollLast();
         }
         deque.offerLast(value);

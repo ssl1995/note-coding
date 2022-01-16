@@ -6,14 +6,12 @@ package 刷题笔记.力扣.LC34_在排序数组中查找第一个和最后一�
  * @description
  */
 public class Solution {
+
     public int[] searchRange(int[] nums, int target) {
         if (!isContainTarget(nums, target)) {
             return new int[]{-1, -1};
         }
-
-        int first = getNextTargetFirstIndex(nums, target - 1);
-        int last = getNextTargetFirstIndex(nums, target) - 1;
-        return new int[]{first, last};
+        return new int[]{getNextTargetFirstIndex(nums, target - 1), getNextTargetFirstIndex(nums, target) - 1};
     }
 
     private boolean isContainTarget(int[] nums, int target) {

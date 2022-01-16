@@ -17,7 +17,7 @@ public class Solution {
         int[] bitSum = new int[32];
         for (int num : nums) {
             int bit = 1;
-            // 从低位开始遍历
+            // bit的末尾=数字的低位，开始遍历
             for (int j = 31; j >= 0; j--) {
                 // !=0的，该位数+1
                 if ((num & bit) != 0) {
@@ -28,9 +28,11 @@ public class Solution {
             }
         }
         int res = 0;
+        // res从高位到低位->bits的下标从小到大
         for (int i = 0; i < 32; i++) {
             // bit从高位开始判断，res从低位0开始左移
             res = res << 1;
+            // 二进制res被强转成十进制 且 过滤掉出现次数为3的数
             res += bitSum[i] % 3;
         }
         return res;

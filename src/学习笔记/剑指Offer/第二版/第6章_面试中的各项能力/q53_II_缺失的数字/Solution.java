@@ -24,11 +24,12 @@ public class Solution {
                 if (mid == 0 || nums[mid - 1] == mid - 1) {
                     return mid;
                 }
-                // 中间元素前一个元素与下标不相等，下一轮遍历左边
+                // [1,2,3,4,5,6,7,8,9]，返回0情况
                 right = mid - 1;
             }
         }
-        // left来到数组长度位置，说明长度n-1全部匹配，[0,1,2]，返回数组长度
+        // left来到数组长度位置，说明长度n-1全部匹配
+        // [0,1,2]，返回3=len的情况
         if (left == nums.length) {
             return nums.length;
         }
@@ -38,7 +39,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] arr = {0, 1, 2, 3, 4, 5, 6, 7, 9};
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         System.out.println(solution.missingNumber(arr));
     }
 }
