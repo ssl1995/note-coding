@@ -9,11 +9,11 @@ public class Solution {
         if (prices.length <= 1) {
             return 0;
         }
-        // 记录买入价
+        // 买入价从第一个数开始尝试
         int minPrice = prices[0];
         int maxProfit = 0;
         for (int i = 1; i < prices.length; i++) {
-            // 固定卖出价=prices[i],买入价minPrice越低，利润越大
+            // 固定卖出价=prices[i],买入价minPrice越低,利润越大
             minPrice = Math.min(minPrice, prices[i]);
             maxProfit = Math.max(maxProfit, prices[i] - minPrice);
         }

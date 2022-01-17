@@ -16,14 +16,13 @@ public class Solution {
         // 由于最后num=num*10+字符数,所以边界需要/10
         int maxBoundary = Integer.MAX_VALUE / 10;
         // sign:正负号标记,1正号,-1负号
-        int index = 1, sign = 1;
+        int index = 0, sign = 1;
         // 第一个部分有三种情况:+/-/数字
-        // -:遇到负号就sign成-1
         if (c[0] == '-') {
             sign = -1;
-        } else if (c[0] != '+') {
-            // 隐含条件：c[0]!= -和+，只能等于数字，初始化指针为0位置
-            index = 0;
+            index = 1;
+        } else if (c[0] == '+') {
+            index = 1;
         }
         for (int i = index; i < c.length; i++) {
             // 力扣：遇到非数字部分，可以忽略，直接当前得到的整数
@@ -32,7 +31,7 @@ public class Solution {
             }
             // 1.num=最大值/10 且 c[i]>'7',乘积后必越界
             // 2.num>最大值/10 乘积后必越界
-            if (num > maxBoundary || num == maxBoundary && c[i] > '7') {
+            if (num > maxBoundary || (num == maxBoundary && c[i] > '7')) {
                 // 越界后，返回整型最值
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
             }

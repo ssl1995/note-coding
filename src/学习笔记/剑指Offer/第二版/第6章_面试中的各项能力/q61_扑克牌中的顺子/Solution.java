@@ -13,7 +13,7 @@ public class Solution {
     public boolean isStraight(int[] nums) {
         // set判断是否有重复的数
         Set<Integer> set = new HashSet<>();
-        // 假设扑克牌中大小王为0,A=1,范围[0,A,2...10,J,Q,K]
+        // 假设扑克牌中大小王为0,A=1,范围[0(任意，包括大小王),A(1),2...10,J(11),Q(12),K(13)]
         int min = 13, max = 0;
         for (int num : nums) {
             // 如果是大小王,这一轮循环跳过
@@ -33,6 +33,7 @@ public class Solution {
                 set.add(num);
             }
         }
+        // 如果是连续的，最大值-最小值<5
         // 返回整个数组中的max-min<5的布尔值
         return max - min < 5;
     }

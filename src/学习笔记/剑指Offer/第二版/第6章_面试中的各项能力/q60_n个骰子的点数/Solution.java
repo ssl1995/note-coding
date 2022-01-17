@@ -20,9 +20,9 @@ public class Solution {
             // 正向遍历上一轮dp
             for (int j = 0; j < dp.length; j++) {
                 // 每6个数,遍历这一轮的next数组
-                for (int k = 0; k < 6; k++) {
+                for (int k = j; k < j + 6; k++) {
                     // 上一轮的dp[j]对它之后的每6个数都产生了dp[j]/6.0的影响
-                    next[j + k] += dp[j] / 6.0;
+                    next[k] += dp[j] / 6.0;
                 }
             }
             // 上一轮的dp数组更新为这一轮的next数组
