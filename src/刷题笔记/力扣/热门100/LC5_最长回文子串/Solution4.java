@@ -1,4 +1,4 @@
-package 刷题笔记.力扣.LC5_最长回文子串;
+package 刷题笔记.力扣.热门100.LC5_最长回文子串;
 
 public class Solution4 {
 
