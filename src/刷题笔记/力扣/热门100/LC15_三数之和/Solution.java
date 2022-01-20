@@ -1,0 +1,68 @@
+package 刷题笔记.力扣.热门100.LC15_三数之和;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * @author SongShengLin
+ * @date 2022/1/20 8:32 AM
+ * @description
+ */
+public class Solution {
+
+    /**
+     * 三数之和
+     * 输入：nums = [-1,0,1,2,-1,-4]
+     * 输出：[[-1,-1,2],[-1,0,1]]
+     */
+    public List<List<Integer>> threeSum(int[] nums) {
+        if (nums == null || nums.length < 3) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        // 将原数组排序
+        Arrays.sort(nums);
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            // 数组已排序，如果起始位置的nums[i]>0,三数之和一定>0，跳出
+            if (nums[i] > 0) {
+                break;
+            }
+            // 排序数组后，去重
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int left = i + 1;
+            int right = n - 1;
+            while (left < right) {
+                // 固定三个数和
+                int sum = nums[left] + nums[right] + nums[i];
+                if (sum < 0) {
+                    left++;
+                } else if (sum > 0) {
+                    right--;
+                } else {
+                    // 因为数组已排序，从小到大:nums[i]、nums[left]、nums[right]比较好看
+                    res.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                    // sum==0，也要判断去重
+                    while (left < right && nums[left] == nums[left + 1]) {
+                        left++;
+                    }
+                    while (left < right && nums[right] == nums[right - 1]) {
+                        right--;
+                    }
+                    left++;
+                    right--;
+                }
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] nums = {-1, 0, 1, 2, -1, -4};
+        System.out.println(solution.threeSum(nums));
+    }
+}
