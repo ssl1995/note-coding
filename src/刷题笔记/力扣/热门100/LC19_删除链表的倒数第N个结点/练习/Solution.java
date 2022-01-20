@@ -1,13 +1,14 @@
-package 刷题笔记.力扣.热门100.LC19_删除链表的倒数第N个结点;
+package 刷题笔记.力扣.热门100.LC19_删除链表的倒数第N个结点.练习;
 
 import 学习笔记.剑指Offer.utils.ListNode;
 
+/**
+ * @author SongShengLin
+ * @date 2022/1/20 11:16 PM
+ * @description
+ */
 public class Solution {
 
-    /**
-     * 删除链表的倒数第N个结点
-     * 注意:建立dummy节点
-     */
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if (head == null || n < 1) {
             return null;
@@ -32,5 +33,4 @@ public class Solution {
         // 返回是哑结点的后继 != head,因为删除倒数第n个节点时，head已被删除
         return dummy.next;
     }
-
 }

@@ -1,11 +1,11 @@
-package 学习笔记.剑指Offer.专项突击版.第13章_回溯法.q85_生成匹配的括号;
+package 刷题笔记.力扣.热门100.LC22_括号生成;
 
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * @author SongShengLin
- * @date 2021/11/11 9:31 上午
+ * @date 2022/1/20 11:51 PM
  * @description
  */
 public class Solution {
