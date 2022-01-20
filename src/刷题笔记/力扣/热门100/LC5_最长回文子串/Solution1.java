@@ -1,15 +1,17 @@
 package 刷题笔记.力扣.热门100.LC5_最长回文子串;
 
 
+import 刷题笔记.力扣.热门100.LC5_最长回文子串.练习.Solution;
+
 public class Solution1 {
     // Q:返回一个字符串的最长回文子串
     // 注意：牛客17题是求最长回文子串的长度，力扣是返回最长回文子串
     // 暴力破解
     public String longestPalindrome(String s) {
-        int len = s.length();
-        if (len < 2) {
+        if (s.length() < 2) {
             return s;
         }
+        int len = s.length();
         int maxLen = 1;
         int begin = 0;
         char[] cs = s.toCharArray();
@@ -34,5 +36,11 @@ public class Solution1 {
             j--;
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String s = "babad";
+        System.out.println(solution.longestPalindrome(s));
     }
 }

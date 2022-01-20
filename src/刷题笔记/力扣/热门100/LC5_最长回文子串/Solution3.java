@@ -2,23 +2,30 @@ package 刷题笔记.力扣.热门100.LC5_最长回文子串;
 
 
 public class Solution3 {
-    // 动态规划法:面试选这个解法
+    /**
+     * 最长回文子串
+     * 动态规划法:面试选这个解法
+     * 输入：s = "babad"
+     * 输出："bab"
+     * 解释："aba" 同样是符合题意的答案。
+     */
     public String longestPalindrome(String s) {
-        int len = s.length();
-        if (len < 2) {
+        if (s.length() < 2) {
             return s;
         }
+        int len = s.length();
         int maxLen = 1;
         int begin = 0;
         char[] cs = s.toCharArray();
-        // dp[i][j]:表示s[i][j]是否是回文串
+        // dp[i][j]:表示s从i..j位置是否是回文串
         boolean[][] dp = new boolean[len][len];
-        // 初始化：单独一个字符肯定是回文子串
+        // 初始化：对角线上单独一个字符肯定是回文子串
         for (int i = 0; i < len; i++) {
             dp[i][i] = true;
         }
-        // 经验：dp区域是正方形的话，通常左下角区域无效不需要再填，因为走过的区域不用再走
-        for (int j = 1; j < len; j++) { // 上三角区域，按列从上到下填
+        // 外层:枚举所有子串长度，从1开始
+        for (int j = 1; j < len; j++) {
+            // 内层:从(0,j]判断该区域内回文情况
             for (int i = 0; i < j; i++) {
                 // 首尾不相等时，必不是回文串
                 if (cs[i] != cs[j]) {
@@ -41,7 +48,7 @@ public class Solution3 {
 
     public static void main(String[] args) {
         Solution3 solution3 = new Solution3();
-        String s = "abcdcba";
+        String s = "babad";
         System.out.println(solution3.longestPalindrome(s));
     }
 

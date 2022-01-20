@@ -2,18 +2,22 @@ package 刷题笔记.力扣.热门100.LC5_最长回文子串;
 
 
 public class Solution2 {
-    // 中心扩散法
+    /**
+     * 中心扩散法
+     */
     public String longestPalindrome(String s) {
-        int len = s.length();
-        if (len < 2) {
+        if (s.length() < 2) {
             return s;
         }
+        int len = s.length();
         int maxLen = 1;
         int begin = 0;
         char[] cs = s.toCharArray();
         for (int i = 0; i < len - 1; i++) {
-            int len1 = getPalindromeCenterLen(cs, len, i, i);// 奇数中心的扩散长度
-            int len2 = getPalindromeCenterLen(cs, len, i, i + 1);// 偶数中心的扩散长度
+            // 奇数中心的扩散长度
+            int len1 = getPalindromeCenterLen(cs, len, i, i);
+            // 偶数中心的扩散长度
+            int len2 = getPalindromeCenterLen(cs, len, i, i + 1);
             len1 = Math.max(len1, len2);
             if (len1 > maxLen) {
                 maxLen = len1;
@@ -31,6 +35,7 @@ public class Solution2 {
         int i = left;
         int j = right;
         while (i >= 0 && j < len) {
+            // 向外扩散，等于才扩散
             if (cs[i] == cs[j]) {
                 i--;
                 j++;

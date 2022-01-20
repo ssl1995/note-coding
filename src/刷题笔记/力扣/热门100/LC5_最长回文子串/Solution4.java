@@ -4,10 +4,10 @@ public class Solution4 {
 
     // manachar方法：面试加分项
     public String longestPalindrome(String s) {
-        int len = s.length();
-        if (len < 2) {
+        if (s.length() < 2) {
             return s;
         }
+        int len = s.length();
         // 将s转换为加了特殊字符#的字符数组，目的是统一奇偶数的回文中心差异性问题
         // 比如：s=”cabac“转化为cs=[#c#a#b#a#c#]
         char[] cs = manacherString(s, len);
