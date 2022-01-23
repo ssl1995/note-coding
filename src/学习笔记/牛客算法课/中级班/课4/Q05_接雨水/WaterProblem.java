@@ -2,18 +2,22 @@ package 学习笔记.牛客算法课.中级班.课4.Q05_接雨水;
 
 
 public class WaterProblem {
-    // 以下2种方法都是最优解:空间O(1)，时间O(n)
-    // 第一种方法是我最容易理解的
+    /**
+     * 接雨水问题
+     * 以下2种方法都是最优解:空间O(1)，时间O(n)
+     */
     public static long getWater1(int[] arr) {
-        int left = 0, right = arr.length - 1, height = 0;
-        long water = 0;// 水量根据返回值是long可知会超过int型
+        int left = 0, right = arr.length - 1;
+        int height = 0;
+        // 水量根据返回值是long可知会超过int型
+        long water = 0;
         while (left < right) {
             // 当前左右指针最小值
             int min = Math.min(arr[left], arr[right]);
             // 更新桶高：当前左右指针和桶高的最大值
             height = Math.max(height, min);
             // 雨水量 = 桶高-当前最矮
-            water += arr[left] < arr[right] ? (height - arr[left++]) : (height - arr[right--]);
+            water += arr[left] <= arr[right] ? (height - arr[left++]) : (height - arr[right--]);
         }
         return water;
     }
@@ -45,6 +49,11 @@ public class WaterProblem {
             arr[i] = (int) (Math.random() * 200) + 2;
         }
         return arr;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+        System.out.println(WaterProblem.getWater1(nums));
     }
 
 }
