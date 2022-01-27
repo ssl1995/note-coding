@@ -21,11 +21,11 @@ public class Solution {
         int n2 = word2.length();
         // dp[i][j] = word1到i位置转换成word2到j位置的最少步数
         int[][] dp = new int[n1 + 1][n2 + 1];
-        // 第一列：word2=null,
+        // 第一列：word2=null,word1每个位置需要删除的步数=最少步数
         for (int i = 1; i <= n1; i++) {
             dp[i][0] = i;
         }
-
+        // 第一行：word1=null,word2每个位置需要增加的步数=最少步数
         for (int i = 1; i <= n2; i++) {
             dp[0][i] = i;
         }
