@@ -24,9 +24,9 @@ public class Solution {
         Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
         List<int[]> res = new ArrayList<>();
 
-        for (int i = 0; i < intervals.length; i++) {
-            int left = intervals[i][0];
-            int right = intervals[i][1];
+        for (int[] interval : intervals) {
+            int left = interval[0];
+            int right = interval[1];
             int last = res.size() - 1;
             // 不能合并区间:[8,10]、[15,18]
             if (res.isEmpty() || res.get(last)[1] < left) {
