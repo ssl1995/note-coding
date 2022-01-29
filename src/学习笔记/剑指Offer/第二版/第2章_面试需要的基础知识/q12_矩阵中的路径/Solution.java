@@ -10,7 +10,7 @@ public class Solution {
      * @return 是否
      */
     public boolean exist(char[][] board, String word) {
-        // 从任意一个坐标出发，只有有一个匹配，就返回成功
+        // 从任意一个坐标出发，只要有一个匹配，就返回成功
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (dfs(board, word, i, j, 0)) {

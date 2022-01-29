@@ -11,6 +11,7 @@ public class Solution {
         int maxArea = Integer.MIN_VALUE;
         // 依次找出最矮矩形，和其后的矩形面积比较找最小
         for (int i = 0; i < heights.length; i++) {
+            // min表示从i位置往后，能包含当前柱子的最小柱子高度
             int min = heights[i];
             for (int j = i; j < heights.length; j++) {
                 min = Math.min(min, heights[j]);
@@ -19,5 +20,11 @@ public class Solution {
             }
         }
         return maxArea;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] heights = {2, 1, 5, 6, 2, 3};
+        System.out.println(solution.largestRectangleArea(heights));
     }
 }

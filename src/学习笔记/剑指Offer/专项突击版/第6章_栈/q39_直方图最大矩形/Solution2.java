@@ -10,10 +10,9 @@ import java.util.LinkedList;
 public class Solution2 {
     // 单调栈
     public int largestRectangleArea(int[] heights) {
-        // 栈：存下标，保证从栈底到栈顶单调递增
-        // 由于算矩形面积需要宽，所以栈中存下标
+        // 单调栈：栈底到栈顶存面积递增的下标
         LinkedList<Integer> stack = new LinkedList<>();
-        // 数组最左边前一个元素没有对应下标，栈底让其默认存一个下标-1便于计算宽
+        // 栈底预存一个坐标为-1，便于计算width
         stack.push(-1);
         int maxArea = 0;
         for (int i = 0; i < heights.length; i++) {
@@ -35,6 +34,12 @@ public class Solution2 {
             maxArea = Math.max(maxArea, height * width);
         }
         return maxArea;
+    }
+
+    public static void main(String[] args) {
+        Solution2 solution = new Solution2();
+        int[] heights = {2, 1, 5, 6, 2, 3};
+        System.out.println(solution.largestRectangleArea(heights));
     }
 
 }
