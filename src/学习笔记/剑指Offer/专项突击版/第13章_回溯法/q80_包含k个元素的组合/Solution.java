@@ -9,11 +9,15 @@ import java.util.List;
  * @description
  */
 public class Solution {
+    /**
+     * 选择1-n中k个数组成的所有组合(子集)
+     * 示例：n=3,k=2,得到三个组合，[1,2],[1,3],[2,3]
+     */
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> res = new LinkedList<>();
 
         LinkedList<Integer> combination = new LinkedList<>();
-
+        // 坐标从1开始
         helper(n, k, 1, combination, res);
         return res;
     }

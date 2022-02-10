@@ -9,8 +9,10 @@ import java.util.List;
  * @description
  */
 public class Solution {
-    // 条件是没有重复数字的集合，找出它的全排列
-    // 排列是有顺序的，组合是不要顺序的
+    /**
+     * 给定一个没有重复数字的正整数集合，找出它所有的全排列
+     * 示例：nums=[1,2,3],结果为[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]
+     */
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
         helper(nums, 0, res);
@@ -28,11 +30,12 @@ public class Solution {
         } else {
             // 排列是剩下的数字中选择一个放进去
             for (int j = i; j < nums.length; j++) {
+                // 交换数字就能得到不同的排列
                 swap(nums, i, j);
 
                 helper(nums, i + 1, res);
 
-                // 选择完了，在回到父节点时，回溯清除之前的修改，开始下一个数字`
+                // 选择完了，在回到父节点时，回溯清除之前的修改，开始下一个数字
                 swap(nums, i, j);
             }
         }

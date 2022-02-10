@@ -11,7 +11,10 @@ import java.util.Set;
  * @description
  */
 public class Solution {
-    // 给定一个包含重复数字的集合，输出它的所有全排列
+    /**
+     * 给定一个有重复数字的正整数集合，找出它所有的全排列
+     * 示例：nums=[1,1,2],结果为[1,1,2],[1,2,1],[2,1,1]
+     */
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new LinkedList<>();
         helper(nums, 0, res);
@@ -27,6 +30,7 @@ public class Solution {
 
             res.add(temp);
         } else {
+            // 去重，因为交换集合中重复数字得到的全排列是相同的全排列
             Set<Integer> set = new HashSet<>();
 
             for (int j = i; j < nums.length; j++) {

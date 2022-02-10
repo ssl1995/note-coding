@@ -9,7 +9,10 @@ import java.util.List;
  * @description
  */
 public class Solution {
-    // 输入没有重复的数字，同一个数字可以在组合中重复出现
+    /**
+     * 给定一个没有重复数字的正整数集合，找出所有元素之和等于t的所有组合
+     * 示例：can=[2,3,5],t=8,结果为[2,2,2,2],[2,3,3],[3,5]
+     */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new LinkedList<>();
         LinkedList<Integer> com = new LinkedList<>();
