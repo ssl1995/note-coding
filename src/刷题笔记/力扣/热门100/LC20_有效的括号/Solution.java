@@ -3,7 +3,6 @@ package 刷题笔记.力扣.热门100.LC20_有效的括号;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author SongShengLin
@@ -34,7 +33,7 @@ public class Solution {
                 stack.push(c);
             } else {
                 // 匹配到右括号，就比对栈顶和当前右括号
-                if (!Objects.equals(map.get(stack.peek()), c)) {
+                if (stack.isEmpty() || map.get(stack.peek()) != c) {
                     return false;
                 }
                 stack.pop();

@@ -1,4 +1,4 @@
-package 学习笔记.剑指Offer.第二版.第6章_面试中的各项能力.q59_I_滑动窗口最大值;
+package 学习笔记.算法面试40讲.C12_滑动窗口最大值.LC239_滑动窗口最大值;
 
 import org.junit.Test;
 
@@ -6,8 +6,12 @@ import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/**
+ * @author SongShengLin
+ * @date 2022/2/16 9:46 AM
+ * @description
+ */
 public class Solution {
-
     /**
      * 滑动窗口最大值
      * 输入：nums = [1,3,-1,-3,5,3,6,7], k = 3
@@ -38,10 +42,12 @@ public class Solution {
             }
             // 存下标
             maxIndexDeque.addLast(i);
+
             // 数字下标与队列头差值>=窗口长度，队头移出队列
             if (i - maxIndexDeque.peekFirst() >= k) {
                 maxIndexDeque.pollFirst();
             }
+
             // 数字下标>=窗口长度下标，就要记录队头元素
             if (i >= k - 1) {
                 res[index++] = nums[maxIndexDeque.peekFirst()];
@@ -60,6 +66,10 @@ public class Solution {
 
     @Test
     public void deQueTest() {
-        System.out.println(1);
+        Deque<Integer> maxIndexDeque = new LinkedList<>();
+        maxIndexDeque.addLast(1);
+        maxIndexDeque.addLast(2);
+        maxIndexDeque.addLast(3);
+        System.out.println(maxIndexDeque.peekLast());
     }
 }
