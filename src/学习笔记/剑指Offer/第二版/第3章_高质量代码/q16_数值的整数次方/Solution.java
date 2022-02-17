@@ -4,7 +4,7 @@ public class Solution {
 
     /**
      * 求x^n方，考虑n可能是负数、0、正数
-     * 快速幂法：思考x^9=x^1001=x^(1*1+0*2+0*4+1*8)推导
+     * 快速幂法：思考x^9=x^1001=x^(1*1+0*2+0*4+1*8)=x^8 * x
      */
     public double myPow(double x, int n) {
         if (x == 0) {
