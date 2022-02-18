@@ -1,14 +1,24 @@
-package 刷题笔记.力扣.编号刷题.LC51_N皇后;
+package 学习笔记.算法面试40讲.C32_N皇后问题.LC52_N皇后II;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author SongShengLin
+ * @date 2022/2/18 9:23 AM
+ * @description
+ */
 public class Solution {
 
-    List<List<String>> res = new ArrayList<>();
+    private int count = 0;
 
-    public List<List<String>> solveNQueens(int n) {
+    /**
+     * N皇后II
+     * 输入：n = 4
+     * 输出：2
+     */
+    public int totalNQueens(int n) {
         // 初始化cs二维数组，根据题目条件初始化放入.
         char[][] cs = new char[n][n];
         for (char[] c : cs) {
@@ -17,22 +27,24 @@ public class Solution {
 
         backTrack(cs, 0, n);
 
-        return res;
+        return count;
     }
 
 
     public void backTrack(char[][] cs, int i, int n) {
         // 终止条件:row越过n-1,说明这是一种正确的放法
         if (i == n) {
-            res.add(char2List(cs));
+            count++;
             return;
         }
         for (int j = 0; j < n; ++j) {
             // 到达一行，遍历该行的每一列是否与之前的皇后是否产生攻击
             if (isValid(cs, i, j, n)) {
+                // 将有效当期位设为Q
                 cs[i][j] = 'Q';
+                // 递归下一行
                 backTrack(cs, i + 1, n);
-
+                // 回溯，当前有效位还原，循环开启下一行
                 cs[i][j] = '.';
             }
         }
@@ -69,13 +81,4 @@ public class Solution {
         }
         return list;
     }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        int n = 4;
-        List<List<String>> res = solution.solveNQueens(n);
-        System.out.println(res);
-    }
-
-
 }

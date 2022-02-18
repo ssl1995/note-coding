@@ -1,16 +1,17 @@
-package 刷题笔记.力扣.热门100.LC22_括号生成;
+package 学习笔记.算法面试40讲.C30_生成有效括号组合.LC22_括号生成;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author SongShengLin
- * @date 2022/1/20 11:51 PM
+ * @date 2022/2/18 8:43 AM
  * @description
  */
 public class Solution {
     /**
-     * 题目：数字n代表生成括号的对数，生成所有可能的并且有效的括号组合。
+     * 括号生成
+     * 生成所有可能且有效的括号组合
      * 输入：n = 3
      * 输出：["((()))","(()())","(())()","()(())","()()()"]
      */

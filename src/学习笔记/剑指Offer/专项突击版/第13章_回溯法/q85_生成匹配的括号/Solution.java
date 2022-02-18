@@ -1,6 +1,6 @@
 package 学习笔记.剑指Offer.专项突击版.第13章_回溯法.q85_生成匹配的括号;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,34 +15,24 @@ public class Solution {
      * 输出：["((()))","(()())","(())()","()(())","()()()"]
      */
     public List<String> generateParenthesis(int n) {
-        List<String> res = new LinkedList<>();
-
-        helper(n, n, "", res);
+        List<String> res = new ArrayList<>();
+        // n对括号，会生成2n长的字符串，使用dfs
+        dfs(n, n, "", res);
         return res;
     }
 
-    /**
-     * 往res中填生成的n对括号
-     *
-     * @param left    还需要生成的左括号数量
-     * @param right   还需要生成的右括号数量
-     * @param bracket 括号组合
-     * @param res     结果集
-     */
-    private void helper(int left, int right, String bracket, List<String> res) {
-        // base: 还需要生成的左右括号为0，表示当前一个完成的括号组合成功
-        if (left == 0 && right == 0) {
-            res.add(bracket);
+    private void dfs(int leftNeed, int rightNeed, String subList, List<String> res) {
+        if (leftNeed == 0 && rightNeed == 0) {
+            res.add(subList);
             return;
         }
-        // 已经生成的左括号<n，就还可能生成一个左括号
-        if (left > 0) {
-            helper(left - 1, right, bracket + "(", res);
+        // 还有需要的左括号，就添加左括号
+        if (leftNeed > 0) {
+            dfs(leftNeed - 1, rightNeed, subList + "(", res);
         }
-        // 已经生成的左括号<已经生成的右括号，就还可能生成一个右括号
-        // 因为任意步骤中左括号必须 >= 右括号数量，比如 ()(还有机会、())必然无法匹配
-        if (left < right) {
-            helper(left, right - 1, bracket + ")", res);
+        // 还需要左括号<还需要的右括号 = 已经生成的左括号>已经生成的右括号，还需要补充右括号
+        if (leftNeed < rightNeed) {
+            dfs(leftNeed, rightNeed - 1, subList + ")", res);
         }
     }
 }
