@@ -1,8 +1,6 @@
 package 学习笔记.算法面试40讲.C32_N皇后问题.LC52_N皇后II;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * @author SongShengLin
@@ -71,14 +69,5 @@ public class Solution {
             }
         }
         return true;
-    }
-
-    public List<String> char2List(char[][] cs) {
-        List<String> list = new ArrayList<>();
-        for (char[] c : cs) {
-            // char[]直接转成String，加进list中
-            list.add(String.copyValueOf(c));
-        }
-        return list;
     }
 }

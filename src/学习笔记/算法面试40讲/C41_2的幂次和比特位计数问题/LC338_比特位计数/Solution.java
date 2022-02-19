@@ -1,15 +1,19 @@
-package 学习笔记.剑指Offer.专项突击版.第1章_整数的基础知识.q3_前n个数字二进制中1的个数;
+package 学习笔记.算法面试40讲.C41_2的幂次和比特位计数问题.LC338_比特位计数;
 
 /**
  * @author SongShengLin
- * @date 2021/9/9
+ * @date 2022/2/19 10:26 PM
+ * @description
  */
 public class Solution {
-
     /**
-     * 比特位计数
-     * [0,n]之间每个数的二进制有多少个1的个数
-     * 法1：num&num-1将最右边的1变成0，计数+1
+     * LC338_比特位计数
+     * 输入：n = 2
+     * 输出：[0,1,1]
+     * 解释：返回0到n中每个数中1的个数
+     * 0 --> 0
+     * 1 --> 1
+     * 2 --> 10
      */
     public int[] countBits(int n) {
         int[] res = new int[n + 1];
