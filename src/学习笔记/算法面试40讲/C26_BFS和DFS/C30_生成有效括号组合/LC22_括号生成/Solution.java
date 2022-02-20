@@ -1,4 +1,4 @@
-package 学习笔记.算法面试40讲.C26和C27_BFS和DFS.C30_生成有效括号组合.LC22_括号生成;
+package 学习笔记.算法面试40讲.C26_BFS和DFS.C30_生成有效括号组合.LC22_括号生成;
 
 import java.util.ArrayList;
 import java.util.List;

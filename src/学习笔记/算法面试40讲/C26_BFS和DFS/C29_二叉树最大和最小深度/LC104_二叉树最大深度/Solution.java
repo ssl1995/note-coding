@@ -1,4 +1,4 @@
-package 学习笔记.算法面试40讲.C26和C27_BFS和DFS.C29_二叉树最大和最小深度.LC104_二叉树最大深度;
+package 学习笔记.算法面试40讲.C26_BFS和DFS.C29_二叉树最大和最小深度.LC104_二叉树最大深度;
 
 import 学习笔记.剑指Offer.utils.TreeNode;
 

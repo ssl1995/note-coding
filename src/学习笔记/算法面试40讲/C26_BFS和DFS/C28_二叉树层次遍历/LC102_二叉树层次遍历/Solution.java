@@ -1,4 +1,4 @@
-package 学习笔记.算法面试40讲.C26和C27_BFS和DFS.C28_二叉树层次遍历.LC102_二叉树层次遍历;
+package 学习笔记.算法面试40讲.C26_BFS和DFS.C28_二叉树层次遍历.LC102_二叉树层次遍历;
 
 import 学习笔记.剑指Offer.utils.TreeNode;
 
