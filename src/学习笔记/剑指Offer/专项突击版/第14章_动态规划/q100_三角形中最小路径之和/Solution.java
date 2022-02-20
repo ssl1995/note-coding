@@ -17,11 +17,14 @@ public class Solution {
             for (int j = 0; j <= i; j++) {
                 // 先获得待加的数，同时i==0时也是初始化第一位
                 dp[i][j] = triangle.get(i).get(j);
-                if (i > 0 && j == 0) {// 第一列初始化
+                // 第一列初始化
+                if (i > 0 && j == 0) {
                     dp[i][j] += dp[i - 1][0];
-                } else if (i > 0 && i == j) {// 对角线初始化
+                    // 对角线初始化
+                } else if (i > 0 && i == j) {
                     dp[i][j] += dp[i - 1][j - 1];
-                } else if (i > 0) {// 普通状态：min(左上角、正上角)
+                } else if (i > 0) {
+                    // 普通状态：min(左上角、正上角)
                     dp[i][j] += Math.min(dp[i - 1][j], dp[i - 1][j - 1]);
                 }
             }
