@@ -1,4 +1,4 @@
-package 刷题笔记.力扣.热门100.LC72_编辑距离;
+package 学习笔记.算法面试40讲.C43_动态规划.C51_编辑距离.LC72_编辑距离;
 
 /**
  * @author SongShengLin

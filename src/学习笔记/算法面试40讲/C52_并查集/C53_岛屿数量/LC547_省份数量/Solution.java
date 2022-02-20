@@ -1,8 +1,8 @@
-package 学习笔记.剑指Offer.专项突击版.第15章_图.q116_省份数量;
+package 学习笔记.算法面试40讲.C52_并查集.C53_岛屿数量.LC547_省份数量;
 
 /**
  * @author SongShengLin
- * @date 2021/11/28 10:56 下午
+ * @date 2022/2/20 5:05 PM
  * @description
  */
 public class Solution {
@@ -49,10 +49,13 @@ public class Solution {
         return false;
     }
 
-
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[][] isConnected = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
-        System.out.println(solution.findCircleNum(isConnected));
+        int[][] nums = {
+                {1, 1, 0},
+                {1, 1, 0},
+                {0, 0, 1}
+        };
+        System.out.println(solution.findCircleNum(nums));
     }
 }
