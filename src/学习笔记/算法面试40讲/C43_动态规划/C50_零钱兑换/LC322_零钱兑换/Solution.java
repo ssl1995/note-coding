@@ -1,12 +1,17 @@
-package 学习笔记.剑指Offer.专项突击版.第14章_动态规划.q103_最少的硬币数量;
+package 学习笔记.算法面试40讲.C43_动态规划.C50_零钱兑换.LC322_零钱兑换;
 
 /**
  * @author SongShengLin
- * @date 2021/11/23 9:30 上午
+ * @date 2022/2/20 1:09 PM
  * @description
  */
-public class Solution1 {
-    // coins是正整数
+public class Solution {
+    /**
+     * 零钱兑换
+     * 输入：coins = [1, 2, 5], amount = 11
+     * 输出：3
+     * 解释：11 = 5 + 5 + 1
+     */
     public int coinChange(int[] coins, int amount) {
         if (coins == null || coins.length == 0) {
             return -1;
@@ -25,5 +30,12 @@ public class Solution1 {
         }
 
         return dp[amount] == amount + 1 ? -1 : dp[amount];
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] coins = {1, 2, 5};
+        int target = 11;
+        System.out.println(solution.coinChange(coins, target));
     }
 }
