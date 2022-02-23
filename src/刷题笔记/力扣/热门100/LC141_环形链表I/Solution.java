@@ -9,8 +9,8 @@ public class Solution {
             return false;
         }
         // 初始化：快指针在next.next,慢指针在next上
-        ListNode fast = head.next.next;
         ListNode slow = head.next;
+        ListNode fast = head.next.next;
         while (fast != slow) {
             if (fast.next == null || fast.next.next == null) {
                 return false;

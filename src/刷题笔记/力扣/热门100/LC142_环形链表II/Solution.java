@@ -4,13 +4,16 @@ import 学习笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
 
-    // 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回null
+    /**
+     * LC142_判断环形链表II：
+     * 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回null
+     */
     public ListNode detectCycle(ListNode head) {
         if (head == null || head.next == null || head.next.next == null) {
             return null;
         }
-        ListNode fast = head.next.next;
         ListNode slow = head.next;
+        ListNode fast = head.next.next;
         // 快指针走2步,慢指针走1步
         while (fast != slow) {
             if (fast.next == null || fast.next.next == null) {
