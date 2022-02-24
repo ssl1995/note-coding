@@ -8,9 +8,9 @@ import java.util.Arrays;
  * @description
  */
 public class Solution1 {
+
     public int[][] dp;
     public int[] arr;
-
 
     /**
      * 戳气球

@@ -38,18 +38,21 @@ public class Solution {
         int n = arr.size();
         int res = 0;
         for (int i = 0; i < n; i++) {
+            // 获取相邻两个气球戳破的硬币数
             int left = (i - 1 >= 0) ? arr.get(i - 1) : 1;
             int right = (i + 1 < n) ? arr.get(i + 1) : 1;
+
             int total = left * arr.get(i) * right;
 
+            // 戳破当前气球
             int remove = arr.remove(i);
 
+            // 递归计算戳破当前气球的所有情况，取最大值
             total += dfs(arr);
-
             res = Math.max(res, total);
 
+            // 回溯，恢复戳破的当前气球，循环开启下一个气球
             arr.add(i, remove);
-
         }
 
         return res;
