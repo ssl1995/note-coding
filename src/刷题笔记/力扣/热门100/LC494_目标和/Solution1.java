@@ -1,19 +1,37 @@
-package 学习笔记.剑指Offer.专项突击版.第14章_动态规划.q102_加减的目标值;
+package 刷题笔记.力扣.热门100.LC494_目标和;
 
 /**
  * @author SongShengLin
  * @date 2021/11/23 8:56 上午
  * @description
  */
-public class Solution {
+public class Solution1 {
+
+    /**
+     * 目标和
+     * 输入：nums = [1,1,1,1,1], target = 3
+     * 输出：5
+     * 解释：一共有 5 种方法让最终目标和为 3 。
+     * -1 + 1 + 1 + 1 + 1 = 3
+     * +1 - 1 + 1 + 1 + 1 = 3
+     * +1 + 1 - 1 + 1 + 1 = 3
+     * +1 + 1 + 1 - 1 + 1 = 3
+     * +1 + 1 + 1 + 1 - 1 = 3
+     * <p>
+     * 1 <= nums.length <= 20
+     * 0 <= nums[i] <= 1000
+     * 0 <= sum(nums[i]) <= 1000
+     * -1000 <= target <= 1000
+     */
     public int findTargetSumWays(int[] nums, int t) {
+        // 假设加+号数字和为p，加-号数字和为q
+        // 有 p+q=sum和p-q=t -> p=(t+sum)/2
         int sum = 0;
         for (int num : nums) {
             sum += num;
         }
-        // 假设加+号数字和为p，加-号数字和为q
-        // 有 p+q=sum，p-q=t,推出p=(t+sum)/2
-        // 失败情况
+        // p=(t+sum)/2，p是数组中元素之和，也是非负整数
+        // sum是非负整数之和
         if ((t + sum) % 2 == 1 || sum < t) {
             return 0;
         }
@@ -37,7 +55,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         int[] nums = {2, 2, 2};
         int t = 2;
         int i = solution.subSetSum(nums, t);
