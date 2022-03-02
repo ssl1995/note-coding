@@ -8,7 +8,7 @@ import java.util.Map;
  * @date 2022/2/20 7:00 PM
  * @description
  */
-class LFUCache {
+public class LFUCache {
 
     private int size;
     private int capacity;

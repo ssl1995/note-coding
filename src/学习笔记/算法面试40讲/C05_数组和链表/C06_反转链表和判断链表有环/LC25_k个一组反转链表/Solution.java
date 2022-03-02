@@ -8,11 +8,7 @@ import 学习笔记.剑指Offer.utils.ListNode;
  * @description
  */
 public class Solution {
-    /**
-     * @param head
-     * @param k
-     * @return
-     */
+
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || head.next == null || k == 1) {
             return head;
