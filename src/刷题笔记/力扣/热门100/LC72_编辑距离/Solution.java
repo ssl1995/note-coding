@@ -9,6 +9,7 @@ public class Solution {
 
     /**
      * 编辑距离
+     * 返回将word1转换成word2所使用的最少操作数
      * 输入：word1 = "horse", word2 = "ros"
      * 输出：3
      * 解释：

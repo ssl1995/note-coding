@@ -3,21 +3,28 @@ package 刷题笔记.力扣.热门100.LC148_排序链表;
 import 学习笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
-
+    /**
+     * 排序链表
+     * 使用归并排序，升序排序
+     */
     public ListNode sortList(ListNode head) {
         return mergeSortList(head);
     }
 
-    // 归并排序单链表
     private ListNode mergeSortList(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode middle = getMidNode(head);// 找到中点位置：链表奇数长返回中点，偶数长返回中间靠左位置
-        ListNode next = middle.next;// 记录中点下一个位置
-        middle.next = null;// 切割中点，一定要中间.next置空
-        ListNode left = mergeSortList(head);// 以左边的头head开始递归
-        ListNode right = mergeSortList(next);// 以右边的头next开始递归
+        // 找到中点位置：链表奇数长返回中点，偶数长返回中间靠左位置
+        ListNode middle = getMidNode(head);
+        // 记录中点下一个位置
+        ListNode next = middle.next;
+        // 切割中点，一定要中间.next置空
+        middle.next = null;
+        // 以左边的头head开始递归
+        ListNode left = mergeSortList(head);
+        // 以右边的头next开始递归
+        ListNode right = mergeSortList(next);
         // 合并两个有序链表
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
@@ -35,7 +42,9 @@ public class Solution {
         return dummy.next;
     }
 
-    // 找到链表中心：奇数是中点，偶数是中心靠左的位置
+    /**
+     * 找到链表中心：奇数是中点，偶数是中心靠左的位置
+     */
     private ListNode getMidNode(ListNode head) {
         if (head == null || head.next == null) {
             return head;

@@ -11,6 +11,7 @@ import java.util.Map;
 public class Solution {
     /**
      * 和为k的子数组
+     * 返回该数组中和为 k 的连续子数组的个数
      * 输入：nums = [1,1,1], k = 2
      * 输出：2
      */

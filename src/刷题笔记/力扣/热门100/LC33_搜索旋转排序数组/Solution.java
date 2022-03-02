@@ -1,4 +1,4 @@
-package 刷题笔记.力扣.热门100.LC34_搜索旋转排序数组;
+package 刷题笔记.力扣.热门100.LC33_搜索旋转排序数组;
 
 /**
  * @author SongShengLin

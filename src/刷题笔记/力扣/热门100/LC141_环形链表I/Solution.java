@@ -3,7 +3,9 @@ package 刷题笔记.力扣.热门100.LC141_环形链表I;
 import 学习笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
-    // 判断链表是否有环，返回值是布尔值
+    /**
+     * 判断链表是否有环，返回值是布尔值
+     */
     public boolean hasCycle(ListNode head) {
         if (head == null || head.next == null || head.next.next == null) {
             return false;

@@ -9,6 +9,9 @@ import 学习笔记.剑指Offer.utils.ListNode;
  */
 public class Solution {
 
+    /**
+     * 反转单链表
+     */
     public ListNode reverseList(ListNode head) {
         ListNode pre = null;
         ListNode cur = head;

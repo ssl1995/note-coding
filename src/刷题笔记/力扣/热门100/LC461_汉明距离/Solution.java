@@ -15,7 +15,7 @@ public class Solution {
      * 4   (0 1 0 0)
      */
     public int hammingDistance(int x, int y) {
-        // 将所以位置的1放在同一个数上=异或
+        // 将所有位置的1放在同一个数上=异或
         int num = x ^ y;
         int res = 0;
         while (num != 0) {

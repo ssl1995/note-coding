@@ -3,10 +3,12 @@ package 刷题笔记.力扣.热门100.LC300_最长递增子序列;
 import java.util.Arrays;
 
 public class Solution {
-    // 力扣:是返回最长递增子序列的长度
 
     /**
      * 最长递增子序列
+     * 输入：nums = [10,9,2,5,3,7,101,18]
+     * 输出：4
+     * 解释：最长递增子序列是 [2,3,7,101]，因此长度为 4
      */
     public int lengthOfLIS(int[] nums) {
         if (nums == null || nums.length == 0) {

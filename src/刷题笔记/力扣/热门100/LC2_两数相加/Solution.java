@@ -3,8 +3,12 @@ package 刷题笔记.力扣.热门100.LC2_两数相加;
 import 学习笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
+
     /**
-     * 题目：l1 = [2,4,3], l2 = [5,6,4]，返回[7,0,8]
+     * 两数相加
+     * 输入：l1 = [2,4,3], l2 = [5,6,4]
+     * 输出：[7,0,8]
+     * 解释：342 + 465 = 807.
      */
     public ListNode addTwoNumbers(ListNode head1, ListNode head2) {
         ListNode dummyNode = new ListNode(-1);

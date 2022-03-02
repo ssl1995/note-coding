@@ -8,6 +8,7 @@ package 刷题笔记.力扣.热门100.LC76_最小覆盖子串;
 public class Solution {
     /**
      * 最小覆盖子串
+     * 返回 s 中涵盖 t 所有字符的最小子串
      * 输入：s = "ADOBECODEBANC", t = "ABC"
      * 输出："BANC"
      */

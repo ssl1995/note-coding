@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
+    /**
+     * 二叉树的层次遍历
+     */
     public List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();

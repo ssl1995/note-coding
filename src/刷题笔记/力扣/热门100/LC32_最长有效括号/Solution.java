@@ -8,6 +8,9 @@ package 刷题笔记.力扣.热门100.LC32_最长有效括号;
 public class Solution {
     /**
      * 最长有效括号
+     * 输入：s = ")()())"
+     * 输出：4
+     * 解释：最长有效括号子串是 "()()"
      */
     public int longestValidParentheses(String s) {
         if (s == null || "".equals(s)) {

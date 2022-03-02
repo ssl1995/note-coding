@@ -3,7 +3,11 @@ package 刷题笔记.力扣.热门100.LC5_最长回文子串;
 
 public class Solution2 {
     /**
-     * 中心扩散法
+     * 最长回文子串
+     * 返回一个字符串的最长回文子串
+     * 输入：s = "babad"
+     * 输出："bab"
+     * 解释："aba" 同样是符合题意的答案。
      */
     public String longestPalindrome(String s) {
         if (s.length() < 2) {

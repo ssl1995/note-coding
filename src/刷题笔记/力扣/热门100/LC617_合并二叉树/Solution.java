@@ -8,6 +8,8 @@ package 刷题笔记.力扣.热门100.LC617_合并二叉树;
 public class Solution {
     /**
      * 合并二叉树
+     * 如果两个节点重叠，那么将这两个节点的值相加作为合并后节点的新值
+     * 否则，不为 null 的节点将直接作为新二叉树的节点。
      */
     public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
         if (root1 == null || root2 == null) {

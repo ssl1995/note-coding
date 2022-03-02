@@ -10,6 +10,12 @@ import java.util.Map;
  * @description
  */
 public class Solution {
+    /**
+     * 两数之和
+     * 输入：nums = [2,7,11,15], target = 9
+     * 输出：[0,1]
+     * 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+     */
     public int[] twoSum(int[] nums, int target) {
         if (nums.length < 1) {
             return new int[]{-1, -1};

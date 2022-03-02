@@ -6,6 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
+    /**
+     * 二叉树中序遍历
+     */
     public List<Integer> inorderTraversal(TreeNode root) {
         LinkedList<TreeNode> stack = new LinkedList<>();
         List<Integer> res = new LinkedList<>();

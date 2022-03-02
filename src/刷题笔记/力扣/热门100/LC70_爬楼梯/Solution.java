@@ -9,6 +9,7 @@ public class Solution {
 
     /**
      * 爬楼梯
+     * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
      * n=1,返回1;n=2,返回2;n=3，返回3;
      */
     public int climbStairs(int n) {

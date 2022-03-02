@@ -10,7 +10,10 @@ import java.util.Map;
  */
 public class Solution {
     /**
-     * 同剑指Offer48：最长无重复子串长度
+     * 无重复字符的最长子串
+     * 输入: s = "abcabcbb"
+     * 输出: 3
+     * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
      */
     public int lengthOfLongestSubstring(String s) {
         if (s.length() < 1) {

@@ -11,6 +11,7 @@ import java.util.List;
 public class Solution {
     /**
      * 找到所有数组中消失的数字
+     * 其中 nums[i] 在区间 [1, n] 内。请你找出所有在 [1, n] 范围内但没有出现在 nums 中的数字
      * 输入：nums = [4,3,2,7,8,2,3,1]
      * 输出：[5,6]
      */

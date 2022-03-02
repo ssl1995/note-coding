@@ -9,6 +9,11 @@ import java.util.Arrays;
  */
 public class Solution1 {
 
+    /**
+     * 在排序数组中查找第一个和最后一个位置
+     * 输入：nums = [5,7,7,8,8,10], target = 8
+     * 输出：[3,4]
+     */
     public int[] searchRange(int[] nums, int target) {
         if (nums.length == 0) {
             return new int[]{-1, -1};

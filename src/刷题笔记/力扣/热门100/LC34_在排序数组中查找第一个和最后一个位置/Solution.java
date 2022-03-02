@@ -7,6 +7,11 @@ package 刷题笔记.力扣.热门100.LC34_在排序数组中查找第一个和�
  */
 public class Solution {
 
+    /**
+     * 在排序数组中查找第一个和最后一个位置
+     * 输入：nums = [5,7,7,8,8,10], target = 8
+     * 输出：[3,4]
+     */
     public int[] searchRange(int[] nums, int target) {
         if (!isContainTarget(nums, target)) {
             return new int[]{-1, -1};
