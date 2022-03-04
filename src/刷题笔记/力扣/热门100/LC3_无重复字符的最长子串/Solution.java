@@ -27,10 +27,13 @@ public class Solution {
         int pre = -1;
         int max = 0;
         for (int i = 0; i < s.length(); i++) {
+            // 获取当前字母的pre
             if (map.get(s.charAt(i)) >= pre) {
                 pre = map.get(s.charAt(i));
             }
+            // 计算max
             max = Math.max(max, i - pre);
+            // 更新map
             map.put(s.charAt(i), i);
         }
         return max;
