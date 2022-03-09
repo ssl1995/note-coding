@@ -1,8 +1,6 @@
 package 刷题笔记.力扣.热门100.LC5_最长回文子串;
 
 
-import 刷题笔记.力扣.热门100.LC5_最长回文子串.练习.Solution;
-
 public class Solution1 {
 
     /**
@@ -45,7 +43,7 @@ public class Solution1 {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Solution1 solution = new Solution1();
         String s = "babad";
         System.out.println(solution.longestPalindrome(s));
     }

@@ -51,4 +51,11 @@ public class Solution2 {
         // 此时的回文中心长度：j-i+1-2=j-i-1
         return j - i - 1;
     }
+
+
+    public static void main(String[] args) {
+        Solution2 solution2 = new Solution2();
+        String s = "aba";
+        System.out.println(solution2.getPalindromeCenterLen(s.toCharArray(), s.length(), 0, s.length() - 1));
+    }
 }
