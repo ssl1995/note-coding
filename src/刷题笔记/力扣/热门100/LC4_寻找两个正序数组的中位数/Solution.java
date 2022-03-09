@@ -31,18 +31,22 @@ public class Solution {
         while (left < right) {
             int i = left + (right - left + 1) / 2;
             int j = totalLeft - i;
+
+
+            // 找最大i，使得nums1[i-1]<=nums2[j]
             // nums1:[left,i-1,i,right]
-            // 短数组分割线左边多1个元数，且短数组分割线左边>长数组分割线位置
-            // 大的一边要变小，右指针前移
             if (nums1[i - 1] > nums2[j]) {
+                // [i+1,m]均不满足，移动右指针
                 right = i - 1;
             } else {
-                // 否则，大的一边为长数组，左指针到i处
+                // 最大i此时在右边，移动左指针
                 left = i;
             }
         }
 
+        // 退出循环，left=right，表示nums1中分割线位置
         int i = left;
+        // j=nums2中分割线位置
         int j = totalLeft - i;
 
         // 涉及有i-1,j-1，特殊处理左右边界：左边界为负无穷，右边界为正无穷
@@ -63,8 +67,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] nums1 = {1, 2};
-        int[] nums2 = {3, 4};
+        int[] nums1 = {0, 1, 2, 3, 4, 5, 6, 7};
+        int[] nums2 = {0, 1, 2, 3, 4, 5, 6};
         System.out.println(solution.findMedianSortedArrays(nums1, nums2));
     }
 
