@@ -48,7 +48,7 @@ public class Solution {
                 }
             }
         }
-//        printDp(dp);
+        printDp(dp);
         return dp[m][n];
     }
 

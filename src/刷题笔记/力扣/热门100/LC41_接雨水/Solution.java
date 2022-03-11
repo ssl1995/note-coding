@@ -14,12 +14,12 @@ public class Solution {
     public int trap(int[] arr) {
         int left = 0, right = arr.length - 1;
         int height = 0;
-        // 水量根据返回值是long可知会超过int型
+        // 如果返回值是long，那么雨水量类型就是long
         int water = 0;
         while (left < right) {
             // 当前左右指针最小值
             int min = Math.min(arr[left], arr[right]);
-            // 更新桶高：当前左右指针和桶高的最大值
+            // 更新桶高：当前最矮和桶高，取最大值
             height = Math.max(height, min);
             // 雨水量 = 桶高-当前最矮
             water += arr[left] <= arr[right] ? (height - arr[left++]) : (height - arr[right--]);

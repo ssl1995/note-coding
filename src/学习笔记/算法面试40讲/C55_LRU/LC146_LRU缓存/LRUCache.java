@@ -10,6 +10,24 @@ import java.util.Map;
  */
 public class LRUCache {
 
+    /**
+     * 输入
+     * ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+     * [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+     * 输出
+     * [null, null, null, 1, null, -1, null, -1, 3, 4]
+     * 解释
+     * LRUCache lRUCache = new LRUCache(2);// 长度为2
+     * lRUCache.put(1, 1); // 缓存是 {1=1}
+     * lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
+     * lRUCache.get(1);    // 返回 1
+     * lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
+     * lRUCache.get(2);    // 返回 -1 (未找到)
+     * lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
+     * lRUCache.get(1);    // 返回 -1 (未找到)
+     * lRUCache.get(3);    // 返回 3
+     * lRUCache.get(4);    // 返回 4
+     */
     private int size;
     private int capacity;
     private Map<Integer, DLinkedNode> cache;
@@ -17,10 +35,14 @@ public class LRUCache {
     private DLinkedNode tail;
 
     public LRUCache(int capacity) {
+        // 当前链表长度
         this.size = 0;
+        // 链表最大长度
         this.capacity = capacity;
+        // map作为缓存，存储key，value
         this.cache = new HashMap<>(capacity);
-        // 题目规定key、value>=0,这里可以传-1表示头尾结点
+
+        // 头尾虚拟指针，不存任何值:题目规定key、value>=0,这里可以传-1表示头尾结点
         this.head = new DLinkedNode(-1, -1);
         this.tail = new DLinkedNode(-1, -1);
         this.head.next = tail;
@@ -35,31 +57,36 @@ public class LRUCache {
         if (node == null) {
             return -1;
         }
-
+        // 操作过的数放到头部 且 删除原链表位置
         deleteNode(node);
         removeToHead(node);
+
         return node.value;
     }
 
     public void put(int key, int value) {
         DLinkedNode node = cache.get(key);
+        // 缓存里有put的值
         if (node != null) {
+            // 更新缓存
             node.value = value;
+            // 操作过的数放到头部 且 删除原链表位置
             deleteNode(node);
             removeToHead(node);
             return;
         }
+        // 缓存里没有put的值
 
+        // 当前链表长度=最大值：清理缓存，删除末尾结点，更新size
         if (size == capacity) {
-            // 细节：容量满了，先清理缓存，再删除末尾结点
             cache.remove(tail.pre.key);
             deleteNode(tail.pre);
             size--;
         }
 
+        // 生成新的结点放入缓存，放到链表头部，更新size
         node = new DLinkedNode(key, value);
         cache.put(key, node);
-        // 更新缓存
         removeToHead(node);
         size++;
     }
