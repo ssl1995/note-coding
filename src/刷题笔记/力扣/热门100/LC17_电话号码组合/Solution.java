@@ -56,6 +56,8 @@ public class Solution {
         Solution solution = new Solution();
         String digits = "23";
         System.out.println(solution.letterCombinations(digits));
+        System.out.println("---");
+        System.out.println("".length());
     }
 
 }

@@ -12,16 +12,18 @@ public class Solution {
      * 输出：6
      */
     public int trap(int[] arr) {
+        // 双指针
         int left = 0, right = arr.length - 1;
+        // 桶高
         int height = 0;
         // 如果返回值是long，那么雨水量类型就是long
         int water = 0;
+
         while (left < right) {
-            // 当前左右指针最小值
-            int min = Math.min(arr[left], arr[right]);
-            // 更新桶高：当前最矮和桶高，取最大值
-            height = Math.max(height, min);
-            // 雨水量 = 桶高-当前最矮
+            // 更新桶高
+            height = Math.max(height, Math.min(arr[left], arr[right]));
+
+            // 雨水量 += 桶高-当前左右最矮
             water += arr[left] <= arr[right] ? (height - arr[left++]) : (height - arr[right--]);
         }
         return water;

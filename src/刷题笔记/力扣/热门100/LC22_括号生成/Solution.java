@@ -16,23 +16,23 @@ public class Solution {
      */
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
-        // n对括号，会生成2n长的字符串，使用dfs
+        // n对括号=会生成2n长的字符串，需要左括号数=右括号数=n
         recursion(n, n, "", res);
         return res;
     }
 
-    private void recursion(int leftNeed, int rightNeed, String subList, List<String> res) {
+    private void recursion(int leftNeed, int rightNeed, String sub, List<String> res) {
         if (leftNeed == 0 && rightNeed == 0) {
-            res.add(subList);
+            res.add(sub);
             return;
         }
-        // 还有需要的左括号，就添加左括号
+        // 还需要添加左括号
         if (leftNeed > 0) {
-            recursion(leftNeed - 1, rightNeed, subList + "(", res);
+            recursion(leftNeed - 1, rightNeed, sub + "(", res);
         }
-        // 还需要左括号<还需要的右括号 = 已经生成的左括号>已经生成的右括号，还需要补充右括号
+        // 还需要添加右括号：还需要左括号<还需要的右括号 = 已经生成的左括号>已经生成的右括号
         if (leftNeed < rightNeed) {
-            recursion(leftNeed, rightNeed - 1, subList + ")", res);
+            recursion(leftNeed, rightNeed - 1, sub + ")", res);
         }
     }
 }
