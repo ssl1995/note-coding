@@ -1,5 +1,7 @@
 package 刷题笔记.力扣.热门100.LC34_在排序数组中查找第一个和最后一个位置;
 
+import java.util.Arrays;
+
 /**
  * @author SongShengLin
  * @date 2021/12/26 6:15 PM
@@ -28,6 +30,9 @@ public class Solution {
         return false;
     }
 
+    /**
+     * 获取>target的第一个数的下标
+     */
     private int getNextTargetFirstIndex(int[] arr, int target) {
         int left = 0;
         int right = arr.length - 1;
@@ -42,5 +47,12 @@ public class Solution {
         }
         // left <= right打破的时候，left来到>target的第一个数的下标
         return left;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] arr = {5, 7, 7, 8, 8, 10};
+        int t = 8;
+        System.out.println(Arrays.toString(solution.searchRange(arr, t)));
     }
 }
