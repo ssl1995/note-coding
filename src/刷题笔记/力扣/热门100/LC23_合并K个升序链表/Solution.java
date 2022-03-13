@@ -18,8 +18,15 @@ public class Solution {
         return mergeList(lists, 0, lists.length - 1);
     }
 
+    /**
+     * 归并排序，合并链表数组
+     *
+     * @param lists 一维链表数组
+     * @param left  数组左指针
+     * @param right 数组右指针
+     * @return 合并后的头结点
+     */
     private ListNode mergeList(ListNode[] lists, int left, int right) {
-        // 返回的是一个链表的头结点
         if (left == right) {
             return lists[left];
         }
@@ -37,6 +44,7 @@ public class Solution {
         if (head1 == null || head2 == null) {
             return head1 == null ? head2 : head1;
         }
+        // 以下LC21_合并两个有序链表之和代码相同
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
         while (head1 != null && head2 != null) {

@@ -27,16 +27,17 @@ public class Solution {
             if (nums[mid] == target) {
                 return mid;
             }
-            // 左边有序，在左边寻找
+            // 左边有序，在左边寻找；右边有序，在右边查找
             if (nums[0] <= nums[mid]) {
-                // [0]边界是等于
+                // target ∈ [0,mid)，左边界取到等于
                 if (nums[0] <= target && target < nums[mid]) {
                     right = mid - 1;
                 } else {
                     left = mid + 1;
                 }
             } else {
-                // [n-1]边界是等于
+                // 右边有序，在右边查找
+                // target ∈ (mid,n-1],右边界取到等于
                 if (nums[mid] < target && target <= nums[nums.length - 1]) {
                     left = mid + 1;
                 } else {
