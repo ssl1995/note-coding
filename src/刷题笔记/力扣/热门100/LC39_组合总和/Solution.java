@@ -29,15 +29,15 @@ public class Solution {
         if (target == 0) {
             res.add(new LinkedList<>(temp));
         } else if (i <= nums.length - 1 && target > 0) {
-            // 跳过i位置
-            process(nums, target, i + 1, temp, res);
-
-            // 选择i位置加入
-            // 条件无限制重复：重复访问i位置
+            // 选择i位置加入：重复访问数，i指针不移动
             temp.add(nums[i]);
             process(nums, target - nums[i], i, temp, res);
             // i位置访问完毕，回溯返回之前状态
             temp.remove(temp.size() - 1);
+
+
+            // 不选择i位置加入：i指针后移
+            process(nums, target, i + 1, temp, res);
         }
     }
 
