@@ -31,13 +31,16 @@ public class Solution {
                 temp.add(num);
             }
             res.add(temp);
+            // 由于是if+else形式，这里可以不用return返回
         } else {
             // 从i位置往后面临多个选择
             for (int j = i; j < nums.length; j++) {
+                // 交换i，j位置
                 swap(nums, i, j);
 
                 process(nums, i + 1, res);
 
+                // 回溯：i,j位置归位
                 swap(nums, i, j);
             }
         }

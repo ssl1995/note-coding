@@ -20,10 +20,10 @@ public class Solution {
         int water = 0;
 
         while (left < right) {
-            // 更新桶高
+            // 更新当前桶高：左右指针对应的数组元素取最小
             height = Math.max(height, Math.min(arr[left], arr[right]));
 
-            // 雨水量 += 桶高-当前左右最矮
+            // 雨水量 += 当前桶高-当前左右最矮
             water += arr[left] <= arr[right] ? (height - arr[left++]) : (height - arr[right--]);
         }
         return water;
