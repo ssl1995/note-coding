@@ -1,7 +1,5 @@
 package 刷题笔记.力扣.热门100.LC34_在排序数组中查找第一个和最后一个位置;
 
-import java.util.Arrays;
-
 /**
  * @author SongShengLin
  * @date 2021/12/26 6:15 PM
@@ -50,9 +48,21 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        int[] arr = {5, 7, 7, 8, 8, 10};
-        int t = 8;
-        System.out.println(Arrays.toString(solution.searchRange(arr, t)));
+//        Solution solution = new Solution();
+//        int[] arr = {5, 7, 7, 8, 8, 10};
+//        int t = 8;
+//        System.out.println(Arrays.toString(solution.searchRange(arr, t)));
+        String s = "华扬在给口碑网做计划，想做跨界的合作，看跟白领夜生活怎么进行结合。\n" +
+                "我们梳理了相关的思路给到代理，具体如下：\n" +
+                "1、联名脉脉发布针对职场人白领夜生活的深夜食堂数据报告\n" +
+                "A、“白领深夜食堂大调查”与运营及新媒体协作发布问卷\n" +
+                "通过脉脉微信两个公号文章、脉脉站内话题做前期预热\n" +
+                " B、联合KOL例如衣二三创始人兼CEO、Mina米娜杂志主编杨扬、Binance联合创始人何一等职场女神发布报告。\n" +
+                "2、通过数据报告透析发布联名白领夜生活消费TOP 10的口碑饭票\n" +
+                "3、PR长尾传播：\n" +
+                "例如：脉脉万人职场深夜生活调查：实力是通行证，颜值是敲门砖\n" +
+                "今天再找些深夜食堂的种草案例给客户，保持跟进";
+        s = s.replaceAll("\n", " ");
+        System.out.println(s);
     }
 }

@@ -20,7 +20,7 @@ public class Solution {
         if (intervals == null || intervals.length == 0) {
             return new int[0][2];
         }
-        // 将原数组按照左端点升序排序,变成:[[1,3],[2,6],[8,10],[15,18]]
+        // 将原数组按照左端点升序,得到可以合并的区间是连续的
         Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
         List<int[]> res = new ArrayList<>();
 
@@ -28,21 +28,23 @@ public class Solution {
             int left = interval[0];
             int right = interval[1];
             int last = res.size() - 1;
-            // 不能合并区间:[8,10]、[15,18]
+            // res不能合并当前[left,right],比如res=[1,6],[left,right]=[8,10]
             if (res.isEmpty() || res.get(last)[1] < left) {
+                // 直接放入即可
                 res.add(new int[]{left, right});
             } else {
-                // 可以合并，取右端点最大值合并
-                // [1,3]、[2,6],取右端点为6
+                // res可以合并当前[left,right],比如[1,3]、[2,6]
+                // 比较右端点谁大
                 res.get(last)[1] = Math.max(res.get(last)[1], right);
             }
         }
+        // 结果集转化为int[][]
         return res.toArray(new int[res.size()][]);
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[][] nums = {{1, 4}, {0, 2}, {3, 5}};
+        int[][] nums = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
         System.out.println(Arrays.deepToString(solution.merge(nums)));
     }
 }

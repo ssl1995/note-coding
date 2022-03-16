@@ -23,13 +23,14 @@ public class Solution {
         int n = nums.length;
         int mostRight = nums[0];
         for (int i = 0; i < n; i++) {
-            // i一旦越过最长距离，就停止
+            // 失败：i一旦越过最长距离，就false
             if (i > mostRight) {
-                break;
+                return false;
             }
             // 最长距离为i+nums[i]中的最大值
             mostRight = Math.max(mostRight, i + nums[i]);
-            // 一旦最长距离包含数组最后一个下标，返回true
+
+            // 成功：一旦最长距离包含数组最后一个下标，返回true
             if (mostRight >= n - 1) {
                 return true;
             }

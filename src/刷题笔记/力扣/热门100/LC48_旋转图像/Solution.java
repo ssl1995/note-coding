@@ -28,7 +28,9 @@ public class Solution {
         int times = dR - tR;
         int temp = 0;
         for (int i = 0; i < times; i++) {
+            // 暂存交换第一个数据
             temp = matrix[tR][tC + i];
+
             matrix[tR][tC + i] = matrix[dR - i][tC];
             matrix[dR - i][tC] = matrix[dR][dC - i];
             matrix[dR][dC - i] = matrix[tR + i][dC];
