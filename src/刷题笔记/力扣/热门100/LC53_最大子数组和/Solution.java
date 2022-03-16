@@ -17,10 +17,13 @@ public class Solution {
         if (nums.length < 2) {
             return nums.length == 0 ? -1 : nums[0];
         }
+        // dp[i]:i位置目前的最大子数组和为多少
         int[] dp = new int[nums.length];
+        // 0位置初始化
         dp[0] = nums[0];
-        // for从1开始遍历，max初始化为dp[0]防止数组只有一个元素没法遍历的情况
+        // max初始化为dp[0]防止数组只有一个元素没法遍历的情况
         int max = dp[0];
+        // 从1位置开始遍历
         for (int i = 1; i < nums.length; i++) {
             if (dp[i - 1] <= 0) {
                 dp[i] = nums[i];

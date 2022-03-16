@@ -39,6 +39,7 @@ public class Solution {
                 stack.pop();
             }
         }
+        // 结果：判断栈是否为空
         return stack.isEmpty();
     }
 }
