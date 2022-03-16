@@ -24,6 +24,7 @@ public class Solution {
             fast = fast.next;
             n--;
         }
+        // 注意循环条件：fast.next != null
         while (fast.next != null) {
             fast = fast.next;
             slow = slow.next;
