@@ -10,34 +10,38 @@ public class Solution {
     /**
      * 编辑距离
      * 返回将word1转换成word2所使用的最少操作数
-     * 输入：word1 = "horse", word2 = "ros"
-     * 输出：3
+     * 输入：word1 = "intention", word2 = "execution"
+     * 输出：5
      * 解释：
-     * horse -> rorse (将 'h' 替换为 'r')
-     * rorse -> rose (删除 'r')
-     * rose -> ros (删除 'e')
+     * intention -> inention (删除 't')
+     * inention -> enention (将 'i' 替换为 'e')
+     * enention -> exention (将 'n' 替换为 'x')
+     * exention -> exection (将 'n' 替换为 'c')
+     * exection -> execution (插入 'u')
      */
     public int minDistance(String word1, String word2) {
         int m = word1.length();
         int n = word2.length();
         // dp[i][j] = word1到i位置转换成word2到j位置的最少步数
+        // 经验：字符串的动态规划，字符串可能为null，所以m+1、n+1
         int[][] dp = new int[m + 1][n + 1];
-        // 第一列：word2=null,word1每个位置需要删除的步数=最少步数
+        // 初始化第一列：word2=null,最小步数为word1的遍历的长度
         for (int i = 1; i <= m; i++) {
             dp[i][0] = i;
         }
-        // 第一行：word1=null,word2每个位置需要增加的步数=最少步数
+        // 初始化第一行：word1=null,最小步数为word2的遍历的长度
         for (int i = 1; i <= n; i++) {
             dp[0][i] = i;
         }
-
+        // 动态转移
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
-                // 该位置元素相同，最少步数由上一次dp决定
+                // 当前位置元素相同，不需要计算，和上一个dp值决定
                 if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {
-                    // “dp[i-1][j-1]表示替换操作，dp[i-1][j] 表示删除操作，dp[i][j-1] 表示插入操作。”的补充理解：
+                    // 当前位置元素不相同，有三种状态：替换、删除、插入；取三种状态最小值+1
+                    // dp[i-1][j-1]表示替换操作，dp[i-1][j] 表示删除操作，dp[i][j-1] 表示插入操作
                     // word1="horse"，word2="ros"，且 dp[5][3] 为例：
                     // (1) dp[i-1][j-1]=dp[4][2]=替换，即先将 word1 的前 4 个字符 hors 转换为 word2 的前 2 个字符 ro
                     // (2) dp[i][j-1]=dp[5][2]=插入，即先将 word1 的前 5 个字符 horse 转换为 word2 的前 2 个字符 ro
@@ -54,8 +58,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        String w1 = "horse";
-        String w2 = "ros";
+        String w1 = "intention";
+        String w2 = "execution";
         System.out.println(solution.minDistance(w1, w2));
     }
 }
