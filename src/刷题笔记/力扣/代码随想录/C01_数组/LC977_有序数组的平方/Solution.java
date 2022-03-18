@@ -1,4 +1,4 @@
-package 刷题笔记.力扣.编号刷题.LC977_有序数组的平方;
+package 刷题笔记.力扣.代码随想录.C01_数组.LC977_有序数组的平方;
 
 /**
  * @author SongShengLin
@@ -6,17 +6,23 @@ package 刷题笔记.力扣.编号刷题.LC977_有序数组的平方;
  * @description
  */
 public class Solution {
-    // 非递减数组，每个元素平方后，同样形成一个非递减的新数组
+    /**
+     * 有序数组的平方
+     * 示例 1： 输入：nums = [-4,-1,0,3,10]
+     * 输出：[0,1,9,16,100]
+     * 解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100]
+     */
     public int[] sortedSquares(int[] nums) {
+        // 有序数组，提示用双指针
         int left = 0;
         int right = nums.length - 1;
 
-        int[] res = new int[nums.length];
         // 从后往前遍历结果数组
+        int[] res = new int[nums.length];
         int index = nums.length - 1;
 
         while (left <= right) {
-            // 原数组的双指针，谁被用到了，就移动谁
+            // 原数组的双指针，谁平方大就移动谁
             if (nums[left] * nums[left] < nums[right] * nums[right]) {
                 res[index--] = nums[right] * nums[right];
                 right--;
