@@ -2,7 +2,9 @@ package 刷题笔记.力扣.编号刷题.LC150_逆波兰表达式求值;
 
 
 public class Solution {
-    // tokens = ["2","1","+","3","*"]，输出9
+    /**
+     * tokens = ["2","1","+","3","*"]，输出9
+     */
     public int evalRPN(String[] tokens) {
         int[] stack = new int[tokens.length];
         int index = -1;

@@ -3,6 +3,12 @@ package 刷题笔记.力扣.编号刷题.LC69_x的平方根;
 public class Solution {
 
 
+    /**
+     * x的平方根
+     * 输入：x = 8
+     * 输出：2
+     * 解释：8 的算术平方根是 2.82842..., 由于返回类型是整数，小数部分将被舍去。
+     */
     public int mySqrt(int x) {
         // base case：x是 0 or 1 时特殊判断
         if (x <= 1) {
