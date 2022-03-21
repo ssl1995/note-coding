@@ -24,6 +24,7 @@ public class Solution {
             return true;
         }
         Set<Integer> set = new HashSet<>();
+        // 数只要重复出现一次，就不是快乐数
         while (n != 1 && !set.contains(n)) {
             set.add(n);
             n = getNextInt(n);
