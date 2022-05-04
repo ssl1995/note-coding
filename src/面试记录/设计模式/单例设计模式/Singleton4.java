@@ -7,14 +7,17 @@ package 面试记录.设计模式.单例设计模式;
  */
 public class Singleton4 {
 
-    private static Singleton4 singleton = null;
+    /**
+     * 加volatile防止指令重排
+     */
+    private static volatile Singleton4 singleton = null;
 
     private Singleton4() {
     }
 
     public static Singleton4 getSingleton() {
+        // 双重锁
         if (singleton == null) {
-            // 问题：不是真正的线程安全.因为可能a，b同时进来到这一步
             synchronized (Singleton4.class) {
                 if (singleton == null) {
                     singleton = new Singleton4();

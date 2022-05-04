@@ -13,14 +13,23 @@ public class Singleton3 {
     }
 
     public static Singleton3 getSingleton() {
-        if (singleton == null) {
-            // 问题：不是真正的线程安全.因为可能a，b同时进来到这一步
-            synchronized (Singleton3.class) {
+        // syn+if:容易阻塞
+        synchronized (Singleton3.class) {
+            if (singleton == null) {
                 singleton = new Singleton3();
             }
         }
+
         return singleton;
     }
+
+//    第二种写法
+//    public static synchronized Singleton3 getSingleton1() {
+//        if (singleton == null) {
+//            singleton = new Singleton3();
+//        }
+//        return singleton;
+//    }
 
 
 }
