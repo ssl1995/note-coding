@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.热门100.LC23_合并K个升序链表;
 
-import 学习笔记.剑指Offer.utils.ListNode;
+import 学习笔记.读书笔记.剑指Offer.utils.ListNode;
 
 /**
  * @author SongShengLin

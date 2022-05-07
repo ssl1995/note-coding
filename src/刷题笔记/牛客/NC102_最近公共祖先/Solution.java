@@ -1,6 +1,6 @@
 package 刷题笔记.牛客.NC102_最近公共祖先;
 
-import 学习笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
 
 public class Solution {
 

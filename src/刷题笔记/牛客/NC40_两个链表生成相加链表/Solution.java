@@ -1,6 +1,6 @@
 package 刷题笔记.牛客.NC40_两个链表生成相加链表;
 
-import 学习笔记.剑指Offer.utils.ListNode;
+import 学习笔记.读书笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
 

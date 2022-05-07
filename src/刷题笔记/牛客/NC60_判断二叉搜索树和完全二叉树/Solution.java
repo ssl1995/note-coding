@@ -1,7 +1,7 @@
 package 刷题笔记.牛客.NC60_判断二叉搜索树和完全二叉树;
 
 
-import 学习笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Stack;

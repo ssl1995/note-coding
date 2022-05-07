@@ -1,6 +1,6 @@
 package 刷题笔记.牛客.NC24_删除有序链表中重复的元素II;
 
-import 学习笔记.剑指Offer.utils.ListNode;
+import 学习笔记.读书笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
     // 删除重复结点，不保留重复结点：1->2->2,返回1

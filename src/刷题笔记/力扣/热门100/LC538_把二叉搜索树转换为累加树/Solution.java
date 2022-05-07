@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.热门100.LC538_把二叉搜索树转换为累加树;
 
-import 学习笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
 
 /**
  * @author SongShengLin
