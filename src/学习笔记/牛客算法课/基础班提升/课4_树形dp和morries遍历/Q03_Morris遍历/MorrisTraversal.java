@@ -1,6 +1,6 @@
 package 学习笔记.牛客算法课.基础班提升.课4_树形dp和morries遍历.Q03_Morris遍历;
 
-import 学习笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
 
 public class MorrisTraversal {
 

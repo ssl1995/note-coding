@@ -1,6 +1,6 @@
 package 刷题笔记.牛客.NC8_到叶子节点和为指定值的路径;
 
-import 学习笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

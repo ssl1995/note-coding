@@ -1,6 +1,6 @@
 package 刷题笔记.牛客.NC96_判断链表回文;
 
-import 学习笔记.剑指Offer.utils.ListNode;
+import 学习笔记.读书笔记.剑指Offer.utils.ListNode;
 
 import java.util.LinkedList;
 

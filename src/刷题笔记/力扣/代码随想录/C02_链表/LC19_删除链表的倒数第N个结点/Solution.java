@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.代码随想录.C02_链表.LC19_删除链表的倒数第N个结点;
 
-import 学习笔记.剑指Offer.utils.ListNode;
+import 学习笔记.读书笔记.剑指Offer.utils.ListNode;
 
 public class Solution {
 

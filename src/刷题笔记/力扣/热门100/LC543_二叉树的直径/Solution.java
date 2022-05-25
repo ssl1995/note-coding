@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.热门100.LC543_二叉树的直径;
 
-import 学习笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
 
 /**
  * @author SongShengLin

@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.热门100.LC98_验证二叉搜索树;
 
-import 学习笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
 
 import java.util.LinkedList;
 

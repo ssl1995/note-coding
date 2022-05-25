@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.代码随想录.C02_链表.LC203_移除链表元素;
 
-import 学习笔记.剑指Offer.utils.ListNode;
+import 学习笔记.读书笔记.剑指Offer.utils.ListNode;
 
 /**
  * @author SongShengLin

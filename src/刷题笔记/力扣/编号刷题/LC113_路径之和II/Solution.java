@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.编号刷题.LC113_路径之和II;
 
-import 学习笔记.剑指Offer.utils.TreeNode;
+import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
