@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.热门100.LC114_二叉树展开为链表;
 
-import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
+import 刷题笔记.力扣.utils.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

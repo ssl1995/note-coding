@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.热门100.LC141_环形链表I;
 
-import 学习笔记.读书笔记.剑指Offer.utils.ListNode;
+import 刷题笔记.力扣.utils.ListNode;
 
 public class Solution {
     /**

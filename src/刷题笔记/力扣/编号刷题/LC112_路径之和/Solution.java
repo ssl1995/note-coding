@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.编号刷题.LC112_路径之和;
 
-import 学习笔记.读书笔记.剑指Offer.utils.TreeNode;
+import 刷题笔记.力扣.utils.TreeNode;
 
 /**
  * @author SongShengLin

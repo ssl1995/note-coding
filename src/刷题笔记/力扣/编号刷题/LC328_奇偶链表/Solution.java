@@ -1,6 +1,6 @@
 package 刷题笔记.力扣.编号刷题.LC328_奇偶链表;
 
-import 学习笔记.读书笔记.剑指Offer.utils.ListNode;
+import 刷题笔记.力扣.utils.ListNode;
 
 public class Solution {
     // 条件：{1,4,6,3,7}，返回：{1,6,7,4,3}(索引从1开始，返回奇数在前结点)
