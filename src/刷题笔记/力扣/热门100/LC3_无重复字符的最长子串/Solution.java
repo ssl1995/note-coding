@@ -1,8 +1,5 @@
 package 刷题笔记.力扣.热门100.LC3_无重复字符的最长子串;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author SongShengLin
  * @date 2022/1/18 9:19 AM
@@ -19,24 +16,29 @@ public class Solution {
         if (s.length() < 1) {
             return 0;
         }
-        Map<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) {
-            map.put(s.charAt(i), -1);
+        char[] cs = s.toCharArray();
+        // map:key=该字符，value=该字符串上一次出现的下标
+        int[] map = new int[256];
+        // 初始化map，每个字符上一次出现的下标为-1
+        for (int i = 0; i < 256; i++) {
+            map[i] = -1;
         }
-
+        // cs[i-1]的最长无重复开始位置的前一个位置
         int pre = -1;
-        int max = 0;
-        for (int i = 0; i < s.length(); i++) {
-            // 获取当前字母的pre
-            if (map.get(s.charAt(i)) >= pre) {
-                pre = map.get(s.charAt(i));
-            }
-            // 计算max
-            max = Math.max(max, i - pre);
-            // 更新map
-            map.put(s.charAt(i), i);
+        // 当前位置的最长无重复长度
+        int cur = 0;
+        int len = 0;
+        // 遍历cs
+        for (int i = 0; i < cs.length; i++) {
+            // pre始终指向最右边的位置，因为离i位置最近且中间没有重复元素
+            pre = Math.max(pre, map[cs[i]]);
+
+            cur = i - pre;
+            len = Math.max(len, cur);
+
+            map[cs[i]] = i;
         }
-        return max;
+        return len;
     }
 
     public static void main(String[] args) {

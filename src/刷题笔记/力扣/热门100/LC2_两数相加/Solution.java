@@ -11,28 +11,35 @@ public class Solution {
      * 解释：342 + 465 = 807.
      */
     public ListNode addTwoNumbers(ListNode head1, ListNode head2) {
+        // 设计链表操作，虚拟头结点是个好习惯
         ListNode dummyNode = new ListNode(-1);
         ListNode cur = dummyNode;
-        int carryNum = 0;
+        // 记录进位信息
+        int carry = 0;
+
         while (head1 != null || head2 != null) {
             // 这一轮加起来的数先继承上一轮的进位值
-            int sumNum = carryNum;
+            int sum = carry;
             if (head1 != null) {
-                sumNum += head1.val;
+                sum += head1.val;
                 head1 = head1.next;
             }
             if (head2 != null) {
-                sumNum += head2.val;
+                sum += head2.val;
                 head2 = head2.next;
             }
-            cur.next = new ListNode(sumNum % 10);
-            carryNum = sumNum / 10;
+            // 和算完，立马更新进位信息
+            carry = sum / 10;
+
+            cur.next = new ListNode(sum % 10);
             cur = cur.next;
         }
-        // 如果还存在进位，就添加到链表末尾
-        if (carryNum == 1) {
-            cur.next = new ListNode(carryNum);
+
+        // 边界：最低位如果还存在进位，就添加到链表末尾
+        if (carry == 1) {
+            cur.next = new ListNode(carry);
         }
+
         // 返回哑结点.next
         return dummyNode.next;
     }

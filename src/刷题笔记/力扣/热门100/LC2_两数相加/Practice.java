@@ -1,23 +1,23 @@
-package 刷题笔记.力扣.热门100.LC2_两数相加.练习;
+package 刷题笔记.力扣.热门100.LC2_两数相加;
 
 import 刷题笔记.力扣.utils.ListNode;
 
 /**
  * @author SongShengLin
- * @date 2022/1/18 9:09 AM
+ * @date 2022/5/31 23:20
  * @description
  */
-public class Solution {
+public class Practice {
+
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        if (l1 == null || l2 == null) {
-            return l1 == null ? l2 : l1;
-        }
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
-        int sum = 0;
+
         int carry = 0;
         while (l1 != null || l2 != null) {
-            sum = carry;
+            int sum = carry;
+
             if (l1 != null) {
                 sum += l1.val;
                 l1 = l1.next;
@@ -26,14 +26,18 @@ public class Solution {
                 sum += l2.val;
                 l2 = l2.next;
             }
-            // 只能移动cur来引用指向
+
+            carry = sum / 10;
+
             cur.next = new ListNode(sum % 10);
             cur = cur.next;
-            carry = sum / 10;
         }
-        if (carry > 0) {
-            cur.next = new ListNode(carry);
+
+        if (carry == 1) {
+            cur.next = new ListNode(1);
         }
+
         return dummy.next;
+
     }
 }
