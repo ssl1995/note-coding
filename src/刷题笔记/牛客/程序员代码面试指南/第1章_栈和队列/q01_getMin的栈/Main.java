@@ -13,9 +13,11 @@ public class Main {
 
     public static void main(String[] args) {
         MyStack<Integer> myStack = new MyStack<>();
+
         Scanner scanner = new Scanner(System.in);
-        int first = scanner.nextInt();
-        for (int i = 0; i < first; i++) {
+        // 示例中的6，作为遍历次数
+        int n = scanner.nextInt();
+        for (int i = 0; i < n; i++) {
             String op = scanner.next();
             if ("push".equals(op)) {
                 int num = scanner.nextInt();
@@ -23,6 +25,7 @@ public class Main {
             } else if ("pop".equals(op)) {
                 myStack.pop();
             } else if ("getMin".equals(op)) {
+                // 只有遇到getMin才输出
                 System.out.println(myStack.getMin());
             }
         }
@@ -33,37 +36,38 @@ public class Main {
 }
 
 class MyStack<T extends Comparable<T>> {
-    private LinkedList<T> stack1;
-    private LinkedList<T> stack2;
+    private LinkedList<T> dataStack;
+    private LinkedList<T> minStack;
 
     public MyStack() {
-        stack1 = new LinkedList<>();
-        stack2 = new LinkedList<>();
+        dataStack = new LinkedList<>();
+        minStack = new LinkedList<>();
     }
 
     public void push(T num) {
-        if (stack2.isEmpty() || num.compareTo(getMin()) <= 0) {
-            stack2.push(num);
-        } else if (num.compareTo(getMin()) > 0) {
-            stack2.push(getMin());
+        // data和min两个栈同步压入数据
+        if (minStack.isEmpty() || num.compareTo(getMin()) < 0) {
+            minStack.push(num);
+        } else {
+            minStack.push(getMin());
         }
-        stack1.push(num);
+        dataStack.push(num);
     }
 
     public T pop() {
-        if (stack2.isEmpty() || stack1.isEmpty()) {
+        if (minStack.isEmpty() || dataStack.isEmpty()) {
             throw new RuntimeException("栈空");
         }
-        stack2.pop();
-        return stack1.pop();
+        minStack.pop();
+        return dataStack.pop();
     }
 
 
     public T getMin() {
-        if (stack2.isEmpty()) {
+        if (minStack.isEmpty()) {
             throw new RuntimeException("栈空");
         }
-        return stack2.peek();
+        return minStack.peek();
     }
 
 }
