@@ -35,6 +35,9 @@ public class Solution2 {
         return s.substring(begin, begin + maxLen);
     }
 
+    /**
+     * 返回cs中[i,j]位置往外扩的最大长度
+     */
     private int getPalindromeCenterLen(char[] cs, int len, int left, int right) {
         int i = left;
         int j = right;

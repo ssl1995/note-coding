@@ -31,6 +31,9 @@ public class Solution1 {
         return s.substring(begin, begin + maxLen);
     }
 
+    /**
+     * 判断cs的[i,j]位置之间是不是回文串
+     */
     private boolean isPalindrome(char[] cs, int i, int j) {
         while (i < j) {
             if (cs[i] != cs[j]) {
