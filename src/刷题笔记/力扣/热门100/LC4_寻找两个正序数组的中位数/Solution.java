@@ -20,55 +20,47 @@ public class Solution {
             nums2 = temp;
         }
 
+        // m是短数组的长度
         int m = nums1.length;
+        // n是长数组的长度
         int n = nums2.length;
-
-        // 总分割线位置
-        int totalLeft = m + (n - m + 1) / 2;
 
         int left = 0;
         int right = m;
-        while (left < right) {
-            int i = left + (right - left + 1) / 2;
-            int j = totalLeft - i;
 
+        int leftMax = 0;
+        int rightMin = 0;
 
-            // 找最大i，使得nums1[i-1]<=nums2[j]
-            // nums1:[left,i-1,i,right]
-            if (nums1[i - 1] > nums2[j]) {
-                // [i+1,m]均不满足，移动右指针
-                right = i - 1;
+        while (left <= right) {
+            // i对短数组每次进行二分，j是根据left_part和right_part推出来的公式
+            int i = (left + right) / 2;
+            int j = (m + n + 1) / 2 - i;
+
+            int nums1_im1 = (i == 0 ? Integer.MIN_VALUE : nums1[i - 1]);
+            int nums1_i = (i == m ? Integer.MAX_VALUE : nums1[i]);
+
+            int nums2_jm1 = (j == 0 ? Integer.MIN_VALUE : nums2[j - 1]);
+            int nums2_j = (j == n ? Integer.MAX_VALUE : nums2[j]);
+
+            if (nums1_im1 <= nums2_j) {
+                // 找出左半部分的最大值和右半部分的最小值
+                leftMax = Math.max(nums1_im1, nums2_jm1);
+                rightMin = Math.min(nums1_i, nums2_j);
+
+                left = i + 1;
             } else {
-                // 最大i此时在右边，移动左指针
-                left = i;
+                // 以i的左右两边来二分，不是right = j-1, 与j没关闭
+                right = i - 1;
             }
         }
 
-        // 退出循环，left=right，表示nums1中分割线位置
-        int i = left;
-        // j=nums2中分割线位置
-        int j = totalLeft - i;
-
-        // 涉及有i-1,j-1，特殊处理左右边界：左边界为负无穷，右边界为正无穷
-        int nums1LeftMax = i == 0 ? Integer.MIN_VALUE : nums1[i - 1];
-        int nums1RightMin = i == m ? Integer.MAX_VALUE : nums1[i];
-
-        int nums2LeftMax = j == 0 ? Integer.MIN_VALUE : nums2[j - 1];
-        int nums2RightMin = j == n ? Integer.MAX_VALUE : nums2[j];
-
-
-        if (((m + n) & 1) == 0) {
-            // 偶数，中间两个元素和/2
-            return (double) ((Math.max(nums1LeftMax, nums2LeftMax) + Math.min(nums1RightMin, nums2RightMin))) / 2;
-        }
-        // 奇数，中间元素
-        return Math.max(nums1LeftMax, nums2LeftMax);
+        return (m + n) % 2 == 0 ? (leftMax + rightMin) / 2.0 : leftMax;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] nums1 = {0, 1, 2, 3, 4, 5, 6, 7};
-        int[] nums2 = {0, 1, 2, 3, 4, 5, 6};
+        int[] nums1 = {4};
+        int[] nums2 = {1, 2, 3, 5};
         System.out.println(solution.findMedianSortedArrays(nums1, nums2));
     }
 
