@@ -13,8 +13,8 @@ public class Main {
     public static void main(String[] args) {
         TwoStacksQueue<Integer> twoStacksQueue = new TwoStacksQueue<>();
         Scanner scanner = new Scanner(System.in);
-        int first = scanner.nextInt();
-        for (int i = 0; i < first; i++) {
+        int count = scanner.nextInt();
+        for (int i = 0; i < count; i++) {
             String op = scanner.next();
             if ("add".equals(op)) {
                 int num = scanner.nextInt();
@@ -32,7 +32,13 @@ public class Main {
 }
 
 class TwoStacksQueue<T> {
+    /**
+     * 栈1：压入数据
+     */
     private LinkedList<T> stack1;
+    /**
+     * 栈2：弹出数据
+     */
     private LinkedList<T> stack2;
 
     public TwoStacksQueue() {
@@ -61,6 +67,7 @@ class TwoStacksQueue<T> {
     }
 
     private void pushToPop() {
+        // 栈1往栈2里倒数据：1.栈2已经空了。2.把栈1目前的全部数据都倒入
         if (stack2.isEmpty()) {
             while (!stack1.isEmpty()) {
                 stack2.push(stack1.pop());
