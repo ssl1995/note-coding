@@ -28,18 +28,19 @@ public class Main {
     /**
      * 将一个栈实现从栈顶到栈底，元素从大到小排序
      * 只能申请一个辅助栈，其余数据结构不允许
+     * stack：[5,8,4,3,6] ->[8,6,5,4,3]
      */
     public static void stackSortByStack(LinkedList<Integer> stack) {
         LinkedList<Integer> help = new LinkedList<>();
+        // help栈：从小到大
         while (!stack.isEmpty()) {
             Integer pop = stack.pop();
-            // help实现从栈顶到栈底，从小到大排序
             while (!help.isEmpty() && pop > help.peek()) {
                 stack.push(help.pop());
             }
             help.push(pop);
         }
-
+        // stack栈：从大到小
         while (!help.isEmpty()) {
             stack.push(help.pop());
         }
