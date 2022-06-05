@@ -14,8 +14,8 @@ public class Solution {
     public int maxArea(int[] height) {
         int left = 0, right = height.length - 1;
         int maxArea = 0;
+        int max = 0;
         while (left < right) {
-            int max;
             // 面积变大只需要移动短板，因为短板处移动才可能变大面积
             if (height[left] < height[right]) {
                 max = (right - left) * height[left++];
