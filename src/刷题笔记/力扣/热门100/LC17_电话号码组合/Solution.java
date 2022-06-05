@@ -33,10 +33,20 @@ public class Solution {
             put('9', "wxyz");
         }};
         List<String> res = new ArrayList<>();
+        // 回溯
         backtrack(map, digits, 0, new StringBuilder(), res);
         return res;
     }
 
+    /**
+     * 回溯，获得数字电话号码组合
+     *
+     * @param map    数字对应字母的map
+     * @param digits 传过来的参数：数字
+     * @param index  遍历数字的坐标
+     * @param sb     临时字符串，保存当前组成的字母组合
+     * @param res    返回电话号码形成的所有组合
+     */
     private void backtrack(Map<Character, String> map, String digits, int index, StringBuilder sb, List<String> res) {
         if (index == digits.length()) {
             res.add(sb.toString());
@@ -44,10 +54,12 @@ public class Solution {
         }
         char number = digits.charAt(index);
         String letters = map.get(number);
+        // 递归
         for (int i = 0; i < letters.length(); i++) {
             sb.append(letters.charAt(i));
             backtrack(map, digits, index + 1, sb, res);
-            // sb移除参数是坐标index，不是i
+            // 回溯：sb删除这一轮的数字对应的所有字母，index刚好对应
+            // 注意，这里不是i
             sb.deleteCharAt(index);
         }
     }
