@@ -23,6 +23,8 @@ public class Solution {
         }
         List<List<Integer>> res = new ArrayList<>();
         // 将原数组排序
+        // 原 nums = [-1,0,1,2,-1,-4]
+        // 排序后 nums = [-4,-1,-1,0,1,2]
         Arrays.sort(nums);
 
         int n = nums.length;
