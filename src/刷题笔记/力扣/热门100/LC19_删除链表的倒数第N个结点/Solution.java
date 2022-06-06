@@ -12,8 +12,10 @@ public class Solution {
         if (head == null || n < 1) {
             return null;
         }
+        // 遍历链表，虚拟头结点
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
+
         ListNode fast = dummy;
         ListNode slow = dummy;
         while (n > 0) {
@@ -25,12 +27,14 @@ public class Solution {
             n--;
         }
         // 注意循环条件：fast.next != null
+        // 换句话：fast.next ==null结束遍历
         while (fast.next != null) {
             fast = fast.next;
             slow = slow.next;
         }
+        // 删除倒数第n个节点
         slow.next = slow.next.next;
-        // 返回是哑结点的后继 != head,因为删除倒数第n个节点时，head已被删除
+
         return dummy.next;
     }
 
