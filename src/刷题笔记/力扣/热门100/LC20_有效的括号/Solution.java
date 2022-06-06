@@ -2,6 +2,7 @@ package 刷题笔记.力扣.热门100.LC20_有效的括号;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,11 +29,11 @@ public class Solution {
         }};
         LinkedList<Character> stack = new LinkedList<>();
         for (char c : s.toCharArray()) {
-            // 栈中只存左括号
+            // c=左括号，就入栈
             if (map.containsKey(c)) {
                 stack.push(c);
             } else {
-                // 匹配到右括号，就比对栈顶和当前右括号
+                // c=右括号，就比对栈顶是否匹配
                 if (stack.isEmpty() || map.get(stack.peek()) != c) {
                     return false;
                 }
