@@ -10,21 +10,21 @@ import java.util.Arrays;
 public class Solution {
     /**
      * 下一个排列
-     * 输入：nums = [4,5,2,6,3,1]
-     * 变化：nums->[4,5,3,6,2,1]
-     * 变化：nums->[4,5,3,1,2,6]
+     * 输入：nums = [4,5,2,6,3,1] 1.从倒数第二个数往前跳过找，找到i位置使得nums[i] < nums[i+1],i=2
+     * 变化：nums-> [4,5,3,6,2,1] 2.从后往前找第一个比nums[i]大的数，交换
+     * 变化：nums-> [4,5,3,1,2,6] 3.逆置[i+1,n-1]的数
      * 输出：[4,5,3,1,2,6]
      */
     public void nextPermutation(int[] nums) {
         if (nums.length < 2) {
             return;
         }
-        // 从后往前跳过降序，找到i位置使得nums[i]<nums[i+1]
+        // 1.从倒数第二个数往前跳过找，找到i位置使得nums[i]<nums[i+1]
         int i = nums.length - 2;
         while (i >= 0 && nums[i] >= nums[i + 1]) {
             i--;
         }
-        // 如果i>=0存在，往后找第一个比它大的数交换
+        // 2.如果i>=0存在，从倒数第一个数开始往前，找第一个比它大的数交换
         if (i >= 0) {
             int j = nums.length - 1;
             while (j >= i && nums[j] <= nums[i]) {
@@ -32,7 +32,8 @@ public class Solution {
             }
             swap(nums, i, j);
         }
-        // 逆置[i+1,n-1]的数，保证最靠近是最靠近原始数组的下一个排列数
+        // 3.逆置[i+1,n-1]的数
+        // 比如：[4,5,3,6,2,1] i=3,n=5
         reverseAfterI(nums, i + 1, nums.length - 1);
     }
 
