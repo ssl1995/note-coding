@@ -20,6 +20,7 @@ public class Solution {
             }
             cur = cur.next;
         }
+        // 没有遍历完的链表直接挂在最后
         cur.next = l1 == null ? l2 : l1;
         return dummy.next;
     }
