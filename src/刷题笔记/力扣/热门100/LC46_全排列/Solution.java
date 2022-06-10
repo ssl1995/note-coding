@@ -33,7 +33,7 @@ public class Solution {
             res.add(temp);
             // 由于是if+else形式，这里可以不用return返回
         } else {
-            // 从i位置往后面临多个选择
+            // j位置从=i位置开始
             for (int j = i; j < nums.length; j++) {
                 // 交换i，j位置
                 swap(nums, i, j);
