@@ -21,22 +21,34 @@ public class Solution {
         }
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();
+
         process(candidates, target, 0, temp, res);
         return res;
     }
 
+    /**
+     * 回溯
+     *
+     * @param nums   数组
+     * @param target 目标值
+     * @param i      坐标
+     * @param temp   临时数组
+     * @param res    二维结果集
+     */
     private void process(int[] nums, int target, int i, List<Integer> temp, List<List<Integer>> res) {
         if (target == 0) {
+            // 注意：结果集加的是new list(temp)
             res.add(new LinkedList<>(temp));
         } else if (i <= nums.length - 1 && target > 0) {
-            // 选择i位置加入：重复访问数，i指针不移动
+
+            // 1.选择i位置加入：temp加入nums[i]，i指针不移动，target修改
             temp.add(nums[i]);
             process(nums, target - nums[i], i, temp, res);
+
+
+            // 2.不选择i位置加入：i指针后移即可
             // i位置访问完毕，回溯返回之前状态
             temp.remove(temp.size() - 1);
-
-
-            // 不选择i位置加入：i指针后移
             process(nums, target, i + 1, temp, res);
         }
     }

@@ -21,24 +21,24 @@ public class Solution {
         int max = 0;
         // 栈：左括号直接存下标,保证栈底为最后一个没有被匹配的右括号的下标
         LinkedList<Integer> stack = new LinkedList<>();
-        // 栈底初始化放-1,表示()匹配时长度为2
+        // 栈底初始化放坐标=-1，防止只有)括号放入
         stack.push(-1);
 
         char[] cs = s.toCharArray();
         for (int i = 0; i < cs.length; i++) {
-            // 左括号直接存下标
+            // 遇到(，栈中存下标
             if (cs[i] == '(') {
                 stack.push(i);
             } else if (cs[i] == ')') {
-                // 右括号先出栈，假设可以匹配
+                // 遇到)，出栈
                 stack.pop();
-                // 假设匹配完成后，栈空
-                // 说明当前右括号没有匹配到成功的左括号
+
+                // 栈空，说明初始化-1的坐标已取出=)没有成功匹配到(
                 if (stack.isEmpty()) {
                     // 栈底存最近一个没有匹配成功的右括号下标
                     stack.push(i);
                 } else {
-                    // 假设匹配成功后，栈非空
+                    // 栈非空，说明()括号匹配成功
                     // 更新长度
                     max = Math.max(max, i - stack.peek());
                 }
@@ -50,7 +50,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        String s = "())((())";
+        String s = ")()())";
         System.out.println(solution.longestValidParentheses(s));
     }
 }

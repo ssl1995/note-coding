@@ -16,6 +16,8 @@ public class Solution {
         if (!isContainTarget(nums, target)) {
             return new int[]{-1, -1};
         }
+        // 获取大于t-1的第一个数的下标 = t的第一个数的下标
+        // 获取大于t的第一个数的下标-1 = t的最后一个数的下标
         return new int[]{getNextTargetFirstIndex(nums, target - 1), getNextTargetFirstIndex(nums, target) - 1};
     }
 
