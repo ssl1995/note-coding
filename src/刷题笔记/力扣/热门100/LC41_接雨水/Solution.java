@@ -17,13 +17,14 @@ public class Solution {
         // 桶高
         int height = 0;
         // 如果返回值是long，那么雨水量类型就是long
+        // 本题是int类型
         int water = 0;
 
         while (left < right) {
-            // 更新当前桶高：左右指针对应的数组元素取最小
+            // 桶高：左右指针、历史桶高的最大值
             height = Math.max(height, Math.min(arr[left], arr[right]));
 
-            // 雨水量 += 当前桶高-当前左右最矮
+            // 雨水量 += 最低高度 - 左右最矮
             water += arr[left] <= arr[right] ? (height - arr[left++]) : (height - arr[right--]);
         }
         return water;
