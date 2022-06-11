@@ -25,11 +25,14 @@ public class Solution {
         int max = dp[0];
         // 从1位置开始遍历
         for (int i = 1; i < nums.length; i++) {
+            // 前面的子数组和为负数，就放弃
             if (dp[i - 1] <= 0) {
                 dp[i] = nums[i];
             } else {
+                // 前面的子数组和>0，就加入
                 dp[i] = dp[i - 1] + nums[i];
             }
+            // 遍历选择其中最大值
             max = Math.max(max, dp[i]);
         }
         return max;
