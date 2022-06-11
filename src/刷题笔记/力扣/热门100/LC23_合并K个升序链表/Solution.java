@@ -37,9 +37,17 @@ public class Solution {
 
         ListNode head1 = mergeList(lists, left, mid);
         ListNode head2 = mergeList(lists, mid + 1, right);
+        // 归并
         return merge(head1, head2);
     }
 
+    /**
+     * 归并
+     *
+     * @param head1 链表1的头结点
+     * @param head2 链表2的头结点
+     * @return 返回新链表的头结点
+     */
     private ListNode merge(ListNode head1, ListNode head2) {
         if (head1 == null || head2 == null) {
             return head1 == null ? head2 : head1;
