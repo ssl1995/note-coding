@@ -23,11 +23,11 @@ public class Solution {
         // 复用84题逻辑，将二维matrix中的1理解为一维数组中的高度
         int[] heights = new int[matrix[0].length];
         int maxArea = 0;
-        for (int i = 0; i < matrix.length; i++) {
+        for (char[] rows : matrix) {
             for (int j = 0; j < matrix[0].length; j++) {
-                if (matrix[i][j] == '0') {
+                if (rows[j] == '0') {
                     heights[j] = 0;
-                } else if (matrix[i][j] == '1') {
+                } else if (rows[j] == '1') {
                     heights[j]++;
                 }
             }
