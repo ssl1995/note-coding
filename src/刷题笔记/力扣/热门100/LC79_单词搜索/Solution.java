@@ -33,8 +33,11 @@ public class Solution {
         }
         // 剪枝：搜索过的单词，要特殊标记后，防止后面遍历重复访问
         board[i][j] = '*';
-
-        boolean res = dfs(board, i + 1, j, word, index + 1) || dfs(board, i - 1, j, word, index + 1) || dfs(board, i, j + 1, word, index + 1) || dfs(board, i, j - 1, word, index + 1);
+        // 从(i,j)位置上下左右都递归一遍，只要有一个匹配就成功
+        boolean res = dfs(board, i + 1, j, word, index + 1)
+                || dfs(board, i - 1, j, word, index + 1)
+                || dfs(board, i, j + 1, word, index + 1)
+                || dfs(board, i, j - 1, word, index + 1);
 
         // 还原：访问判断过后的单词
         board[i][j] = word.charAt(index);
