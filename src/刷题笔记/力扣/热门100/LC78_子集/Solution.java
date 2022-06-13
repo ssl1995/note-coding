@@ -25,7 +25,6 @@ public class Solution {
         return res;
     }
 
-
     private void helper(int[] nums, int index, List<Integer> subset, List<List<Integer>> res) {
         if (index == nums.length) {
             res.add(new ArrayList<>(subset));
