@@ -17,20 +17,24 @@ public class Solution {
         if (matrix == null || matrix.length < 2) {
             return;
         }
+        // 左上角和右下角坐标
         int tR = 0, tC = 0;
         int dR = matrix.length - 1, dC = matrix[0].length - 1;
+
         while (tR < dR) {
             rotateEdge(matrix, tR++, tC++, dR--, dC--);
         }
     }
 
     private void rotateEdge(int[][] matrix, int tR, int tC, int dR, int dC) {
+        // 每次的交换次数
         int times = dR - tR;
         int temp = 0;
         for (int i = 0; i < times; i++) {
-            // 暂存交换第一个数据
+            // 每次暂存交换第一个数据
             temp = matrix[tR][tC + i];
 
+            // 画图，定位四个点
             matrix[tR][tC + i] = matrix[dR - i][tC];
             matrix[dR - i][tC] = matrix[dR][dC - i];
             matrix[dR][dC - i] = matrix[tR + i][dC];

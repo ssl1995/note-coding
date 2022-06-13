@@ -14,8 +14,6 @@ public class Solution {
     public int uniquePaths(int m, int n) {
         // dp[i][j]=到达(i,j)位置有多少条路径
         int[][] dp = new int[m][n];
-        // 原点可以不用初始化，因为用不到
-        // dp[0][0] = 1;
         // 初始化第一列
         for (int i = 0; i < m; i++) {
             dp[i][0] = 1;

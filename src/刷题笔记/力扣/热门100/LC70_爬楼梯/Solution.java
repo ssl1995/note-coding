@@ -22,8 +22,10 @@ public class Solution {
         int a = 1;
         int b = 2;
         int sum;
-        for (int i = 2; i < n; i++) {
+        // 从第三个数开始，到第n个数(闭区间)
+        for (int i = 3; i <= n; i++) {
             sum = a + b;
+
             a = b;
             b = sum;
         }
