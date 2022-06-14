@@ -15,14 +15,19 @@ public class Solution {
             return new ArrayList<>();
         }
         LinkedList<TreeNode> queue = new LinkedList<>();
+        // 根节点单独的一层
         queue.offer(root);
+
         List<List<Integer>> res = new ArrayList<>();
+
         while (!queue.isEmpty()) {
             List<Integer> temp = new ArrayList<>();
-            // 难点：一层 一层的打印，需要从size--开始遍历队列
+            // 难点：初始时，当前层的元素个数不能变，所以从size开始--
             for (int i = queue.size(); i > 0; i--) {
+
                 TreeNode node = queue.poll();
                 temp.add(node.val);
+
                 if (node.left != null) {
                     queue.offer(node.left);
                 }
@@ -30,6 +35,7 @@ public class Solution {
                     queue.offer(node.right);
                 }
             }
+
             res.add(temp);
         }
         return res;
