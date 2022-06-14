@@ -19,19 +19,19 @@ public class Solution {
         if (n == 1) {
             return 1;
         }
-        // dp[i]:长度为i个的BST个数
+        // dp[i]:长度为i个的BST个数，由于需要长度为n，所以数组长度为n+1
         int[] dp = new int[n + 1];
         // 空树或1个节点，均只有一个BST
         dp[0] = 1;
         dp[1] = 1;
 
-        // 外层：长度
         for (int i = 2; i <= n; i++) {
-            // 内层：根节点可选择的数量
-            for (int j = 1; j <= i; j++) {
-                // J为根的BST个数
-                int rootJ = dp[j - 1] * dp[i - j];
-                dp[i] += rootJ;
+            for (int root = 1; root <= i; root++) {
+                // 右子树:root-1
+                // 左子树:i-root
+                // 笛卡尔积：左子树长度乘右子树长度
+                int count = dp[root - 1] * dp[i - root];
+                dp[i] += count;
             }
         }
 

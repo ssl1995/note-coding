@@ -17,25 +17,27 @@ public class Solution {
      * 中序递归法
      */
     public boolean isValidBST(TreeNode root) {
+        // 空节点，是BST，返回true
         if (root == null) {
             return true;
         }
-        // 获取左子树的信息
+        // 左子树是否BST
         boolean left = isValidBST(root.left);
 
-        // 没有左子树，肯定不是BST
+        // 左子树不是BST
         if (!left) {
             return false;
         }
 
-        // 当前节点的值>pre,更新pre;否则就不是BST
+        // 当前节点的值>左子树pre,更新pre
+        // 否则就不是BST
         if (root.val > pre) {
             pre = root.val;
         } else {
             return false;
         }
 
-        // 继续检查右子树是否是BST
+        // 右子树是否是BST
         return isValidBST(root.right);
     }
 
