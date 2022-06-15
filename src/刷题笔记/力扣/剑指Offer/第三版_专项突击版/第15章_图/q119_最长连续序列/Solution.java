@@ -33,7 +33,10 @@ public class Solution {
         int length = 1;
         while (!queue.isEmpty()) {
             int poll = queue.poll();
+            // 连续，找的是当前遍历数字的前后相近的数字
+            // 比如，num=1,前后两个数是0,3
             int[] neighbors = {poll - 1, poll + 1};
+
             for (int neighbor : neighbors) {
                 if (set.contains(neighbor)) {
                     queue.offer(neighbor);
@@ -47,7 +50,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] nums = {10, 5, 9, 2, 4, 3};
+        int[] nums = {};
         System.out.println(solution.longestConsecutive(nums));
     }
 }
