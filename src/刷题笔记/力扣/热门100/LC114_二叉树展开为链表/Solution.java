@@ -28,6 +28,7 @@ public class Solution {
         stack.push(root);
         List<TreeNode> list = new ArrayList<>();
 
+        // 结果集中的单链表是前序遍历的结果
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
 
@@ -44,7 +45,7 @@ public class Solution {
         for (int i = 0; i < list.size() - 1; i++) {
             TreeNode pre = list.get(i);
             TreeNode next = list.get(i + 1);
-            // 同步更新pre即可
+            // 单链表结点左孩子为空，右孩子指向下一个结点
             pre.left = null;
             pre.right = next;
         }
