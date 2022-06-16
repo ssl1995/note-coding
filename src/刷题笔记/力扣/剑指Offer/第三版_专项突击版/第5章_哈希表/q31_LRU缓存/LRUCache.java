@@ -110,7 +110,7 @@ public class LRUCache {
     private void addNodeAtHead(DLinkedNode node) {
         node.next = head.next;
         head.next.prev = node;
-        head.next = node;
         node.prev = head;
+        head.next = node;
     }
 }
