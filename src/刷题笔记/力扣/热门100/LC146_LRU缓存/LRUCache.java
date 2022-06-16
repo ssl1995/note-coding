@@ -39,9 +39,6 @@ public class LRUCache {
         cache = new HashMap<>();
     }
 
-
-
-
     public int get(int key) {
         if (size == 0) {
             return -1;
