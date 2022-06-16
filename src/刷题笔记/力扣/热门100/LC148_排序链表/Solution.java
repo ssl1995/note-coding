@@ -21,10 +21,12 @@ public class Solution {
         ListNode next = middle.next;
         // 切割中点，一定要中间.next置空
         middle.next = null;
+
         // 以左边的头head开始递归
         ListNode left = mergeSortList(head);
         // 以右边的头next开始递归
         ListNode right = mergeSortList(next);
+
         // 合并两个有序链表
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
@@ -51,11 +53,13 @@ public class Solution {
         }
         ListNode fast = head.next;
         ListNode slow = head;
+
+        // 画图，slow此时就指向奇数中点/偶数靠左的位置
         while (fast != null && fast.next != null) {
+            // fast走两步
             fast = fast.next.next;
             slow = slow.next;
         }
-        // 画图，slow此时就指向奇数中点/偶数靠左的位置
         return slow;
     }
 
