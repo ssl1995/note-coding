@@ -1,5 +1,6 @@
 package 刷题笔记.力扣.热门100.LC139_单词拆分;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +25,7 @@ public class Solution {
         // 空串表示可以被任意单词匹配
         dp[0] = true;
 
+        // set:[[apple],[pen]]
         Set<String> set = new HashSet<>(wordDict);
 
         for (int i = 1; i <= n; i++) {
@@ -37,6 +39,17 @@ public class Solution {
         }
 
         return dp[n];
+
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String s = "applepenapple";
+        List<String> wordDict = new ArrayList<>();
+        wordDict.add("apple");
+        wordDict.add("pen");
+
+        System.out.println(solution.wordBreak(s, wordDict));
 
     }
 }
