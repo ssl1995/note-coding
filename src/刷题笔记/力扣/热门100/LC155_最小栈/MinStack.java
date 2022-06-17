@@ -24,15 +24,14 @@ public class MinStack {
     }
 
     public void push(int x) {
-        // 如果栈2空，或者x比栈2顶还小，就压入栈2
+        // 栈2压入：1.x大就压入min；2.x小就压入x
         if (stack2.isEmpty() || x <= getMin()) {
             stack2.push(x);
         }
-        // 栈2始终保持与栈1同步压入数据，但是栈2顶保持最小值
         if (x > getMin()) {
             stack2.push(getMin());
         }
-        // 栈1是每次都要压入的
+        // 栈1每次正常进栈
         stack1.push(x);
     }
 
