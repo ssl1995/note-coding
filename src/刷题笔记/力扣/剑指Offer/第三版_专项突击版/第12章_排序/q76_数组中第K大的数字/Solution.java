@@ -15,6 +15,8 @@ public class Solution {
         int right = nums.length - 1;
         int index = partition(nums, left, right);
 
+        // 如果partition选取的中间值分区之后下标正好是n-k
+        // 并且 左边的数比它小，右边的数比它大，那n-k坐标的数就是第K大的数
         while (index != target) {
             if (index < target) {
                 left = index + 1;
@@ -28,15 +30,16 @@ public class Solution {
         return nums[index];
     }
 
-    // 分区，返回值一个坐标，该坐标左边比nums[right]小，右边比nums[right]大
+
     private int partition(int[] nums, int left, int right) {
         // 边界长度right-left+1,因为nextInt不能取到右边界，所以+1
         // 再加left是保证random属于[left,right]两边闭区间
         int random = new Random().nextInt(right - left + 1) + left;
-        // 让基准是nums[right]
+        // 交换数字末尾与random
         swap(nums, random, right);
 
         // p1始终指向小于nums[right]的最后一个数
+        // p2遍历数组
         int p1 = left - 1;
         for (int p2 = left; p2 < right; p2++) {
             if (nums[p2] < nums[right]) {
