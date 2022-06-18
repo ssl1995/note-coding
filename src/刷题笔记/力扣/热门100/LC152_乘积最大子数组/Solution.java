@@ -21,16 +21,16 @@ public class Solution {
         int iMax = 1;
         // iMin:表示0到i的最小乘积
         int iMin = 1;
-        for (int i = 0; i < nums.length; i++) {
+        for (int num : nums) {
             // 遇到负数，交换iMax、iMin
-            if (nums[i] < 0) {
+            if (num < 0) {
                 int temp = iMax;
                 iMax = iMin;
                 iMin = temp;
             }
 
-            iMax = Math.max(iMax * nums[i], nums[i]);
-            iMin = Math.min(iMin * nums[i], nums[i]);
+            iMax = Math.max(iMax * num, num);
+            iMin = Math.min(iMin * num, num);
 
             max = Math.max(max, iMax);
         }
