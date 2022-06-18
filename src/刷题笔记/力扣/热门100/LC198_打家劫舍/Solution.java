@@ -8,6 +8,7 @@ package 刷题笔记.力扣.热门100.LC198_打家劫舍;
 public class Solution {
     /**
      * 打家劫舍
+     * 要求：不能盗窃相邻房间
      * 输入：[2,7,9,3,1]
      * 输出：12
      * 解释：偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。
@@ -19,11 +20,14 @@ public class Solution {
         }
         // dp[i]:表示从0到i号房间能偷盗的最大值
         int[] dp = new int[nums.length];
+        // 初始化前两个房间
         dp[0] = nums[0];
         if (nums.length > 1) {
             dp[1] = Math.max(nums[0], nums[1]);
         }
+
         for (int i = 2; i < nums.length; i++) {
+            // 动态规划：当前房间最大值 = 前房间 和 (前前房间 + 当前房间)
             dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
         }
         return dp[nums.length - 1];
