@@ -20,23 +20,38 @@ public class Solution {
         int n = matrix[0].length;
         // dp[i][j]:表示(i,j)位置构成最大正方形的边长
         int[][] dp = new int[m][n];
-        int maxSide = 0;
+        // 存dp中的最大值
+        int max = 0;
+
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
+                // ==0,跳到下个循环
                 if (matrix[i][j] == '0') {
                     continue;
                 }
-                // =='1'才更新dp
+                // =='1'
                 if (i == 0 || j == 0) {
+                    // 边长：=1
                     dp[i][j] = 1;
                 } else {
-                    // 面积取最小值，因为大的值不一定在该位置构成正方形
+                    // 边长：取三个方向的最小值+1
                     dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;
                 }
-                // 边长取最大值
-                maxSide = Math.max(maxSide, dp[i][j]);
+
+                // 记录其中最大值
+                max = Math.max(max, dp[i][j]);
             }
         }
-        return maxSide * maxSide;
+        return max * max;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        char[][] nums = {
+                {'1', '0', '1', '0', '0' },
+                {'1', '0', '1', '1', '1' },
+                {'1', '1', '1', '1', '1' },
+                {'1', '0', '0', '1', '0' }};
+
     }
 }
