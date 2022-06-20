@@ -25,25 +25,28 @@ public class Solution {
         if (nums == null || nums.length < k || k < 1) {
             return new int[]{};
         }
-        // 双端队列队头存区间最大值下标
-        Deque<Integer> maxIndexDeque = new LinkedList<>();
+        // 双端队列队：从大到小存数组中的下标
+        Deque<Integer> queue = new LinkedList<>();
+
         int[] res = new int[nums.length - k + 1];
         int index = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            // 双端队列，队头保证存窗口内最大值下标
-            while (!maxIndexDeque.isEmpty() && nums[maxIndexDeque.peekLast()] <= nums[i]) {
-                maxIndexDeque.pollLast();
+            // 末尾元素<=待加入元素，队尾出队
+            while (!queue.isEmpty() && nums[queue.peekLast()] <= nums[i]) {
+                queue.pollLast();
             }
-            // 存下标
-            maxIndexDeque.addLast(i);
-            // 数字下标与队列头差值>=窗口长度，队头移出队列
-            if (i - maxIndexDeque.peekFirst() >= k) {
-                maxIndexDeque.pollFirst();
+            // 直到队尾>nums[i],队尾存入下标i
+            queue.offerLast(i);
+
+            // 队首元素不在i-k范围内，队首出队
+            if (queue.peekFirst() <= i - k) {
+                queue.pollFirst();
             }
-            // 数字下标>=窗口长度下标，就要记录队头元素
+
+            // i超过k-1坐标，就要保存最大值
             if (i >= k - 1) {
-                res[index++] = nums[maxIndexDeque.peekFirst()];
+                res[index++] = nums[queue.peekFirst()];
             }
         }
         return res;

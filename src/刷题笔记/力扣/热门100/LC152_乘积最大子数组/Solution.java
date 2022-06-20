@@ -14,14 +14,13 @@ public class Solution {
      * 输出: 6
      */
     public int maxProduct(int[] nums) {
+        int max = Integer.MIN_VALUE;
         // 由于存在负数,导致子数组乘积从最大变成最小
         // 所以每一位数组元素都需要存当前位置的最大乘积、最小乘积
         // iMax:表示0到i的最大乘积
         int iMax = 1;
         // iMin:表示0到i的最小乘积
         int iMin = 1;
-
-        int max = Integer.MIN_VALUE;
         for (int num : nums) {
             // 遇到负数，交换iMax、iMin
             if (num < 0) {

@@ -21,16 +21,19 @@ public class Solution {
         }
         int n = nums.length;
         int[] res = new int[n];
+
+        // 初始化0位置元素为1
         res[0] = 1;
-        // 左边元素乘积：不包含自身
+        // 统计i左边所有元素乘积
         for (int i = 1; i < n; i++) {
             res[i] = res[i - 1] * nums[i - 1];
         }
-        // 右边元素乘积：不包含自身
+
         int temp = 1;
-        // n-1位置上元素已确定，从n-2位置上计算乘积
+        // 统计右边所有元素乘积
         for (int i = n - 2; i >= 0; i--) {
             temp *= nums[i + 1];
+
             res[i] *= temp;
         }
         return res;

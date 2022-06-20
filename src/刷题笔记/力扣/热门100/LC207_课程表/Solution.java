@@ -17,14 +17,15 @@ public class Solution {
      * 输出：true,一个可行的修课序列0->1->2->3
      */
     public boolean canFinish(int numCourses, int[][] pres) {
-        // 本题转换为pres的有向无环图是否存在
-        // = 求pres的对应图的拓扑排序，如果最后图非空或者已经不存在入度为0的结点，图必有环=返回false，否则返回true
+        // 本题转换为pres的有向无环图是否存在 = 求pres的对应图的拓扑排序
+        // 如果最后图非空或者已经不存在入度为0的结点，图必有环=返回false，否则返回true
+
         // graph：图邻接表，key是先修课程，value是必须先修课程之后才能学习的所有课程
         Map<Integer, List<Integer>> graph = new HashMap<>(numCourses);
         for (int i = 0; i < numCourses; i++) {
             graph.put(i, new LinkedList<>());
         }
-
+        // inDegrees：每个节点的入度数
         int[] inDegrees = new int[numCourses];
         for (int[] node : pres) {
             int cur = node[0];
@@ -34,7 +35,7 @@ public class Solution {
             graph.get(pre).add(cur);
         }
 
-        // 拓扑排序(BFS)
+        // 拓扑排序(BFS)：使用队列
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
             if (inDegrees[i] == 0) {
