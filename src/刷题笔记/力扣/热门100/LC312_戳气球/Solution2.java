@@ -36,10 +36,12 @@ public class Solution2 {
         for (int i = m - 2; i >= 0; i--) {
             for (int j = i + 2; j < n; j++) {
                 for (int k = i + 1; k < j; k++) {
-                    // 连续三个数乘积
-                    int sum = arr[i] * arr[j] * arr[k];
-                    // 获取左右两区间最大硬币数
+                    // [i,j,k]三个位置的乘积
+                    int sum = arr[i] * arr[k] * arr[j];
+                    // dp[i,k]、dp[k,j]的原有的乘积
                     sum += dp[i][k] + dp[k][j];
+
+                    // 保存最大值
                     dp[i][j] = Math.max(dp[i][j], sum);
                 }
             }
