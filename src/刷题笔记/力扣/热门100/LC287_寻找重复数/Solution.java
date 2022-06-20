@@ -18,30 +18,21 @@ public class Solution {
         if (nums == null || nums.length == 0) {
             return -1;
         }
-        int n = nums.length;
-        // 数组元素范围[1,n],
-        // 假设有一个数组cnt[n+1],cnt[i]表示nums数组中<=i的个数
-        int left = 1, right = n, res = -1;
-        while (left <= right) {
-            int i = left + (right - left) / 2;
-            // count记录nums中<=i的个数
-            int count = 0;
-            for (int num : nums) {
-                if (num <= i) {
-                    count++;
-                }
-            }
-            // 如果nums在i前面都没有重复的数,cnt[i]必然<=i,移动左边界查找后面的数
-            if (count <= i) {
-                left = i + 1;
-            } else {
-                // 相反，必然有重复的数,移动右边界查找前面的数
-                right = i - 1;
-                res = i;
-            }
+        // 类似142—环形链表II：返回入环结点
+        int slow = nums[0];
+        int fast = nums[nums[0]];
+
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
         }
 
-        return res;
+        fast = 0;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
     }
 
     public static void main(String[] args) {
