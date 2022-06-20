@@ -15,6 +15,7 @@ public class Solution {
     public int numSquares(int n) {
         // dp[i]:表示构成整数i最少需要多少个完全平方数
         int[] dp = new int[n + 1];
+        // 初始化：构成0最少需要0个完全平方数
         dp[0] = 0;
 
         for (int i = 1; i <= n; i++) {
@@ -25,6 +26,7 @@ public class Solution {
                 min = Math.min(min, dp[i - j * j]);
             }
 
+            // 最坏的结果：n个1想加
             dp[i] = min + 1;
         }
         return dp[n];
