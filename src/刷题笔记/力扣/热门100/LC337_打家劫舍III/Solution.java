@@ -19,25 +19,26 @@ public class Solution {
         if (root == null) {
             return 0;
         }
-        // dfs返回一个2个数的一维数组
-        // res[0]=选择当前节点盗窃获取的最大值
-        // res[1]=不选择当前节点盗窃获取的最大值
-        int[] rootResult = dfs(root);
-        return Math.max(rootResult[0], rootResult[1]);
+        int[] nums = dfs(root);
+        return Math.max(nums[0], nums[1]);
     }
 
     private int[] dfs(TreeNode node) {
         if (node == null) {
-            return new int[]{0, 0};
+            return new int[2];
         }
-        int[] leftResult = dfs(node.left);
-        int[] rightResult = dfs(node.right);
-        // 选择当前节点盗窃：它的子节点不能盗窃
-        int selectedNode = node.val + leftResult[1] + rightResult[1];
-        // 不选择当前节点盗窃：它的左孩子盗窃最大值+它的右孩子盗窃最大值
-        int notSelectedNode = Math.max(leftResult[0], leftResult[1]) + Math.max(rightResult[0], rightResult[1]);
+        // 每个节点都看成可以获得两种状态
+        // 0位置：不偷；1位置：偷
+        int[] nums = new int[2];
 
-        return new int[]{selectedNode, notSelectedNode};
+        int[] left = dfs(node.left);
+        int[] right = dfs(node.right);
+
+        // 不偷：左孩子偷或不偷最大值 + 右孩子偷或不偷最大值
+        nums[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+        // 偷： 左孩子不偷 + 右孩子不偷 + 偷的该节点的值
+        nums[1] = left[0] + right[0] + node.val;
+
+        return nums;
     }
-
 }

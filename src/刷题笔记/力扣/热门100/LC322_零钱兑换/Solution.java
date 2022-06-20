@@ -1,16 +1,14 @@
-package 刷题笔记.力扣.剑指Offer.第三版_专项突击版.第14章_动态规划.q103_最少的硬币数量;
+package 刷题笔记.力扣.热门100.LC322_零钱兑换;
 
 /**
  * @author SongShengLin
- * @date 2021/11/23 9:30 上午
+ * @date 2022/6/20 23:07
  * @description
  */
-public class Solution1 {
+public class Solution {
+
     /**
      * 零钱兑换
-     * 输入：coins = [1, 2, 5], amount = 11
-     * 输出：3
-     * 解释：11 = 5 + 5 + 1
      */
     public int coinChange(int[] coins, int amount) {
         if (coins == null || coins.length == 0) {
@@ -25,19 +23,12 @@ public class Solution1 {
 
             for (int coin : coins) {
                 if (coin <= i) {
+                    // i-coin位置最小值，然后再加一张coin，所以+1
                     dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
         }
 
         return dp[amount] == amount + 1 ? -1 : dp[amount];
-    }
-
-    public static void main(String[] args) {
-        Solution1 solution1 = new Solution1();
-        int[] coins = {1, 2, 5};
-        int t = 11;
-        System.out.println(solution1.coinChange(coins, t));
-
     }
 }
