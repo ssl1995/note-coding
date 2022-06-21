@@ -22,10 +22,10 @@ public class Solution {
         if (s == null || (p.length() > s.length())) {
             return new ArrayList<>();
         }
-        int n = p.length();
         int m = s.length();
+        int n = p.length();
         // s,p只包含小写字母,只用26个字母即可
-        // sMap:记录s中每p长度单词出现的次数
+        // sMap:记录s中每长度单词出现的次数
         int[] sMap = new int[26];
         // pMap:记录p中每个单词出现的次数
         int[] pMap = new int[26];
@@ -47,7 +47,7 @@ public class Solution {
             sMap[s.charAt(i) - 'a']++;
             // 判断是否相等
             if (Arrays.equals(sMap, pMap)) {
-                // 注意下标变换
+                // 注意下标变换：i往前移动n个位置的起始坐标需要+1
                 res.add(i - n + 1);
             }
         }
