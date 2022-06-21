@@ -15,11 +15,11 @@ public class Solution {
      * 4   (0 1 0 0)
      */
     public int hammingDistance(int x, int y) {
-        // 将所有位置的1放在同一个数上=异或
+        // 二进制不同位置 = 将所有位置的1放在同一个数上 = 异或
         int num = x ^ y;
         int res = 0;
         while (num != 0) {
-            // 判断末尾1，用&1
+            // 末尾是1，说明有一个位置二进制不同
             res += (num & 1) == 1 ? 1 : 0;
             num >>= 1;
         }
