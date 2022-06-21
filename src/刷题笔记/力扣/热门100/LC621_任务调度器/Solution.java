@@ -17,22 +17,29 @@ public class Solution {
         if (tasks == null || tasks.length == 0 || n == 0) {
             return tasks.length;
         }
+        // map:统计tasks中每个字母出现的次数
         int[] map = new int[26];
+        // max:记录最多出现字母的次数
         int max = 0;
         for (char task : tasks) {
-            max = Math.max(max, ++map[task - 'A']);
+            int num = ++map[task - 'A'];
+            max = Math.max(max, num);
         }
+
         // 贪心：找出相同元素数量最大的的元素，它后面紧跟着n个单位时间
-        // n=2:A__A__Axx，max=3，有max-1个时间段，每个时间段有n+1单位长度
+        // n=2，max=3:A__A__Axx，此时的res=A__A__=(max-1)*n +(max-1) = (max - 1) * (n + 1)
+        // 此时差了一个A没计算
         int res = (max - 1) * (n + 1);
 
+
         for (int i = 0; i < 26; i++) {
-            // 加上还等于max的任务数量
+            // 每一个max的元素，(max-1)*(n+1)时都会剩一个未算时间
+            // 有n个，res就加n个
             if (map[i] == max) {
                 res++;
             }
         }
-        // 如果不同的任务种类数量大于n + 1则可能不存在冷却时间，取长度最大值
+        // 如果结果算出来，比数组长度还小，是不可能的，所以我们还需将上述结果与数组长度比较，返回两个中的最大值
         return Math.max(res, tasks.length);
     }
 
