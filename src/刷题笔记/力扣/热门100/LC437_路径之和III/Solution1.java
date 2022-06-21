@@ -12,10 +12,6 @@ import java.util.Map;
  */
 public class Solution1 {
 
-    private Map<Integer, Integer> map;
-    private int target;
-    private int res;
-
     /**
      * 路径之和III
      * 输入：root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8
@@ -26,32 +22,35 @@ public class Solution1 {
         if (root == null) {
             return 0;
         }
-        // map<路径和，到达当前路径和的个数>
-        map = new HashMap<>();
-        // 初始化map，路径和为0，代表达到目标结果
+        // key=前缀和；value=出现target-curSum的次数
+        Map<Integer, Integer> map = new HashMap<>();
+        // 假设根节点有一个父节点，其前缀和为0，有一条路径为1
         map.put(0, 1);
 
-        this.target = targetSum;
-        res = 0;
-        dfs(root, root.val);
-        return res;
+        return dfs(root, map, targetSum, 0);
+
     }
 
-    private void dfs(TreeNode node, int sum) {
-        if (map.containsKey(sum - target)) {
-            res += map.get(sum - target);
+    private int dfs(TreeNode node, Map<Integer, Integer> map, int targetSum, int curSum) {
+        if (node == null) {
+            return 0;
         }
-        map.put(sum, map.getOrDefault(sum, 0) + 1);
+        // 当前结点的前缀和
+        curSum += node.val;
 
-        if (node.left != null) {
-            dfs(node.left, sum + node.left.val);
-        }
-        if (node.right != null) {
-            dfs(node.right, sum + node.right.val);
-        }
+        int res = 0;
+        // 同一条路径上是否出现过curSum-TargetSum的前缀和
+        res += map.getOrDefault(curSum - targetSum, 0);
 
-        map.put(sum, map.getOrDefault(sum, 0) - 1);
+        map.put(curSum, map.getOrDefault(curSum, 0) + 1);
 
+        res += dfs(node.left, map, targetSum, curSum);
+        res += dfs(node.right, map, targetSum, curSum);
+
+        // 回溯，消除本层的影响
+        map.put(curSum, map.get(curSum) - 1);
+
+        return res;
     }
 
 

@@ -24,37 +24,38 @@ public class Solution {
         }
         this.target = targetSum;
         res = 0;
-        dfs(root);
+
+        // 最朴素的做法就是以每个结点都为根节点来统计
+        dfs1(root);
         return res;
     }
 
-    private void dfs(TreeNode node) {
+    private void dfs1(TreeNode node) {
         if (node == null) {
             return;
         }
-        // 先序遍历二叉树，每来到一个结点，以当前节点查找为根，查找路径和为target的数量
-        process(node, node.val);
+        // 当前node为根，统计sum和的数量
+        dfs2(node, node.val);
 
-        if (node.left != null) {
-            dfs(node.left);
-        }
-        if (node.right != null) {
-            dfs(node.right);
-        }
+        dfs1(node.left);
+        dfs1(node.right);
 
     }
 
-    private void process(TreeNode root, int preSum) {
+    private void dfs2(TreeNode root, int preSum) {
+        if (root == null) {
+            return;
+        }
         if (preSum == target) {
             res++;
-            // 不用结束，继续往下
+            // 不能return,因为可能孩子节点是负数,preSum减少会再次形成有效路径
             // return;
         }
         if (root.left != null) {
-            process(root.left, preSum + root.left.val);
+            dfs2(root.left, preSum + root.left.val);
         }
         if (root.right != null) {
-            process(root.right, preSum + root.right.val);
+            dfs2(root.right, preSum + root.right.val);
         }
     }
 
