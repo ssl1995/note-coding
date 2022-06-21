@@ -24,7 +24,7 @@ public class Solution {
         for (int i = 0; i < n; i++) {
             // 原来数-1 = 数组下标
             int index = (nums[i] - 1) % n;
-            // 数组元素属于[1,n]，nums[i]在i-1的下标
+            // 由于数组元素[1,n]之间，原地修改后+n让不存在的数暴露
             nums[index] += n;
         }
 
