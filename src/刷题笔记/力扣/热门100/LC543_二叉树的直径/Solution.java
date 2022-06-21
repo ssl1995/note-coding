@@ -28,9 +28,11 @@ public class Solution {
         }
         int left = dfs(node.left);
         int right = dfs(node.right);
-        // 二叉树直径：任意两个节点边的最大值=max（左子树深度+右子树深度）
+
+        // 直径=两结点间长度=left+right
         max = Math.max(max, left + right);
-        // 返回当前节点的深度
+
+        // 深度=左右子树最大值+1
         return Math.max(left, right) + 1;
     }
 
