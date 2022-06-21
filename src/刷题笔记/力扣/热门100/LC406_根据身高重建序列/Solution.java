@@ -27,7 +27,10 @@ public class Solution {
         if (people == null || people.length == 0) {
             return new int[][]{};
         }
-        // [7,0],[7,1]：第一位从高到底，保证后面的没他高 且 如果 高度相同，按第二位从低到高排序
+        // 输入：[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]
+        // 排序：[7,0],[7,1],[6,1],[5,0],[5,2],[4,4]：第一位相同，就按第二位从低到高排；第一位不相同，就按第一位从高到底排
+        // 按照元素 1 进行降序排序，对于每个元素，在其之前的元素的个数，就是大于等于他的元素的数量
+        // 而按照第二个元素正向排序，我们希望 k 大的尽量在后面，减少插入操作的次数
         Arrays.sort(people, (p1, p2) -> p1[0] == p2[0] ? p1[1] - p2[1] : p2[0] - p1[0]);
 
         List<int[]> list = new ArrayList<>();
@@ -41,9 +44,9 @@ public class Solution {
          *  5-0，7-0，5-2，6-1，4-4，7-1
          */
         for (int[] person : people) {
+            // 将排序后的数组第二位作为插入坐标，插入到list中
             list.add(person[1], person);
         }
-
         return list.toArray(new int[list.size()][]);
     }
 
