@@ -16,23 +16,22 @@ public class Solution {
      * 输出：2
      */
     public int subarraySum(int[] nums, int k) {
-        // <前缀和，该前缀和出现的次数>
+        // <(当前元素和构成的)前缀和，该前缀和出现的次数>
         Map<Integer, Integer> map = new HashMap<>(nums.length + 1);
         // 难点:为什么前缀和为0的个数初始化为1，而不是0?
-        // nums = [3,...], k = 3时
-        // 扫描完第一个数3后，preSum=3，preSum-k=0，说明匹配成功有1个
+        // 因为当前元素的前缀和=k时，表示匹配成功，个数为1
         map.put(0, 1);
 
-        int preSum = 0;
+        int sum = 0;
         int count = 0;
         for (int num : nums) {
-            preSum += num;
-            // 查看当前数的前缀和是否满足pre-k
-            if (map.containsKey(preSum - k)) {
-                count += map.get(preSum - k);
+            sum += num;
+            // 当前前缀和是否有sum-k的前缀和
+            if (map.containsKey(sum - k)) {
+                count += map.get(sum - k);
             }
             // 更新前缀和
-            map.put(preSum, map.getOrDefault(preSum, 0) + 1);
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
 
         return count;
@@ -40,8 +39,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] nums = {1, 1, 1};
-        int k = 2;
+        int[] nums = {1, 2, 3};
+        int k = 3;
         System.out.println(solution.subarraySum(nums, k));
     }
 }
