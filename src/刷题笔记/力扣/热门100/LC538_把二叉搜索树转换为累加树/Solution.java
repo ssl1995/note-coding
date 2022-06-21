@@ -20,7 +20,7 @@ public class Solution {
         if (root == null) {
             return root;
         }
-        // 反中序遍历，得到递减数组
+        // BST反中序遍历，得到递减数组
         convertBST(root.right);
 
         sum += root.val;
