@@ -23,16 +23,17 @@ public class Solution {
         // dp[i][j]:表示s[i,j]上是否是回文串
         boolean[][] dp = new boolean[n][n];
         int res = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j <= i; j++) {
-                // 只有一个字符
-                // 首位字符相同,长度<=3 || s[i+1,j-1]也是回文串
-                if (s.charAt(j) == s.charAt(i) && (i - j + 1 <= 3 || dp[j + 1][i - 1])) {
-                    dp[j][i] = true;
+
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i <= j; i++) {
+                if (s.charAt(i) == s.charAt(j) && (j - i + 1 <= 3 || dp[i + 1][j - 1])) {
+                    dp[i][j] = true;
+
                     res++;
                 }
             }
         }
+
         return res;
     }
 
