@@ -12,7 +12,8 @@ public class Solution {
         if (head == null || n < 1) {
             return null;
         }
-        // 遍历链表，虚拟头结点
+        // 如果fast、slow都从head开始遍历，当链表只有一个元素时候，n=1删除倒数第一个元素时
+        // slow.next 会报空指针异常，思考指针next的用途，我们需要从dummy虚拟头结点开始
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
 
