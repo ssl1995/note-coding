@@ -36,8 +36,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] arr1 = {10, 9, 2, 5, 3, 7, 101, 18};
-        //   tails = {2, 3, 7, 18, 0, 0, 0, 0};
+        int[] arr1 = {10, 9, 1, 5, 2, 6, 66, 18};
         System.out.println(solution.lengthOfLIS(arr1));
     }
 }

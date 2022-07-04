@@ -27,27 +27,22 @@ public class Solution2 {
         arr[n + 1] = 1;
         System.arraycopy(nums, 0, arr, 1, n);
 
-        // dp[left][right]表示(left,right)开区间上，添加一个气球获得的最大硬币数
+        // dp[i][j]表示(i,j)开区间上，添加一个气球获得的最大硬币数
+        // 注意：是开区间，取不到[i]和[j]位置的数
         int[][] dp = new int[n + 2][n + 2];
-        int m = dp.length;
-        n = dp[0].length;
 
-        // 自底向上添加气球：每次从i位置往前数3个数
-        for (int i = m - 2; i >= 0; i--) {
-            for (int j = i + 2; j < n; j++) {
+        // base case: dp[i][j]当i=j时均为0
+        // 结果：dp[0][n+1] 思考自底向上的遍历方式
+        for (int i = n; i >= 0; i--) {
+            for (int j = i + 1; j < n + 2; j++) {
+                // [i,j]中戳破那个气球，寻找其中最大值
                 for (int k = i + 1; k < j; k++) {
-                    // [i,j,k]三个位置的乘积
-                    int sum = arr[i] * arr[k] * arr[j];
-                    // dp[i,k]、dp[k,j]的原有的乘积
-                    sum += dp[i][k] + dp[k][j];
-
-                    // 保存最大值
-                    dp[i][j] = Math.max(dp[i][j], sum);
+                    dp[i][j] = Math.max(dp[i][j], arr[i] * arr[k] * arr[j] + dp[i][k] + dp[k][j]);
                 }
             }
         }
 
-        return dp[0][n - 1];
+        return dp[0][n + 1];
     }
 
 
