@@ -35,7 +35,9 @@ public class Solution {
                 r++;
             }
         }
-        // 最大得分：左右括号的最小值
+        // 记左括号得一分，右括号减一分
+        // 最大得分必然是：合法左括号先全部出现在左边，之后使用最多的合法右括号进行匹配。
+        // 先处理出可以得到的最大得分：min(l,r)
         max = Math.min(l, r);
 
         dfs(0, "", 0);
@@ -44,8 +46,8 @@ public class Solution {
 
     /**
      * 递归生成有效的括号
+     *
      * @param index str下标
-     * @param cur 组成的左右括号字符串
      * @param score 得分：遇到左括号+1分；遇到右括号-1分
      */
     private void dfs(int index, String cur, int score) {
@@ -55,9 +57,11 @@ public class Solution {
 
         if (index == n) {
             if (score == 0 && cur.length() >= len) {
+                // 只保留=len(最大子串)的cur，其余清除
                 if (cur.length() > len) {
-                    set.clear();
+                    set = new HashSet<>();
                 }
+
                 len = cur.length();
                 set.add(cur);
             }
@@ -74,6 +78,7 @@ public class Solution {
             dfs(index + 1, cur + c, score - 1);
             dfs(index + 1, cur, score);
         } else {
+            // 遇到其他符号或数字，加入结果集，不扣分也不减分
             dfs(index + 1, cur + c, score);
         }
     }
