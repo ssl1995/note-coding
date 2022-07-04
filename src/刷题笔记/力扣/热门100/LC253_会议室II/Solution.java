@@ -40,7 +40,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[][] nums = {{1, 10}, {2, 7}, {3, 19}, {8, 12}, {10, 20}, {11, 30}};
+        int[][] nums = {{0, 30}, {5, 10}, {15, 20}};
         System.out.println(solution.minMeetingRooms(nums));
     }
 }
