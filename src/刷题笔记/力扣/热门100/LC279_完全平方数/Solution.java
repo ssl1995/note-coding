@@ -15,26 +15,23 @@ public class Solution {
     public int numSquares(int n) {
         // dp[i]:表示构成整数i最少需要多少个完全平方数
         int[] dp = new int[n + 1];
-        // 初始化：构成0最少需要0个完全平方数
-        dp[0] = 0;
 
         for (int i = 1; i <= n; i++) {
-            int min = Integer.MAX_VALUE;
-            // 完全平方数:[1,根号i]里，枚举这些数，假设为j
-            for (int j = 1; j * j <= i; j++) {
-                // 选取一个数后，剩下的数是i-j^2
-                min = Math.min(min, dp[i - j * j]);
-            }
+            // 最多情况：i=4,需要4个1相加
+            dp[i] = i;
 
-            // 最坏的结果：n个1想加
-            dp[i] = min + 1;
+            for (int j = 1; j * j <= i; j++) {
+                dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
+            }
         }
+
         return dp[n];
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
         int n = 12;
+        // dp=[0, 1, 2, 3, 1, 2, 3, 4, 2, 1, 2, 3, 3]
         System.out.println(solution.numSquares(n));
     }
 }

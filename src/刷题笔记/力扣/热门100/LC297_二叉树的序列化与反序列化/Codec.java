@@ -17,10 +17,13 @@ public class Codec {
      * 先序遍历
      */
     public String serialize(TreeNode root) {
+        // 遇见空节点，以#!结尾
         if (root == null) {
             return "#!";
         }
+        // 遇见当期节点，以!结尾
         String res = root.val + "!";
+
         res += serialize(root.left);
         res += serialize(root.right);
         // "12!3!#!#!#!"
@@ -31,9 +34,9 @@ public class Codec {
      * 反序列化-二叉树
      */
     public TreeNode deserialize(String data) {
+        // "12!3!#!#!#!" -> [12,3,#,#,#]
         String[] strings = data.split("!");
         Queue<String> queue = new LinkedList<>();
-        // [12,3,#,#,#]
         for (String num : strings) {
             queue.offer(num);
         }
@@ -49,6 +52,20 @@ public class Codec {
         root.left = process(queue);
         root.right = process(queue);
         return root;
+
+    }
+
+    public static void main(String[] args) {
+        Codec codec = new Codec();
+        TreeNode node1 = new TreeNode(12);
+        TreeNode node2 = new TreeNode(3);
+        node1.left = node2;
+
+        String serialize = codec.serialize(node1);
+        System.out.println("序列化：" + serialize);
+
+        TreeNode root = codec.deserialize(serialize);
+        System.out.println("反序列化后根：" + root.val);
 
     }
 }

@@ -20,27 +20,26 @@ public class Solution {
         if (nums.length == 1) {
             return true;
         }
-        int n = nums.length;
-        int mostRight = nums[0];
-        for (int i = 0; i < n; i++) {
-            // 失败：i一旦越过最长距离，就false
-            if (i > mostRight) {
-                return false;
-            }
-            // 最长距离为i+nums[i]中的最大值
-            mostRight = Math.max(mostRight, i + nums[i]);
 
-            // 成功：一旦最长距离包含数组最后一个下标，返回true
-            if (mostRight >= n - 1) {
-                return true;
+        int n = nums.length;
+        // dp[i] = nums[0..i]能否跳到i位置
+        boolean[] dp = new boolean[n];
+        dp[0] = true;
+
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && j + nums[j] >= i) {
+                    dp[i] = true;
+                    break;
+                }
             }
         }
-        return false;
+        return dp[n - 1];
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] nums = {3, 2, 1, 0, 4};
+        int[] nums = {2, 3, 1, 1, 4};
         System.out.println(solution.canJump(nums));
     }
 }
