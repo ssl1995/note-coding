@@ -19,6 +19,7 @@ public class Solution {
         if (root == null) {
             return 0;
         }
+        // 返回一个只有2个元素的数组
         int[] nums = dfs(root);
         return Math.max(nums[0], nums[1]);
     }
@@ -34,9 +35,9 @@ public class Solution {
         int[] left = dfs(node.left);
         int[] right = dfs(node.right);
 
-        // 不偷：左孩子偷或不偷最大值 + 右孩子偷或不偷最大值
+        // 不偷node的最大金额：左孩子偷或不偷最大值 + 右孩子偷或不偷最大值
         nums[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
-        // 偷： 左孩子不偷 + 右孩子不偷 + 偷的该节点的值
+        // 偷node的最大金额： 左孩子不偷 + 右孩子不偷 + 偷的该节点的值
         nums[1] = left[0] + right[0] + node.val;
 
         return nums;
