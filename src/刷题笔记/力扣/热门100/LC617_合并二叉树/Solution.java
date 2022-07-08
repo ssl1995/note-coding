@@ -19,15 +19,17 @@ public class Solution {
     }
 
     private TreeNode dfs(TreeNode n1, TreeNode n2) {
+        // base case:至少一个为null,就返回非空
         if (n1 == null || n2 == null) {
             return n1 == null ? n2 : n1;
         }
-        // 更新值
+        // 前序遍历：以累计和到n1为主
         n1.val += n2.val;
-        // 更新左孩子
+        // 更新n1左孩子,走n1左,n2左
         n1.left = dfs(n1.left, n2.left);
-        // 更新右孩子
+        // 更新n1右孩子,走n1右、n2右
         n1.right = dfs(n1.right, n2.right);
+        // 返回n1
         return n1;
     }
 
