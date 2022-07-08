@@ -17,35 +17,37 @@ public class Solution {
         if (nums == null || nums.length <= 1) {
             return 0;
         }
-        int n = nums.length;
         // 将原数组分为[左边有序，中间无需，右边有序]
-        // 中间无需特性：中间最小值>左边最大值 中间最大值<右边最小值
+        int n = nums.length;
 
+        // 从右往左，找中间无序左边界
+        int left = 0;
         int min = nums[n - 1];
+
+        // 从左往右，找中间无序右边界
+        int right = 0;
         int max = nums[0];
 
-        // 进入左段之前，left就是最后一个>min的位置
-        int left = 0;
-
-        // 进入右段之前，right就是最后一个<max的位置
-        // 注意初始化right为-1，因为长度差一开始不存在
-        int right = -1;
-
         for (int i = 0; i < n; i++) {
-            // 中间无需特性：中间最小值>左边最大值 中间最大值<右边最小值
-
+            // 进入右边有序部分前，中间右边界就是<max最后一个数的坐标
             if (nums[i] < max) {
                 right = i;
             } else {
+                // 否则只用更新max，进入右边有序后，max只会更新不影响right查找
                 max = nums[i];
             }
-
+            // 进入左边界前，中间有序左边界就是>min的最后一个数的坐标
             if (nums[n - 1 - i] > min) {
                 left = n - i - 1;
             } else {
+                // 否则只用更新min，进入左边有序后，min只会更新不影响left查找
                 min = nums[n - 1 - i];
             }
 
+        }
+        // 没有找到，中间无序长度为0
+        if (left == 0 && right == 0) {
+            return 0;
         }
 
         return right - left + 1;
