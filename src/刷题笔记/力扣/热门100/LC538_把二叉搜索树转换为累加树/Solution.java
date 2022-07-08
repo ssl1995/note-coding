@@ -18,9 +18,9 @@ public class Solution {
      */
     public TreeNode convertBST(TreeNode root) {
         if (root == null) {
-            return root;
+            return null;
         }
-        // BST反中序遍历，得到递减数组
+        // 从右子树开始，递归中序遍历
         convertBST(root.right);
 
         sum += root.val;

@@ -19,8 +19,9 @@ public class Solution {
         int num = x ^ y;
         int res = 0;
         while (num != 0) {
-            // 末尾是1，说明有一个位置二进制不同
+            // 统计num中有多少个二进制1 = 末尾是1，res+1
             res += (num & 1) == 1 ? 1 : 0;
+            // 然后右移1位，只到num=0
             num >>= 1;
         }
         return res;
