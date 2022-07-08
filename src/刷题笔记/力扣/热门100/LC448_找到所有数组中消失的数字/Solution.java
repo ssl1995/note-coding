@@ -1,6 +1,7 @@
 package 刷题笔记.力扣.热门100.LC448_找到所有数组中消失的数字;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,14 +20,22 @@ public class Solution {
         if (nums == null || nums.length == 0) {
             return new ArrayList<>();
         }
+        // 排序前:[4, 3, 2, 7, 8, 2, 3, 1]
+        // 排序后:[1, 2, 2, 3, 3, 4, 7, 8]
+        // 存在对应关系：num[i]-1=排序后下标
+        // [5, 6]
+
         // 原地修改nums
         int n = nums.length;
         for (int i = 0; i < n; i++) {
-            // 原来数-1 = 数组下标
+            // 数组元素[1,n]，nums[i]-1是它排序后出现的坐标
+            // 由于之前可能已经+n，所以需要取模
             int index = (nums[i] - 1) % n;
-            // 由于数组元素[1,n]之间，原地修改后+n让不存在的数暴露
+            // nums[i]出现过，就让index坐标上+n，表示它出现过
             nums[index] += n;
         }
+
+//        System.out.println("+n后的数组：" + Arrays.toString(nums));
 
         List<Integer> res = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -43,7 +52,12 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};
-        System.out.println(solution.findDisappearedNumbers(nums));
+        System.out.println("排序前:" + Arrays.toString(nums));
+        Arrays.sort(nums);
+        System.out.println("排序后:" + Arrays.toString(nums));
+        int[] nums1 = {4, 3, 2, 7, 8, 2, 3, 1};
+
+        System.out.println(solution.findDisappearedNumbers(nums1));
     }
 
 }

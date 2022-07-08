@@ -29,25 +29,28 @@ public class Solution {
         int[] sMap = new int[26];
         // pMap:记录p中每个单词出现的次数
         int[] pMap = new int[26];
+
+        // 遍历p的长度，统计范围内字母出现的次数
         for (int i = 0; i < n; i++) {
             sMap[s.charAt(i) - 'a']++;
             pMap[p.charAt(i) - 'a']++;
         }
 
         List<Integer> res = new ArrayList<>();
-        // 如果s,p第一个字母往后n个都匹配
+        // 从0往后p字符长度是匹配
         if (Arrays.equals(sMap, pMap)) {
             res.add(0);
         }
-
+        // 从n位置往后开始遍历
         for (int i = n; i < m; i++) {
-            // 去掉之前位置记录
+            // s中不在窗口范围的次数去掉
             sMap[s.charAt(i - n) - 'a']--;
-            // 更新当前记录
+            // 更新s中当前字幕的次数
             sMap[s.charAt(i) - 'a']++;
-            // 判断是否相等
+
+            // 从i-n+1位置往后p字符长度是否匹配
             if (Arrays.equals(sMap, pMap)) {
-                // 注意下标变换：i往前移动n个位置的起始坐标需要+1
+                // 初始坐标：i-n+1
                 res.add(i - n + 1);
             }
         }
