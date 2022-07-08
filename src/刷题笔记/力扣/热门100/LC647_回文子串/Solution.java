@@ -24,12 +24,21 @@ public class Solution {
         boolean[][] dp = new boolean[n][n];
         int res = 0;
 
-        for (int j = 0; j < n; j++) {
-            for (int i = 0; i <= j; i++) {
-                if (s.charAt(i) == s.charAt(j) && (j - i + 1 <= 3 || dp[i + 1][j - 1])) {
-                    dp[i][j] = true;
-
-                    res++;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                // (i,j)位置上字母相同
+                if (s.charAt(i) == s.charAt(j)) {
+                    // 区间长度<=3，必为回文子串
+                    if (i - j + 1 <= 3) {
+                        dp[j][i] = true;
+                        res++;
+                    } else {
+                        // 区间长度>3，状态转移
+                        dp[j][i] = dp[j + 1][i - 1];
+                        if (dp[j][i]) {
+                            res++;
+                        }
+                    }
                 }
             }
         }
