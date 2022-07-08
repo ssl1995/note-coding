@@ -14,16 +14,18 @@ public class Solution {
             return new int[]{};
         }
         int[] res = new int[temperatures.length];
-        // 递减栈：栈底到栈顶，对应的nums[i]递减,栈中存i
+        // 递减栈
         Deque<Integer> stack = new LinkedList<>();
 
         for (int i = 0; i < temperatures.length; i++) {
+            // 栈非空 且 遍历的数比栈顶对应的数大
             while (!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
-                // 出栈元素 = 要记录的index
+                // 出栈，得到第一个比遍历到的数小的数
                 int index = stack.pop();
+                // i-index就是两者距离，保存进结果
                 res[index] = i - index;
             }
-
+            // 进栈
             stack.push(i);
         }
 
