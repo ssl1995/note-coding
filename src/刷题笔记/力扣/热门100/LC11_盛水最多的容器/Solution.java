@@ -14,15 +14,16 @@ public class Solution {
     public int maxArea(int[] height) {
         int left = 0, right = height.length - 1;
         int maxArea = 0;
-        int max = 0;
+        int temp = 0;
         while (left < right) {
             // 面积变大只需要移动短板，因为短板处移动才可能变大面积
             if (height[left] < height[right]) {
-                max = (right - left) * height[left++];
+                // right - left 是容器的长，而不是下标长度不用right-left +1
+                temp = (right - left) * height[left++];
             } else {
-                max = (right - left) * height[right--];
+                temp = (right - left) * height[right--];
             }
-            maxArea = Math.max(maxArea, max);
+            maxArea = Math.max(maxArea, temp);
         }
         return maxArea;
     }
