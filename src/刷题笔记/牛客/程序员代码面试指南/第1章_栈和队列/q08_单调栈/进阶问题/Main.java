@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Main {
 
     /**
      * 进阶问题
-     * 数组中有重复数据
+     * 如果数组中有重复数据
      * 输入：
      * 7
      * 3 4 1 5 6 2 7
@@ -33,11 +34,14 @@ public class Main {
         if (arr == null) {
             return new int[][]{};
         }
+        // arr={3,1,3,4,3,5,3,2,2}
         int[][] res = new int[arr.length][2];
-        // arr有重复数据，栈中有list
-        LinkedList<List<Integer>> stack = new LinkedList<>();
+        // 如果arr有重复数据，单调栈存集合
+        Deque<List<Integer>> stack = new LinkedList<>();
+
         for (int i = 0; i < arr.length; i++) {
-            while (!stack.isEmpty() && arr[stack.peek().get(0)] > arr[i]) {
+            // 出栈
+            while (!stack.isEmpty() && arr[i] < arr[stack.peek().get(0)]) {
                 List<Integer> pop = stack.pop();
                 // left取最右边的=最后加入的元素
                 int left = stack.isEmpty() ? -1 : stack.peek().get(stack.peek().size() - 1);
@@ -46,10 +50,12 @@ public class Main {
                     res[index][1] = i;
                 }
             }
-            // 等于加入list
+            // 进栈
+            // 如果和栈顶相同，就加入集合
             if (!stack.isEmpty() && arr[stack.peek().get(0)] == arr[i]) {
                 stack.peek().add(i);
             } else {
+                // 如果和栈顶不同，就自己是一个集合
                 List<Integer> list = new ArrayList<>();
                 list.add(i);
                 stack.push(list);
@@ -80,21 +86,6 @@ public class Main {
 
         int[][] res = getNearLess(arr);
         printArr(res);
-//        Scanner sc = new Scanner(System.in);
-//        int n = sc.nextInt();
-//        int[] arr = new int[n];
-//        int i = 0;
-//        while (sc.hasNextInt()) {
-//            arr[i++] = sc.nextInt();
-//        }
-//        sc.close();
-//
-//        getNearLess(arr);
-
-//        printArr(res);
-//        int[] arr = {3, 4, 1, 5, 6, 2, 7};
-//        int[][] nearLess = getNearLess(arr);
-//        System.out.println(Arrays.deepToString(nearLess));
     }
 
     private static void printArr(int[][] arr) {

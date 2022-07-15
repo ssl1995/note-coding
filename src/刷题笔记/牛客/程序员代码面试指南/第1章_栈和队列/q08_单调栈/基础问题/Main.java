@@ -1,5 +1,6 @@
 package 刷题笔记.牛客.程序员代码面试指南.第1章_栈和队列.q08_单调栈.基础问题;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ public class Main {
 
 
     /**
-     * 获取i位置左右两边最小值下标
+     * 题目：获取i位置左右两边最小值下标
      * 输入：
      * 7
      * 3 4 1 5 6 2 7
@@ -29,10 +30,12 @@ public class Main {
         if (arr == null) {
             return new int[][]{};
         }
+        // nums = {3, 4, 1, 5, 6, 2, 7}
         int[][] res = new int[arr.length][2];
 
-        LinkedList<Integer> stack = new LinkedList<>();
+        Deque<Integer> stack = new LinkedList<>();
         for (int i = 0; i < arr.length; i++) {
+            // 单调栈：保证栈底到栈顶严格递增
             while (!stack.isEmpty() && arr[i] < arr[stack.peek()]) {
                 Integer pop = stack.pop();
                 int left = stack.isEmpty() ? -1 : stack.peek();
