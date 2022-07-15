@@ -1,5 +1,7 @@
 package 刷题笔记.力扣.热门100.LC53_最大子数组和;
 
+import java.util.Arrays;
+
 /**
  * @author SongShengLin
  * @date 2022/1/26 8:21 AM
@@ -35,6 +37,8 @@ public class Solution {
             // 遍历选择其中最大值
             max = Math.max(max, dp[i]);
         }
+        System.out.println("nums:" + Arrays.toString(nums));
+        System.out.println("dp:" + Arrays.toString(dp));
         return max;
     }
 
