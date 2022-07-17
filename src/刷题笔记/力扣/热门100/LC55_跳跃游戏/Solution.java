@@ -22,19 +22,21 @@ public class Solution {
         }
 
         int n = nums.length;
-        // dp[i] = nums[0..i]能否跳到i位置
-        boolean[] dp = new boolean[n];
-        dp[0] = true;
+        int maxR = 0;
+        // 1.从左到右，记录能到达的最右位置
+        for (int i = 0; i < n; i++) {
+            // 2.如果最右位置到达不了当前的i位置，永远无法到到n-1位置，返回false
+            if (i > maxR) {
+                return false;
+            }
 
-        for (int i = 1; i < n; i++) {
-            for (int j = 0; j < i; j++) {
-                if (dp[j] && j + nums[j] >= i) {
-                    dp[i] = true;
-                    break;
-                }
+            maxR = Math.max(maxR, i + nums[i]);
+            // 3.反之，返回true
+            if (maxR >= n - 1) {
+                return true;
             }
         }
-        return dp[n - 1];
+        return false;
     }
 
     public static void main(String[] args) {
