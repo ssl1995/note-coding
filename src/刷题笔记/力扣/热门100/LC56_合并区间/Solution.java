@@ -29,13 +29,13 @@ public class Solution {
             int right = interval[1];
 
             int last = res.size() - 1;
-            // res不能合并当前[left,right],比如res=[1,6],[left,right]=[8,10]
+            // res不能合并当前[left,right],比如res=[1,6],遍历=[left,right]=[8,10]
+            // 结果集的右边 < 遍历到左边，作为新放入结果集
             if (res.isEmpty() || res.get(last)[1] < left) {
-                // 直接放入即可
                 res.add(new int[]{left, right});
             } else {
                 // res可以合并当前[left,right],比如res=[1,3]、[left,right]=[2,6]
-                // 放入较大的右端点
+                // 结果集的右边 > 遍历到左边，取最长的右边放入
                 res.get(last)[1] = Math.max(res.get(last)[1], right);
             }
         }
