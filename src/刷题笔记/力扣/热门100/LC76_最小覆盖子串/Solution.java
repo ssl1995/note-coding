@@ -54,13 +54,9 @@ public class Solution {
 
 
     public static void main(String[] args) {
-//        Solution solution = new Solution();
-//        String s = "cabwefgewcwaefgcf";
-//        String t = "cwae";
-//        System.out.println(solution.minWindow(s, t));
-        int[] map = new int[1];
-        map[0] = 10;
-        --map[0];
-        System.out.println(map[0]);
+        Solution solution = new Solution();
+        String s = "ADOBECODEBANC";
+        String t = "ABC";
+        System.out.println(solution.minWindow(s, t));
     }
 }
