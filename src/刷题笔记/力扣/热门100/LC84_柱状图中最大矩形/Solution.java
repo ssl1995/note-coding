@@ -1,5 +1,6 @@
 package 刷题笔记.力扣.热门100.LC84_柱状图中最大矩形;
 
+import java.util.Deque;
 import java.util.LinkedList;
 
 /**
@@ -20,7 +21,7 @@ public class Solution {
         }
         // 单调栈：从栈底到栈顶数组元素值递增
         // stack：存坐标
-        LinkedList<Integer> stack = new LinkedList<>();
+        Deque<Integer> stack = new LinkedList<>();
         // 预存一个宽度为-1(不存在)的值，模拟数组0位置左边还有位置
         stack.push(-1);
 
@@ -46,7 +47,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] heights = {4, 5, 6};
+        int[] heights = {2, 1, 5, 6, 2, 3};
         System.out.println(solution.largestRectangleArea(heights));
     }
 }
