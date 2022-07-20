@@ -21,22 +21,14 @@ public class Solution {
         if (root == null) {
             return true;
         }
-        // 左子树是否BST
-        boolean left = isValidBST(root.left);
-
         // 左子树不是BST
-        if (!left) {
+        if (!isValidBST(root.left)) {
             return false;
         }
-
-        // 当前节点的值>左子树pre,更新pre
-        // 否则就不是BST
-        if (root.val > pre) {
-            pre = root.val;
-        } else {
+        // BST的中序遍历，当前节点的值必须>pre，否则为false
+        if (root.val <= pre) {
             return false;
         }
-
         // 右子树是否是BST
         return isValidBST(root.right);
     }
@@ -60,11 +52,13 @@ public class Solution {
             } else {
                 // 左子树到null就出栈，操作+入右子树
                 root = stack.pop();
+
                 if (root.val <= pre) {
                     return false;
                 } else {
                     pre = root.val;
                 }
+
                 root = root.right;
             }
         }
