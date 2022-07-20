@@ -1,4 +1,4 @@
-package 学习笔记.面试学习.设计模式.单例设计模式;
+package 学习笔记.设计模式.创造型.单例设计模式;
 
 /**
  * @author SongShengLin
