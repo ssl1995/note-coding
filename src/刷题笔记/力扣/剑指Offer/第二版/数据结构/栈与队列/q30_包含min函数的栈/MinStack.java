@@ -44,13 +44,16 @@ public class MinStack {
         if (stack1.isEmpty()) {
             throw new RuntimeException("MinStack is empty");
         }
+        // top和min都是peek
         return stack1.peek();
     }
 
     public int min() {
+        // 这里是stack2判空
         if (stack2.isEmpty()) {
             throw new RuntimeException("MinStack is empty");
         }
+        // top和min都是peek
         return stack2.peek();
     }
 }
