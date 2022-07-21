@@ -53,12 +53,12 @@ public class Solution {
         TreeNode node = new TreeNode(preorder[root]);
 
         // 根节点在中序的坐标
-        int i = inMap.get(preorder[root]);
+        int inIndex = inMap.get(preorder[root]);
 
         // node的左子树递归:左子树根节点root+1,左子树范围[left,i-1]
-        node.left = recur(root + 1, left, i - 1);
-        // node的右子树递归:右子树根节点root+i-left+1,右子树范围[i+1,right]
-        node.right = recur(root + i - left + 1, i + 1, right);
+        node.left = recur(root + 1, left, inIndex - 1);
+        // node的右子树递归:右子树根节点=root+ 根据中序获得左子树长度，才能定位到右子树根节点坐标,右子树范围[i+1,right]
+        node.right = recur(root + (inIndex - left + 1), inIndex + 1, right);
 
         // 递归回溯,当前node作为上一层的左or右节点
         return node;
