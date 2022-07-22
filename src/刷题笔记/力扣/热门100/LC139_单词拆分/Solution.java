@@ -30,6 +30,7 @@ public class Solution {
 
         for (int i = 1; i <= n; i++) {
             for (int j = 0; j < i; j++) {
+                // dp[j]与子字符串来判断dp[i]状态
                 if (dp[j] && set.contains(s.substring(j, i))) {
                     dp[i] = true;
                     // 内存循环只有匹配成功一次，就跳出到外层；开启下一个外层循环

@@ -3,6 +3,7 @@ package 刷题笔记.力扣.热门100.LC114_二叉树展开为链表;
 import 刷题笔记.力扣.utils.TreeNode;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Solution {
         if (root == null) {
             return;
         }
-        LinkedList<TreeNode> stack = new LinkedList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
         stack.push(root);
         List<TreeNode> list = new ArrayList<>();
 
