@@ -25,7 +25,8 @@ public class Solution {
         if (node == null) {
             return 0;
         }
-
+        // 后续遍历获得左右子树最大路径和
+        // 注意：左右子树最大路径和可能是负数，需要与0比较取较大值
         int left = Math.max(maxGain(node.left), 0);
         int right = Math.max(maxGain(node.right), 0);
 

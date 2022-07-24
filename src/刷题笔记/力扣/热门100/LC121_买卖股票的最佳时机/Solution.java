@@ -18,6 +18,7 @@ public class Solution {
         if (prices == null) {
             return 0;
         }
+        // min初始化为第一个元素
         int min = prices[0];
         int max = 0;
 

@@ -25,53 +25,50 @@ public class Solution {
         // counts[i]:i结点为根结点的子集整数数量
         Map<Integer, Integer> counts = new HashMap<>();
 
-        Set<Integer> all = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
 
         // 初始化
         for (int num : nums) {
             fathers.put(num, num);
             counts.put(num, 1);
-            all.add(num);
+            set.add(num);
         }
 
         // 是否包含相邻元素
         for (int num : nums) {
-            if (all.contains(num + 1)) {
+            if (set.contains(num + 1)) {
                 union(fathers, counts, num, num + 1);
             }
-            if (all.contains(num - 1)) {
+            if (set.contains(num - 1)) {
                 union(fathers, counts, num, num - 1);
             }
         }
 
-        int longest = 0;
+        int res = 0;
         for (int length : counts.values()) {
-            longest = Math.max(longest, length);
+            res = Math.max(res, length);
         }
-        return longest;
+        return res;
     }
 
-    private void union(Map<Integer, Integer> fathers, Map<Integer, Integer> counts, int i, int j) {
-        int fatherOfI = findFather(fathers, i);
-        int fatherOfJ = findFather(fathers, j);
+    private void union(Map<Integer, Integer> fathers, Map<Integer, Integer> counts, int num1, int nums2) {
+        int f1 = findFather(fathers, num1);
+        int f2 = findFather(fathers, nums2);
         // 两个父节点不相同，就合并两个子图
-        if (fatherOfI != fatherOfJ) {
-            // i挂着j名下
-            fathers.put(fatherOfI, fatherOfJ);
+        if (f1 != f2) {
+            // f1挂着f2名下
+            fathers.put(f1, f2);
 
-            int countOfI = counts.get(fatherOfI);
-            int countOfJ = counts.get(fatherOfJ);
-
-            // j名下数量更新
-            counts.put(fatherOfJ, countOfI + countOfJ);
+            // f2名下数量更新
+            counts.put(f2, counts.get(f1) + counts.get(f2));
         }
     }
 
-    private int findFather(Map<Integer, Integer> fathers, int i) {
-        if (fathers.get(i) != i) {
-            fathers.put(i, findFather(fathers, fathers.get(i)));
+    private int findFather(Map<Integer, Integer> fathers, int num) {
+        if (fathers.get(num) != num) {
+            fathers.put(num, findFather(fathers, fathers.get(num)));
         }
-        return fathers.get(i);
+        return fathers.get(num);
     }
 
 
