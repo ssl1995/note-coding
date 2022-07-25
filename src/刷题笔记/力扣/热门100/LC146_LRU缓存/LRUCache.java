@@ -47,6 +47,7 @@ public class LRUCache {
         if (node == null) {
             return -1;
         }
+        // 先移动再删除
         removeNode(node);
         moveToHead(node);
         return node.value;
@@ -56,6 +57,7 @@ public class LRUCache {
         Node node = cache.get(key);
         if (node != null) {
             node.value = value;
+            // 先移动再删除
             removeNode(node);
             moveToHead(node);
             return;
