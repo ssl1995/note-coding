@@ -8,11 +8,11 @@ package 学习笔记.设计模式.创造型.工厂方法;
 public class Test {
 
     public static void main(String[] args) {
-        StudentWorkFactory studentWorkFactory = new StudentWorkFactory();
+        WorkFactory studentWorkFactory = new StudentWorkFactory();
         Iwork studentWork = studentWorkFactory.getWork();
         studentWork.work();
 
-        TeacherWorkFactory teacherWorkFactory = new TeacherWorkFactory();
+        WorkFactory teacherWorkFactory = new TeacherWorkFactory();
         Iwork teacherWork = teacherWorkFactory.getWork();
         teacherWork.work();
     }
