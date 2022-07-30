@@ -1,4 +1,4 @@
-package 学习笔记.面试学习.多线程.互斥锁;
+package 学习笔记.多线程.Java锁.互斥锁;
 
 /**
  * @author SongShengLin

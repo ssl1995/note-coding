@@ -1,4 +1,4 @@
-package 学习笔记.面试学习.输入输出.字节流;
+package 学习笔记.输入输出.字节流;
 
 import java.io.*;
 

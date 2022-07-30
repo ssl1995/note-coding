@@ -1,4 +1,4 @@
-package 学习笔记.面试学习.多线程.创建线程;
+package 学习笔记.多线程.创建线程;
 
 /**
  * @author SongShengLin
